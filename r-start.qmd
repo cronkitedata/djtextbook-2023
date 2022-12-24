@@ -1,0 +1,152 @@
+# Getting started with R
+
+::: {.alert .alert-secondary}
+::: {.alert-heading .font-weight-bolder .fs-3}
+In this chapter
+:::
+
+-   Get to know the screens
+-   Issue a few commands to the Console
+-   Take a tutorial
+-   Using RStudio projects
+-   Relax!
+:::
+
+::: {.alert .alert-primary}
+Open the application called RStudio, not R
+
+![r or rstudio](assets/images/r-start-r-or-rstudio.png){fig-align="left"}
+::: 
+
+## Getting to know the RStudio screen
+
+This is what your screen probably looks like:
+
+![console](assets/images/r-start-rstudio.png){width="100%"}
+
+### The Console {.unnumbered}
+
+The Console is where you can type commands and interact directly with the programming language. Think of it as a very powerful calculator at first. One reason to use it is to install packages.
+
+If you followed the installation demo, you've already used the console to install one package using the command `install.packages("tidyverse")`. Go back and do that part now if you skipped it. 
+
+### Files tab {.unnumbered}
+
+We won't be using many of the tabs in the lower right, but the Files tab can help you if you're having trouble navigating your work. Under the More button, you can choose "Go to working directory", since that's where R thinks you've parked all of your work. This can be confusing in R, which is why we'll be working in "projects" that bundle up all of your work in one place.
+
+### Environment {.unnumbered}
+
+The upper right screen is the Environment, which is where your active *variables* live. A variable is a named thing. It might be a word, a list of words or numbers, or a data frame (spreadsheet). You will understand this better after you take the Posit "Programming basics" [tutorial referenced below](#tutorials).
+
+Anything that you want to use has to be listed in that environment before you can reference it. This will make more sense later.
+
+### Typing into the console {.unnumbered}
+
+When you type this: `5+5` after the \> prompt, you'll get this back after you press Return/Enter: `[1] 10`
+
+When you type this: `"Sarah"` (with quotes) after the \> prompt, you'll get this back: `[1] "Sarah"`
+
+To create a new variable, you'll use the *assignment* operator `<-` (two characters : A less than sign and a hyphen). Here is how I would create the variable called `my_name` (lower case, no spaces). Notice how it appears in the Environment after being created. Then I can print it by typing the name of the variable instead of the letters of my name in quotes:
+
+::: {.content-visible when-format="html"}
+![](https://cronkitedata.s3.amazonaws.com/images/r-start-variable-assign.gif)
+:::
+
+::: {.content-visible when-format="pdf"}
+![](assets/images/r-start-variable-assign.png)
+:::
+
+::: callout-tip
+Use the keyboard shortcut `CMD/CTL - SHift - M` to create an assignment operator `<-`  
+::: 
+
+The console remembers your commands, but you have to type them one at a time and it will forget them when you leave for the day. That's why we're going to work in programs called Quarto documents most of the time.^[These used to be "R Markdown". Quarto is the newer implementaiton of it, but you'll often see R Markdown referenced in other places.]
+
+## Take a tutorial {#tutorials}
+
+::: {.alert .alert-primary}
+Take the ["Programming basics" tutorial](https://posit.cloud/learn/primers/1.2) from Posit.
+:::
+
+It will walk you through some of the basic language elements in R, and how you will use them. Don't worry that they are very number-centric. Instead, focus on the concepts of functions, arguments and objects.
+
+For a higher level view, consider reviewing the [Gentle Introduction to Programming](appendix-program.qmd) in the Appendix of this textbook. 
+
+#### Optional hands-on tutorial:
+
+One of the packages you installed earler was called `swirl`. It contains some interactive tutorials that get you used to typing commands into the Console.
+
+To take it, make sure your cursor is in the Console, and start it by typing `swirl::swirl()`. (Don't worry too much what that means right now.) Just do the first chapter called *R Programming: The basics of programming in R*, and just the first section, called *Basic Building Blocks*.
+
+## Take a tour
+
+::: {.alert .alert-primary}
+Watch Andrew Heiss's tour of RStudio. 
+:::
+
+::: {.mt-4 .content-visible when-format="html"}
+{{< video "https://www.youtube.com/embed/cnQ-v1UUWyE" >}}
+:::
+
+::: {.content-visible when-format="pdf"}
+<https://youtu.be/cnQ-v1UUWyE>
+:::
+
+We will not be using the R scripts as he shows in the end of the video, but many other examples and resources do. Also, as we get into working with Quarto, the "code chunks" work the same way as a script.
+
+## Install a few more packages {#packages}
+
+We need to update your packages and install a few more for our work, even if you've already installed the tidyverse.
+
+You may use the commands below, or use the "Packages" tab in RStudio to install them.
+
+#### Option 1: Use the console
+
+::: {.alert .alert-primary}
+Copy these commands into your Console. They ensure that your packages are up to date, and install a few extras that aren't included in the Tidyverse. You only have to do this once.
+
+::: inline-code
+    update.packages(ask=FALSE)
+    install.packages(c("janitor" , "quarto", rmarkdown", "swirl", "pacman"))
+     
+:::
+:::
+
+#### Option 2: Use RStudio "Packages" tab
+
+::: {.content-visible when-format="html"}
+![packages](https://cronkitedata.s3.amazonaws.com/images/r-start-packages.gif)
+:::
+
+::: {.content-visible when-format="pdf"}
+![packages](assets/images/r-start-packages.png)
+:::
+
+## Use RStudio Projects
+
+One of the things that trips up new users of R is that it's hard to tell the program where to find things on your computer. The "working directory" can be confusing.
+
+We'll be working entirely in projects in this course. Projects keep everything needed together so that they can run on almost any machine.
+
+Create a new project by hitting the second green + sign at the top of your screen, create a new directory within the one that we're working (you can also find it under the File menu item):
+
+::: {.content-visible when-format="html"}
+![](https://cronkitedata.s3.amazonaws.com/images/r-start-newproject.gif)
+:::
+
+::: {.content-visible when-format="pdf"}
+![](assets/images/r-start-newproject.png)
+:::
+
+
+
+
+## Relax!
+
+::: {#fig-relax}
+![](assets/images/r-start-sylwia-bartyzel.jpeg)
+
+Relax by Silwia Bartyzel via Unsplash
+:::
+
+You're all set up and we're ready to start programming. Congratulate yourself - everything is new, nothing is intuitive and the screen is intimidating. You've come a long way.

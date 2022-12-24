@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Data Reporting, Spring 2023 - 16&nbsp; Getting and saving data</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./appendix-math.html" rel="next">
+<link href="./r-quarto.html" rel="prev">
+<link href="./assets/images/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Getting and saving data</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./assets/images/favicon.ico" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Data Reporting, Spring 2023</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/cronkitedata/djtextbook" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
+    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="./Data-Reporting,-Spring-2023.pdf">
+            <i class="bi bi-bi-file-pdf pe-1"></i>
+          Download PDF
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="./Data-Reporting,-Spring-2023.epub">
+            <i class="bi bi-bi-journal pe-1"></i>
+          Download ePub
+          </a>
+        </li>
+    </ul>
+  <a href="" class="quarto-reader-toggle sidebar-tool" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Welcome</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./start.html" class="sidebar-item-text sidebar-link">Reporting with data</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./start-story.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Learn a new way to read</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./start-math.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Newsroom math</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./start-data-def.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Defining “Data”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./start-data-diary.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Replication and the data diary</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./start-hunt.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Finding the right data for your story</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./start-build-own.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Build your own database</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./xl.html" class="sidebar-item-text sidebar-link">Spreadsheets</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./xl-refresher.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">An Excel Refresher</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./xl-filter-sort.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sorting and filtering to find stories</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./xl-pivot.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Grouping with pivot tables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./xl-formulas.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Formulas in Excel</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./xl-practice-noc.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Practice exercise</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./r.html" class="sidebar-item-text sidebar-link">R Study Guide</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-install.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Installing R and RStudio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-start.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Getting started with R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-quarto.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Using Quarto</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-data-import.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Getting and saving data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Appendices</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-math.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Newsroom numbers cheat sheet</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-program.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">A gentle intro to programming</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-ppp.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Documentation for PPP data chapters</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#the-data-frame" id="toc-the-data-frame" class="nav-link active" data-scroll-target="#the-data-frame">The data frame</a>
+  <ul class="collapse">
+  <li><a href="#example-data" id="toc-example-data" class="nav-link" data-scroll-target="#example-data">Example data</a></li>
+  </ul></li>
+  <li><a href="#starting-a-new-r-program" id="toc-starting-a-new-r-program" class="nav-link" data-scroll-target="#starting-a-new-r-program">Starting a new R program</a>
+  <ul class="collapse">
+  <li><a href="#importing-the-hot-100-data-file" id="toc-importing-the-hot-100-data-file" class="nav-link" data-scroll-target="#importing-the-hot-100-data-file">Importing the Hot 100 data file</a></li>
+  </ul></li>
+  <li><a href="#introducing-the-pipe" id="toc-introducing-the-pipe" class="nav-link" data-scroll-target="#introducing-the-pipe">Introducing the pipe</a></li>
+  <li><a href="#what-we-did" id="toc-what-we-did" class="nav-link" data-scroll-target="#what-we-did">What we did</a>
+  <ul class="collapse">
+  <li><a href="#what-you-should-do-next" id="toc-what-you-should-do-next" class="nav-link" data-scroll-target="#what-you-should-do-next">What you should do next</a></li>
+  <li><a href="#and-breathe" id="toc-and-breathe" class="nav-link" data-scroll-target="#and-breathe">And breathe</a></li>
+  </ul></li>
+  <li><a href="#postscript-understanding-file-types" id="toc-postscript-understanding-file-types" class="nav-link" data-scroll-target="#postscript-understanding-file-types">Postscript: Understanding file types</a>
+  <ul class="collapse">
+  <li><a href="#tabular-text-data" id="toc-tabular-text-data" class="nav-link" data-scroll-target="#tabular-text-data">Tabular text data</a></li>
+  <li><a href="#non-tabular-text-data" id="toc-non-tabular-text-data" class="nav-link" data-scroll-target="#non-tabular-text-data">Non-tabular text data</a></li>
+  <li><a href="#data-formats-created-for-specific-software" id="toc-data-formats-created-for-specific-software" class="nav-link" data-scroll-target="#data-formats-created-for-specific-software">Data formats created for specific software</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="r-data-import" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Getting and saving data</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="alert alert-secondary">
+<p class="alert-heading font-weight-bolder fs-3">
+In this chapter
+</p>
+<ul>
+<li>Invoking standard packages</li>
+<li>Reading data from from Excel or from a text file.</li>
+<li>Looking at your data</li>
+<li>Introducing the “pipe” (%&gt;%)</li>
+<li>A postscript on different types of data files</li>
+</ul>
+</div>
+<p>testing a video embed off of media plus:</p>
+<iframe id="mediaPlus_iFrame_f7bd779d-ba5c-43d5-90e8-d6c25ef8abb8" src="https://mediaplus.asu.edu/lti/embedded?id=f7bd779d-ba5c-43d5-90e8-d6c25ef8abb8&amp;siteId=61e0606e-415d-4001-8206-ffde48430c64" width="640" height="360" frameholder="0" allow="autoplay; fullscreen;">
+</iframe>
+<p>But before we start:</p>
+<p><img src="assets/images/r-dataframe-take-a-break.jpg" class="img-fluid" style="width:100.0%"></p>
+<section id="the-data-frame" class="level2">
+<h2 class="anchored" data-anchor-id="the-data-frame">The data frame</h2>
+<p>A data frame is an R variable<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> and can be used and re-used like any other. The difference is that it contains columns and rows, just like a spreadsheet. These follow the rules we’ve seen about good, tidy Excel files:</p>
+<ul>
+<li>Each column contains one kind of information – race, sex, address, etc.</li>
+<li>Each row contains one example of each of those columns, all at the same unit of analysis. In other words, they each refer to the same noun.</li>
+</ul>
+<p>Before you can use a data frame, you will have to <code>import</code> some data from a file on your hard drive or the web, or <code>load</code> some data that is saved in one of several R-specific formats. Most of the time, your data will originally come in a comma-separated text file (.csv), or in an Excel format (.xlsx). As you work on it, you’ll save it as an R data file that you’ve checked for mistakes and proper treatment of columns.</p>
+<section id="example-data" class="level3">
+<h3 class="anchored" data-anchor-id="example-data">Example data</h3>
+<p>Christian McDonald, a data journalism professor at the University of Texas, has compiled a list of Billboard’s Hot 100 hits back to the 1950s, and made it available in his Github account. It’s a great example dataset because it has a lot of rows, a few columns, and few different data types. It’s also easy to understand. He has also made some tutorials using this data, and has generously offered it up for our use.</p>
+<p>We’ll be using the data on McDonald’s Github repository at <a href="https://github.com/utdata/rwdir/blob/main/data-raw/hot100_archive.csv?raw=true" class="uri">https://github.com/utdata/rwdir/blob/main/data-raw/hot100_archive.csv?raw=true</a></p>
+<p>Here is how he describes it:</p>
+<blockquote class="blockquote">
+<p>The Billboard <a href="https://www.billboard.com/charts/hot-100/">Hot 100</a> singles charts has been the music industry’s standard record chart since its inception on 8/2/1958. The rankings, published by Billboard Media, are currently based on sales (physical and digital), radio play, and online streaming. The methods and policies of the chart have changed over time.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>The data we will use here is a combination of data collected by Kaggle user <a href="https://www.kaggle.com/dhruvildave/billboard-the-hot-100-songs">Dhruvil Dave</a>, along with some scraping and merging by Prof.&nbsp;McDonald. It is stored on the code sharing website Github for safe keeping.</p>
+</blockquote>
+<p>Here is a <em>data dictionary</em> , sometimes called a <em>record layout</em> to go along with the data. You should look for, or create, something like this for every data source you use.</p>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 8%">
+<col style="width: 66%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>variable name</th>
+<th>type</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CHART WEEK</td>
+<td>date</td>
+<td>The release date of the chart</td>
+</tr>
+<tr class="even">
+<td>THIS WEEK</td>
+<td>number</td>
+<td>The rank (1 through 100) of the song that week</td>
+</tr>
+<tr class="odd">
+<td>TITLE</td>
+<td>character</td>
+<td>Song title</td>
+</tr>
+<tr class="even">
+<td>PERFORMER</td>
+<td>character</td>
+<td>Performer, as published in the chart. There could be different spellings over time.</td>
+</tr>
+<tr class="odd">
+<td>LAST WEEK</td>
+<td>number</td>
+<td>Last week’s ranking</td>
+</tr>
+<tr class="even">
+<td>PEAK POS.</td>
+<td>number</td>
+<td>Highest ranking ever on the Top 100 chart</td>
+</tr>
+<tr class="odd">
+<td>WKS ON CHART</td>
+<td>number</td>
+<td>Number of weeks it has appeared on the chart, not necessarily consecutive.</td>
+</tr>
+</tbody>
+</table>
+<p>It’s a good example for us, since there are no nuances to the data, and it contains a mix of words, numbers and dates. You won’t have to spend a lot of time studying it to understand what it is.</p>
+<div class="alert alert-warning">
+<p>Notice the upper-casing, the spaces and the period in the column names. This will be important later on.</p>
+</div>
+</section>
+</section>
+<section id="starting-a-new-r-program" class="level2">
+<h2 class="anchored" data-anchor-id="starting-a-new-r-program">Starting a new R program</h2>
+<p>Every time you start a new R markdown document, you will need to load any packages you intend to use by editing the first code chunk in the default document, called the “setup chunk”.</p>
+<p>Then you will delete all of the boilerplate below the first code chunk.</p>
+<div class="alert alert-info">
+<p>If you are following along, it is assumed that you have created or opened a project to hold your new programs and data. Do that now if you haven’t. Mine is in my project called cohen-rlessons, inside my class folder.)</p>
+</div>
+<div class="alert alert-primary">
+<p>Create a new markdown document (the green plus sign at the upper left of your screen, or in the File menu) , and edit the setup chunk as shown below. If you want, copy and paste the YAML from the last lesson and replace the default options with that.</p>
+<p>Save your document as <code>01-top100.Rmd</code> . I’m using the “01” prefix so that when I come back to this six months down the road, I know that this program has to be run first!</p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/images/r-firstprog-setupchunk.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p></p><figcaption class="figure-caption">setup chunk</figcaption><p></p>
+</figure>
+</div>
+<div class="alert alert-info">
+<p>I’ve created <a href="https://cronkitedata.s3.amazonaws.com/markdown_templates/01-top100.Rmd">a template you can save in your project for this exercise</a> , but I encourage you to use it as a guide rather than to copy-paste or just edit it. You should get in the habit of creating readable markdowns that document the how, what, why and where of your work.</p>
+</div>
+<section id="importing-the-hot-100-data-file" class="level3">
+<h3 class="anchored" data-anchor-id="importing-the-hot-100-data-file">Importing the Hot 100 data file</h3>
+<p>When you read in a CSV<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> file, R will guess what each column is – text (words, called “character” or “chr” in R), numbers (“dbl” or “int” for “double-precision” or “integer”), and date/time (which have a couple of different possibilities that we’ll get into later on). <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<p>Data frames are most easily managed by keeping a few style rules in mind:</p>
+<ul>
+<li>Column names should be all lower-case, and have no special characters. Separate words in a column name with an underscore.</li>
+<li>Any column containing numerals that you don’t plan to use in a math computation should be stored as a character type, not a number.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></li>
+</ul>
+<p>We often have to tweak the data import to make sure of these things, or have to convert data types once they ’ve been imported. If you then save your data as an R data frame, you never have to do that again.</p>
+<div class="alert alert-primary">
+<p>Create a new code chunk to read the top 100 dataset into a variable like this:</p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>top100 <span class="ot">&lt;-</span> </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(<span class="st">"https://github.com/utdata/rwd-billboard-data/blob/main/data-out/hot100_archive.csv?raw=true"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here’s what that code does:</p>
+<ol type="1">
+<li>Creates a new variable name, called top100, to pour the data into.</li>
+<li>Uses a function of the tidyverse<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> called <code>read_csv</code>, to</li>
+<li>Access comma-separated text data held in McDonald’s github repository.</li>
+</ol>
+<p>When you run the chunk by pressing the green arrow within the code chunk, or press Shift-CMD-Enter , the output should look like this:</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 330800 Columns: 7
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (3): CHART WEEK, TITLE, PERFORMER
+dbl (4): THIS WEEK, LAST WEEK, PEAK POS., WKS ON CHART
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<p>So R found:</p>
+<ul>
+<li>330,787 rows (or records, or observations).</li>
+<li>Seven columns ,</li>
+<li>Three of which it thinks are character types, and four that it thinks should be numbers.</li>
+<li>It named the variables using the first row of the file.</li>
+</ul>
+<div class="alert alert-info">
+<p>Pro tip: if you’re not sure about the data types of each column, use an option to import them all as text, or <code>character</code>, columns. Then you can fix them one by one. Text will (almost) never be a problem. The option looks like this:</p>
+<p><code>read_csv( name_of_file, col_types=c(.default="c") )</code></p>
+</div>
+<p>It’s also telling you how to get more information. Sometimes, this will say “Use <code>problems()</code> …”, meaning that something could have gone wrong and you should check it. We’ll see how to fix the column types at the same time as your import later on in the course.</p>
+<div class="alert alert-info">
+<p>If you want to import an Excel file, you have to use a slightly different library. You will have to load the <code>readxl</code> library in the setup chunk, then use the <code>read_excel()</code> function to access the data. It works similarly, but it’s a slightly different method.</p>
+</div>
+<p>There are a few ways to look at the data. First, you can look at the top and bottom of it using the <code>head()</code> and <code>tail()</code> commands:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(top100)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 7
+  `CHART WEEK` `THIS WEEK` TITLE             PERFORMER   LAST …¹ PEAK …² WKS O…³
+  &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;         &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+1 8/4/1958               1 Poor Little Fool  Ricky Nels…      NA       1       1
+2 8/4/1958               2 Patricia          Perez Prad…      NA       2       1
+3 8/4/1958               3 Splish Splash     Bobby Darin      NA       3       1
+4 8/4/1958               4 Hard Headed Woman Elvis Pres…      NA       4       1
+5 8/4/1958               5 When              Kalin Twins      NA       5       1
+6 8/4/1958               6 Rebel-'rouser     Duane Eddy…      NA       6       1
+# … with abbreviated variable names ¹​`LAST WEEK`, ²​`PEAK POS.`, ³​`WKS ON CHART`</code></pre>
+</div>
+</div>
+<p>Or, you can look at a list of columns along with their types and a few examples from the top of the file using the <code>glimpse()</code> function, in this case listing the name of the data frame you want it to look at within the parentheses.^ [You may have noticed a pattern already: Function names are followed by parentheses, which leave room specifications, called arguments. Sometimes you don’t need any, so they’re blank]</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(top100)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 330,800
+Columns: 7
+$ `CHART WEEK`   &lt;chr&gt; "8/4/1958", "8/4/1958", "8/4/1958", "8/4/1958", "8/4/19…
+$ `THIS WEEK`    &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, …
+$ TITLE          &lt;chr&gt; "Poor Little Fool", "Patricia", "Splish Splash", "Hard …
+$ PERFORMER      &lt;chr&gt; "Ricky Nelson", "Perez Prado And His Orchestra", "Bobby…
+$ `LAST WEEK`    &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ `PEAK POS.`    &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, …
+$ `WKS ON CHART` &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…</code></pre>
+</div>
+</div>
+<p>Here, you might notice that the names of some of the columns have back-ticks around them. That’s because they don’t follow our rules for column names – they should be lower case, with no spaces or special characters.</p>
+<p>You can also explore a dataset by clicking on its name in the Environment tab. This is a good idea for exploring, but it can’t be replicated by your audience. It suffers from the same point-and-click problems that you ran into using spreadsheets. If you plan to use any of the results of that exploration, you’ll have to explicitly program them in the markdown.</p>
+</section>
+</section>
+<section id="introducing-the-pipe" class="level2">
+<h2 class="anchored" data-anchor-id="introducing-the-pipe">Introducing the pipe</h2>
+<p>You’ll be seeing a lot of R code that has this format:</p>
+<pre><code>  data_set_name %&gt;%
+     verb ( nouns ) %&gt;%
+     verb ( nouns ) %&gt;%
+     etc...</code></pre>
+<p>That little symbol, <code>%&gt;%</code> is called the “pipe”. It means “and then keep going to the next command”. It matches the way you think about algorithms from <a href="appendix-program.html">the programming appendix</a> in this book.</p>
+<p><img src="assets/images/r-firstprog-pipenewbies.png" class="img-fluid" style="width:100.0%" alt="pipenewbies"> <img src="assets/images/r-firstprog-rladies.png" class="img-fluid" style="width:100.0%" alt="rladies"></p>
+<p>We’re going to use two of the other libraries that we loaded at the top – <code>lubridate</code> and <code>janitor</code> to fix the two problems with this data, while showing you what the pipe does.</p>
+<div class="alert alert-primary">
+<p>Add a code chunk that you’ll edit to clean the column names and types now.</p>
+</div>
+<p>I try to build my code chunks one step at a time. These will show up as separate ones, but in practice I keep editing one that works until I get what I want.</p>
+<p>Using a pipe can help make your code easier to read and write by separating each step into its own command. For example, <code>glimpse(top100)</code> does the same thing as <code>top100 %&gt;% glimpse()</code>. The second version tells R, “Start with the top100 data frame <strong>and then</strong> glimpse it. Using small-ish datasets like this, I try to separate as much as is reasonable into separate steps because I can then troubleshoot problems one line at a time.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>top100 <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()  <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 330,800
+Columns: 7
+$ chart_week   &lt;chr&gt; "8/4/1958", "8/4/1958", "8/4/1958", "8/4/1958", "8/4/1958…
+$ this_week    &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17…
+$ title        &lt;chr&gt; "Poor Little Fool", "Patricia", "Splish Splash", "Hard He…
+$ performer    &lt;chr&gt; "Ricky Nelson", "Perez Prado And His Orchestra", "Bobby D…
+$ last_week    &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ peak_pos     &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17…
+$ wks_on_chart &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …</code></pre>
+</div>
+</div>
+<p>This shows us that the function <code>clean_names()</code> converts the column names into our preferred style. Notice that we didn’t pour that answer into a new variable name, so it just prints the answer to the screen.</p>
+<p>Once this works as expected, we can finish cleaning up the data.</p>
+<p>This process uses the pipe to tack on new statements after each one is complete, and introduces <strong>the verbs of the tidyverse</strong>, which you’ll see in action in the next chapter.</p>
+<p>These are two of the most important verbs you’ll use:</p>
+<ul>
+<li><code>select</code>, which picks and rearranges columns (kind of like filtering vertically)</li>
+<li><code>mutate</code>, which lets you create new columns out of old ones. (like inserting a column in Excel and entering a formula)</li>
+</ul>
+<p>The code chunk also uses <em>function</em> called <code>mdy()</code>, which stands for “month-day-year”, which in turn tells R that the character <code>chart_week</code> column starts out in that format, as opposed to year-month-day or something else.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
+<div class="alert alert-primary">
+<p>Your final code chunk should look like this. Try to avoid copying and pasting, and instead build it one step at a time, running the chunk each time you add a phrase.</p>
+</div>
+<p>(I usually add the variable name at the top last to save the data result for later use, after I’m sure everything has worked by printing it to the screen.)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>top100_clean <span class="ot">&lt;-</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  top100 <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span> () <span class="sc">%&gt;%</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> ( <span class="at">chart_date =</span> <span class="fu">mdy</span>(chart_week)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span> ( chart_date, title, performer, this_week, last_week,</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>           wks_on_chart, peak_pos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="alert alert-primary">
+<p>Save your cleaned data in the tidyverse’s <code>rds</code> format in a code chunk like this:</p>
+</div>
+<pre><code>
+saveRDS(top100_clean, file="hit100.RDS")
+</code></pre>
+</section>
+<section id="what-we-did" class="level2">
+<h2 class="anchored" data-anchor-id="what-we-did">What we did</h2>
+<ol type="1">
+<li>Created a new R Markdown document and added the packages (libraries) we plan to use.</li>
+<li>Imported a comma-separated text file from the web into a data frame called it <code>top100</code>.</li>
+<li>Took a look at it in several different ways.</li>
+<li>Created a second data frame from the first, with names and dates fixed, with only some columns picked out and displayed in a new order.</li>
+<li>Saved it into the project for use in another program.</li>
+</ol>
+<section id="what-you-should-do-next" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="what-you-should-do-next">What you should do next</h3>
+<p>If you’ve followed along, you should create text surrounding your code chunks that result in a clean, readable Markdown document that readers can follow from start to finish. Include:</p>
+<ul>
+<li>Documentation of the source of your file.</li>
+<li>Sub-headings for each of the steps</li>
+<li>Introductory text describing what you are about to do</li>
+<li>Maybe: Some text after the chunks that describe meaningful output.</li>
+</ul>
+<p>If you’re stuck, you can <a href="https://cronkitedata.s3.amazonaws.com/markdown_templates/01-top100.Rmd">use the template I created</a> as a starting point.</p>
+<p>Knit it early and often to make sure your program isn’t broken and that the output looks the way you expect.</p>
+</section>
+<section id="and-breathe" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="and-breathe">And breathe</h3>
+<p>You’ve now created a full, working R program in Markdown format that can serve as a model for everything you do in the future. Congratulate yourself and take a break!</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/images/r-firstprog-breathe.jpg" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Max van den Oetelaar via Unsplash</figcaption><p></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="postscript-understanding-file-types" class="level2">
+<h2 class="anchored" data-anchor-id="postscript-understanding-file-types">Postscript: Understanding file types</h2>
+<p>So far in this book, you’ve been saved from having to understand the format of data as it is traded among people and computers. Now you’ll have to start understanding that there are different forms of data files, one of which is the simple Excel file that we’ve dealt with so far.</p>
+<p>But Excel is a propriety format – it’s made by Microsoft and isn’t very easy to use without a program that can import it. As we’ve seen, it can also corrupt data by misunderstanding data types like dates and numbers, and there isn’t much control over its assumptions.</p>
+<p>This section will go over the common data formats you’re likey to run across in your work with R. However, R is not limited to these. You’ll often find arcane and specialized data file formats if you work with statisticians or experts in geographic analysis that can also be read in R. There is almost always a package available that will import it.</p>
+<section id="tabular-text-data" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="tabular-text-data">Tabular text data</h3>
+<p>In Excel and Google Sheets, each page of a workbook is <em>tabular</em>, meaning it is approximately a rectangle. It might be a narrow and tall rectangle, or a short and wide rectangle, but it’s still a rectangle. Each column is an <em>attribute</em> or a <em>variable</em>, and each row is an <em>observation</em> or a <em>record</em> .</p>
+<p>Every computer can read and write plain text. Those are the characters you can type on a typewriter, with no fancy formatting or other features that require special software to ingest it. We’ll normally be dealing with these. They usually come in two flavors:</p>
+<ul>
+<li><p><strong>CSV</strong> data is “comma-separated values” data, which means that a new column will be created whenver a comma is encountered. If there is a chance that there might be a comma inside a column, it will be enclosed by quote marks. This usually works OK, but there are some times when you have to be careful because there could be commas AND quotes inside a column. (A good example is a column of peoples’ names – they may be something like <code>Smith, Johnny "The Rat"</code>) To overcome this, some people use:</p></li>
+<li><p><strong>TSV</strong> , or tab-separated data. In this case, the tab key determines the distinction between columns, which is much rarer to find in plain text files.</p></li>
+</ul>
+<p>Here’s what a CSV might look like listing the last few presidents:</p>
+<pre><code>  name, position, start_date, age_at_start_date
+  "Biden, Joe", President, 2021-01-20, 78
+  "Trump, Donald", President, 2017-01-20, 70
+  "Obama, Barack", President, 2009-01-20, 47</code></pre>
+<p>It looks like a mess to you, but it’s a thing of beauty to a computer.</p>
+<p>Some government agencies just make up a delimiter instead of a comma or tab - I’ve seen them with vertical bars (<code>|</code>) and tildes <code>~</code>. You would use the function <code>read_delim()</code> to import a text file delimited by something other than a comma.</p>
+</section>
+<section id="non-tabular-text-data" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="non-tabular-text-data">Non-tabular text data</h3>
+<p>Another common format you’ll see passed around from computer to computer is called JSON. This stands for Javascript Object Notation, and is commonly used to pass data over the web , often to your phone or your browser.</p>
+<p>It looks even worse, but it’s also a thing of beauty to a computer. The same data would look like this in JSON:</p>
+<pre><code> {"presidents": [
+    {"name": "Biden, Joe", "position": "President", "start_date": "2021-01-20", 
+       "age_at start_date": "78"},
+    {"name": "Trump, Donald", "position": "President", "start_date": "2017-01-20", 
+       "age_at start_date": "70"},
+    {"name": "Obama, Barack", "position": "President", "start_date": "2009-01-20", 
+       "age_at start_date": "47"}
+   ]
+  } 
+    </code></pre>
+</section>
+<section id="data-formats-created-for-specific-software" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="data-formats-created-for-specific-software">Data formats created for specific software</h3>
+<p>R has its own data files, sort of like Excel files, which require no special handling when used within R, but can’t really be used in any other program.</p>
+<p>Almost every programming language has a way to read Excel (.xlsx) files, but they sometimes don’t handle intricacies very well.</p>
+<p>For now, we’ll just work with these kinds of files, but just remember that you’re likely to run into all different kinds. Get some help before just Googling when you find a new type – you’ll often get bad advice from the internet on this topic.</p>
+
+
+</section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>A variable in R is just a name of something. We’ll sometimes also use the word to refer to a column in a dataset, which is a statistician’s definition of a variable.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>comma-separated text values. <a href="#postscript-understanding-file-types">See below</a> for a brief description of file types.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>You might see them called “Date” (without a time) or <a href="https://en.wikipedia.org/wiki/POSIX">POSIX</a> (with time). Most POSIX date-time variables store the number of seconds since Jan.&nbsp;1, 1970, with negative numbers prior to that. You’ll never work with them directly.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>More advanced users create a special type of variable called a <code>factor</code> to work with categories - we’re skipping that for now.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Actually, a package within the tidyverse called <code>readr</code><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>This function is part of the library called <code>lubridate</code> that we also loaded in the setup chunk.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./r-quarto.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Using Quarto</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./appendix-math.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Newsroom numbers cheat sheet</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Data reporting for investigative journalism, Spring 2023 was written by Sarah Cohen</div>   
+    <div class="nav-footer-right">Produced with <a href="https://quarto.org">Quarto</a></div>
+  </div>
+</footer>
+
+
+
+</body></html>

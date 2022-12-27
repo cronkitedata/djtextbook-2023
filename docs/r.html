@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Reporting, Spring 2023 - R Study Guide</title>
+<title>Data Reporting - R Study Guide</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -88,19 +88,19 @@ ul.task-list li input[type="checkbox"] {
       <img src="./assets/images/favicon.ico" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Data Reporting, Spring 2023</a> 
+      <a href="./">Data Reporting</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/cronkitedata/djtextbook" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
     <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
     <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
         <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="./Data-Reporting,-Spring-2023.pdf">
+          <a class="dropdown-item sidebar-tools-main-item" href="./Data-Reporting.pdf">
             <i class="bi bi-bi-file-pdf pe-1"></i>
           Download PDF
           </a>
         </li>
         <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="./Data-Reporting,-Spring-2023.epub">
+          <a class="dropdown-item sidebar-tools-main-item" href="./Data-Reporting.epub">
             <i class="bi bi-bi-journal pe-1"></i>
           Download ePub
           </a>
@@ -123,7 +123,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Welcome</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Conventions used in this book</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -196,7 +196,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./xl-practice-noc.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Practice exercise</span></a>
+  <a href="./xl-practice-noc.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Practice exercise 1</span></a>
   </div>
 </li>
       </ul>
@@ -227,6 +227,11 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./r-data-import.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Getting and saving data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-verbs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">A quick tour of verbs</span></a>
   </div>
 </li>
       </ul>
@@ -265,12 +270,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <li><a href="#r-intro" id="toc-r-intro" class="nav-link active" data-scroll-target="#r-intro">Introduction</a>
   <ul class="collapse">
   <li><a href="#r-or-python" id="toc-r-or-python" class="nav-link" data-scroll-target="#r-or-python">R or Python?</a></li>
-  </ul></li>
   <li><a href="#structure-of-the-chapters" id="toc-structure-of-the-chapters" class="nav-link" data-scroll-target="#structure-of-the-chapters">Structure of the chapters</a></li>
   <li><a href="#credits" id="toc-credits" class="nav-link" data-scroll-target="#credits">Credits</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -294,8 +299,8 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<section id="r-intro" class="level1 unnumbered">
+<h1 class="unnumbered">Introduction</h1>
 <p>This is probably your first introduction to coding. Don’t be worried. With effort, much of what reporters do in coding can be learned in a few weeks.</p>
 <p>Like most reporters, I learned the coding that I know (which isn’t a lot) because I wanted to get a story done. In our class, we are not trying to become programmers or social scientists. We’re working on stories.</p>
 <p>You saw during the pivot table lesson that spreadsheets have limits. We couldn’t easily get the city with the most police shootings because we would have had to put both city and state into the pivot table. A median is missing from pivot tables entirely. It’s easy to lose track of where you are and what you did. That’s the reason to learn some coding – there is something we want to know that isn’t very easy to get in other ways.</p>
@@ -315,18 +320,51 @@ ul.task-list li input[type="checkbox"] {
 <p>I chose R because I find it a little easier to use when trying to puzzle something out step by step, and it is particularly good at working with the weird and varied forms of data thrown at us, but it’s really just a matter of taste and comfort.</p>
 <p>The following chapters lay out the fundamentals of data journalism with R. I’ll be adding chapters as we want them during class. The format of these chapters varies a little from the rest of the book. Each section will begin with the key concepts and skills that are included, which I hope will make them easier to find when you need them.</p>
 </section>
-</section>
 <section id="structure-of-the-chapters" class="level2">
 <h2 class="anchored" data-anchor-id="structure-of-the-chapters">Structure of the chapters</h2>
-<p>In this set of chapters for R, the following colors mean this:</p>
-<div class="alert alert-info">
-<p>Blue background means that there’s some extra information that may be helpful.</p>
+<p>Each chapter includes a summary of what is included, intended to help you navigate the book when you are doing your own coding. At the end is a “recipe” chapter that puts together the specific funcitons and commands that were covered in earlier chapters, and actually goes a little further to help you polish your document.</p>
+<p>Pay attention to these :</p>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<div class="alert alert-warning">
-<p>Yellow background means “Warning!” Something bad could happen.</p>
+<div class="callout-caption-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>These are warnings that something isn’t quite what it seems and might go wrong.</p>
+</div>
+</div>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Danger
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>These are cautions – something bad could happen if you ignore this.</p>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Pro tips!</p>
+</div>
 </div>
 <div class="alert alert-primary">
-<p>This dark background is specific instructions you should follow for class.</p>
+<p>A dark background contains specific instructions you should follow for class or if you want to follow along</p>
 </div>
 </section>
 <section id="credits" class="level2">
@@ -334,6 +372,7 @@ ul.task-list li input[type="checkbox"] {
 <p>The first few chapters in this section rely on work done by <a href="https://evalf22.classes.andrewheiss.com/">Andrew Heiss</a> and <a href="https://utdata.github.io/rwdir/">Christian McDonald</a>.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -473,7 +512,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./xl-practice-noc.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Practice exercise</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Practice exercise 1</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

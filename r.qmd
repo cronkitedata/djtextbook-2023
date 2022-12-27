@@ -1,6 +1,6 @@
 # R Study Guide {.-}
 
-## Introduction
+# Introduction {#r-intro .unnumbered}
 
 This is probably your first introduction to coding. Don't be worried. With effort, much of what reporters do in coding can be learned in a few weeks.
 
@@ -34,19 +34,27 @@ The following chapters lay out the fundamentals of data journalism with R. I'll 
 
 ## Structure of the chapters
 
-In this set of chapters for R, the following colors mean this:
+Each chapter includes a summary of what is included, intended to help you navigate the book when you are doing your own coding. At the end is a "recipe" chapter that puts together the specific funcitons and commands that were covered in earlier chapters, and actually goes a little further to help you polish your document. 
 
-::: {.alert .alert-info}
-Blue background means that there's some extra information that may be helpful.
-:::
+Pay attention to these : 
 
-::: {.alert .alert-warning}
-Yellow background means "Warning!" Something bad could happen.
-:::
+::: callout-warning
+These are warnings that something isn't quite what it seems and might go wrong. 
+::: 
+
+::: callout-caution
+These are cautions -- something bad could happen if you ignore this. 
+::: 
+
+::: callout-tip
+Pro tips!
+::: 
 
 ::: {.alert .alert-primary}
-This dark background is specific instructions you should follow for class.
+A dark background contains specific instructions you should follow for class or if you want to follow along
 :::
+
+
 
 ## Credits
 

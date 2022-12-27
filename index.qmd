@@ -1,7 +1,4 @@
----
-title: ""
---- 
-# Welcome {.unnumbered}
+
 
 This book serves as a compilation of  of handouts, websites and tutorials that I have used in my data reporting class at ASU's [Cronkite School of Journalism and Mass Communication](cronkite.asu.edu). Some of the material will be useful in other courses or for self-study, but it is primarily aimed at the investigative journalism masters' students at Cronkite.
 
@@ -21,6 +18,38 @@ It doesn't cover:
 - Data science. This is a journalism book, not a programming or statistics book. 
 
 A note on language: I'll use the words "read" and "write" in a generic sense. I intend them to cover the range of journalistic media, including listening, watching, and news applications or graphics.  
+
+## Conventions used in this book 
+
+This book is written using a Mac desktop keyboard, meaning there may be key combinations you don't have. I'll try to keep them to a minimum. I'll try to use the convention `CMD/CTL` and `OPT/ALT` , with the part before the / for Mac users and part after the / for Windows users. 
+
+
+### Conventions in the R Study Guide chapters 
+
+::: callout-tip
+Pro tips! 
+::: 
+
+
+::: callout-note
+An aside. 
+::: 
+
+::: callout-warning
+Something you should be careful about, but it won't be horrible if you miss it.
+::: 
+
+::: callout-caution
+Something that is super important to pay attention to -- you may have errors in your story even if you can get things to work if you ignore it.
+::: 
+
+::: {.alert .alert-success .alert-dothis}
+This background is used for instructions for anyone trying to follow along. 
+
+::: 
+
+
+
 
 
 ## Credits {-}

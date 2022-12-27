@@ -2,7 +2,7 @@ project:
   type: book
   output-dir: docs
   preview:
-    port: 4200
+    port: 4300
 
 engine: knitr
 
@@ -10,7 +10,8 @@ book:
   sidebar:
     search: true
     logo: assets/images/favicon.ico
-  title: "Data Reporting, Spring 2023"
+  title: "Data Reporting"
+  subtitle: "Cronkite School MAIJ Program, Spring 2023"
   page-navigation: true
   reader-mode: true
   downloads: [pdf, epub]
@@ -61,7 +62,7 @@ book:
          - r-start.qmd
          - r-quarto.qmd
          - r-data-import.qmd
-#         - r-verbs.qmd
+         - r-verbs.qmd
 #         - r-verb-filter.qmd
 #         - r-verb-groupby.qmd
 #         - r-verb-mutate.qmd
@@ -96,7 +97,8 @@ format:
     number-depth: 1
     fontsize: 1em
     default-image-extension: png
-    highlight-style: tango
+#    highlight-style: github
+    df-print: paged
 
 # The default image extension means that you can resize for pdf output.
 # complex images come out too big, but the smaller ones are ok.

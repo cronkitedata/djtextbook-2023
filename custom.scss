@@ -49,9 +49,6 @@ $color-code-color: #9753b8;
 $callout-color-note: $paleblue;
 
 
-// $success:    $paleblue ;
-// $primary:    $color-foot;
-
 
 // fonts
 $font-family-sans-serif: "Mulish", Roboto, sans-serif !default;
@@ -66,6 +63,22 @@ $link-color: $blue;
 
 
 /*-- scss:rules --*/
+
+
+// create a class for the instructions background, etc.
+// if we do alert alert-primary alert-dothis. then dothis will adjust what we alrady have.
+// Do it this way so I don't have to worry about all the things that might be embedded in alert styles.
+// this JUST changes the background color and the opacity.
+
+.alert-dothis {
+  background-color : $color-foot !important;
+  opacity: .8;
+
+}
+
+.standout {
+  color: $color-foot;
+}
 
 // Merge the maps
 /*

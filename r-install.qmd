@@ -6,7 +6,6 @@ In this chapter
 :::
 
 -   Install R , RStudio
--   The power of packages, especially the `tidyverse`
 -   Change default settings for working in data reporting
 :::
 
@@ -14,22 +13,21 @@ In this chapter
 
 -   R is the programming language itself, and has to be installed first. Andrew Heiss has called it the "engine" behind your work.
 -   RStudio, made by the company [posit.co](https://posit.co), is the way we'll interact with the programming language. Install it second. Heiss calls it the "fancy car" that you drive.
--   Packages are extra sets of programs that perform specialized jobs more easily than working with the "base" R language. A package must be installed once on your computer, then invoked to use them in a program. R is almost useless without them.
 
-
-
-::: {.alert .alert-primary}
-Follow this interactive tutorial on installing R, RStudio and the tidyverse on your computer:
-
-<https://learnr-examples.shinyapps.io/ex-setup-r/#section-welcome> .
-:::
-
-There are several differences between the video and today:
-
--   The name of the company has changed from RStudio to Posit, so some of the links may now take you to the Posit site. The name of the software -- RStudio -- has not changed.
--   The tidyverse will take much longer to finish installation. It has a lot to do and often looks like it's stalled.
 
 ### Install R
+
+::: callout-note
+### Follow a tutorial instead
+If it's easier, you can follow this interactive tutorial on installing R, RStudio and the tidyverse on your computer:
+
+<https://learnr-examples.shinyapps.io/ex-setup-r/#section-welcome> .
+
+The name of the company has changed from RStudio to Posit, so some of the links may now take you to the Posit site. The name of the software -- RStudio -- has not changed.
+
+You can skip the part about installing the tidyverse--- we'll do that in the next chapter.
+ 
+::: 
 
 There are two versions of R for Mac users: The traditional one and the one for the new M1 chip on the latest machines. Choose the one that matches your machine by checking the apple in the upper left and looking at "About this Mac". It will say "Apple M1" as the processor if you have it.
 
@@ -65,46 +63,15 @@ If R asks you if you want to install packages from "source", say "No".
 
 ### Emergency backup plan
 
-[Posit Cloud](https://posit.cloud/) allows you to use R and RStudio without installing it on your computer. 
-
-It has its problems, but it works for some of what we do. Before long, it may require you spend $5/month on a paid account, since it has extremely limited capacity in the free version, but it's enough to get you started. You can probably do everything you need to do for this course in a single project. 
-
-::: callout-caution
-### Cronkite students
-We can work together if you're having trouble installing the software. You can also use the lab in Cronkite 320 and in our classroom, where all of the software is already installed.
-
-See me if you want to use the cloud version instead of your own computer or those in Cronkite labs. You'll need to adapt some of the instructions in this and the next couple of chapters, and will have to turn in your assignments differently.
-::: 
-
-You will have to upload any data or images or other material you want to use, and you will have to download your documents, programs and data in order to turn them in -- you can't use the link to the Posit Cloud, or you'll run out of free time very quickly. 
+[Posit Cloud](https://posit.cloud/) allows you to use R and RStudio without installing it on your computer. Use it as a last resort. Believe me, this will be a pain, but it can work to get you started. You will probably have to upgrade to a paid account if you choose this route. 
 
 Some limitations: 
 
-1. It just doesn't work very well on the Quarto documents that we'll be using. You probably won't be able to see your finished document.
-2. You can only use 1GB RAM - this won't be enough for some of our projects. 
-3. You only get 25 hours per month to use it. During the key part of our course, this SHOULD not be enough. 
-4. It sometimes chokes! We've had it lose student's work. 
-
-
-
-### Unlocking packages and the tidyverse
-
-The real power of R comes with packages. Packages are bundles of programs that others have found useful to extend the base R language. R is almost useless without them. There are more than 10,000 packages available for R, each doing a special job.
-
-If you followed along with the tutorial, the last thing you did was install a "package" called the `tidyverse`. Almost everything we do from now on depends on that step.
-
-Most of the materials you see related to programming in R have some reference to the tidyverse. One problem with having a lot of packages, often written by hobbyists, is that they're not very consistent. One might use a comma where another uses some dots, for example. One might expect your data to come in the "spreadsheet" form that we studied earlier in this book, and others might expect it to come in the "database" form.
-
-The tidyverse packages up a whole set of other packages that are designed to work together smoothly with similar grammar and syntax. It's particularly useful for the kind of work reporters do -- importing, cleaning and analyzing data that we get from others and can't control how it's structured. It works best on granular data that arrives in database form rather than tabular statistics that come in aggregated spreadsheets, but it has methods to convert across these forms.
-
-For many reporters (myself included), R was too difficult to learn before the tidyverse came around. We'll be working almost exclusively within the tidyverse in this course. 
-
-
-::: callout-tip
-When you Google for help, put the word "tidyverse" somewhere in your query. Otherwise, you may get answers that look inscrutable and unfamiliar.
-:::
-
-The tidyverse is the brainchild of Hadley Wickham, a statistician from New Zealand, who famously identified **tidy data** principles we've implicitly followed all semester. He's currently the chief data scientist for RStudio in Houston.
+1. You'll have to upload everything you want to use to the cloud, then download the final (saved) versions when you want to turn them in.  
+2. It doesn't work very well on the Quarto documents that we'll be using. You might not be able to see your finished document. It just fails. A lot.
+3. You can only use 1GB RAM - this won't be enough for some projects. 
+4. You only get 25 hours per month to use it. During the key part of our course, you could (and should) run out of time and won't be able to access your work until you pay.
+5. You have to remember to save your work and periodically restart R. It doesn't remind you and you might lose everything by closing out a tab. If you don't's save before turning in your work, I won't see it. 
 
 
 ## Set up RStudio for data reporting
@@ -121,7 +88,7 @@ Before you start, decide on a folder you'll use to store all of your R work.
 3.  Make sure that all of the options to save .Rdata and load files on startup are UN-checked
 :::
 
-Here's a video of what you should do :
+Here's a video of what you should do. It also gives you a little reminder of how your computer is organized in folders. 
 
 ::: {.content-visible when-format="html"}
 {{< video "https://www.youtube.com/embed/KbAcoHbEanI" >}}
@@ -132,3 +99,4 @@ Here's a video of what you should do :
 ::: {.content-visible when-format="pdf"}
 <https://www.youtube.com/KbAcoHbEanI>
 :::
+

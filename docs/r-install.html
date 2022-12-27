@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Reporting, Spring 2023 - 13&nbsp; Installing R and RStudio</title>
+<title>Data Reporting - 13&nbsp; Installing R and RStudio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -88,19 +88,19 @@ ul.task-list li input[type="checkbox"] {
       <img src="./assets/images/favicon.ico" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Data Reporting, Spring 2023</a> 
+      <a href="./">Data Reporting</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/cronkitedata/djtextbook" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
     <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
     <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
         <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="./Data-Reporting,-Spring-2023.pdf">
+          <a class="dropdown-item sidebar-tools-main-item" href="./Data-Reporting.pdf">
             <i class="bi bi-bi-file-pdf pe-1"></i>
           Download PDF
           </a>
         </li>
         <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="./Data-Reporting,-Spring-2023.epub">
+          <a class="dropdown-item sidebar-tools-main-item" href="./Data-Reporting.epub">
             <i class="bi bi-bi-journal pe-1"></i>
           Download ePub
           </a>
@@ -123,7 +123,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Welcome</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Conventions used in this book</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -196,7 +196,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./xl-practice-noc.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Practice exercise</span></a>
+  <a href="./xl-practice-noc.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Practice exercise 1</span></a>
   </div>
 </li>
       </ul>
@@ -227,6 +227,11 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./r-data-import.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Getting and saving data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-verbs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">A quick tour of verbs</span></a>
   </div>
 </li>
       </ul>
@@ -270,7 +275,6 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#install-r" id="toc-install-r" class="nav-link" data-scroll-target="#install-r">Install R</a></li>
   <li><a href="#install-rstudio" id="toc-install-rstudio" class="nav-link" data-scroll-target="#install-rstudio">Install RStudio</a></li>
   <li><a href="#emergency-backup-plan" id="toc-emergency-backup-plan" class="nav-link" data-scroll-target="#emergency-backup-plan">Emergency backup plan</a></li>
-  <li><a href="#unlocking-packages-and-the-tidyverse" id="toc-unlocking-packages-and-the-tidyverse" class="nav-link" data-scroll-target="#unlocking-packages-and-the-tidyverse">Unlocking packages and the tidyverse</a></li>
   </ul></li>
   <li><a href="#set-up-rstudio-for-data-reporting" id="toc-set-up-rstudio-for-data-reporting" class="nav-link" data-scroll-target="#set-up-rstudio-for-data-reporting">Set up RStudio for data reporting</a></li>
   </ul>
@@ -302,7 +306,6 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <ul>
 <li>Install R , RStudio</li>
-<li>The power of packages, especially the <code>tidyverse</code></li>
 <li>Change default settings for working in data reporting</li>
 </ul>
 </div>
@@ -311,19 +314,25 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>R is the programming language itself, and has to be installed first. Andrew Heiss has called it the “engine” behind your work.</li>
 <li>RStudio, made by the company <a href="https://posit.co">posit.co</a>, is the way we’ll interact with the programming language. Install it second. Heiss calls it the “fancy car” that you drive.</li>
-<li>Packages are extra sets of programs that perform specialized jobs more easily than working with the “base” R language. A package must be installed once on your computer, then invoked to use them in a program. R is almost useless without them.</li>
-</ul>
-<div class="alert alert-primary">
-<p>Follow this interactive tutorial on installing R, RStudio and the tidyverse on your computer:</p>
-<p><a href="https://learnr-examples.shinyapps.io/ex-setup-r/#section-welcome" class="uri">https://learnr-examples.shinyapps.io/ex-setup-r/#section-welcome</a> .</p>
-</div>
-<p>There are several differences between the video and today:</p>
-<ul>
-<li>The name of the company has changed from RStudio to Posit, so some of the links may now take you to the Posit site. The name of the software – RStudio – has not changed.</li>
-<li>The tidyverse will take much longer to finish installation. It has a lot to do and often looks like it’s stalled.</li>
 </ul>
 <section id="install-r" class="level3">
 <h3 class="anchored" data-anchor-id="install-r">Install R</h3>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Follow a tutorial instead
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If it’s easier, you can follow this interactive tutorial on installing R, RStudio and the tidyverse on your computer:</p>
+<p><a href="https://learnr-examples.shinyapps.io/ex-setup-r/#section-welcome" class="uri">https://learnr-examples.shinyapps.io/ex-setup-r/#section-welcome</a> .</p>
+<p>The name of the company has changed from RStudio to Posit, so some of the links may now take you to the Posit site. The name of the software – RStudio – has not changed.</p>
+<p>You can skip the part about installing the tidyverse— we’ll do that in the next chapter.</p>
+</div>
+</div>
 <p>There are two versions of R for Mac users: The traditional one and the one for the new M1 chip on the latest machines. Choose the one that matches your machine by checking the apple in the upper left and looking at “About this Mac”. It will say “Apple M1” as the processor if you have it.</p>
 <p>Link to find your version: <a href="https://cloud.r-project.org/" class="uri">https://cloud.r-project.org/</a></p>
 <p><strong>Mac OS:</strong></p>
@@ -362,52 +371,16 @@ Mac users: Command line tools
 </section>
 <section id="emergency-backup-plan" class="level3">
 <h3 class="anchored" data-anchor-id="emergency-backup-plan">Emergency backup plan</h3>
-<p><a href="https://posit.cloud/">Posit Cloud</a> allows you to use R and RStudio without installing it on your computer.</p>
-<p>It has its problems, but it works for some of what we do. Before long, it may require you spend $5/month on a paid account, since it has extremely limited capacity in the free version, but it’s enough to get you started. You can probably do everything you need to do for this course in a single project.</p>
-<div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Cronkite students
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>We can work together if you’re having trouble installing the software. You can also use the lab in Cronkite 320 and in our classroom, where all of the software is already installed.</p>
-<p>See me if you want to use the cloud version instead of your own computer or those in Cronkite labs. You’ll need to adapt some of the instructions in this and the next couple of chapters, and will have to turn in your assignments differently.</p>
-</div>
-</div>
-<p>You will have to upload any data or images or other material you want to use, and you will have to download your documents, programs and data in order to turn them in – you can’t use the link to the Posit Cloud, or you’ll run out of free time very quickly.</p>
+<p><a href="https://posit.cloud/">Posit Cloud</a> allows you to use R and RStudio without installing it on your computer. Use it as a last resort. Believe me, this will be a pain, but it can work to get you started. You will probably have to upgrade to a paid account if you choose this route.</p>
 <p>Some limitations:</p>
 <ol type="1">
-<li>It just doesn’t work very well on the Quarto documents that we’ll be using. You probably won’t be able to see your finished document.</li>
-<li>You can only use 1GB RAM - this won’t be enough for some of our projects.</li>
-<li>You only get 25 hours per month to use it. During the key part of our course, this SHOULD not be enough.</li>
-<li>It sometimes chokes! We’ve had it lose student’s work.</li>
+<li>You’ll have to upload everything you want to use to the cloud, then download the final (saved) versions when you want to turn them in.<br>
+</li>
+<li>It doesn’t work very well on the Quarto documents that we’ll be using. You might not be able to see your finished document. It just fails. A lot.</li>
+<li>You can only use 1GB RAM - this won’t be enough for some projects.</li>
+<li>You only get 25 hours per month to use it. During the key part of our course, you could (and should) run out of time and won’t be able to access your work until you pay.</li>
+<li>You have to remember to save your work and periodically restart R. It doesn’t remind you and you might lose everything by closing out a tab. If you don’t’s save before turning in your work, I won’t see it.</li>
 </ol>
-</section>
-<section id="unlocking-packages-and-the-tidyverse" class="level3">
-<h3 class="anchored" data-anchor-id="unlocking-packages-and-the-tidyverse">Unlocking packages and the tidyverse</h3>
-<p>The real power of R comes with packages. Packages are bundles of programs that others have found useful to extend the base R language. R is almost useless without them. There are more than 10,000 packages available for R, each doing a special job.</p>
-<p>If you followed along with the tutorial, the last thing you did was install a “package” called the <code>tidyverse</code>. Almost everything we do from now on depends on that step.</p>
-<p>Most of the materials you see related to programming in R have some reference to the tidyverse. One problem with having a lot of packages, often written by hobbyists, is that they’re not very consistent. One might use a comma where another uses some dots, for example. One might expect your data to come in the “spreadsheet” form that we studied earlier in this book, and others might expect it to come in the “database” form.</p>
-<p>The tidyverse packages up a whole set of other packages that are designed to work together smoothly with similar grammar and syntax. It’s particularly useful for the kind of work reporters do – importing, cleaning and analyzing data that we get from others and can’t control how it’s structured. It works best on granular data that arrives in database form rather than tabular statistics that come in aggregated spreadsheets, but it has methods to convert across these forms.</p>
-<p>For many reporters (myself included), R was too difficult to learn before the tidyverse came around. We’ll be working almost exclusively within the tidyverse in this course.</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>When you Google for help, put the word “tidyverse” somewhere in your query. Otherwise, you may get answers that look inscrutable and unfamiliar.</p>
-</div>
-</div>
-<p>The tidyverse is the brainchild of Hadley Wickham, a statistician from New Zealand, who famously identified <strong>tidy data</strong> principles we’ve implicitly followed all semester. He’s currently the chief data scientist for RStudio in Houston.</p>
 </section>
 </section>
 <section id="set-up-rstudio-for-data-reporting" class="level2">
@@ -421,7 +394,7 @@ Tip
 <li><p>Make sure that all of the options to save .Rdata and load files on startup are UN-checked</p></li>
 </ol>
 </div>
-<p>Here’s a video of what you should do :</p>
+<p>Here’s a video of what you should do. It also gives you a little reminder of how your computer is organized in folders.</p>
 <div>
 <div class="quarto-video ratio ratio-16x9"><iframe src="https://www.youtube.com/embed/KbAcoHbEanI" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 </div>

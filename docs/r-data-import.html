@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Reporting, Spring 2023 - 16&nbsp; Getting and saving data</title>
+<title>Data Reporting - 16&nbsp; Getting and saving data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -93,7 +93,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./appendix-math.html" rel="next">
+<link href="./r-verbs.html" rel="next">
 <link href="./r-quarto.html" rel="prev">
 <link href="./assets/images/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
@@ -125,6 +125,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 }</script>
 
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
 
 </head>
 
@@ -151,19 +154,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <img src="./assets/images/favicon.ico" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Data Reporting, Spring 2023</a> 
+      <a href="./">Data Reporting</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/cronkitedata/djtextbook" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
     <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
     <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
         <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="./Data-Reporting,-Spring-2023.pdf">
+          <a class="dropdown-item sidebar-tools-main-item" href="./Data-Reporting.pdf">
             <i class="bi bi-bi-file-pdf pe-1"></i>
           Download PDF
           </a>
         </li>
         <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="./Data-Reporting,-Spring-2023.epub">
+          <a class="dropdown-item sidebar-tools-main-item" href="./Data-Reporting.epub">
             <i class="bi bi-bi-journal pe-1"></i>
           Download ePub
           </a>
@@ -186,7 +189,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Welcome</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Conventions used in this book</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -259,7 +262,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./xl-practice-noc.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Practice exercise</span></a>
+  <a href="./xl-practice-noc.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Practice exercise 1</span></a>
   </div>
 </li>
       </ul>
@@ -290,6 +293,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./r-data-import.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Getting and saving data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-verbs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">A quick tour of verbs</span></a>
   </div>
 </li>
       </ul>
@@ -332,21 +340,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#example-data" id="toc-example-data" class="nav-link" data-scroll-target="#example-data">Example data</a></li>
   </ul></li>
-  <li><a href="#starting-a-new-r-program" id="toc-starting-a-new-r-program" class="nav-link" data-scroll-target="#starting-a-new-r-program">Starting a new R program</a>
+  <li><a href="#starting-a-new-quarto-program" id="toc-starting-a-new-quarto-program" class="nav-link" data-scroll-target="#starting-a-new-quarto-program">Starting a new Quarto program</a></li>
+  <li><a href="#importing-the-hot-100-data-file" id="toc-importing-the-hot-100-data-file" class="nav-link" data-scroll-target="#importing-the-hot-100-data-file">Importing the Hot 100 data file</a>
   <ul class="collapse">
-  <li><a href="#importing-the-hot-100-data-file" id="toc-importing-the-hot-100-data-file" class="nav-link" data-scroll-target="#importing-the-hot-100-data-file">Importing the Hot 100 data file</a></li>
+  <li><a href="#look-at-the-data-you-imported" id="toc-look-at-the-data-you-imported" class="nav-link" data-scroll-target="#look-at-the-data-you-imported">Look at the data you imported</a></li>
   </ul></li>
-  <li><a href="#introducing-the-pipe" id="toc-introducing-the-pipe" class="nav-link" data-scroll-target="#introducing-the-pipe">Introducing the pipe</a></li>
+  <li><a href="#introducing-the-pipe" id="toc-introducing-the-pipe" class="nav-link" data-scroll-target="#introducing-the-pipe">Introducing the pipe</a>
+  <ul class="collapse">
+  <li><a href="#introducing-verbs-of-the-tidyverse" id="toc-introducing-verbs-of-the-tidyverse" class="nav-link" data-scroll-target="#introducing-verbs-of-the-tidyverse">Introducing verbs of the tidyverse</a></li>
+  <li><a href="#check-your-work-and-save" id="toc-check-your-work-and-save" class="nav-link" data-scroll-target="#check-your-work-and-save">Check your work and save</a></li>
+  </ul></li>
   <li><a href="#what-we-did" id="toc-what-we-did" class="nav-link" data-scroll-target="#what-we-did">What we did</a>
   <ul class="collapse">
   <li><a href="#what-you-should-do-next" id="toc-what-you-should-do-next" class="nav-link" data-scroll-target="#what-you-should-do-next">What you should do next</a></li>
   <li><a href="#and-breathe" id="toc-and-breathe" class="nav-link" data-scroll-target="#and-breathe">And breathe</a></li>
   </ul></li>
-  <li><a href="#postscript-understanding-file-types" id="toc-postscript-understanding-file-types" class="nav-link" data-scroll-target="#postscript-understanding-file-types">Postscript: Understanding file types</a>
+  <li><a href="#file-formats" id="toc-file-formats" class="nav-link" data-scroll-target="#file-formats">Postscript: Understanding file types</a>
   <ul class="collapse">
   <li><a href="#tabular-text-data" id="toc-tabular-text-data" class="nav-link" data-scroll-target="#tabular-text-data">Tabular text data</a></li>
   <li><a href="#non-tabular-text-data" id="toc-non-tabular-text-data" class="nav-link" data-scroll-target="#non-tabular-text-data">Non-tabular text data</a></li>
-  <li><a href="#data-formats-created-for-specific-software" id="toc-data-formats-created-for-specific-software" class="nav-link" data-scroll-target="#data-formats-created-for-specific-software">Data formats created for specific software</a></li>
+  <li><a href="#evil-data---pdf" id="toc-evil-data---pdf" class="nav-link" data-scroll-target="#evil-data---pdf">Evil data - PDF</a></li>
+  <li><a href="#proprietary-data-formats" id="toc-proprietary-data-formats" class="nav-link" data-scroll-target="#proprietary-data-formats">Proprietary data formats</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -372,37 +386,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </header>
 
 <div class="alert alert-secondary">
-<p class="alert-heading font-weight-bolder fs-3">
-In this chapter
-</p>
+<div class="alert-heading font-weight-bolder fs-3">
+<p>In this chapter</p>
+</div>
 <ul>
-<li>Invoking standard packages</li>
-<li>Reading data from from Excel or from a text file.</li>
-<li>Looking at your data</li>
-<li>Introducing the “pipe” (%&gt;%)</li>
-<li>A postscript on different types of data files</li>
+<li>Invoking standard packages using the <code>library()</code> function</li>
+<li>Reading data from from Excel or from a text file using <code>read_csv()</code>.</li>
+<li>Looking at your data using <code>head()</code>, <code>tail()</code>, <code>glimpse()</code></li>
+<li>Introducing the “pipe” <code>|&gt;</code></li>
+<li>A postscript on file formats (don’t skip this)</li>
 </ul>
 </div>
-<p>testing a video embed off of media plus:</p>
-<iframe id="mediaPlus_iFrame_f7bd779d-ba5c-43d5-90e8-d6c25ef8abb8" src="https://mediaplus.asu.edu/lti/embedded?id=f7bd779d-ba5c-43d5-90e8-d6c25ef8abb8&amp;siteId=61e0606e-415d-4001-8206-ffde48430c64" width="640" height="360" frameholder="0" allow="autoplay; fullscreen;">
-</iframe>
 <p>But before we start:</p>
-<p><img src="assets/images/r-dataframe-take-a-break.jpg" class="img-fluid" style="width:100.0%"></p>
+<p><img src="assets/images/r-dataframe-take-a-break.jpg" class="img-fluid" style="width:80.0%"></p>
 <section id="the-data-frame" class="level2">
 <h2 class="anchored" data-anchor-id="the-data-frame">The data frame</h2>
-<p>A data frame is an R variable<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> and can be used and re-used like any other. The difference is that it contains columns and rows, just like a spreadsheet. These follow the rules we’ve seen about good, tidy Excel files:</p>
+<p>A data frame is an R object<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> and can be used and re-used like any other. The difference is that it contains columns and rows, just like a spreadsheet. These follow the rules we’ve seen about good, tidy Excel files:</p>
 <ul>
-<li>Each column contains one kind of information – race, sex, address, etc.</li>
-<li>Each row contains one example of each of those columns, all at the same unit of analysis. In other words, they each refer to the same noun.</li>
+<li>Each column contains one <em>kind</em> of information – race, sex, address, etc. Data scientists call these “fields” or “variables” or “attributes”.</li>
+<li>Each row contains one example of each of those columns, all at the same unit of analysis. In other words, they each refer to the same noun. Data scientists call these “observations” or “cases” or “records”.</li>
 </ul>
-<p>Before you can use a data frame, you will have to <code>import</code> some data from a file on your hard drive or the web, or <code>load</code> some data that is saved in one of several R-specific formats. Most of the time, your data will originally come in a comma-separated text file (.csv), or in an Excel format (.xlsx). As you work on it, you’ll save it as an R data file that you’ve checked for mistakes and proper treatment of columns.</p>
+<p>Before you can use a data frame, you will have to <code>import</code> some data from a file on your hard drive or the web, or <code>load</code> some data that is saved in one of several R-specific formats. Your data will often arrive in the form of a comma-separated text file (.csv), or in an Excel format (.xlsx)<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. As you work on it, you’ll save it as an R data file that you’ve checked for mistakes and proper treatment of columns.</p>
 <section id="example-data" class="level3">
 <h3 class="anchored" data-anchor-id="example-data">Example data</h3>
-<p>Christian McDonald, a data journalism professor at the University of Texas, has compiled a list of Billboard’s Hot 100 hits back to the 1950s, and made it available in his Github account. It’s a great example dataset because it has a lot of rows, a few columns, and few different data types. It’s also easy to understand. He has also made some tutorials using this data, and has generously offered it up for our use.</p>
-<p>We’ll be using the data on McDonald’s Github repository at <a href="https://github.com/utdata/rwdir/blob/main/data-raw/hot100_archive.csv?raw=true" class="uri">https://github.com/utdata/rwdir/blob/main/data-raw/hot100_archive.csv?raw=true</a></p>
+<p>Christian McDonald, a data journalism professor at the University of Texas, has compiled a list of Billboard’s Hot 100 hits back to the 1950s, and made it available in his Github account. We’ll be using the data on McDonald’s Github repository at <a href="https://github.com/utdata/rwdir/blob/main/data-raw/hot100_assignment.csv?raw=true" class="uri">https://github.com/utdata/rwdir/blob/main/data-raw/hot100_assignment.csv?raw=true</a></p>
 <p>Here is how he describes it:</p>
 <blockquote class="blockquote">
-<p>The Billboard <a href="https://www.billboard.com/charts/hot-100/">Hot 100</a> singles charts has been the music industry’s standard record chart since its inception on 8/2/1958. The rankings, published by Billboard Media, are currently based on sales (physical and digital), radio play, and online streaming. The methods and policies of the chart have changed over time.</p>
+<p>The Billboard <a href="https://www.billboard.com/charts/hot-100/">Hot 100</a> singles chart has been the music industry’s standard record chart since its inception on 8/2/1958. The rankings, published by Billboard Media, are currently based on sales (physical and digital), radio play, and online streaming. The methods and policies of the chart have changed over time.</p>
 </blockquote>
 <blockquote class="blockquote">
 <p>The data we will use here is a combination of data collected by Kaggle user <a href="https://www.kaggle.com/dhruvildave/billboard-the-hot-100-songs">Dhruvil Dave</a>, along with some scraping and merging by Prof.&nbsp;McDonald. It is stored on the code sharing website Github for safe keeping.</p>
@@ -410,9 +420,9 @@ In this chapter
 <p>Here is a <em>data dictionary</em> , sometimes called a <em>record layout</em> to go along with the data. You should look for, or create, something like this for every data source you use.</p>
 <table class="table">
 <colgroup>
-<col style="width: 25%">
-<col style="width: 8%">
-<col style="width: 66%">
+<col style="width: 22%">
+<col style="width: 22%">
+<col style="width: 55%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -460,54 +470,104 @@ In this chapter
 </tbody>
 </table>
 <p>It’s a good example for us, since there are no nuances to the data, and it contains a mix of words, numbers and dates. You won’t have to spend a lot of time studying it to understand what it is.</p>
-<div class="alert alert-warning">
-<p>Notice the upper-casing, the spaces and the period in the column names. This will be important later on.</p>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Notice the upper-casing, the spaces and the period in the column names. R is a <code>case-sensitive</code> language, meaning a “T” is an entirely different character than a “t”. Column names with spaces and special characters must be treated differently than those with just letters, underscores and periods.</p>
+</div>
 </div>
 </section>
 </section>
-<section id="starting-a-new-r-program" class="level2">
-<h2 class="anchored" data-anchor-id="starting-a-new-r-program">Starting a new R program</h2>
-<p>Every time you start a new R markdown document, you will need to load any packages you intend to use by editing the first code chunk in the default document, called the “setup chunk”.</p>
-<p>Then you will delete all of the boilerplate below the first code chunk.</p>
-<div class="alert alert-info">
-<p>If you are following along, it is assumed that you have created or opened a project to hold your new programs and data. Do that now if you haven’t. Mine is in my project called cohen-rlessons, inside my class folder.)</p>
+<section id="starting-a-new-quarto-program" class="level2">
+<h2 class="anchored" data-anchor-id="starting-a-new-quarto-program">Starting a new Quarto program</h2>
+<div class="alert alert-success alert-dothis">
+<ul>
+<li><p>Open the R project created in the last lesson called “rlessons-01”.</p></li>
+<li><p>Create a new Quarto document. If you want, copy and paste the top section from the last lesson and replace the default options with that.</p></li>
+<li><p>Delete the boilerplate below the front matter (after the three dashes)</p></li>
+<li><p>Copy and paste this first code chunk into your document and press the “Play” button to run the code.</p></li>
+<li><p>Run the code chunk by pressing the Play button</p></li>
+<li><p>Save your document as <code>top100-01.qmd</code> . I’m using the “01” suffix so that when I come back to this six months down the road, I know that this program has to be run first!</p></li>
+</ul>
+<p><span class="small">This assumes you have installed the packages in the previous chapters. Go back and do that now if you skipped it. That step has to be done only once on each computer you use.</span></p>
 </div>
-<div class="alert alert-primary">
-<p>Create a new markdown document (the green plus sign at the upper left of your screen, or in the File menu) , and edit the setup chunk as shown below. If you want, copy and paste the YAML from the last lesson and replace the default options with that.</p>
-<p>Save your document as <code>01-top100.Rmd</code> . I’m using the “01” prefix so that when I come back to this six months down the road, I know that this program has to be run first!</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: setup</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>(The <code>#|</code> part of the code chunk is an instruction for this code chunk. This one provides a name for it. You’ll see others later on.)</p>
+<p>The <code>library</code> function invokes the packages that you installed earlier. They’re not available to your program by default. That’s because everyone uses a different set of them for different jobs, and they don’t want to gunk up your enviornment with a lot of things you’ll never use.</p>
+<p>Although they only need to be installed one time on your computer, packages must be invoked using the <code>library</code> function in every document. Almost every program you write will begin with these same lines, though you’ll often see additional packages added.</p>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
+<div class="callout-caption-container flex-fill">
+Danger
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Every time you start a new program, you must <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> start with a code chunk that invokes the packages you plan to use later on. This is done in a <code>setup</code> chunk through that includes the function <code>library()</code> for each package you want to use.</p>
+</div>
+</div>
+<p>Here’s what your page might look like (probably with different colors) if you are in Visual mode:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="assets/images/r-firstprog-setupchunk.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<p></p><figcaption class="figure-caption">setup chunk</figcaption><p></p>
+<p><img src="assets/images/r-import-firstchunkrun.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p></p><figcaption class="figure-caption">after running first chunk</figcaption><p></p>
 </figure>
 </div>
-<div class="alert alert-info">
-<p>I’ve created <a href="https://cronkitedata.s3.amazonaws.com/markdown_templates/01-top100.Rmd">a template you can save in your project for this exercise</a> , but I encourage you to use it as a guide rather than to copy-paste or just edit it. You should get in the habit of creating readable markdowns that document the how, what, why and where of your work.</p>
+<p>Don’t worry about all of the messages that came out after you ran the first chunk – they simply show you some information about what is in the libraries you just loaded. They might even be <span style="color: red;">red</span>!</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<section id="importing-the-hot-100-data-file" class="level3">
-<h3 class="anchored" data-anchor-id="importing-the-hot-100-data-file">Importing the Hot 100 data file</h3>
-<p>When you read in a CSV<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> file, R will guess what each column is – text (words, called “character” or “chr” in R), numbers (“dbl” or “int” for “double-precision” or “integer”), and date/time (which have a couple of different possibilities that we’ll get into later on). <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>There are ways to control what gets printed out by using other options at the top of the code chunk. The full list is on the <a href="https://quarto.org/docs/computations/execution-options.html">Quarto website</a> — you can set the default in the top metadata, or do them one chunk at a time with additional lines beginning with <code>#|</code> at the top of the code chunk.</p>
+</div>
+</div>
+</section>
+<section id="importing-the-hot-100-data-file" class="level2">
+<h2 class="anchored" data-anchor-id="importing-the-hot-100-data-file">Importing the Hot 100 data file</h2>
+<p>The Hot 100 data is stored in a “comma-separated” text file, with the extension <code>.csv</code>. When you import that file, R will guess what each column is – text (words, “character” variables), numbers (“double” precision or “integer”), and date or date/time (“date” or “POSIX” in R).</p>
 <p>Data frames are most easily managed by keeping a few style rules in mind:</p>
 <ul>
-<li>Column names should be all lower-case, and have no special characters. Separate words in a column name with an underscore.</li>
+<li>Column names should be all lower-case, and have no special characters or spaces in them. They may not start with a number. Separate words in a column name with an underscore, not a space, and avoid any punctuation.</li>
 <li>Any column containing numerals that you don’t plan to use in a math computation should be stored as a character type, not a number.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></li>
 </ul>
-<p>We often have to tweak the data import to make sure of these things, or have to convert data types once they ’ve been imported. If you then save your data as an R data frame, you never have to do that again.</p>
-<div class="alert alert-primary">
-<p>Create a new code chunk to read the top 100 dataset into a variable like this:</p>
+<p>We often have to tweak the data import to make sure of these things, or have to convert data types once they ’ve been imported. If you then save your data as an R data frame, you never have to do that again. The <code>read_csv</code> function has a lot of optional arguments – or specifications – that can help overcome problems in the underlying dataset, but it often guesses quite well on its own.</p>
+<p>(From now on, you’ll just see the R code that goes inside a code chunk you create, not the part with the backticks and brackets.)</p>
+<div class="alert alert-success alert-dothis">
+<p>Create a new code chunk to read the top 100 dataset and copy the following line into the body of the chunk:</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>top100 <span class="ot">&lt;-</span> </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(<span class="st">"https://github.com/utdata/rwd-billboard-data/blob/main/data-out/hot100_archive.csv?raw=true"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>top100 <span class="ot">&lt;-</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(<span class="st">"https://github.com/utdata/rwdir/blob/main/data-raw/hot100_assignment.csv?raw=true"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Here’s what that code does:</p>
 <ol type="1">
-<li>Creates a new variable name, called top100, to pour the data into.</li>
+<li>Creates a new object called <code>top100</code>, to pour the data into.</li>
 <li>Uses a function of the tidyverse<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> called <code>read_csv</code>, to</li>
 <li>Access comma-separated text data held in McDonald’s github repository.</li>
 </ol>
-<p>When you run the chunk by pressing the green arrow within the code chunk, or press Shift-CMD-Enter , the output should look like this:</p>
+<p>When you run the chunk by pressing the green arrow within the code chunk, or press Shift-CMD-Enter , the output should say this:</p>
+<div class="alert-light">
 <div class="cell">
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 330800 Columns: 7
@@ -520,38 +580,121 @@ dbl (4): THIS WEEK, LAST WEEK, PEAK POS., WKS ON CHART
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
 </div>
+</div>
 <p>So R found:</p>
 <ul>
-<li>330,787 rows (or records, or observations).</li>
-<li>Seven columns ,</li>
-<li>Three of which it thinks are character types, and four that it thinks should be numbers.</li>
-<li>It named the variables using the first row of the file.</li>
+<li>330,800 rows (or records, or observations).</li>
+<li>7 columns ,</li>
+<li>3 of which it thinks are character types, and 4 that it thinks should be numbers.</li>
+<li>It named the columns using the first row of the file.</li>
 </ul>
-<div class="alert alert-info">
-<p>Pro tip: if you’re not sure about the data types of each column, use an option to import them all as text, or <code>character</code>, columns. Then you can fix them one by one. Text will (almost) never be a problem. The option looks like this:</p>
-<p><code>read_csv( name_of_file, col_types=c(.default="c") )</code></p>
+<div class="standout">
+<p>Stop a minute and think about what you just did in one second – you imported a dataset with MORE THAN a quarter of a MILLION rows without any complaint! You could. never get Excel or Google sheets to be so complacent about this middling size database.</p>
 </div>
-<p>It’s also telling you how to get more information. Sometimes, this will say “Use <code>problems()</code> …”, meaning that something could have gone wrong and you should check it. We’ll see how to fix the column types at the same time as your import later on in the course.</p>
-<div class="alert alert-info">
+<p>The message also tells you how to get more information.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
+<p>There is now a new object in your Enviornment tab, under “Data”, called <code>top100</code>, with 330,800 obs. of 7 variables.</p>
+<section id="some-details" class="level4">
+<h4 class="anchored" data-anchor-id="some-details">Some details</h4>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>If you want to import an Excel file, you have to use a slightly different library. You will have to load the <code>readxl</code> library in the setup chunk, then use the <code>read_excel()</code> function to access the data. It works similarly, but it’s a slightly different method.</p>
 </div>
-<p>There are a few ways to look at the data. First, you can look at the top and bottom of it using the <code>head()</code> and <code>tail()</code> commands:</p>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Default to character columns**
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you’re not sure about the data types of each column, use an option to import them all as text, or <code>character</code>, columns. Then you can fix them one by one. Text will (almost) never be a problem. The option looks like this:</p>
+<p><code>read_csv( "your file name or URL", col_types=c(.default="c") )</code></p>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Naming your code chunks
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Best practice in R is to provide a label for each code chunk, as we did with the setup chunk. It allows you to refer to it later on, provides a better method for errors to be located, and allows quicker navigation. Do that by adding a line at the top of the code chunk like this: <code>#| label: your-label</code> Don’t use special characters or spaces in the label.</p>
+</div>
+</div>
+</section>
+<section id="look-at-the-data-you-imported" class="level3">
+<h3 class="anchored" data-anchor-id="look-at-the-data-you-imported">Look at the data you imported</h3>
+<p>There are several ways to examine the data you just imported.</p>
+<section id="check-it-in-the-environment-tab" class="level4">
+<h4 class="anchored" data-anchor-id="check-it-in-the-environment-tab">Check it in the environment tab</h4>
+<p>There’s now an object listed in your Environment tab with a blue arrow. Expand it, and you’ll see the column names and what types it found.</p>
+<p><img src="assets/images/r-import-envtab.png" class="img-fluid"></p>
+</section>
+<section id="click-on-it-to-scroll-filter-and-sort" class="level4">
+<h4 class="anchored" data-anchor-id="click-on-it-to-scroll-filter-and-sort">Click on it to scroll, filter and sort</h4>
+<p>An easy way to get a little preview of your data is to view it like a spreadsheet. Just remember that any filters or sorts that you do here won’t last – they’re just on while you’re glancing at the data. But this is useful just to get a little preview of what columns look like and to search for things you know should be there. For instance, if I wanted to see whether Taylor Swift was named something else, I might search here. This search is NOT case-sensitive, which is helpful when you want to get a handle on what’s in your data.</p>
+<p>To browse the data, click on its name in the environment panel.</p>
+<div>
+<p><img src="https://cronkitedata.s3.amazonaws.com/images/r-import-scrolldata.gif" class="img-fluid"></p>
+</div>
+</section>
+<section id="use-functions-to-examine-the-rows-and-columns" class="level4">
+<h4 class="anchored" data-anchor-id="use-functions-to-examine-the-rows-and-columns">Use functions to examine the rows and columns</h4>
+<p>But these methods are no better (and really a little worse) than just viewing your data and clicking around in Excel or Google sheets. To share your view of the data and describe it to others, you must use R code.</p>
+<p>There are a few standard ways to get a quick view of what’s in your data using functions. First, you can look at the top and bottom of it using the <code>head()</code> and <code>tail()</code> functions:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(top100)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 7
-  `CHART WEEK` `THIS WEEK` TITLE             PERFORMER   LAST …¹ PEAK …² WKS O…³
-  &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;         &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-1 8/4/1958               1 Poor Little Fool  Ricky Nels…      NA       1       1
-2 8/4/1958               2 Patricia          Perez Prad…      NA       2       1
-3 8/4/1958               3 Splish Splash     Bobby Darin      NA       3       1
-4 8/4/1958               4 Hard Headed Woman Elvis Pres…      NA       4       1
-5 8/4/1958               5 When              Kalin Twins      NA       5       1
-6 8/4/1958               6 Rebel-'rouser     Duane Eddy…      NA       6       1
-# … with abbreviated variable names ¹​`LAST WEEK`, ²​`PEAK POS.`, ³​`WKS ON CHART`</code></pre>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use head() to show the first six rows</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(top100)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># use tail() to show the last six rows. </span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#change the number of rows as an an optional argument,</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># obtained by searching "Help" for the function "tail"</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(top100, <span class="at">n=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["CHART WEEK"],"name":[1],"type":["chr"],"align":["left"]},{"label":["THIS WEEK"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["TITLE"],"name":[3],"type":["chr"],"align":["left"]},{"label":["PERFORMER"],"name":[4],"type":["chr"],"align":["left"]},{"label":["LAST WEEK"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["PEAK POS."],"name":[6],"type":["dbl"],"align":["right"]},{"label":["WKS ON CHART"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"8/4/1958","2":"1","3":"Poor Little Fool","4":"Ricky Nelson","5":"NA","6":"1","7":"1"},{"1":"8/4/1958","2":"2","3":"Patricia","4":"Perez Prado And His Orchestra","5":"NA","6":"2","7":"1"},{"1":"8/4/1958","2":"3","3":"Splish Splash","4":"Bobby Darin","5":"NA","6":"3","7":"1"},{"1":"8/4/1958","2":"4","3":"Hard Headed Woman","4":"Elvis Presley With The Jordanaires","5":"NA","6":"4","7":"1"},{"1":"8/4/1958","2":"5","3":"When","4":"Kalin Twins","5":"NA","6":"5","7":"1"},{"1":"8/4/1958","2":"6","3":"Rebel-'rouser","4":"Duane Eddy His Twangy Guitar And The Rebels","5":"NA","6":"6","7":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div><div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["CHART WEEK"],"name":[1],"type":["chr"],"align":["left"]},{"label":["THIS WEEK"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["TITLE"],"name":[3],"type":["chr"],"align":["left"]},{"label":["PERFORMER"],"name":[4],"type":["chr"],"align":["left"]},{"label":["LAST WEEK"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["PEAK POS."],"name":[6],"type":["dbl"],"align":["right"]},{"label":["WKS ON CHART"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"11/13/2021","2":"91","3":"Ya Superame (En Vivo Desde Culiacan, Sinaloa)","4":"Grupo Firme","5":"92","6":"91","7":"3"},{"1":"11/13/2021","2":"92","3":"Who's In Your Head","4":"Jonas Brothers","5":"93","6":"92","7":"4"},{"1":"11/13/2021","2":"93","3":"Money","4":"Lisa","5":"90","6":"90","7":"2"},{"1":"11/13/2021","2":"94","3":"Come Through","4":"H.E.R. Featuring Chris Brown","5":"99","6":"64","7":"17"},{"1":"11/13/2021","2":"95","3":"WFM","4":"RealestK","5":"78","6":"67","7":"4"},{"1":"11/13/2021","2":"96","3":"Lets Go Brandon","4":"Loza Alexander","5":"38","6":"38","7":"3"},{"1":"11/13/2021","2":"97","3":"Just About Over You","4":"Priscilla Block","5":"95","6":"95","7":"4"},{"1":"11/13/2021","2":"98","3":"To Be Loved By You","4":"Parker McCollum","5":"96","6":"96","7":"2"},{"1":"11/13/2021","2":"99","3":"Let's Go Brandon","4":"Bryson Gray Featuring Tyson James & Chandler Crump","5":"28","6":"28","7":"2"},{"1":"11/13/2021","2":"100","3":"Ghost Town","4":"Benson Boone","5":"NA","6":"100","7":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
 </div>
 </div>
-<p>Or, you can look at a list of columns along with their types and a few examples from the top of the file using the <code>glimpse()</code> function, in this case listing the name of the data frame you want it to look at within the parentheses.^ [You may have noticed a pattern already: Function names are followed by parentheses, which leave room specifications, called arguments. Sometimes you don’t need any, so they’re blank]</p>
+</div>
+<p>Use the little arrow at the top right of the listing to look at columns that don’t fit on the page.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is where Visual Mode can become tiresome – often, your output is so smushed that it is unreadable. Switch to Source mode and you’ll be able to see more.</p>
+</div>
+</div>
+<p>Or, you can look at a list of columns along with their types and a few examples from the top of the file using the <code>glimpse()</code> function, in this case listing the name of the data frame you want it to look at within the parentheses.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(top100)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -567,27 +710,41 @@ $ `WKS ON CHART` &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
 </div>
 </div>
 <p>Here, you might notice that the names of some of the columns have back-ticks around them. That’s because they don’t follow our rules for column names – they should be lower case, with no spaces or special characters.</p>
-<p>You can also explore a dataset by clicking on its name in the Environment tab. This is a good idea for exploring, but it can’t be replicated by your audience. It suffers from the same point-and-click problems that you ran into using spreadsheets. If you plan to use any of the results of that exploration, you’ll have to explicitly program them in the markdown.</p>
+</section>
 </section>
 </section>
 <section id="introducing-the-pipe" class="level2">
 <h2 class="anchored" data-anchor-id="introducing-the-pipe">Introducing the pipe</h2>
 <p>You’ll be seeing a lot of R code that has this format:</p>
-<pre><code>  data_set_name %&gt;%
-     verb ( nouns ) %&gt;%
-     verb ( nouns ) %&gt;%
+<pre><code>  data_set_name |&gt;
+     verb ( nouns ) |&gt;
+     verb ( nouns ) |&gt;
      etc...</code></pre>
-<p>That little symbol, <code>%&gt;%</code> is called the “pipe”. It means “and then keep going to the next command”. It matches the way you think about algorithms from <a href="appendix-program.html">the programming appendix</a> in this book.</p>
-<p><img src="assets/images/r-firstprog-pipenewbies.png" class="img-fluid" style="width:100.0%" alt="pipenewbies"> <img src="assets/images/r-firstprog-rladies.png" class="img-fluid" style="width:100.0%" alt="rladies"></p>
-<p>We’re going to use two of the other libraries that we loaded at the top – <code>lubridate</code> and <code>janitor</code> to fix the two problems with this data, while showing you what the pipe does.</p>
-<div class="alert alert-primary">
-<p>Add a code chunk that you’ll edit to clean the column names and types now.</p>
+<p>That little symbol, <code>|&gt;</code> is called the “pipe”. It means “Take what is on this line, and use it to do the next thing” It matches the way you think about algorithms from <a href="appendix-program.html">the programming appendix</a> in this book. You can use the shortcut keys CTL/CMD-SHift-M instead of typing it out. (If yours comes out as <code>%&gt;%</code> instead of <code>|&gt;</code> as shown in this Tweet, don’t worry about it. There are technical differences, but for now they’ll do the same thing. )</p>
+<div class="border border-secondary mb-3 px-2">
+<p><img src="assets/images/r-firstprog-pipenewbies.png" class="img-fluid" style="width:60.0%" alt="pipenewbies"> <img src="assets/images/r-firstprog-rladies.png" class="img-fluid" style="width:80.0%" alt="rladies"></p>
 </div>
-<p>I try to build my code chunks one step at a time. These will show up as separate ones, but in practice I keep editing one that works until I get what I want.</p>
-<p>Using a pipe can help make your code easier to read and write by separating each step into its own command. For example, <code>glimpse(top100)</code> does the same thing as <code>top100 %&gt;% glimpse()</code>. The second version tells R, “Start with the top100 data frame <strong>and then</strong> glimpse it. Using small-ish datasets like this, I try to separate as much as is reasonable into separate steps because I can then troubleshoot problems one line at a time.</p>
+<p>We’re going to use two of the other libraries that we loaded at the top — <code>lubridate</code> and <code>janitor</code> — to fix the two problems with this data, while showing you what the pipe does.</p>
+<div class="alert alert-success alert-dothis">
+<p>Add a code chunk that you’ll edit to clean the column names and fix the dates the data.</p>
+</div>
+<p>Using a pipe can help make your code easier to read and write by separating each step into its own command. For example, <code>glimpse(top100)</code> does the same thing as <code>top100 |&gt; glimpse()</code>. The second version tells R, “Start with the top100 data frame <strong>and then</strong> glimpse it. Using small-ish datasets like this, I try to separate as much as is reasonable into steps because I can then troubleshoot problems one line at a time.</p>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Don’t confuse the pipe (<code>|&gt;</code>) with the assignment operator (<code>&lt;-</code>). The pipe says, “keep going”. The assignment operator says, “save this for later” .</p>
+</div>
+</div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>top100 <span class="sc">%&gt;%</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()  <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>top100 <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()  <span class="sc">|&gt;</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 330,800
@@ -601,39 +758,75 @@ $ peak_pos     &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16
 $ wks_on_chart &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …</code></pre>
 </div>
 </div>
-<p>This shows us that the function <code>clean_names()</code> converts the column names into our preferred style. Notice that we didn’t pour that answer into a new variable name, so it just prints the answer to the screen.</p>
+<p>This shows us that the function <code>clean_names()</code> converts the column names into our preferred style. Notice that we didn’t pour that answer into a new object — there is no assignment operator <code>&lt;-</code> – so it just prints the answer to the screen.</p>
 <p>Once this works as expected, we can finish cleaning up the data.</p>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Danger
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Don’t try to save the output of something you “glimpse” into a new object – it won’t be the data itself, just the thing that got printed out!</p>
+</div>
+</div>
+<section id="introducing-verbs-of-the-tidyverse" class="level3">
+<h3 class="anchored" data-anchor-id="introducing-verbs-of-the-tidyverse">Introducing verbs of the tidyverse</h3>
 <p>This process uses the pipe to tack on new statements after each one is complete, and introduces <strong>the verbs of the tidyverse</strong>, which you’ll see in action in the next chapter.</p>
 <p>These are two of the most important verbs you’ll use:</p>
 <ul>
 <li><code>select</code>, which picks and rearranges columns (kind of like filtering vertically)</li>
 <li><code>mutate</code>, which lets you create new columns out of old ones. (like inserting a column in Excel and entering a formula)</li>
 </ul>
-<p>The code chunk also uses <em>function</em> called <code>mdy()</code>, which stands for “month-day-year”, which in turn tells R that the character <code>chart_week</code> column starts out in that format, as opposed to year-month-day or something else.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
-<div class="alert alert-primary">
+<p>The code chunk also uses function called <code>mdy()</code>, which stands for “month-day-year”, which in turn tells R that the character <code>chart_week</code> column starts out in that format, as opposed to year-month-day or something else.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
+<div class="alert alert-success alert-dothis">
 <p>Your final code chunk should look like this. Try to avoid copying and pasting, and instead build it one step at a time, running the chunk each time you add a phrase.</p>
 </div>
-<p>(I usually add the variable name at the top last to save the data result for later use, after I’m sure everything has worked by printing it to the screen.)</p>
+<p>(I usually add the object name at the top last to save the data result for later use, after I’m sure everything has worked by printing it to the screen.)</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>top100_clean <span class="ot">&lt;-</span> </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  top100 <span class="sc">%&gt;%</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span> () <span class="sc">%&gt;%</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> ( <span class="at">chart_date =</span> <span class="fu">mdy</span>(chart_week)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  top100 <span class="sc">|&gt;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span> () <span class="sc">|&gt;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> ( <span class="at">chart_date =</span> <span class="fu">mdy</span>(chart_week)) <span class="sc">|&gt;</span></span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span> ( chart_date, title, performer, this_week, last_week,</span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>           wks_on_chart, peak_pos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="alert alert-primary">
-<p>Save your cleaned data in the tidyverse’s <code>rds</code> format in a code chunk like this:</p>
+</section>
+<section id="check-your-work-and-save" class="level3">
+<h3 class="anchored" data-anchor-id="check-your-work-and-save">Check your work and save</h3>
+<p>Now check your data by “glimpsing” it:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>top100_clean <span class="sc">|&gt;</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 330,800
+Columns: 7
+$ chart_date   &lt;date&gt; 1958-08-04, 1958-08-04, 1958-08-04, 1958-08-04, 1958-08-…
+$ title        &lt;chr&gt; "Poor Little Fool", "Patricia", "Splish Splash", "Hard He…
+$ performer    &lt;chr&gt; "Ricky Nelson", "Perez Prado And His Orchestra", "Bobby D…
+$ this_week    &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17…
+$ last_week    &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+$ wks_on_chart &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
+$ peak_pos     &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17…</code></pre>
 </div>
-<pre><code>
-saveRDS(top100_clean, file="hit100.RDS")
-</code></pre>
+</div>
+<p>Note the new data type for the chart_date, and the order of the columns along with the clean names.</p>
+<div class="alert alert-success alert-dothis">
+<p>Now save your data as an R data file (called an “RDS” file) like this:</p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(top100_clean, <span class="at">file=</span><span class="st">"hit100.RDS"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
 </section>
 <section id="what-we-did" class="level2">
 <h2 class="anchored" data-anchor-id="what-we-did">What we did</h2>
 <ol type="1">
-<li>Created a new R Markdown document and added the packages (libraries) we plan to use.</li>
-<li>Imported a comma-separated text file from the web into a data frame called it <code>top100</code>.</li>
+<li>Created a new Quarto document and added the packages (libraries) we plan to use.</li>
+<li>Imported a comma-separated text file from the web into a data frame object called <code>top100</code>.</li>
 <li>Took a look at it in several different ways.</li>
 <li>Created a second data frame from the first, with names and dates fixed, with only some columns picked out and displayed in a new order.</li>
 <li>Saved it into the project for use in another program.</li>
@@ -648,21 +841,21 @@ saveRDS(top100_clean, file="hit100.RDS")
 <li>Maybe: Some text after the chunks that describe meaningful output.</li>
 </ul>
 <p>If you’re stuck, you can <a href="https://cronkitedata.s3.amazonaws.com/markdown_templates/01-top100.Rmd">use the template I created</a> as a starting point.</p>
-<p>Knit it early and often to make sure your program isn’t broken and that the output looks the way you expect.</p>
+<p>Render it early and often to make sure your program isn’t broken and that the output looks the way you expect.</p>
 </section>
 <section id="and-breathe" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="and-breathe">And breathe</h3>
 <p>You’ve now created a full, working R program in Markdown format that can serve as a model for everything you do in the future. Congratulate yourself and take a break!</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="assets/images/r-firstprog-breathe.jpg" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="assets/images/r-firstprog-breathe.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
 <p></p><figcaption class="figure-caption">Max van den Oetelaar via Unsplash</figcaption><p></p>
 </figure>
 </div>
 </section>
 </section>
-<section id="postscript-understanding-file-types" class="level2">
-<h2 class="anchored" data-anchor-id="postscript-understanding-file-types">Postscript: Understanding file types</h2>
+<section id="file-formats" class="level2">
+<h2 class="anchored" data-anchor-id="file-formats">Postscript: Understanding file types</h2>
 <p>So far in this book, you’ve been saved from having to understand the format of data as it is traded among people and computers. Now you’ll have to start understanding that there are different forms of data files, one of which is the simple Excel file that we’ve dealt with so far.</p>
 <p>But Excel is a propriety format – it’s made by Microsoft and isn’t very easy to use without a program that can import it. As we’ve seen, it can also corrupt data by misunderstanding data types like dates and numbers, and there isn’t much control over its assumptions.</p>
 <p>This section will go over the common data formats you’re likey to run across in your work with R. However, R is not limited to these. You’ll often find arcane and specialized data file formats if you work with statisticians or experts in geographic analysis that can also be read in R. There is almost always a package available that will import it.</p>
@@ -697,11 +890,14 @@ saveRDS(top100_clean, file="hit100.RDS")
   } 
     </code></pre>
 </section>
-<section id="data-formats-created-for-specific-software" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="data-formats-created-for-specific-software">Data formats created for specific software</h3>
-<p>R has its own data files, sort of like Excel files, which require no special handling when used within R, but can’t really be used in any other program.</p>
-<p>Almost every programming language has a way to read Excel (.xlsx) files, but they sometimes don’t handle intricacies very well.</p>
-<p>For now, we’ll just work with these kinds of files, but just remember that you’re likely to run into all different kinds. Get some help before just Googling when you find a new type – you’ll often get bad advice from the internet on this topic.</p>
+<section id="evil-data---pdf" class="level3">
+<h3 class="anchored" data-anchor-id="evil-data---pdf">Evil data - PDF</h3>
+<p>We’ll look at this later, but just know that data supplied in a PDF file isn’t data at all – it’s effectively pixels placed on a page, and is intended for printing and viewing, not analyzing. Government agencies often print Excel files into PDF’s – I have no idea why, but it’s common, and it’s often difficult to convince them to do anything else regardless of the local public records law. For now, just remember that this is one file format you want to avoid if at all possible – it’s the most error-prone and difficult data to manage, even if it looks pretty.</p>
+</section>
+<section id="proprietary-data-formats" class="level3">
+<h3 class="anchored" data-anchor-id="proprietary-data-formats">Proprietary data formats</h3>
+<p>Excel is one proprietary data format; Google Sheets is another. You may run into many different kinds, ranging from maps to statistical systems like SAS. R has a package that will read almost any of these – once you find it, it shouldn’t be a problem.</p>
+<p>The more common packages you may need to read them are <code>readxl</code> , which is part of the tidyverse, and <code>googlesheets4</code>.</p>
 
 
 </section>
@@ -709,12 +905,13 @@ saveRDS(top100_clean, file="hit100.RDS")
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1"><p>A variable in R is just a name of something. We’ll sometimes also use the word to refer to a column in a dataset, which is a statistician’s definition of a variable.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>comma-separated text values. <a href="#postscript-understanding-file-types">See below</a> for a brief description of file types.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>You might see them called “Date” (without a time) or <a href="https://en.wikipedia.org/wiki/POSIX">POSIX</a> (with time). Most POSIX date-time variables store the number of seconds since Jan.&nbsp;1, 1970, with negative numbers prior to that. You’ll never work with them directly.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>An object in R is just a name of something. We’ll try to distinguish it from a column in a dataset, which statisticans call “variables”. But the terms are sometimes used interchangeably.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>See the <a href="#file-formats">postcript on file formats</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Well, sort of. You can also invoke packages in a program by fully specifying its name, with the package name followed by two colons and the function, like this: <code>readr::read_csv()</code>. You’ll often see that in examples – it’s deliberately done to show you which package the function is coming from.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4"><p>More advanced users create a special type of variable called a <code>factor</code> to work with categories - we’re skipping that for now.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5"><p>Actually, a package within the tidyverse called <code>readr</code><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p>This function is part of the library called <code>lubridate</code> that we also loaded in the setup chunk.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Sometimes, this will say “Use <code>problems()</code> …”, meaning that something could have gone wrong and you should check it. We’ll see how to fix the column types at the same time as your import later on in the course.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>This function is part of the library called <code>lubridate</code> that we also loaded in the setup chunk.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
@@ -859,8 +1056,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./appendix-math.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Newsroom numbers cheat sheet</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./r-verbs.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">A quick tour of verbs</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

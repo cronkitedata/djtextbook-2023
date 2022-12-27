@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Reporting, Spring 2023</title>
+<title>Data Reporting</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -71,7 +71,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Data Reporting, Spring 2023</h1>
+      <h1 class="quarto-secondary-nav-title">Data Reporting</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -87,19 +87,19 @@ ul.task-list li input[type="checkbox"] {
       <img src="./assets/images/favicon.ico" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Data Reporting, Spring 2023</a> 
+      <a href="./">Data Reporting</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/cronkitedata/djtextbook" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
     <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
     <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
         <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="./Data-Reporting,-Spring-2023.pdf">
+          <a class="dropdown-item sidebar-tools-main-item" href="./Data-Reporting.pdf">
             <i class="bi bi-bi-file-pdf pe-1"></i>
           Download PDF
           </a>
         </li>
         <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="./Data-Reporting,-Spring-2023.epub">
+          <a class="dropdown-item sidebar-tools-main-item" href="./Data-Reporting.epub">
             <i class="bi bi-bi-journal pe-1"></i>
           Download ePub
           </a>
@@ -122,7 +122,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Welcome</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Conventions used in this book</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -195,7 +195,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./xl-practice-noc.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Practice exercise</span></a>
+  <a href="./xl-practice-noc.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Practice exercise 1</span></a>
   </div>
 </li>
       </ul>
@@ -226,6 +226,11 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./r-data-import.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Getting and saving data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-verbs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">A quick tour of verbs</span></a>
   </div>
 </li>
       </ul>
@@ -264,10 +269,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#welcome" id="toc-welcome" class="nav-link active" data-scroll-target="#welcome">Welcome</a>
+  <li><a href="#conventions-used-in-this-book" id="toc-conventions-used-in-this-book" class="nav-link active" data-scroll-target="#conventions-used-in-this-book">Conventions used in this book</a>
   <ul class="collapse">
-  <li><a href="#credits" id="toc-credits" class="nav-link" data-scroll-target="#credits">Credits</a></li>
+  <li><a href="#conventions-in-the-r-study-guide-chapters" id="toc-conventions-in-the-r-study-guide-chapters" class="nav-link" data-scroll-target="#conventions-in-the-r-study-guide-chapters">Conventions in the R Study Guide chapters</a></li>
   </ul></li>
+  <li><a href="#credits" id="toc-credits" class="nav-link" data-scroll-target="#credits">Credits</a></li>
   </ul>
 </nav>
     </div>
@@ -276,7 +282,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Data Reporting, Spring 2023</h1>
+<h1 class="title d-none d-lg-block">Data Reporting</h1>
+<p class="subtitle lead">Cronkite School MAIJ Program, Spring 2023</p>
 </div>
 
 
@@ -291,8 +298,6 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="welcome" class="level1 unnumbered">
-<h1 class="unnumbered">Welcome</h1>
 <p>This book serves as a compilation of of handouts, websites and tutorials that I have used in my data reporting class at ASU’s <a href="cronkite.asu.edu">Cronkite School of Journalism and Mass Communication</a>. Some of the material will be useful in other courses or for self-study, but it is primarily aimed at the investigative journalism masters’ students at Cronkite.</p>
 <p>It covers:</p>
 <ul>
@@ -309,6 +314,68 @@ ul.task-list li input[type="checkbox"] {
 <li>Data science. This is a journalism book, not a programming or statistics book.</li>
 </ul>
 <p>A note on language: I’ll use the words “read” and “write” in a generic sense. I intend them to cover the range of journalistic media, including listening, watching, and news applications or graphics.</p>
+<section id="conventions-used-in-this-book" class="level2">
+<h2 class="anchored" data-anchor-id="conventions-used-in-this-book">Conventions used in this book</h2>
+<p>This book is written using a Mac desktop keyboard, meaning there may be key combinations you don’t have. I’ll try to keep them to a minimum. I’ll try to use the convention <code>CMD/CTL</code> and <code>OPT/ALT</code> , with the part before the / for Mac users and part after the / for Windows users.</p>
+<section id="conventions-in-the-r-study-guide-chapters" class="level3">
+<h3 class="anchored" data-anchor-id="conventions-in-the-r-study-guide-chapters">Conventions in the R Study Guide chapters</h3>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Pro tips!</p>
+</div>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>An aside.</p>
+</div>
+</div>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Something you should be careful about, but it won’t be horrible if you miss it.</p>
+</div>
+</div>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Danger
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Something that is super important to pay attention to – you may have errors in your story even if you can get things to work if you ignore it.</p>
+</div>
+</div>
+<div class="alert alert-success alert-dothis">
+<p>This background is used for instructions for anyone trying to follow along.</p>
+</div>
+</section>
+</section>
 <section id="credits" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="credits">Credits</h2>
 <p>I’m grateful to all of the trainers, experts and collaborators who have made their training materials open to the world, and they are linked prominently throughout this book. Any errors or omissions are my own.</p>
@@ -319,7 +386,6 @@ ul.task-list li input[type="checkbox"] {
 <p>– Sarah Cohen, Winter 2022-23 <a href="mailto:sarah.h.cohen@asu.edu">sarah.h.cohen@asu.edu</a></p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

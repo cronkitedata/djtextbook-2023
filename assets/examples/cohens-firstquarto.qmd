@@ -24,6 +24,8 @@ I want a numbered list here:
 
 ## My favorite animal
 
+Here is a picture of my favorite animal, downloaded from <https://unsplash.com>
+
 ![A Moose by Shivam Kumar](shivam-kumar-unsplash.jpg){width="60%"}
 
 ## Some R Code

@@ -8,17 +8,18 @@ In this chapter
 -   Get to know the screens
 -   Issue a few commands to the Console
 -   Take a tutorial
--   Using RStudio projects
 -   Relax!
 :::
 
-::: {.alert .alert-primary}
-Open the application called RStudio, not R
-
-![r or rstudio](assets/images/r-start-r-or-rstudio.png){fig-align="left"}
-::: 
 
 ## Getting to know the RStudio screen
+
+
+::: {.alert .alert-primary}
+Open the application called RStudio ![rstudio](assets/images/r-start-rstudio-yes.png), the fancy car. 
+
+Do NOT open R ![not r](assets/images/r-start-no-r.png), the engine. 
+::: 
 
 This is what your screen probably looks like:
 
@@ -57,7 +58,7 @@ To create a new variable, you'll use the *assignment* operator `<-` (two charact
 :::
 
 ::: callout-tip
-Use the keyboard shortcut `CMD/CTL - SHift - M` to create an assignment operator `<-`  
+Use the keyboard shortcut `OPT/ALT - minus sign` to create an assignment operator `<-`  
 ::: 
 
 The console remembers your commands, but you have to type them one at a time and it will forget them when you leave for the day. That's why we're going to work in programs called Quarto documents most of the time.^[These used to be "R Markdown". Quarto is the newer implementaiton of it, but you'll often see R Markdown referenced in other places.]
@@ -65,10 +66,13 @@ The console remembers your commands, but you have to type them one at a time and
 ## Take a tutorial {#tutorials}
 
 ::: {.alert .alert-primary}
-Take the ["Programming basics" tutorial](https://posit.cloud/learn/primers/1.2) from Posit.
-:::
+Take the ["Programming basics" tutorial](https://posit.cloud/learn/primers/1.2) from Posit, which is a series of 1- to 2-minute videos. Just watch the videos -- you can skip the parts where you type in the code yourself, since it is code that we will rarely use in the future.
+::: 
 
-It will walk you through some of the basic language elements in R, and how you will use them. Don't worry that they are very number-centric. Instead, focus on the concepts of functions, arguments and objects.
+::: callout-tip
+### Ignore the math!
+ Don't worry that they are very number-centric. Instead, focus on the concepts of functions, arguments and objects. Think of functions as verbs, and arguments or objects as nouns. 
+::: 
 
 For a higher level view, consider reviewing the [Gentle Introduction to Programming](appendix-program.qmd) in the Appendix of this textbook. 
 
@@ -94,11 +98,27 @@ Watch Andrew Heiss's tour of RStudio.
 
 We will not be using the R scripts as he shows in the end of the video, but many other examples and resources do. Also, as we get into working with Quarto, the "code chunks" work the same way as a script.
 
-## Install a few more packages {#packages}
+## Unlocking packages and the tidyverse
 
-We need to update your packages and install a few more for our work, even if you've already installed the tidyverse.
+The real power of R comes with packages. Packages are bundles of programs that others have found useful to extend the base R language. R is almost useless without them. There are more than 10,000 packages available for R, each doing a special job.
 
-You may use the commands below, or use the "Packages" tab in RStudio to install them.
+If you followed along with the tutorial, the last thing you did was install a "package" called the `tidyverse`. Almost everything we do from now on depends on that step.
+
+The tidyverse is a system of packages, or libraries, that work together with similar grammar and syntax. It's particularly useful for the kind of work reporters do -- importing, cleaning and analyzing data that we get from others. For many reporters (myself included), R was too difficult to learn before the tidyverse came around. We'll be working almost exclusively within the tidyverse in this course. 
+
+
+::: callout-tip
+### Better Googling
+When you Google for help, put the word "tidyverse" somewhere in your query. Otherwise, you may get answers that look inscrutable and unfamiliar.
+:::
+
+### Installing packages
+
+We need to update your packages and install a few more for our work.
+
+::: callout-warning
+If this is the first time you've installed it, the tidyverse will take a while to install, and it will look like it's just stopped. Be patient. It can take 5 minutes or more.
+::: 
 
 #### Option 1: Use the console
 
@@ -107,12 +127,25 @@ Copy these commands into your Console. They ensure that your packages are up to 
 
 ::: inline-code
     update.packages(ask=FALSE)
-    install.packages(c("janitor" , "quarto", rmarkdown", "swirl", "pacman"))
+    install.packages(c("tidyverse", "janitor" , "quarto", rmarkdown", "swirl", "pacman"))
      
 :::
 :::
 
 #### Option 2: Use RStudio "Packages" tab
+
+Under the Packages tab in the lower right panel: 
+
+* Start by updating all of the packages you might already have installed by pressing the "Update" button.
+* Under the Install tab, search for and include the following packages: 
+  * tidyverse
+  * janitor
+  * lubridate
+  * quarto
+  * rmarkdown
+  * pacman
+  * swirl
+  
 
 ::: {.content-visible when-format="html"}
 ![packages](https://cronkitedata.s3.amazonaws.com/images/r-start-packages.gif)
@@ -121,24 +154,6 @@ Copy these commands into your Console. They ensure that your packages are up to 
 ::: {.content-visible when-format="pdf"}
 ![packages](assets/images/r-start-packages.png)
 :::
-
-## Use RStudio Projects
-
-One of the things that trips up new users of R is that it's hard to tell the program where to find things on your computer. The "working directory" can be confusing.
-
-We'll be working entirely in projects in this course. Projects keep everything needed together so that they can run on almost any machine.
-
-Create a new project by hitting the second green + sign at the top of your screen, create a new directory within the one that we're working (you can also find it under the File menu item):
-
-::: {.content-visible when-format="html"}
-![](https://cronkitedata.s3.amazonaws.com/images/r-start-newproject.gif)
-:::
-
-::: {.content-visible when-format="pdf"}
-![](assets/images/r-start-newproject.png)
-:::
-
-
 
 
 ## Relax!

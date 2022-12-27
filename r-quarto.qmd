@@ -21,19 +21,22 @@ In this chapter:
 -   Render your document - you can do it as often as you want to see drafts.
 :::
 
+I suggest that, beginning with this chapter, you start collecting code examples that you can save in a document with a description of what they mean in your own words.  This reference document can be anywhere -- a Google Doc, a Quarto doc, or anywhere else. You won't be running that code, but you'll have something you can copy and paste that exemplifies how you think of it. 
+
+
 ## R projects
 
 One of the things that trips up new users of R is that it's hard to tell the program where to find things on your computer. The "working directory" can be confusing.
 
 We'll be working entirely in projects in this course. Projects keep everything needed together so that they can run on almost any machine.
 
-::: {.alert .alert-primary}
+::: {.alert .alert-success .alert-dothis}
 Create a new project by hitting the second green + sign at the top left of your screen, or choose `File` -\> `New Project`.
 
-When prompted, create a new directory within the one that we're working (you can also find it under the File menu item) called `first-quarto`[^r-quarto-1]
+When prompted, create a new directory **within** your course folder called `rlessons-01`[^r-quarto-1]
 :::
 
-[^r-quarto-1]: The image below has a different names for the folder and project. Use `first-quarto` as your project folder within `maij-working`
+[^r-quarto-1]: The image below has a different names for the folder and project. Use `rlessons-01` as your project folder within `maij-working`
 
 ::: {.content-visible when-format="html"}
 ![new project](https://cronkitedata.s3.amazonaws.com/images/r-start-newproject.gif)
@@ -73,7 +76,8 @@ Shannon Pileggi [created a series of gifs](https://www.pipinghotdata.com/posts/2
 
 Many help pages and tutorials in R use the format called "R Markdown" instead of Quarto. Quarto was introduced in mid-2022 as a replacement for RMarkdown, and it seems silly to learn something that is already out of date. Almost everything you see related to RMarkdown will work without any adjustment in Quarto.
 
-In fact, if you see example documents with the extension `.Rmd`, you can change that to `.qmd` and it will probably run without any problem.
+You can use .Rmd files in RStudio instead of Quarto, and everything below the first few lines will generally be the same. 
+
 :::
 
 ### The structure of a Quarto document
@@ -87,11 +91,10 @@ There are four parts to a Quarto document:
 
 ### Markdown, an editing language {.unnumbered}
 
-Quarto is based on markdown^[<https://en.wikipedia.org/wiki/Markdown>], which is used in many other contexts. Markdown was invented as an easy way for early Wikepedia editors, who were used to text editors like Word, to write simple documents that would automatically be rendered into the more complicated HTML of the web.
+Quarto is based on markdown^[<https://en.wikipedia.org/wiki/Markdown>], which was invented as an easy way for early Wikepedia editors, who were used to text editors like Word, to write simple documents that would automatically be rendered into the more complicated HTML of the web.
 
 
-::: {.alert .alert-primary}
-Look through Quarto's [markdown guide](https://quarto.org/docs/authoring/markdown-basics.html) and get a sense of its basic structure. You should be familiar with:
+::: {.alert .alert-success .alert-dothis}
 
 - [Text formatting](https://quarto.org/docs/authoring/markdown-basics.html#text-formatting), like bold and italic
 - [Links](https://quarto.org/docs/authoring/markdown-basics.html#links-images)
@@ -107,9 +110,8 @@ The way the R knows how to process the page is by reading the very top of the fi
 The default setup is very basic. You can use options in this front matter to make it look a little more polished. Here is some code you can use instead of the default to make it look a little better, add a table of contents, and allow your readers to download the underlying code. It also embeds all of the images and data you use in your page in the final output so that you can share your html page through email without copying those external items.^[Beware: This can result in large files, sometimes too large for email systems.]
 
 
-```{yaml}
-#| echo: true
-
+```yaml
+---
 title: "A title for your page"
 author: "Your name"
 format: 
@@ -119,21 +121,26 @@ format:
     toc: true
     codetools: true
     page-layout: full
+    df-print: paged
+---
 ```
 
 
 ### Including R code and its results
 
-So far, this is just a simple document. It doesn't contain any R code. To add code, you insert a "code chunk". You can add it by pressing the green "+C" button at the top of the document, or by pressing *`Option/Alt-Ctl-i`* . 
+So far, nothing is different from a simple Google doc or Word document -- there is no computer code or data involved. But the value of Quarto is that it allows you to mix your analysis with your writing in one place. 
+
+You'll do that through `code chunks` -- little snippets of working code that you insert within your narrative which, when processed, will also include the results. 
 
 To insert a code chunk:
 
 -   Use the +C button on the top right of your screen. ( ![](assets/images/r-quarto-insertchunk.png){width="25" height="16"})
--   Use the keyboard shortcut Ctl-Alt-i / Cmd-Opt-i
+-   Use the keyboard shortcut CMD/CTL-OPT/ALT-i
 
 
 ::: {.content-visible when-format="html"}
-![](https://cronkitedata.s3.amazonaws.com/images/r-quarto-add-code.gif)
+![](https://cronkitedata.s3.amazonaws.com/images/r-quarto-insertcode.gif)
+
 :::
 
 
@@ -208,8 +215,9 @@ You can set up RStudio to default to source mode by changing the global options 
 
 ## Walkthrough - your first document
 
-Practice by creating a new document with three things about yourself in a list, a picture of an animal you love or some other image you like, and a code chunk. This video goes through the steps while walking you through some of the details of creating projects, working with the screens and checking your work.  
-
+::: {.alert .alert-success .alert-dothis}
+Practice by creating a new document with three things about yourself in a list, a picture of an animal you love or some other image you like, and a code chunk. 
+::: 
 
 
 
@@ -241,7 +249,6 @@ There are several reasons it might not work:
 4.  Everything's too smushed together. Give your document room to breathe by inserting blank lines between elements. When you first get started, switching to Visual mode will help you figure out where you might have gone wrong. 
 
 
-[Here is one I created about myself](assets/first-markdown.qmd) that you can use as a guide, but I implore you not to copy it -- just use it as a guide if you have questions or if something is happening that you don't expect. Here is a rendered version if you want to see how it translates into an HTML page: <https://rpubs.com/cohensh/firstmarkdown>
 
 
 ## Other resources

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Reporting, Spring 2023 - 14&nbsp; Getting started with R</title>
+<title>Data Reporting - 14&nbsp; Getting started with R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -88,19 +88,19 @@ ul.task-list li input[type="checkbox"] {
       <img src="./assets/images/favicon.ico" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Data Reporting, Spring 2023</a> 
+      <a href="./">Data Reporting</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/cronkitedata/djtextbook" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
     <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
     <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
         <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="./Data-Reporting,-Spring-2023.pdf">
+          <a class="dropdown-item sidebar-tools-main-item" href="./Data-Reporting.pdf">
             <i class="bi bi-bi-file-pdf pe-1"></i>
           Download PDF
           </a>
         </li>
         <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="./Data-Reporting,-Spring-2023.epub">
+          <a class="dropdown-item sidebar-tools-main-item" href="./Data-Reporting.epub">
             <i class="bi bi-bi-journal pe-1"></i>
           Download ePub
           </a>
@@ -123,7 +123,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Welcome</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Conventions used in this book</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -196,7 +196,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./xl-practice-noc.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Practice exercise</span></a>
+  <a href="./xl-practice-noc.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Practice exercise 1</span></a>
   </div>
 </li>
       </ul>
@@ -227,6 +227,11 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./r-data-import.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Getting and saving data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-verbs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">A quick tour of verbs</span></a>
   </div>
 </li>
       </ul>
@@ -274,8 +279,10 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#tutorials" id="toc-tutorials" class="nav-link" data-scroll-target="#tutorials">Take a tutorial</a></li>
   <li><a href="#take-a-tour" id="toc-take-a-tour" class="nav-link" data-scroll-target="#take-a-tour">Take a tour</a></li>
-  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">Install a few more packages</a></li>
-  <li><a href="#use-rstudio-projects" id="toc-use-rstudio-projects" class="nav-link" data-scroll-target="#use-rstudio-projects">Use RStudio Projects</a></li>
+  <li><a href="#unlocking-packages-and-the-tidyverse" id="toc-unlocking-packages-and-the-tidyverse" class="nav-link" data-scroll-target="#unlocking-packages-and-the-tidyverse">Unlocking packages and the tidyverse</a>
+  <ul class="collapse">
+  <li><a href="#installing-packages" id="toc-installing-packages" class="nav-link" data-scroll-target="#installing-packages">Installing packages</a></li>
+  </ul></li>
   <li><a href="#relax" id="toc-relax" class="nav-link" data-scroll-target="#relax">Relax!</a></li>
   </ul>
 </nav>
@@ -308,21 +315,15 @@ ul.task-list li input[type="checkbox"] {
 <li>Get to know the screens</li>
 <li>Issue a few commands to the Console</li>
 <li>Take a tutorial</li>
-<li>Using RStudio projects</li>
 <li>Relax!</li>
 </ul>
 </div>
-<div class="alert alert-primary">
-<p>Open the application called RStudio, not R</p>
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><img src="assets/images/r-start-r-or-rstudio.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">r or rstudio</figcaption><p></p>
-</figure>
-</div>
-</div>
 <section id="getting-to-know-the-rstudio-screen" class="level2">
 <h2 class="anchored" data-anchor-id="getting-to-know-the-rstudio-screen">Getting to know the RStudio screen</h2>
+<div class="alert alert-primary">
+<p>Open the application called RStudio <img src="assets/images/r-start-rstudio-yes.png" class="img-fluid" alt="rstudio">, the fancy car.</p>
+<p>Do NOT open R <img src="assets/images/r-start-no-r.png" class="img-fluid" alt="not r">, the engine.</p>
+</div>
 <p>This is what your screen probably looks like:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -362,7 +363,7 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Use the keyboard shortcut <code>CMD/CTL - SHift - M</code> to create an assignment operator <code>&lt;-</code></p>
+<p>Use the keyboard shortcut <code>OPT/ALT - minus sign</code> to create an assignment operator <code>&lt;-</code></p>
 </div>
 </div>
 <p>The console remembers your commands, but you have to type them one at a time and it will forget them when you leave for the day. That’s why we’re going to work in programs called Quarto documents most of the time.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
@@ -371,9 +372,21 @@ Tip
 <section id="tutorials" class="level2">
 <h2 class="anchored" data-anchor-id="tutorials">Take a tutorial</h2>
 <div class="alert alert-primary">
-<p>Take the <a href="https://posit.cloud/learn/primers/1.2">“Programming basics” tutorial</a> from Posit.</p>
+<p>Take the <a href="https://posit.cloud/learn/primers/1.2">“Programming basics” tutorial</a> from Posit, which is a series of 1- to 2-minute videos. Just watch the videos – you can skip the parts where you type in the code yourself, since it is code that we will rarely use in the future.</p>
 </div>
-<p>It will walk you through some of the basic language elements in R, and how you will use them. Don’t worry that they are very number-centric. Instead, focus on the concepts of functions, arguments and objects.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Ignore the math!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Don’t worry that they are very number-centric. Instead, focus on the concepts of functions, arguments and objects. Think of functions as verbs, and arguments or objects as nouns.</p>
+</div>
+</div>
 <p>For a higher level view, consider reviewing the <a href="./appendix-program.html">Gentle Introduction to Programming</a> in the Appendix of this textbook.</p>
 <section id="optional-hands-on-tutorial" class="level4">
 <h4 class="anchored" data-anchor-id="optional-hands-on-tutorial">Optional hands-on tutorial:</h4>
@@ -391,23 +404,67 @@ Tip
 </div>
 <p>We will not be using the R scripts as he shows in the end of the video, but many other examples and resources do. Also, as we get into working with Quarto, the “code chunks” work the same way as a script.</p>
 </section>
-<section id="packages" class="level2">
-<h2 class="anchored" data-anchor-id="packages">Install a few more packages</h2>
-<p>We need to update your packages and install a few more for our work, even if you’ve already installed the tidyverse.</p>
-<p>You may use the commands below, or use the “Packages” tab in RStudio to install them.</p>
+<section id="unlocking-packages-and-the-tidyverse" class="level2">
+<h2 class="anchored" data-anchor-id="unlocking-packages-and-the-tidyverse">Unlocking packages and the tidyverse</h2>
+<p>The real power of R comes with packages. Packages are bundles of programs that others have found useful to extend the base R language. R is almost useless without them. There are more than 10,000 packages available for R, each doing a special job.</p>
+<p>If you followed along with the tutorial, the last thing you did was install a “package” called the <code>tidyverse</code>. Almost everything we do from now on depends on that step.</p>
+<p>The tidyverse is a system of packages, or libraries, that work together with similar grammar and syntax. It’s particularly useful for the kind of work reporters do – importing, cleaning and analyzing data that we get from others. For many reporters (myself included), R was too difficult to learn before the tidyverse came around. We’ll be working almost exclusively within the tidyverse in this course.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Better Googling
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When you Google for help, put the word “tidyverse” somewhere in your query. Otherwise, you may get answers that look inscrutable and unfamiliar.</p>
+</div>
+</div>
+<section id="installing-packages" class="level3">
+<h3 class="anchored" data-anchor-id="installing-packages">Installing packages</h3>
+<p>We need to update your packages and install a few more for our work.</p>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If this is the first time you’ve installed it, the tidyverse will take a while to install, and it will look like it’s just stopped. Be patient. It can take 5 minutes or more.</p>
+</div>
+</div>
 <section id="option-1-use-the-console" class="level4">
 <h4 class="anchored" data-anchor-id="option-1-use-the-console">Option 1: Use the console</h4>
 <div class="alert alert-primary">
 <p>Copy these commands into your Console. They ensure that your packages are up to date, and install a few extras that aren’t included in the Tidyverse. You only have to do this once.</p>
 <div class="inline-code">
 <pre><code>update.packages(ask=FALSE)
-install.packages(c("janitor" , "quarto", rmarkdown", "swirl", "pacman"))
+install.packages(c("tidyverse", "janitor" , "quarto", rmarkdown", "swirl", "pacman"))
  </code></pre>
 </div>
 </div>
 </section>
 <section id="option-2-use-rstudio-packages-tab" class="level4">
 <h4 class="anchored" data-anchor-id="option-2-use-rstudio-packages-tab">Option 2: Use RStudio “Packages” tab</h4>
+<p>Under the Packages tab in the lower right panel:</p>
+<ul>
+<li>Start by updating all of the packages you might already have installed by pressing the “Update” button.</li>
+<li>Under the Install tab, search for and include the following packages:
+<ul>
+<li>tidyverse</li>
+<li>janitor</li>
+<li>lubridate</li>
+<li>quarto</li>
+<li>rmarkdown</li>
+<li>pacman</li>
+<li>swirl</li>
+</ul></li>
+</ul>
 <div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -418,14 +475,6 @@ install.packages(c("janitor" , "quarto", rmarkdown", "swirl", "pacman"))
 </div>
 </section>
 </section>
-<section id="use-rstudio-projects" class="level2">
-<h2 class="anchored" data-anchor-id="use-rstudio-projects">Use RStudio Projects</h2>
-<p>One of the things that trips up new users of R is that it’s hard to tell the program where to find things on your computer. The “working directory” can be confusing.</p>
-<p>We’ll be working entirely in projects in this course. Projects keep everything needed together so that they can run on almost any machine.</p>
-<p>Create a new project by hitting the second green + sign at the top of your screen, create a new directory within the one that we’re working (you can also find it under the File menu item):</p>
-<div>
-<p><img src="https://cronkitedata.s3.amazonaws.com/images/r-start-newproject.gif" class="img-fluid"></p>
-</div>
 </section>
 <section id="relax" class="level2">
 <h2 class="anchored" data-anchor-id="relax">Relax!</h2>

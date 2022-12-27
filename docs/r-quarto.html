@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Reporting, Spring 2023 - 15&nbsp; Using Quarto</title>
+<title>Data Reporting - 15&nbsp; Using Quarto</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -125,6 +125,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 }</script>
 
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
 
 </head>
 
@@ -151,19 +154,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <img src="./assets/images/favicon.ico" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Data Reporting, Spring 2023</a> 
+      <a href="./">Data Reporting</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/cronkitedata/djtextbook" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
     <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
     <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
         <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="./Data-Reporting,-Spring-2023.pdf">
+          <a class="dropdown-item sidebar-tools-main-item" href="./Data-Reporting.pdf">
             <i class="bi bi-bi-file-pdf pe-1"></i>
           Download PDF
           </a>
         </li>
         <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="./Data-Reporting,-Spring-2023.epub">
+          <a class="dropdown-item sidebar-tools-main-item" href="./Data-Reporting.epub">
             <i class="bi bi-bi-journal pe-1"></i>
           Download ePub
           </a>
@@ -186,7 +189,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Welcome</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Conventions used in this book</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -259,7 +262,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./xl-practice-noc.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Practice exercise</span></a>
+  <a href="./xl-practice-noc.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Practice exercise 1</span></a>
   </div>
 </li>
       </ul>
@@ -290,6 +293,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./r-data-import.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Getting and saving data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-verbs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">A quick tour of verbs</span></a>
   </div>
 </li>
       </ul>
@@ -381,13 +389,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Render your document - you can do it as often as you want to see drafts.</li>
 </ul>
 </div>
+<p>I suggest that, beginning with this chapter, you start collecting code examples that you can save in a document with a description of what they mean in your own words. This reference document can be anywhere – a Google Doc, a Quarto doc, or anywhere else. You won’t be running that code, but you’ll have something you can copy and paste that exemplifies how you think of it.</p>
 <section id="r-projects" class="level2">
 <h2 class="anchored" data-anchor-id="r-projects">R projects</h2>
 <p>One of the things that trips up new users of R is that it’s hard to tell the program where to find things on your computer. The “working directory” can be confusing.</p>
 <p>We’ll be working entirely in projects in this course. Projects keep everything needed together so that they can run on almost any machine.</p>
-<div class="alert alert-primary">
+<div class="alert alert-success alert-dothis">
 <p>Create a new project by hitting the second green + sign at the top left of your screen, or choose <code>File</code> -&gt; <code>New Project</code>.</p>
-<p>When prompted, create a new directory within the one that we’re working (you can also find it under the File menu item) called <code>first-quarto</code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>When prompted, create a new directory <strong>within</strong> your course folder called <code>rlessons-01</code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 </div>
 <div>
 <div class="quarto-figure quarto-figure-center">
@@ -433,7 +442,7 @@ Quarto is modern RMarkdown
 </div>
 <div class="callout-body-container callout-body">
 <p>Many help pages and tutorials in R use the format called “R Markdown” instead of Quarto. Quarto was introduced in mid-2022 as a replacement for RMarkdown, and it seems silly to learn something that is already out of date. Almost everything you see related to RMarkdown will work without any adjustment in Quarto.</p>
-<p>In fact, if you see example documents with the extension <code>.Rmd</code>, you can change that to <code>.qmd</code> and it will probably run without any problem.</p>
+<p>You can use .Rmd files in RStudio instead of Quarto, and everything below the first few lines will generally be the same.</p>
 </div>
 </div>
 <section id="the-structure-of-a-quarto-document" class="level3">
@@ -448,9 +457,8 @@ Quarto is modern RMarkdown
 </section>
 <section id="markdown-an-editing-language" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="markdown-an-editing-language">Markdown, an editing language</h3>
-<p>Quarto is based on markdown<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, which is used in many other contexts. Markdown was invented as an easy way for early Wikepedia editors, who were used to text editors like Word, to write simple documents that would automatically be rendered into the more complicated HTML of the web.</p>
-<div class="alert alert-primary">
-<p>Look through Quarto’s <a href="https://quarto.org/docs/authoring/markdown-basics.html">markdown guide</a> and get a sense of its basic structure. You should be familiar with:</p>
+<p>Quarto is based on markdown<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, which was invented as an easy way for early Wikepedia editors, who were used to text editors like Word, to write simple documents that would automatically be rendered into the more complicated HTML of the web.</p>
+<div class="alert alert-success alert-dothis">
 <ul>
 <li><a href="https://quarto.org/docs/authoring/markdown-basics.html#text-formatting">Text formatting</a>, like bold and italic</li>
 <li><a href="https://quarto.org/docs/authoring/markdown-basics.html#links-images">Links</a></li>
@@ -464,28 +472,30 @@ Quarto is modern RMarkdown
 <h3 class="unnumbered anchored" data-anchor-id="front-matter-yaml-at-the-top">Front matter / YAML at the top</h3>
 <p>The way the R knows how to process the page is by reading the very top of the file and looking at the section between three dashes. This is called “front matter”, and it’s extremely picky about indentations and the exact words you use.</p>
 <p>The default setup is very basic. You can use options in this front matter to make it look a little more polished. Here is some code you can use instead of the default to make it look a little better, add a table of contents, and allow your readers to download the underlying code. It also embeds all of the images and data you use in your page in the final output so that you can share your html page through email without copying those external items.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"A title for your page"</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Your name"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> cosmos</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">embed-resources</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">codetools</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">page-layout</span><span class="kw">:</span><span class="at"> full</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"A title for your page"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Your name"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> cosmos</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">embed-resources</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">codetools</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">page-layout</span><span class="kw">:</span><span class="at"> full</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">df-print</span><span class="kw">:</span><span class="at"> paged</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="including-r-code-and-its-results" class="level3">
 <h3 class="anchored" data-anchor-id="including-r-code-and-its-results">Including R code and its results</h3>
-<p>So far, this is just a simple document. It doesn’t contain any R code. To add code, you insert a “code chunk”. You can add it by pressing the green “+C” button at the top of the document, or by pressing <em><code>Option/Alt-Ctl-i</code></em> .</p>
+<p>So far, nothing is different from a simple Google doc or Word document – there is no computer code or data involved. But the value of Quarto is that it allows you to mix your analysis with your writing in one place.</p>
+<p>You’ll do that through <code>code chunks</code> – little snippets of working code that you insert within your narrative which, when processed, will also include the results.</p>
 <p>To insert a code chunk:</p>
 <ul>
 <li>Use the +C button on the top right of your screen. ( <img src="assets/images/r-quarto-insertchunk.png" width="25" height="16">)</li>
-<li>Use the keyboard shortcut Ctl-Alt-i / Cmd-Opt-i</li>
+<li>Use the keyboard shortcut CMD/CTL-OPT/ALT-i</li>
 </ul>
 <div>
-<p><img src="https://cronkitedata.s3.amazonaws.com/images/r-quarto-add-code.gif" class="img-fluid"></p>
+<p><img src="https://cronkitedata.s3.amazonaws.com/images/r-quarto-insertcode.gif" class="img-fluid"></p>
 </div>
 <p>The following code chunk creates a new variable called <code>my_variable</code>, another called <code>my_name</code>, then prints out the value stored in the <code>my_name</code> one. Copying it into your document will create a code chunk for you.</p>
 <div class="cell">
@@ -556,7 +566,9 @@ Switching to Source mode
 </section>
 <section id="walkthrough---your-first-document" class="level2">
 <h2 class="anchored" data-anchor-id="walkthrough---your-first-document">Walkthrough - your first document</h2>
-<p>Practice by creating a new document with three things about yourself in a list, a picture of an animal you love or some other image you like, and a code chunk. This video goes through the steps while walking you through some of the details of creating projects, working with the screens and checking your work.</p>
+<div class="alert alert-success alert-dothis">
+<p>Practice by creating a new document with three things about yourself in a list, a picture of an animal you love or some other image you like, and a code chunk.</p>
+</div>
 <p>Here are the steps:</p>
 <ul>
 <li>Create a new Quarto document in the project you created above.</li>
@@ -583,7 +595,6 @@ Switching to Source mode
 <li>There is an error in your R code.</li>
 <li>Everything’s too smushed together. Give your document room to breathe by inserting blank lines between elements. When you first get started, switching to Visual mode will help you figure out where you might have gone wrong.</li>
 </ol>
-<p><a href="assets/first-markdown.qmd">Here is one I created about myself</a> that you can use as a guide, but I implore you not to copy it – just use it as a guide if you have questions or if something is happening that you don’t expect. Here is a rendered version if you want to see how it translates into an HTML page: <a href="https://rpubs.com/cohensh/firstmarkdown" class="uri">https://rpubs.com/cohensh/firstmarkdown</a></p>
 </section>
 </section>
 <section id="other-resources" class="level2">
@@ -603,7 +614,7 @@ Switching to Source mode
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1"><p>The image below has a different names for the folder and project. Use <code>first-quarto</code> as your project folder within <code>maij-working</code><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>The image below has a different names for the folder and project. Use <code>rlessons-01</code> as your project folder within <code>maij-working</code><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>The title borrowed from Quarto’s own documentation<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p><a href="https://en.wikipedia.org/wiki/Markdown" class="uri">https://en.wikipedia.org/wiki/Markdown</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4"><p>Beware: This can result in large files, sometimes too large for email systems.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>

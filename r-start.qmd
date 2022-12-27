@@ -15,7 +15,7 @@ In this chapter
 ## Getting to know the RStudio screen
 
 
-::: {.alert .alert-primary}
+::: {.alert .alert-success .alert-dothis}
 Open the application called RStudio ![rstudio](assets/images/r-start-rstudio-yes.png), the fancy car. 
 
 Do NOT open R ![not r](assets/images/r-start-no-r.png), the engine. 
@@ -65,7 +65,7 @@ The console remembers your commands, but you have to type them one at a time and
 
 ## Take a tutorial {#tutorials}
 
-::: {.alert .alert-primary}
+::: {.alert .alert-success .alert-dothis}
 Take the ["Programming basics" tutorial](https://posit.cloud/learn/primers/1.2) from Posit, which is a series of 1- to 2-minute videos. Just watch the videos -- you can skip the parts where you type in the code yourself, since it is code that we will rarely use in the future.
 ::: 
 
@@ -84,7 +84,7 @@ To take it, make sure your cursor is in the Console, and start it by typing `swi
 
 ## Take a tour
 
-::: {.alert .alert-primary}
+::: {.alert .alert-success .alert-dothis}
 Watch Andrew Heiss's tour of RStudio. 
 :::
 
@@ -122,7 +122,7 @@ If this is the first time you've installed it, the tidyverse will take a while t
 
 #### Option 1: Use the console
 
-::: {.alert .alert-primary}
+::: {.alert .alert-success .alert-dothis}
 Copy these commands into your Console. They ensure that your packages are up to date, and install a few extras that aren't included in the Tidyverse. You only have to do this once.
 
 ::: inline-code

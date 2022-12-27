@@ -80,7 +80,7 @@ Staying organized is one of the challenges of data reporting -- you're constantl
 
 Before you start, decide on a folder you'll use to store all of your R work.
 
-::: {.alert .alert-primary}
+::: {.alert .alert-sucess .alert-dothis}
 1.  Create a folder called `maij-working` within your Documents folder (or on the root folder of your portable hard drive)
 
 2.  Start up RStudio (NOT R) , and choose `Tools` -\> `Global options` (in a Mac)

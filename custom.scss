@@ -70,15 +70,16 @@ $link-color: $blue;
 // Do it this way so I don't have to worry about all the things that might be embedded in alert styles.
 // this JUST changes the background color and the opacity.
 
-.alert-dothis {
-  background-color : $color-foot !important;
-  opacity: .8;
-
-}
 
 .standout {
   color: $color-foot;
 }
+
+.alert-dothis {
+  background-color: $color-foot !important;
+  opacity: .8;
+}
+
 
 // Merge the maps
 /*

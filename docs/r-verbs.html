@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.2.269">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
 <title>Data Reporting - 16&nbsp; A quick tour of verbs</title>
 <style>
 code{white-space: pre-wrap;}
@@ -85,7 +82,6 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
@@ -104,8 +100,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -123,43 +118,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit"
   }
-}</script>
-
-<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+}</script><link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
 <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
-
-
 </head>
-
 <body class="nav-sidebar floating">
 
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }"><div class="container-fluid d-flex justify-content-between">
       <h1 class="quarto-secondary-nav-title"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">A quick tour of verbs</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
-      <img src="./assets/images/favicon.ico" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
-      </a>
+      <img src="./assets/images/favicon.ico" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Data Reporting</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/cronkitedata/djtextbook" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
     <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
     <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
-        <li>
+<li>
           <a class="dropdown-item sidebar-tools-main-item" href="./Data-Reporting.pdf">
             <i class="bi bi-bi-file-pdf pe-1"></i>
           Download PDF
@@ -172,7 +155,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </a>
         </li>
     </ul>
-  <a href="" class="quarto-reader-toggle sidebar-tool" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+<a href="" class="quarto-reader-toggle sidebar-tool" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
   </div>
@@ -187,20 +170,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Conventions used in this book</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./start.html" class="sidebar-item-text sidebar-link">Reporting with data</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./start-story.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Learn a new way to read</span></a>
   </div>
@@ -231,16 +214,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./xl.html" class="sidebar-item-text sidebar-link">Spreadsheets</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./xl-refresher.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">An Excel Refresher</span></a>
   </div>
@@ -262,11 +245,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./xl-practice-noc.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Practice exercise 1</span></a>
+  <a href="./xl-practice-noc.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Practice exercise</span></a>
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./r.html" class="sidebar-item-text sidebar-link">R Study Guide</a>
@@ -274,8 +257,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./r-install.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Installing R and RStudio</span></a>
   </div>
@@ -301,16 +284,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Appendices</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">Appendices</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./appendix-math.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Newsroom numbers cheat sheet</span></a>
   </div>
@@ -326,29 +309,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
 </li>
       </ul>
-  </li>
+</li>
     </ul>
-    </div>
-</nav>
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+</div>
+    <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#filter-and-arrange" id="toc-filter-and-arrange" class="nav-link active" data-scroll-target="#filter-and-arrange"><span class="toc-section-number">16.1</span>  Filter and arrange</a></li>
+<li><a href="#filter-and-arrange" id="toc-filter-and-arrange" class="nav-link active" data-scroll-target="#filter-and-arrange"><span class="toc-section-number">16.1</span>  Filter and arrange</a></li>
   <li><a href="#summary-statistics-in-r" id="toc-summary-statistics-in-r" class="nav-link" data-scroll-target="#summary-statistics-in-r"><span class="toc-section-number">16.2</span>  Summary statistics in R</a></li>
   <li><a href="#grouping-with-summary-statistics-aggregating" id="toc-grouping-with-summary-statistics-aggregating" class="nav-link" data-scroll-target="#grouping-with-summary-statistics-aggregating"><span class="toc-section-number">16.3</span>  Grouping with summary statistics (aggregating)</a></li>
   <li><a href="#make-a-chart" id="toc-make-a-chart" class="nav-link" data-scroll-target="#make-a-chart"><span class="toc-section-number">16.4</span>  Make a chart!</a></li>
   <li><a href="#thoughts-on-the-verbs" id="toc-thoughts-on-the-verbs" class="nav-link" data-scroll-target="#thoughts-on-the-verbs"><span class="toc-section-number">16.5</span>  Thoughts on the verbs</a></li>
-  </ul>
-</nav>
+  </ul></nav>
+</nav><!-- margin-sidebar --><div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
+<main class="content page-columns page-full column-body" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title"><span id="r-verbs" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">A quick tour of verbs</span></span></h1>
 </div>
 
@@ -362,20 +338,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
   
 
-</header>
-
-<div class="alert alert-secondary">
+</header><div class="alert alert-secondary">
 <p class="alert-heading font-weight-bolder fs-3">
 In this chapter
 </p>
 <p>You only need a handful of key verbs of the tidyverse to get a lot done:</p>
 <ul>
-<li><code>select</code>: Pick out and arrange columns</li>
-<li><code>arrange</code> : Display rows in a certain order</li>
-<li><code>mutate</code> : Create new columns using functions and formulas</li>
-<li><code>filter</code>: Pick out rows based on a condition</li>
-<li><code>summarise</code> : Compute summary statistics such as sum, count or median</li>
-<li><code>group_by</code> : Collapse your data into categories based on a column, as in pivot tables</li>
+<li>
+<code>select</code>: Pick out and arrange columns</li>
+<li>
+<code>arrange</code> : Display rows in a certain order</li>
+<li>
+<code>mutate</code> : Create new columns using functions and formulas</li>
+<li>
+<code>filter</code>: Pick out rows based on a condition</li>
+<li>
+<code>summarise</code> : Compute summary statistics such as sum, count or median</li>
+<li>
+<code>group_by</code> : Collapse your data into categories based on a column, as in pivot tables</li>
 </ul>
 <p>You have done all of these in Excel already.</p>
 </div>
@@ -394,8 +374,8 @@ In this chapter
 </div>
 <p><span class="small">Assuming that’s what you saved it as in the last chapter</span></p>
 </div>
-<section id="filter-and-arrange" class="level2 page-columns page-full" data-number="16.1">
-<h2 data-number="16.1" class="anchored" data-anchor-id="filter-and-arrange"><span class="header-section-number">16.1</span> Filter and arrange</h2>
+<section id="filter-and-arrange" class="level2 page-columns page-full" data-number="16.1"><h2 data-number="16.1" class="anchored" data-anchor-id="filter-and-arrange">
+<span class="header-section-number">16.1</span> Filter and arrange</h2>
 <p><code>filter</code> is the same idea as filtering in Excel, but it’s much more picky. In R, you have to match words exactly, including the upper- or lower-case.</p>
 <p><code>arrange</code> is R’s version of Excel’s <code>sort</code>.</p>
 <p>Here’s how you would pick out all of Taylor Swift’s appearances on the Billboard top 100 list, in chronological order.</p>
@@ -413,9 +393,9 @@ Danger
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>top100 <span class="sc">|&gt;</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span> ( performer <span class="sc">==</span> <span class="st">"Taylor Swift"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span> (  chart_date )   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">top100</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span> <span class="op">(</span> <span class="va">performer</span> <span class="op">==</span> <span class="st">"Taylor Swift"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">arrange</span> <span class="op">(</span>  <span class="va">chart_date</span> <span class="op">)</span>   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -429,10 +409,10 @@ Danger
 <p>Here’s how you’d list only her appearances at the top of the list – No.&nbsp;1 is the lowest possible value for <code>this_week</code>, indicating the rank , then pick out just a few columns to list in order:</p>
 <div class="column-page-inset-right">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>top100 <span class="sc">|&gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span> (performer<span class="sc">==</span><span class="st">"Taylor Swift"</span> <span class="sc">&amp;</span> this_week <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">|&gt;</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span> ( chart_date)  <span class="sc">|&gt;</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span> ( this_week, song, chart_date, last_week)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">top100</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span> <span class="op">(</span><span class="va">performer</span><span class="op">==</span><span class="st">"Taylor Swift"</span> <span class="op">&amp;</span> <span class="va">this_week</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">arrange</span> <span class="op">(</span> <span class="va">chart_date</span><span class="op">)</span>  <span class="op">|&gt;</span></span>
+<span>  <span class="fu">select</span> <span class="op">(</span> <span class="va">this_week</span>, <span class="va">song</span>, <span class="va">chart_date</span>, <span class="va">last_week</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -444,16 +424,19 @@ Danger
 </div>
 </div>
 <p>Her first No.&nbsp;1 hit was in 2012, and her most recent was in November 2021.</p>
-</section>
-<section id="summary-statistics-in-r" class="level2" data-number="16.2">
-<h2 data-number="16.2" class="anchored" data-anchor-id="summary-statistics-in-r"><span class="header-section-number">16.2</span> Summary statistics in R</h2>
+</section><section id="summary-statistics-in-r" class="level2" data-number="16.2"><h2 data-number="16.2" class="anchored" data-anchor-id="summary-statistics-in-r">
+<span class="header-section-number">16.2</span> Summary statistics in R</h2>
 <p>Summary statistics are similar to those you saw in pivot tables. They include</p>
 <ul>
-<li><code>n()</code> – instead of “count”</li>
-<li><code>sum()</code></li>
-<li><code>mean()</code> – instead of “average”</li>
-<li><code>median()</code></li>
-<li><code>min()</code> and <code>max()</code></li>
+<li>
+<code>n()</code> – instead of “count”</li>
+<li><code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code></li>
+<li>
+<code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> – instead of “average”</li>
+<li><code><a href="https://rdrr.io/r/stats/median.html">median()</a></code></li>
+<li>
+<code><a href="https://rdrr.io/r/base/Extremes.html">min()</a></code> and <code><a href="https://rdrr.io/r/base/Extremes.html">max()</a></code>
+</li>
 </ul>
 <p>To count the total number of songs in this database, you would use the summary function <code>n()</code>, which is how statisticians think of the concept of “how many?”</p>
 <p>In this case, because we’ve done nothing else, it will match the number of rows in the data frame. This code also creates two other summary statistics: The first (earliest) entry in the entire list, and the last one.</p>
@@ -475,11 +458,11 @@ Single vs.&nbsp;double “=”
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>top100 <span class="sc">|&gt;</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span> ( <span class="at">number_of_entries =</span> <span class="fu">n</span>() , </span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">first_entry =</span> <span class="fu">min</span>(chart_date), </span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">last_entry=</span> <span class="fu">max</span>(chart_date)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>              )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">top100</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">summarise</span> <span class="op">(</span> number_of_entries <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span> , </span>
+<span>              first_entry <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">chart_date</span><span class="op">)</span>, </span>
+<span>              last_entry<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">chart_date</span><span class="op">)</span></span>
+<span>              <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -489,17 +472,16 @@ Single vs.&nbsp;double “=”
 </div>
 </div>
 </div>
-</section>
-<section id="grouping-with-summary-statistics-aggregating" class="level2 page-columns page-full" data-number="16.3">
-<h2 data-number="16.3" class="anchored" data-anchor-id="grouping-with-summary-statistics-aggregating"><span class="header-section-number">16.3</span> Grouping with summary statistics (aggregating)</h2>
+</section><section id="grouping-with-summary-statistics-aggregating" class="level2 page-columns page-full" data-number="16.3"><h2 data-number="16.3" class="anchored" data-anchor-id="grouping-with-summary-statistics-aggregating">
+<span class="header-section-number">16.3</span> Grouping with summary statistics (aggregating)</h2>
 <p>Your questions will often be around the idea of “the most” or “the biggest” something. Like in Excel, you could do this by guessing and filtering one thing after another. Or you could make a list of the items, then count them up all at once.</p>
 <p>To get the performer with the most appearances on the list, you combine <code>group_by</code> with <code>summarise</code> to count within each group. We’ll go into this in a lot more detail in future chapters.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>top100 <span class="sc">|&gt;</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span> ( performer) <span class="sc">|&gt;</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span> ( <span class="at">times_on_list =</span> <span class="fu">n</span>() ) <span class="sc">|&gt;</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span> (<span class="fu">desc</span> ( times_on_list ))  <span class="sc">|&gt;</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span> (<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">top100</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">group_by</span> <span class="op">(</span> <span class="va">performer</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">summarise</span> <span class="op">(</span> times_on_list <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span> <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">arrange</span> <span class="op">(</span><span class="fu">desc</span> <span class="op">(</span> <span class="va">times_on_list</span> <span class="op">)</span><span class="op">)</span>  <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span> <span class="op">(</span><span class="fl">10</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -520,14 +502,14 @@ Single vs.&nbsp;double “=”
 </ul>
 <p>In Excel, we had trouble sorting a pivot table with city and state as rows. Here, that’s not a problem:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>top100 <span class="sc">|&gt;</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span> ( song, performer)  <span class="sc">|&gt;</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span> ( <span class="at">times_on_list =</span> <span class="fu">n</span>() , </span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">last_time_on_list =</span> <span class="fu">max</span>(chart_date),</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">highest_position =</span> <span class="fu">min</span>(this_week)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>            ) <span class="sc">|&gt;</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span> ( <span class="fu">desc</span> ( times_on_list) ) <span class="sc">|&gt;</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">25</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">top100</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">group_by</span> <span class="op">(</span> <span class="va">song</span>, <span class="va">performer</span><span class="op">)</span>  <span class="op">|&gt;</span></span>
+<span>  <span class="fu">summarise</span> <span class="op">(</span> times_on_list <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span> , </span>
+<span>              last_time_on_list <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">chart_date</span><span class="op">)</span>,</span>
+<span>              highest_position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">this_week</span><span class="op">)</span></span>
+<span>            <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">arrange</span> <span class="op">(</span> <span class="fu">desc</span> <span class="op">(</span> <span class="va">times_on_list</span><span class="op">)</span> <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">25</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>So some of the songs that were on the list the longest never made it to #1. (You’ll learn later on how to make tables that are more easily navigated.)</p>
 <div class="cell page-columns page-full">
@@ -540,9 +522,8 @@ Single vs.&nbsp;double “=”
 </div>
 </div>
 </div>
-</section>
-<section id="make-a-chart" class="level2 page-columns page-full" data-number="16.4">
-<h2 data-number="16.4" class="anchored" data-anchor-id="make-a-chart"><span class="header-section-number">16.4</span> Make a chart!</h2>
+</section><section id="make-a-chart" class="level2 page-columns page-full" data-number="16.4"><h2 data-number="16.4" class="anchored" data-anchor-id="make-a-chart">
+<span class="header-section-number">16.4</span> Make a chart!</h2>
 <p>One motivator in learning R is its very sophisticated graphics. Here, you can just copy and paste this code to see how it might work, without worrying about exactly what it does. We’ll learn how to make this interactive in a future lesson.</p>
 <p>I’ve made a dataset for you that contains the 21 No.1 songs that stayed on the Hot 100 for at least a year in this century. (Songs released after late 2020 will be missing, since the data is a little old and there has to have been at least a year since the release.) You can just copy and paste this code chunk and then render your page, just to prove that — even if you don’t understand it yet — it’s not a lot of work to make a reasonable-looking chart.</p>
 <div class="cell page-columns page-full">
@@ -569,24 +550,25 @@ Single vs.&nbsp;double “=”
 <p><img src="r-verbs_files/figure-html/hot-100-top-10-list-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-</section>
-<section id="thoughts-on-the-verbs" class="level2" data-number="16.5">
-<h2 data-number="16.5" class="anchored" data-anchor-id="thoughts-on-the-verbs"><span class="header-section-number">16.5</span> Thoughts on the verbs</h2>
+</section><section id="thoughts-on-the-verbs" class="level2" data-number="16.5"><h2 data-number="16.5" class="anchored" data-anchor-id="thoughts-on-the-verbs">
+<span class="header-section-number">16.5</span> Thoughts on the verbs</h2>
 <p>You’ve now seen most of the key verbs of the tidyverse, and how they can be put together. They are:</p>
 <ul>
-<li><code>mutate</code> , which you saw in the last chapter, to calculate new variables.</li>
-<li><code>select</code>, which lets you pick out columns in the order you want to see them</li>
-<li><code>filter</code>, to pick out rows based on a condition</li>
-<li><code>summarise</code> to compute summary statistics like “how many?” and “how much? or”smallest” and “largest”</li>
-<li><code>group_by</code> to create a single row for each unique item in a list.</li>
+<li>
+<code>mutate</code> , which you saw in the last chapter, to calculate new variables.</li>
+<li>
+<code>select</code>, which lets you pick out columns in the order you want to see them</li>
+<li>
+<code>filter</code>, to pick out rows based on a condition</li>
+<li>
+<code>summarise</code> to compute summary statistics like “how many?” and “how much? or”smallest” and “largest”</li>
+<li>
+<code>group_by</code> to create a single row for each unique item in a list.</li>
 </ul>
 <p>Don’t worry if you don’t understand how this works or how to do it yourself. This walkthrough is just intended to show you how much you can do with just a few lines of code.</p>
 
 
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -718,9 +700,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
+</script><nav class="page-navigation column-body"><div class="nav-page nav-page-previous">
       <a href="./r-data-import.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Getting and saving data</span></span>
       </a>          
@@ -732,13 +712,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">Data reporting for investigative journalism, Spring 2023 was written by Sarah Cohen</div>   
     <div class="nav-footer-right">Produced with <a href="https://quarto.org">Quarto</a></div>
   </div>
 </footer>
-
 
 
 </body></html>

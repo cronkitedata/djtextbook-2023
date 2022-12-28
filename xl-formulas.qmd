@@ -3,7 +3,7 @@
 
 The quick review of math in Excel uses the City of Phoenix's budgeted spending for the 2018 fiscal year, compared with previous years.  
 
-::: {.alert .alert-info .opacity-2}
+::: {.alert  .alert-secondary}
 Download the [data file](https://cronkitedata.s3.amazonaws.com/xlfiles/phx_budget_summary.xlsx) to follow along 
 :::
 

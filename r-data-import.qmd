@@ -1,9 +1,3 @@
----
-format: 
-  html: 
-    df-print: paged
----
-
 # Getting and saving data {#r-data-import}
 
 ```{r}
@@ -56,6 +50,8 @@ Here is how he describes it:
 > The Billboard [Hot 100](https://www.billboard.com/charts/hot-100/) singles chart has been the music industry's standard record chart since its inception on 8/2/1958. The rankings, published by Billboard Media, are currently based on sales (physical and digital), radio play, and online streaming. The methods and policies of the chart have changed over time.
 
 > The data we will use here is a combination of data collected by Kaggle user [Dhruvil Dave](https://www.kaggle.com/dhruvildave/billboard-the-hot-100-songs), along with some scraping and merging by Prof. McDonald. It is stored on the code sharing website Github for safe keeping.
+
+#### The data dictionary
 
 Here is a *data dictionary* , sometimes called a *record layout* to go along with the data. You should look for, or create, something like this for every data source you use.
 
@@ -195,7 +191,7 @@ The message also tells you how to get more information.[^r-data-import-6]
 
 There is now a new object in your Enviornment tab, under "Data", called `top100`, with 330,800 obs. of 7 variables.
 
-#### Some details
+### Some details
 
 ::: callout-note
 If you want to import an Excel file, you have to use a slightly different library. You will have to load the `readxl` library in the setup chunk, then use the `read_excel()` function to access the data. It works similarly, but it's a slightly different method.
@@ -215,17 +211,17 @@ If you're not sure about the data types of each column, use an option to import 
 Best practice in R is to provide a label for each code chunk, as we did with the setup chunk. It allows you to refer to it later on, provides a better method for errors to be located, and allows quicker navigation. Do that by adding a line at the top of the code chunk like this: `#| label: your-label` Don't use special characters or spaces in the label.
 :::
 
-### Look at the data you imported
+## Look at the data you imported
 
 There are several ways to examine the data you just imported.
 
-#### Check it in the environment tab
+### Check it in the environment tab
 
 There's now an object listed in your Environment tab with a blue arrow. Expand it, and you'll see the column names and what types it found.
 
 ![](assets/images/r-import-envtab.png)
 
-#### Click on it to scroll, filter and sort
+### Click on it to scroll, filter and sort
 
 An easy way to get a little preview of your data is to view it like a spreadsheet. Just remember that any filters or sorts that you do here won't last -- they're just on while you're glancing at the data. But this is useful just to get a little preview of what columns look like and to search for things you know should be there. For instance, if I wanted to see whether Taylor Swift was named something else, I might search here. This search is NOT case-sensitive, which is helpful when you want to get a handle on what's in your data.
 
@@ -235,7 +231,7 @@ To browse the data, click on its name in the environment panel.
 ![](https://cronkitedata.s3.amazonaws.com/images/r-import-scrolldata.gif)
 :::
 
-#### Use functions to examine the rows and columns
+### Use functions to examine the rows and columns
 
 But these methods are no better (and really a little worse) than just viewing your data and clicking around in Excel or Google sheets. To share your view of the data and describe it to others, you must use R code.
 
@@ -361,7 +357,7 @@ top100_clean <-
 
 ```
 
-### Check your work and save
+## Check your work and save
 
 Now check your data by "glimpsing" it: 
 
@@ -396,12 +392,12 @@ saveRDS(top100_clean, file="hit100.RDS")
 
 ### What you should do next {.unnumbered}
 
-If you've followed along, you should create text surrounding your code chunks that result in a clean, readable Markdown document that readers can follow from start to finish. Include:
+If you've followed along, you should create text surrounding your code chunks that result in a clean, readable document that is easy to navigate, has full sentences fully describing your work, and makes sense from top to bottom when rendered. 
 
 -   Documentation of the source of your file.
 -   Sub-headings for each of the steps
 -   Introductory text describing what you are about to do
--   Maybe: Some text after the chunks that describe meaningful output.
+-   Maybe: Some text after the chunks that describe meaningful output or things you notice about the result. 
 
 If you're stuck, you can [use the template I created](https://cronkitedata.s3.amazonaws.com/markdown_templates/01-top100.Rmd) as a starting point.
 
@@ -409,7 +405,7 @@ Render it early and often to make sure your program isn't broken and that the ou
 
 ### And breathe {.unnumbered}
 
-You've now created a full, working R program in Markdown format that can serve as a model for everything you do in the future. Congratulate yourself and take a break!
+You've now created a full, working R program in Quarto format that can serve as a model for everything you do in the future. Congratulate yourself and take a break!
 
 ![Max van den Oetelaar via Unsplash](assets/images/r-firstprog-breathe.jpg){width="80%"}
 

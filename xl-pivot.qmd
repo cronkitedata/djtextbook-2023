@@ -1,5 +1,14 @@
 # Grouping with pivot tables { #xl-pivot }
 
+
+::: {.alert .alert-secondary}
+
+This continues with the Washington Post's police shooting database, but I updated it to include the descriptions of ethnicities.  
+
+[Download the new version](https://cronkitedata.s3.amazonaws.com/xlfiles/wapo-shootings-pivot.xlsx)
+ 
+:::
+
 In the wake of a police shooting in 2016, reporter Mitch Smith obtained a [list of traffic stops](https://cronkitedata.s3.amazonaws.com/xlfiles/saintanthony_police.xlsx) from the St. Anthony Police Department in Minnesota. He was writing a story on Philandro Castile's death and was running out of time. He wanted to answer a simple question:  Were minority motorists more likely to be stopped in St. Anthony than whites? 
 
 Rob Gebeloff made a quick pivot table to answer the question. That night, [Smith wrote ](https://www.nytimes.com/2016/07/13/us/philando-castile-minnesota-police-shooting.html): 
@@ -9,7 +18,7 @@ Rob Gebeloff made a quick pivot table to answer the question. That night, [Smith
 >Last year, around 19 percent of those cited by St. Anthony police were black, as were roughly 41 percent of people arrested by the department, a review of the city’s data showed. Those percentages do not include the large number of defendants whose race was unknown.
 <p></p>
 
-
+## Summarizing with groups
 
 Summarizing a list of items in a spreadsheet is done using pivot tables. In other languages, it's considered "aggregating" or "grouping and summarizing".  Think of pivot tables and grouping  as answering the questions, "How many?" and "How much?". They are particularly powerful when your question also has the words "the most" or the "the least" or "of each".  Some examples:
 
@@ -36,22 +45,59 @@ A pivot table is used when you *just want to see summaries* -- does my ZIP code 
 
 In practice, you'll go back and forth between summary and detail. They're both important, just different.
 
+
+
+### Motivational exercise {-}
+
+A lot of reporters try to do everything with filters. Once they learn pivot tables, they try to do everything with pivot tables. They're two different animals -- filtering is used for *detail*, and grouping (or pivot tables) are for *summary*. Here's one way of understanding what pivot tables do before you try to make one. 
+
+If you wanted to know *how many* people of each race/ethnicity were shot and killed, here's one way you can do it: 
+
+----
+
+1. Using your data table, use the filter the column in the [new spreadsheet](https://cronkitedata.s3.amazonaws.com/xlfiles/wapo-shootings-pivot.xlsx) called "Ethnicity" to show only "Black non-Hispanic" victims. 
+
+::: grid
+
+:::: g-col-6
+
+::::: {.ps-4}
+  You should see something like this at the bottom of your screen, showing 1444 of 5945 records shown. 
+:::::
+::::
+
+:::: g-col-6
+![filter results](assets/images/xl-pivot-filter-results.png){fig-align="left"}
+::::
+
+::: 
+
+2. Write that down on a piece of paper, or start a new sheet in your workbook called "ethnicity", and create a small data area with the columns called "Ethnicity", "# of shootings", "% of total". 
+
+3. Repeat the process with each ethnicity, entering or writing down the results of each of them. 
+
+4. Now, for each ethnicity, compute the percent of total -- or, the number of rows you found divided by 5,945 expressed as a percent.
+
+----
+
+In the end, you would have a page that looks something like this (or your own chicken-scratching with the same numbers): 
+
+![handmade pivot](assets/images/xl-pivot-handmade.png){fig-align="left"}
+
+
+
+And if you're asking yourself, "why is this so much work? Isn't there an easier way?" , the answer is to try a pivot table. It does all that work for you. 
+
 ## Tutorial
 
-::: {.alert .alert-info .opacity-2}
+### A Skittles example {-}
 
-This continues with the Washington Post's police shooting database, but I updated it to include the descriptions of ethnicities.  
+{{< video https://www.youtube.com/embed/rv_t1kqSXcQ >}}
 
-[Download the new version](https://cronkitedata.s3.amazonaws.com/xlfiles/wapo-shootings-pivot.xlsx)
- 
-:::
-
-### TL;DR {-}
-
-Here's a video with the same material:
-
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/P_udA-XFpGY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+::: callout-warning
+### Errata
+Make sure that the column you choose to put in the "Values" area to count is always filled out -- otherwise it will skip them.
+::: 
 
 
 ### Setting up the pivot table {-}
@@ -68,6 +114,8 @@ If all goes well, it will look like your data disappeared. It didn't -- you're j
 
 
 The section on the right gives you an outline of what to do. The section on the left will get filled in as you make your pivot table. If you want to see the number of fatalities by ethnicity, drag that column into the "Rows" area, then drag something that's always filled out into the Values area (`state` is a safe one in this data).
+
+Be sure to ALWAYS use something that has something filled in all the time for this. If you look at the filter, it must not have an option at the bottom that says `(Blanks)`. If you ignore this, your answer **will be wrong**, since the calculation will only count filled-in cells.
 
 
 ![](assets/images/xl-pivot-success.png){width=100%}
@@ -87,7 +135,7 @@ Suppose you'd like to see the number of fatalities by year, with the years acros
 
 ![](assets/images/xl-pivot-twovariables.png){width=100%}
 
-### Even more variables {-}
+### Even more detail {-}
 
 Say you wanted to see each city's total shootings by year. Which one had the most last year, and which one had the most overall? 
 
@@ -95,9 +143,42 @@ This is actually really hard in a pivot table, because there are cities with the
 
 ![badsort](assets/images/xl-pivot-badsort.png){width=100%}
 
-This is after some fiddling with the formats, and I still can't sort properly -- the city "Phoenix", including those in Maryland and Arizona, had the second-highest  number of shootings. We can't sort by the combination of city and state. 
+This is after some fiddling with the formats, and I still can't sort properly -- the city "Phoenix", including those in Maryland and Arizona, had the second-highest  number of shootings. We can't sort by the combination of city and state.  (Don't try to get something that looks like this on your own -- I can't even reproduce it exactly because I'd fiddled around trying to get something that I wanted to see in this example. )
 
 Your choices in Excel are limited: Copy and paste the values of the pivot table into a new sheet and sort there, or create a new variable by concatenating the name of the city and state into one column. 
+
+
+### Go back to your raw data {- }
+
+But say you wanted to look into the 15 Phoenix, AZ shootings from 2020. Your instinct might be to filter your pivot table and try adding more items to the columns and rows: 
+
+![pivot add info](assets/images/xl-pivot-morerows.png){fig-align="left"}
+
+But this is what your filters were made for! Return to your original data, and set the filters so you can see ALL of the details about the small list of items. 
+
+
+::: column-page-right
+![filter results](assets/images/xl-pivot-filterinstead.png)
+::: 
+
+::: {.alert .alert-primary}
+**The big picture**
+
+Pivot tables and aggregation with grouping are good for narrowing down the items you want to examine more closely, and for compiling summary statistics about your data. 
+
+But filters are much better for examining the full range of information about a small number of examples. 
+
+In practice, you'll go back and forth between summary and detail. You need them both. 
+::: 
+
+
+
+## TL;DR 
+
+Here's a video with the same material:
+
+{{< video https://www.youtube.com/embed/P_udA-XFpGY >}}
+
 
 
 ## FAQ

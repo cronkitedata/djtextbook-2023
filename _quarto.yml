@@ -10,6 +10,8 @@ book:
   sidebar:
     search: true
     logo: assets/images/favicon.ico
+    collapse-level: 1
+    background: 'light'
   title: "Data Reporting"
   subtitle: "Cronkite School MAIJ Program, Spring 2023"
   page-navigation: true
@@ -91,14 +93,16 @@ book:
 format:
   html:
     theme:
-      - flatly
+      - cosmo
       - custom.scss
+    code-link: true
     code-copy: true
-    number-depth: 1
-    fontsize: 1em
+    number-depth: 3
+#    fontsize: 1em
     default-image-extension: png
-#    highlight-style: github
     df-print: paged
+    page-layout: full
+    toc-location: left
 
 # The default image extension means that you can resize for pdf output.
 # complex images come out too big, but the smaller ones are ok.
@@ -114,6 +118,5 @@ execute:
      warning: false
      message: false
 
-
-
+knitr: true
 

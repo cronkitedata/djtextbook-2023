@@ -1,12 +1,11 @@
 /*-- scss:defaults --*/
 
-$primary: #096b72 !default;
-$color-foot:  #096b72 !default;
+$primary: #637238 !default;
 
 /*-- scss:rules --*/
 
 .sidebar-title {
-  color: #096b72;
+  color: #637238;
 }
 
 img.quarto-cover-image {
@@ -47,17 +46,6 @@ code a:any-link {
 pre {
   background-image: linear-gradient(160deg,#f8f8f8 0,#f1f1f1 100%);
 }
-
-.standout {
-  color: $color-foot;
-}
-
-.alert-dothis {
-  background-color: $color-foot !important;
-  opacity: .8;
-  color: var(--bs-gray-100);
-}
-
 
 /* Printing ------------------------------------------------ */
 

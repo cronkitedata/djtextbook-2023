@@ -1,10 +1,6 @@
-# Practice exercise 1 { #xl-practice-noc}
+# Practice exercise { #xl-practice-noc}
 
-This exercise helps you understand the difference between filtering and grouping, or, in Excel terms, filtering and pivot tables. In general, you'll use filtering to look up the details of cases based on a criteria. These are the stories. You'll use pivot tables to create aggregated data -- count, sum, average, and the like. 
-
-In the real world, reporters move back and forth between these two techniques. They'll go back and filter for cases once they find something interesting in the aggregation, and will create sums and counts if they think they see a pattern in the cases. 
-
-That's pretty abstract concept -- it will become more concrete as you go through the motions of this exercise. 
+This exercise gives you a chance to look at some messy real-world data that is frustrating but useful. Use it to practice your filtering and pivot table skills.
 
 ## Data source
 
@@ -18,13 +14,11 @@ This dataset includes all "Notice of Claims" against the city of Phoenix between
 
 Make sure to look at the "data_dictionary" sheet for the definitions of each column before you start. 
 
-In this tutorial, I'm providing the equivalent of a data diary for you -- if you follow these instructions, you should come up with the same answers I did.  You should keep your own diary alongside your work. 
+
 
 ## Sort / filter
 
 I almost always go into the Excel preferences, and under "Tables & Filters" turn off the check that says "Use table names in formulas".  Sometimes it sticks, sometimes it doesn't. Have no idea why. 
-
-Arrange (sort) the claims using the ID column which is called "orig_order". 
 
 1.  What is the orig_order (id) value of the largest PAID claim in the database (combined personal injury and property) ? 
 
@@ -34,46 +28,14 @@ Arrange (sort) the claims using the ID column which is called "orig_order".
 
 4. Describe the most recent claim made  against the police related to law enforcement activities, regardless of whether it's been resolved.
 
-5. Filter for pd_total of greater than zero, and the type called "Shootings". Look at the lower left corner and record how many claims against the city for shootings were paid any money? 
+5. Using your filter, determine how many *paid* claims were made for  "Shootings".  in the type of claim. 
 
-6. Find one other thing that you might want to research further that could make an interesting one-off story.  These are distinct events that you'd like to know more about, not trends or patterns. This requires no calculation, just your news judgment. 
+6. Find one other thing that you might want to research further that could make an interesting one-off story.  These are distinct events that you'd like to know more about, not trends or patterns. This requires no calculation, just your news judgment. Base it solely on what you see in this data, not other research. 
 
-## Pivot table motivation
+## Pivot table practice
 
-Here are some questions you have about each department in the city: 
 
-* What was the highest and lowest payout they made? 
-* How many claims were made, and how many were paid out? 
-* What was the total amount paid and the average per claim? 
-
-### Using filters to answer big questions
-
-Here's one way to do it, using the filters: 
-
-1. Remove all of your filter. 
-2. Filter by department. We'll start with Aviation, the first one on the list. 
-3. Select the entire table, including the headings. Copy it to a new sheet. Don't be surprised if you miss the headings or some of the columns the first couple of times through and have to do it again.  
-4. Rename the  new sheet "Aviation" by double-clicking on its tab. 
-5. Make sure you're in the top left corner of the screen (use CTL-HOME key if you're on a real keyboard, CTL-UP and CTL-Left if you're not.) Freeze the column headings so you can scroll to the bottom and still see what you're looking at (under View, Freeze top Row)
-6. Note the number of rows that were copied and subtract one. Record that as the number of claims made. 
-7. Make sure you start from the top of the sheet, and filter out "Unresolved"  claims by un-selecting it. Don't touch anything before you note the number of records found at the bottom left (it should be 11852 in this case). 	That's the number of resolved claims. Now filter on the same column, and uncheck "No payment" and note the number of claims. It should be 5718. 
-8. Go to the bottom of the worksheet. Skip a row, and sum the column. Repeat that, replacing =sum() with =max(), =min() , =average(). 
-9. Write down all of your answers on a piece of paper. 
-
-Don't be surprised if you do this wrong a few times, and you have to do it over. But now you have the answer for the Aviation department. 
-
-Try to imagine what you'd do if you wanted to know the average and minimum payout of just those that were settled .  
-
-## Rinse, repeat
-
-Now repeat that entire process with at least two other  departments that interest you. 
-
-## Pivot table
-
-At this point, you should be thoroughly sick of having to do things over and over. The purpose of the pivot table is to let you compute these aggregate, or summary, statistics all at once for each category or set of categories. It can compute average, minimum , maximum and sum of values, and it can count the number of rows for any column. (In Excel they're always the same. That's not always true of all programs depending on how they handle missing information.)  
-
-### Create the pivot table
-
+### Create the pivot table {-}
 
 1, Create an empty pivot table from the data table.
 
@@ -84,18 +46,21 @@ At this point, you should be thoroughly sick of having to do things over and ove
 6. Drag the "department" to the Values area and make sure it says "Count of Department". 
 7. Drag the pd_total to the Values area, and make sure it says "Sum of pd_total". If it doesn't, change the pivot table calculation to "Sum". Repeat that three times, with "average", "min" and "max". 
 
-Try playing with the placement of items in the pivot table to get an intuition for what they do. You can drag a column into the "Filter" area so that you can pick out just some of the cases for analysis. It works the same way as the filter in the original sheet. 
+### Describe one department {-}
+
+Here are some questions you have about each department in the city. Answer them for a department of your choice: 
+
+* What was the highest and lowest payout they made? 
+* How many claims were made, and how many were paid out? 
+* What was the total amount paid and the average per claim? 
 
 
-### Practice questions
+### Other questions {-}
 
-Now answer the following questions: 
-
-1. What department had the most claims made against them from FY 2015-16 to through 2019-20? 
+1. What department had the most claims made against them from FY 2015-16 to through 2019-2020? 
 
 2. How much did the city pay in that time because of complaints against Streets. Did any department pay more? 
 
 3. On average, how much did the city pay vs. the amount that was requested? Include only those complaints that have been resolved -- not those that are still underway or have been reopened. 
 
-	
-	
+4. Your turn: Ask an interesting question of this data and try to answer it. 

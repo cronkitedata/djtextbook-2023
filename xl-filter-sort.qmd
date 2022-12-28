@@ -30,7 +30,7 @@ Sorting and filtering can:
 ## Example data
 
 
-::: {.alert .alert-info }
+::: {.alert .alert-secondary }
 - [Data from the Washington Post](https://cronkitedata.s3.amazonaws.com/xlfiles/wapo-shootings-filter.xlsx)  for use in this tutorial
 - [Documentation from the Post's github site](https://github.com/washingtonpost/data-police-shootings#about-the-data)
 ::: 

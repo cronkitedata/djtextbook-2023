@@ -1,6 +1,7 @@
 
+## Preface {-}
 
-This book serves as a compilation of  of handouts, websites and tutorials that I have used in my data reporting class at ASU's [Cronkite School of Journalism and Mass Communication](cronkite.asu.edu). Some of the material will be useful in other courses or for self-study, but it is primarily aimed at the investigative journalism masters' students at Cronkite.
+This book serves as a compilation of  of handouts, websites and tutorials that I have created in my data reporting class at ASU's [Cronkite School of Journalism and Mass Communication](cronkite.asu.edu), IRE and NICAR conferences, and as an adjunct at the Columbia University Graduate School of Journalism. Some of the material will be useful in other courses or for self-study, but it is primarily aimed at the investigative journalism masters' students at Cronkite.
 
 It covers: 
 
@@ -19,12 +20,16 @@ It doesn't cover:
 
 A note on language: I'll use the words "read" and "write" in a generic sense. I intend them to cover the range of journalistic media, including listening, watching, and news applications or graphics.  
 
-## Conventions used in this book 
+### Navigation
+
+Each major section on the left can be expanded to see the chapters included. There is a table of contents for the current page at underneath that index. 
+
+### Conventions used in this book {.unnumbered}
 
 This book is written using a Mac desktop keyboard, meaning there may be key combinations you don't have. I'll try to keep them to a minimum. I'll try to use the convention `CMD/CTL` and `OPT/ALT` , with the part before the / for Mac users and part after the / for Windows users. 
 
 
-### Conventions in the R Study Guide chapters 
+#### Conventions in the R Study Guide chapters {-}
 
 ::: callout-tip
 Pro tips! 
@@ -36,12 +41,9 @@ An aside.
 ::: 
 
 ::: callout-warning
-Something you should be careful about, but it won't be horrible if you miss it.
+Something you should be careful about - you might have trouble running the code or get very unexpected results if you ignore it.
 ::: 
 
-::: callout-caution
-Something that is super important to pay attention to -- you may have errors in your story even if you can get things to work if you ignore it.
-::: 
 
 ::: {.alert .alert-success .alert-dothis}
 This background is used for instructions for anyone trying to follow along. 

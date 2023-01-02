@@ -283,16 +283,61 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="./r-verbs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">A quick tour of verbs</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-verb-filter.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Verbs in depth: Select, arrange, filter</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-verb-groupby.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Verbs in depth: Aggregating with groups</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-verb-mutate.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Verbs in depth: New from old data with Mutate</span></a>
+  </div>
+</li>
       </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">Appendices</a>
+            <a href="./advanced.html" class="sidebar-item-text sidebar-link">(PART) Special skills</a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./advanced-regex.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Regular Expressions for pattern matching</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./advanced-openrefine.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Open refine walkthrough</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./advanced-scrape1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Scraping without programming</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./advanced-scrape2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Introduction to scraping in R</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">Appendices</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./appendix-math.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Newsroom numbers cheat sheet</span></a>
@@ -560,7 +605,7 @@ Tip
 <div class="alert-light">
 <div class="cell">
 <div class="cell-output cell-output-stderr">
-<pre><code>Rows: 330800 Columns: 7
+<pre><code>Rows: 336100 Columns: 7
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
 chr (3): CHART WEEK, TITLE, PERFORMER
@@ -658,7 +703,7 @@ Naming your code chunks
 
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":["CHART WEEK"],"name":[1],"type":["chr"],"align":["left"]},{"label":["THIS WEEK"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["TITLE"],"name":[3],"type":["chr"],"align":["left"]},{"label":["PERFORMER"],"name":[4],"type":["chr"],"align":["left"]},{"label":["LAST WEEK"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["PEAK POS."],"name":[6],"type":["dbl"],"align":["right"]},{"label":["WKS ON CHART"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"8/4/1958","2":"1","3":"Poor Little Fool","4":"Ricky Nelson","5":"NA","6":"1","7":"1"},{"1":"8/4/1958","2":"2","3":"Patricia","4":"Perez Prado And His Orchestra","5":"NA","6":"2","7":"1"},{"1":"8/4/1958","2":"3","3":"Splish Splash","4":"Bobby Darin","5":"NA","6":"3","7":"1"},{"1":"8/4/1958","2":"4","3":"Hard Headed Woman","4":"Elvis Presley With The Jordanaires","5":"NA","6":"4","7":"1"},{"1":"8/4/1958","2":"5","3":"When","4":"Kalin Twins","5":"NA","6":"5","7":"1"},{"1":"8/4/1958","2":"6","3":"Rebel-'rouser","4":"Duane Eddy His Twangy Guitar And The Rebels","5":"NA","6":"6","7":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["CHART WEEK"],"name":[1],"type":["chr"],"align":["left"]},{"label":["THIS WEEK"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["TITLE"],"name":[3],"type":["chr"],"align":["left"]},{"label":["PERFORMER"],"name":[4],"type":["chr"],"align":["left"]},{"label":["LAST WEEK"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["PEAK POS."],"name":[6],"type":["dbl"],"align":["right"]},{"label":["WKS ON CHART"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"1/1/2022","2":"1","3":"All I Want For Christmas Is You","4":"Mariah Carey","5":"1","6":"1","7":"50"},{"1":"1/1/2022","2":"2","3":"Rockin' Around The Christmas Tree","4":"Brenda Lee","5":"2","6":"2","7":"44"},{"1":"1/1/2022","2":"3","3":"Jingle Bell Rock","4":"Bobby Helms","5":"4","6":"3","7":"41"},{"1":"1/1/2022","2":"4","3":"A Holly Jolly Christmas","4":"Burl Ives","5":"5","6":"4","7":"25"},{"1":"1/1/2022","2":"5","3":"Easy On Me","4":"Adele","5":"3","6":"1","7":"11"},{"1":"1/1/2022","2":"6","3":"It's The Most Wonderful Time Of The Year","4":"Andy Williams","5":"7","6":"5","7":"26"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <div data-pagedtable="false">
@@ -686,15 +731,15 @@ Note
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">glimpse</span><span class="op">(</span><span class="va">top100</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 330,800
+<pre><code>Rows: 336,100
 Columns: 7
-$ `CHART WEEK`   &lt;chr&gt; "8/4/1958", "8/4/1958", "8/4/1958", "8/4/1958", "8/4/19…
+$ `CHART WEEK`   &lt;chr&gt; "1/1/2022", "1/1/2022", "1/1/2022", "1/1/2022", "1/1/20…
 $ `THIS WEEK`    &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, …
-$ TITLE          &lt;chr&gt; "Poor Little Fool", "Patricia", "Splish Splash", "Hard …
-$ PERFORMER      &lt;chr&gt; "Ricky Nelson", "Perez Prado And His Orchestra", "Bobby…
-$ `LAST WEEK`    &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
-$ `PEAK POS.`    &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, …
-$ `WKS ON CHART` &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…</code></pre>
+$ TITLE          &lt;chr&gt; "All I Want For Christmas Is You", "Rockin' Around The …
+$ PERFORMER      &lt;chr&gt; "Mariah Carey", "Brenda Lee", "Bobby Helms", "Burl Ives…
+$ `LAST WEEK`    &lt;dbl&gt; 1, 2, 4, 5, 3, 7, 9, 11, 6, 13, 15, 17, 18, 0, 8, 25, 1…
+$ `PEAK POS.`    &lt;dbl&gt; 1, 2, 3, 4, 1, 5, 7, 6, 1, 10, 11, 8, 12, 14, 7, 16, 12…
+$ `WKS ON CHART` &lt;dbl&gt; 50, 44, 41, 25, 11, 26, 24, 19, 24, 15, 31, 18, 14, 1, …</code></pre>
 </div>
 </div>
 <p>Here, you might notice that the names of some of the columns have back-ticks around them. That’s because they don’t follow our rules for column names – they should be lower case, with no spaces or special characters.</p>
@@ -732,15 +777,15 @@ Warning
 <span>  <span class="fu">clean_names</span><span class="op">(</span><span class="op">)</span>  <span class="op">|&gt;</span></span>
 <span>  <span class="fu">glimpse</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 330,800
+<pre><code>Rows: 336,100
 Columns: 7
-$ chart_week   &lt;chr&gt; "8/4/1958", "8/4/1958", "8/4/1958", "8/4/1958", "8/4/1958…
+$ chart_week   &lt;chr&gt; "1/1/2022", "1/1/2022", "1/1/2022", "1/1/2022", "1/1/2022…
 $ this_week    &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17…
-$ title        &lt;chr&gt; "Poor Little Fool", "Patricia", "Splish Splash", "Hard He…
-$ performer    &lt;chr&gt; "Ricky Nelson", "Perez Prado And His Orchestra", "Bobby D…
-$ last_week    &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
-$ peak_pos     &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17…
-$ wks_on_chart &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …</code></pre>
+$ title        &lt;chr&gt; "All I Want For Christmas Is You", "Rockin' Around The Ch…
+$ performer    &lt;chr&gt; "Mariah Carey", "Brenda Lee", "Bobby Helms", "Burl Ives",…
+$ last_week    &lt;dbl&gt; 1, 2, 4, 5, 3, 7, 9, 11, 6, 13, 15, 17, 18, 0, 8, 25, 19,…
+$ peak_pos     &lt;dbl&gt; 1, 2, 3, 4, 1, 5, 7, 6, 1, 10, 11, 8, 12, 14, 7, 16, 12, …
+$ wks_on_chart &lt;dbl&gt; 50, 44, 41, 25, 11, 26, 24, 19, 24, 15, 31, 18, 14, 1, 49…</code></pre>
 </div>
 </div>
 <p>This shows us that the function <code>clean_names()</code> converts the column names into our preferred style. Notice that we didn’t pour that answer into a new object — there is no assignment operator <code>&lt;-</code> – so it just prints the answer to the screen.</p>
@@ -788,15 +833,15 @@ Danger
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">top100_clean</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">glimpse</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 330,800
+<pre><code>Rows: 336,100
 Columns: 7
-$ chart_date   &lt;date&gt; 1958-08-04, 1958-08-04, 1958-08-04, 1958-08-04, 1958-08-…
-$ title        &lt;chr&gt; "Poor Little Fool", "Patricia", "Splish Splash", "Hard He…
-$ performer    &lt;chr&gt; "Ricky Nelson", "Perez Prado And His Orchestra", "Bobby D…
+$ chart_date   &lt;date&gt; 2022-01-01, 2022-01-01, 2022-01-01, 2022-01-01, 2022-01-…
+$ title        &lt;chr&gt; "All I Want For Christmas Is You", "Rockin' Around The Ch…
+$ performer    &lt;chr&gt; "Mariah Carey", "Brenda Lee", "Bobby Helms", "Burl Ives",…
 $ this_week    &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17…
-$ last_week    &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
-$ wks_on_chart &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
-$ peak_pos     &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17…</code></pre>
+$ last_week    &lt;dbl&gt; 1, 2, 4, 5, 3, 7, 9, 11, 6, 13, 15, 17, 18, 0, 8, 25, 19,…
+$ wks_on_chart &lt;dbl&gt; 50, 44, 41, 25, 11, 26, 24, 19, 24, 15, 31, 18, 14, 1, 49…
+$ peak_pos     &lt;dbl&gt; 1, 2, 3, 4, 1, 5, 7, 6, 1, 10, 11, 8, 12, 14, 7, 16, 12, …</code></pre>
 </div>
 </div>
 <p>Note the new data type for the chart_date, and the order of the columns along with the clean names.</p>

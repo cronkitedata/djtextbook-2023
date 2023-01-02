@@ -1,45 +1,47 @@
-# Verbs in depth: New from old data with Mutate  {#r-verb-mutate}
+# Verbs in depth: New from old data with Mutate {#r-verb-mutate}
 
-
-:::{.alert .alert-secondary}
-
-<p class="alert-heading font-weight-bolder fs-3">
+::: {.alert .alert-secondary}
+::: {.alert-heading .font-weight-bolder .fs-3}
 In this chapter
-</p>
+:::
 
-* Creating new columns with `mutate()` 
-* Combine summary and detail into one data frame
-* Replacing `NA` values 
-* Using conditional commands `if_else()` and `case_when()` to create categories
+-   Creating new columns with `mutate()`
+-   Combine summary and detail into one data frame
+-   Replacing `NA` values
+-   Using conditional commands `if_else()` and `case_when()` to create categories
+:::
 
-::: 
+::: callout-note
+This chapter uses a verb called `count()` to count up the number of rows in each category. We'll get into this in much more detail in the next chapter, but it's helpful to use it now to show you the results of creating new categories from old data.
+:::
 
-This continues the work using Arizona Paycheck Protection Program loans.  Full documentation of the dataset is in the [Appendix](appendix-ppp.html).   
+This continues the work using Arizona Paycheck Protection Program loans. Full documentation of the dataset is in the [Appendix](appendix-ppp.html).
 
-
-
-```{r setup, include=FALSE, message=FALSE}
+```{r}
+#| label: setup
+#| include: false
 
 library(tidyverse)
 library(lubridate)
 library(janitor)
-library(formattable)
-library(knitr)
 
-options (scipen=999)
+
+options(scipen=999)
 
 ```
 
+::: {.alert-success .alert-dothis .p-3}
+To follow along, open your PPP project and create a new markdown the usual way, including the usual setup chunk.
 
+Add this command `options(scipen=999)` to the bottom of your setup chunk to avoid looking at scientific notation for large and small numbers.
 
-
-
-To follow along, open your PPP project and create a new markdown the usual way, including the usual setup chunk. This will let us make numbers more readable. Read the data into your environment using this code chunk:
-
+Load the data into your environment using this code chunk:
 :::
 
-```{r m-loaddata, results="hide", echo=TRUE, eval=knitr::is_html_output()}
-
+```{r}
+#| eval: true
+#| label: read-az-loans
+#| echo: fenced
 
 ppp_orig <- 
   readRDS( 
@@ -50,32 +52,39 @@ ppp_orig <-
 
 ```
 
- 
 ## `mutate` to create new columns
 
-Use the verb `mutate` whenever you want to create or change existing columns in your data. 
+Use the verb `mutate` whenever you want to create or change existing columns in your data.
 
-Examples of this include: 
+Examples of this include:
 
-* Computing difference or percent difference
-* Collapsing or creating categories for more meaningful analysis
-* Replacing `NA` values with "Unknown" or zero. 
+-   Computing difference or percent difference
+-   Replacing `NA` values with "Unknown" or zero.
+-   Collapsing or creating categories for more meaningful analysis
 
 You will often use a combination of filtering and mutating to create a new data frame using the `<-` assignment to use in future code chunks. That's because they can get complex, and you don't want to repeat code that you might have to change over and over.
 
+::: callout-warning
+This chapter assumes you have gone through the [filtering](r-verb-filter.qmd) chapter. Many of the expressions and functions are the same, so if they don't look familiar to you, consider reviewing that chapter (again) first.
+:::
 
-### Math on columns: compute difference and percent difference 
+### Math on columns: compute difference and percent difference
 
-Here's an example of computing the difference and percent difference between the amount received and the amount forgiven. Before you run this, try to think of why a reporter might be interested in this list, especially in the order that it's being listed.^[There is something called "date math", which lets you compute intervals between dates, ages, and the like. We're skipping this, but get some help if you want to use it. It's a little tricky.]
+Here's an example of computing the difference and percent difference between the amount received and the amount forgiven. Before you run this, try to think of why a reporter might be interested in this list, especially in the order that it's being listed.
 
-```{r m-difference, results="hide", rows.print=10, echo=TRUE}
+Use the single "=" sign to provide a name for the new column and create more than one new column using a comma between them:
 
-ppp_orig %>%
-  select ( borrower_name, borrower_city, amount, forgiveness_amount) %>%
-  filter ( forgiveness_amount > 0) %>%
-  mutate ( amt_diff = amount - forgiveness_amount, 
-           amt_pct_diff = amt_diff / amount  ) %>%
-  arrange  ( amt_pct_diff) %>%
+```{r}
+#| label: m-difference
+#| eval: false
+
+
+ppp_orig |>
+  select ( borrower_name, borrower_city, amount, forgiveness_amount) |>
+  filter ( forgiveness_amount > 0) |>
+  mutate ( amt_diff =  forgiveness_amount-amount, 
+           amt_pct_diff = amt_diff / amount  * 100 ) |>
+  arrange  ( desc(amt_diff)) |>
   head(5)
   
   
@@ -83,74 +92,88 @@ ppp_orig %>%
 
 ```
 
-### Detail and total with summary statistics
+### Converting NA to 0
 
-In the last chapter, you saw how to use `mutate` to compute the total and sub-total of the number of rows in a summary. You can use any of the summary statistics to get totals for your entire data frame in a mutate statement. 
+NOTE: Beginning with this code chunk, the tutorial begins saving interim data frames every time you make a change.
 
-Use the single "=" sign to provide a name for the new column and  create more than one new column using a comma between them: 
+We would like to convert the forgiven amount from a missing value to zero, under the idea that if they have not filled it out, nothing has (yet) been forgiven. Of course, we'd have to check that with the SBA before publication.
 
-```markdown
+There is a specific function used for that: `replace_na()`, with two arguments: The column you want to check for missing values, and the value you want to use instead. This isn't limited to numbers -- you can do the same thing with words, often replacing NA with "Unknown".
 
-mutate ( avg_loan_size = mean( amount ), 
-         median_loan_size = median ( amount ))
-
-```
-
-### Converting NA to 0 
-
-NOTE: Beginning with this code chunk, the tutorial begins saving interim data frames every time you make a change. 
-
-We would like to convert the forgiven amount from a missing value to zero, under the idea that if they have not filled it out, nothing has (yet) been forgiven. Of course, we'd have to check that with the SBA before publication. 
-
-There is a specific function used for that: `replace_na()`:
-
-
-```{r m-create-fixed, eval=TRUE, echo=TRUE}
+```{r}
+#| label: -create-fixed
+#| eval: true
 
 ppp_forgiven_fixed <- 
-  ppp_orig %>%
+  ppp_orig |>
   mutate (amount_forgiven = replace_na(forgiveness_amount, 0))
 
 ```
 
-
 (Note that nothing came out in this code chunk because the result was saved into a new data frame variable.)
 
-## Working with text using conditional statements 
+### Detail and total with summary statistics
 
-Very often, you'll want to categorize entries in a database in order to make it simpler to count and sum the values in a meaningful way. For example, the `business_type` column has 23 different values, and isn't always filled in. Some are variants of others: 
+You can use `mutate` to put summary statistics next to your values so you can see whether or not they are similar to the average or median. (If you skipped the last section, it will always come out as `NA`, because they infect everything they touch. )
+
+ˆ
+
+```{r}
+#| eval: true
+#| label: mean-forgiven
 
 
-```{r print-forgiven, echo=FALSE, rows.print=25}
+ppp_forgiven_fixed |> 
+  mutate ( avg_forgiven = mean(amount_forgiven), 
+           median_forgiven = median(amount_forgiven)) |> 
+  select (borrower_name, amount_forgiven, avg_forgiven, median_forgiven ) |> 
+  head()
 
-ppp_forgiven_fixed  %>%
-count ( business_type, sort=TRUE, name="# of rows") 
 
 ```
 
+## Working with text using conditional statements
 
-One way to work with these is to create new columns with yes-no indicators for certain types of businesses like non-profits or individuals vs. companies. 
+Very often, you'll want to categorize entries in a database in order to make it simpler to count and sum the values in a meaningful way. For example, the `business_type` column has 23 different values, and isn't always filled in. Here's a list with the number of loans in each category:
+
+```{r  rows.print=25}
+
+#| label: print-forgiven
+#| eval: true
+#| echo: false 
+
+ppp_forgiven_fixed  |>
+   count ( business_type, sort=TRUE, name="# of rows") 
+
+```
+
+One way to work with these is to create new columns with yes-no indicators for certain types of businesses like non-profits or individuals vs. companies.
 
 ### Categories using `if_else`
 
+The function to do this is `if_else()` , which tests a condition exactly the same way `filter` did, but then assigns a value based on whether it's met or not. You list the condition first, then a comma , then what should happen if the condition is true, and then what should happen if it's false.
 
-The function to do this is  `if_else()` , which tests a condition exactly the same way `filter` did, but then assigns a value based on whether it's met or not. Here's the general form of what it looks like: 
+The condition is done the same way you did it in a filter, but instead of picking out the rows that match, `mutate` acts on them separately from the rows that don't match.
 
-```markdown
+There's no "maybe", except for NA's in the original value. Here's the general form of what it looks like:
+
+``` markdown
 
 new_column_name = if_else ( test the old column for something as in a a filter,
                          give it a value if it's true,
                          give it another value if it's not true)
-
 ```
 
-So here is a way to do this with the business_type using the same %in% operator you used in the `filter` lesson, saving it to new data frame in your Environment, then displaying the resulting data frame:   
+So here is a way to do this with the business_type using the same %in% operator you used in the `filter` lesson, saving it to new data frame in your Environment, then displaying the first 10 types of businesses using `count()`
 
+```{r rows.print=10}
 
-```{r m-category-indiv, rows.print=25, eval=TRUE, echo=TRUE}
+#| label: m-category-indiv 
+#| eval: true 
+#| echo: true
 
 ppp_category_indiv <- 
-  ppp_forgiven_fixed %>%
+  ppp_forgiven_fixed |>
   mutate ( is_individual = 
               if_else ( business_type %in% 
                           c("Independent Contractors", 
@@ -161,131 +184,103 @@ ppp_category_indiv <-
                         "Organization")
   )  
 
-
-# now you can print out the ones that were changed to check them:
-
-ppp_category_indiv %>%
-  group_by ( business_type, is_individual) %>%
-  summarise ( n = n(), .groups="drop") %>%
-  arrange ( desc(n) ) %>% 
-  head(5)
-
+ppp_category_indiv |> 
+  count (is_individual, business_type) |> 
+  head(10)
 
 
 ```
 
+### Categories using fuzzy matching
 
-### Categories using pattern matching 
+You can also use the same `str_like()` function you used in filtering. Here, it sets whether or not the borrower was a non-profit. Remember, a `%` means "anything or nothing, and a `_` means "any single character but it must be present". In our case, the word is shown as "Non Profit" and "Non-Profit". Once. you've set it to your new words, you can just filter on the new value:
 
-You can also use the same `str_detect()` function you used in filtering. Here, it sets whether or not the borrower was a non-profit. The period means "nothing or any 1 character" because sometimes it's listed with a dash and sometimes it's not. 
+```{r}
+#| label: m-nonprofit
 
-
-```{r m-nonpofit, echo=TRUE, eval=TRUE}
 
 ppp_category_nonprofit <-
-  ppp_category_indiv %>%
+  ppp_category_indiv |>
   mutate ( is_nonprofit = 
-             if_else ( str_detect(business_type, "Non.Profit") , 
+             if_else ( str_like(business_type, "%Non_Profit%") , 
                        "Is nonprofit", 
                        "Not nonprofit"))  
 
 
 
-ppp_category_nonprofit %>%
-  count ( business_type, is_nonprofit) %>%
+ppp_category_nonprofit |>
+  count ( business_type, is_nonprofit) |>
   filter ( is_nonprofit == "Is nonprofit")
   
 ```
 
-
 (The profit categorization is unclear for some of these types, such as professional associations , tribal concerns and cooperatives.)
 
-### More than one outcome 
+### More than one outcome
 
-Sometimes you will want more than one outcome, such as setting a value for "High", "Medium" and "Low". Instead of `if_then`, use the function `case_when`, which looks like this: 
+Sometimes you will want more than one outcome, such as setting a value for "High", "Medium" and "Low". Instead of `if_then`, use the function `case_when`, which lets you string along conditions and their outcomes. The tilde (`~`) is used to show what happens if it's true, and a TRUE at the end lets you say "everthing else"^[This will change in future versions, which have a much more intuitive "Other" alternative.] 
 
-
-```markdown
-
-case_when ( first condition ~ what if it's true,
-            second condition ~ what if  it's true, 
-            third condition  ~ what if it's true, 
-            TRUE ~ what to do with everything that's left
-            )
-
+::: small
+``` 
+original data |> 
+  case_when ( first condition ~ what if it's true,
+              second condition ~ what if  it's true, 
+              third condition  ~ what if it's true, 
+              TRUE ~ what to do with everything that's left
+              )
 ```
-
-
+::: 
 
 
 ## Putting it all together
 
+Here is how you could set a column to with five types of borrowers instead of three. Once you put it together, you have a much more manageable list of five instead of 25 categories:
 
-Here is how you could set a column to with five types of borrowers instead of three. It's a little complicated, but see if you can follow along, using your knowledge of pattern matching: 
+```{r}
+#| label: m-borrower_category
 
-
-```{r m-borrower_category, rows.print=25, echo=TRUE, eval=TRUE}
 
 ppp_business_categories <- 
-  ppp_category_nonprofit %>%
+  ppp_category_nonprofit |>
   mutate (  new_business_type = 
-                case_when (  str_detect(business_type, "Non.Profit") ~ "Non-profit", 
+                case_when (  str_like(business_type, "%non_profit%") ~ "Non-profit",    #1st category
 
                              business_type %in% 
                                c("Independent Contractors", 
                                 "Sole Proprietorship", 
                                 "Self-Employed Individuals", 
-                                  "Single Member LLC")              ~ "Individual", 
+                                  "Single Member LLC")              ~ "Individual",    # 2nd category
                              
-                             business_type == "Tribal Concerns"     ~ "Tribal concerns", 
+                             business_type == "Tribal Concerns"     ~ "Tribal concerns",    #3rd category
                              
-                             str_detect (business_type, "LLC|Company|Corporation|Partnership") ~ "Companies", 
+                             str_detect (business_type, "LLC|Company|Corporation|Partnership") ~ "Companies",  #4th category
                              
-                             TRUE ~ "Other") 
+                             TRUE ~ "Other")         #catchall 5th category
             )
 
 
-# Now compare what they were to what they are:
+# Now take a look at what you got
 
-ppp_business_categories %>%
-  group_by ( new_business_type, business_type) %>%
-  summarise ( "# of loans" = n(), .groups="drop")
-
-
-```
-
-(You might notice the indentation and the spacing in this code chunk, making it easier to identify exactly what's happening in each sub-phrase.)
-
-Now, when you want to look at the types of companies, you can do it with fewer groups. Note that it uses the fixed amount for "forgiven", not the original with the `NA`. You could have skipped that, and used `forgiven = sum(forgiveness_amount, na.rm=T)`: 
-
-
-```{r m-new_cats, echo=TRUE, eval=knitr::is_html_output()}
-
-ppp_business_categories %>%
-  group_by ( new_business_type) %>%
-  summarise ( "# of loans" = n(), 
-              total_amount  = sum(amount), 
-              forgiven = sum(amount_forgiven) , 
-              forgiveness_pct = forgiven / total_amount * 100, 
-              .groups="drop")
+ppp_business_categories |>
+  count ( new_business_type)
 
 
 ```
 
-Explore some of these data frames by clicking on them in the Environment tab and see if you can tell whether the formulas worked. 
+::: callout-tip
+This code chunk uses a function you haven't seen yet, called `str_detect()`, which is a powerful way to streamline the conditions. Instead of using `str_like()`, with its limited wildcards, this is based on [regular expressions](advanced-regex.qmd), which we'll look at later. But the way it's used here is to separate words that might be in the description with "|", for "OR".  
+::: 
 
 
-### Save it for use in another program {-}
 
+### Save it for use in another program {.unnumbered}
 
-Saving this for future use means you don't have to worry anymore about some of the missing values, and you can filter and group by the simpler new business type instead of the original. 
+Saving this for future use means you don't have to worry anymore about some of the missing values, and you can filter and group by the simpler new business type instead of the original.
 
-
-```markdown
+```{r}
+#| label: saverds
+#| eval: false
 
 saveRDS(ppp_business_categories, file="ppp_edited.RDS")
 
-
 ```
-
-

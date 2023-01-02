@@ -234,16 +234,61 @@ ul.task-list li input[type="checkbox"] {
   <a href="./r-verbs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">A quick tour of verbs</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-verb-filter.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Verbs in depth: Select, arrange, filter</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-verb-groupby.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Verbs in depth: Aggregating with groups</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-verb-mutate.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Verbs in depth: New from old data with Mutate</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">Appendices</a>
+            <a href="./advanced.html" class="sidebar-item-text sidebar-link">(PART) Special skills</a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./advanced-regex.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Regular Expressions for pattern matching</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./advanced-openrefine.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Open refine walkthrough</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./advanced-scrape1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Scraping without programming</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./advanced-scrape2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Introduction to scraping in R</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">Appendices</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./appendix-math.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Newsroom numbers cheat sheet</span></a>
@@ -327,9 +372,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Rob Gebeloff made a quick pivot table to answer the question. That night, <a href="https://www.nytimes.com/2016/07/13/us/philando-castile-minnesota-police-shooting.html">Smith wrote</a>:</p>
 <blockquote class="blockquote">
 <p>In each of the three small suburbs patrolled by the St.&nbsp;Anthony police, less than 10 percent of the population is black. But data released by the city on Tuesday showed that a far higher percentage of the people ticketed or arrested by St.&nbsp;Anthony officers were African-American.</p>
-Last year, around 19 percent of those cited by St.&nbsp;Anthony police were black, as were roughly 41 percent of people arrested by the department, a review of the city’s data showed. Those percentages do not include the large number of defendants whose race was unknown.
-<p>
-</p>
+<p>Last year, around 19 percent of those cited by St.&nbsp;Anthony police were black, as were roughly 41 percent of people arrested by the department, a review of the city’s data showed. Those percentages do not include the large number of defendants whose race was unknown.</p>
 </blockquote>
 <section id="summarizing-with-groups" class="level2" data-number="9.1">
 <h2 data-number="9.1" class="anchored" data-anchor-id="summarizing-with-groups"><span class="header-section-number">9.1</span> Summarizing with groups</h2>
@@ -357,20 +400,17 @@ Last year, around 19 percent of those cited by St.&nbsp;Anthony police were blac
 <h3 class="unnumbered anchored" data-anchor-id="motivational-exercise">Motivational exercise</h3>
 <p>A lot of reporters try to do everything with filters. Once they learn pivot tables, they try to do everything with pivot tables. They’re two different animals – filtering is used for <em>detail</em>, and grouping (or pivot tables) are for <em>summary</em>. Here’s one way of understanding what pivot tables do before you try to make one.</p>
 <p>If you wanted to know <em>how many</em> people of each race/ethnicity were shot and killed, here’s one way you can do it:</p>
-<hr>
 <ol type="1">
 <li>Using your data table, use the filter the column in the <a href="https://cronkitedata.s3.amazonaws.com/xlfiles/wapo-shootings-pivot.xlsx">new spreadsheet</a> called “Ethnicity” to show only “Black non-Hispanic” victims.</li>
 </ol>
 <div class="grid">
-<div class="g-col-6">
-<div class="ps-4">
+<div class="g-col-5 ps-4 pe-2">
 <p>You should see something like this at the bottom of your screen, showing 1444 of 5945 records shown.</p>
 </div>
-</div>
-<div class="g-col-6">
+<div class="g-col-7">
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><img src="assets/images/xl-pivot-filter-results.png" class="img-fluid figure-img"></p>
+<p><img src="assets/images/xl-pivot-filter-results.png" class="img-fluid figure-img" style="width:100.0%"></p>
 <p></p><figcaption class="figure-caption">filter results</figcaption><p></p>
 </figure>
 </div>
@@ -381,11 +421,10 @@ Last year, around 19 percent of those cited by St.&nbsp;Anthony police were blac
 <li><p>Repeat the process with each ethnicity, entering or writing down the results of each of them.</p></li>
 <li><p>Now, for each ethnicity, compute the percent of total – or, the number of rows you found divided by 5,945 expressed as a percent.</p></li>
 </ol>
-<hr>
 <p>In the end, you would have a page that looks something like this (or your own chicken-scratching with the same numbers):</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><img src="assets/images/xl-pivot-handmade.png" class="img-fluid figure-img"></p>
+<p><img src="assets/images/xl-pivot-handmade.png" class="img-fluid figure-img" data-max-width="100%"></p>
 <p></p><figcaption class="figure-caption">handmade pivot</figcaption><p></p>
 </figure>
 </div>

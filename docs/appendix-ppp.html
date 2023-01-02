@@ -233,16 +233,61 @@ ul.task-list li input[type="checkbox"] {
   <a href="./r-verbs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">A quick tour of verbs</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-verb-filter.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Verbs in depth: Select, arrange, filter</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-verb-groupby.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Verbs in depth: Aggregating with groups</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-verb-mutate.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Verbs in depth: New from old data with Mutate</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Appendices</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a href="./advanced.html" class="sidebar-item-text sidebar-link">(PART) Special skills</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./advanced-regex.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Regular Expressions for pattern matching</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./advanced-openrefine.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Open refine walkthrough</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./advanced-scrape1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Scraping without programming</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./advanced-scrape2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Introduction to scraping in R</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">Appendices</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./appendix-math.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Newsroom numbers cheat sheet</span></a>
@@ -268,6 +313,7 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#sources" id="toc-sources" class="nav-link active" data-scroll-target="#sources"><span class="toc-section-number">C.1</span>  Sources</a></li>
   <li><a href="#data-used-in-the-tutorials" id="toc-data-used-in-the-tutorials" class="nav-link" data-scroll-target="#data-used-in-the-tutorials"><span class="toc-section-number">C.2</span>  Data used in the tutorials</a></li>
+  <li><a href="#other-data-for-use-in-with-ppp-data" id="toc-other-data-for-use-in-with-ppp-data" class="nav-link" data-scroll-target="#other-data-for-use-in-with-ppp-data"><span class="toc-section-number">C.3</span>  Other data for use in with PPP data</a></li>
   </ul>
 </nav>
 </nav>
@@ -294,32 +340,35 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>The Paycheck Protection Program was a response to the severe business losses during COVID-19. It provided no-interest, forgiveable loans to cover 2 1/2 months’ of payroll and some other expenses during the national shutdown in 2020, and some lost revenue during a second round in early 2021. Restaurants and similar businesses had higher loan amounts than other industries. It was intended to keep restaurants, offices and other small businesses afloat if they agreed to keep people on their payrolls during covid restrictions.</p>
-<p>The program was administered through the Small Business Administration, but the business owners went to banks to get the loans. (In most cases, the loans became grants – they never had to be paid back.) Banks got a fee for processing the applications and were never on the hook for anyone who didn’t pay it back.</p>
-<p>After several lawsuits, the federal government finally started releasing relatively complete data for each of the 111 million loans in early 2021, and then expanded the reporting later that year.</p>
+<p>The Paycheck Protection Program was a response to the severe business losses during COVID-19. It provided very low-interest, forgiveable loans to cover 2 1/2 months’ of payroll and some other expenses during the national shutdown in 2020, and some lost revenue during a second round in early 2021. It was intended to keep restaurants, offices and other small businesses afloat if they agreed to keep people on their payrolls during covid restrictions.</p>
+<p>Restaurants and similar businesses had higher loan amounts than other industries.</p>
+<p>The program was administered through the Small Business Administration, but the business owners went to banks to get the loans. In most cases, the government reimbursed the banks — the loans were forgiven and the borrower never had to pay it back. If the borrower failed to get the loan forgiven and never paid it back, the federal government covered the losses. Banks got a fee for processing the applications and were never on the hook for anyone who didn’t pay it back.</p>
+<p>The amount forgiven is usually more than the amount of the loan because it includes fees and any interest that accrued before it was forgiven.</p>
+<p>After several lawsuits, the federal government finally started releasing relatively complete data for each of the 11.5 million loans in early 2021, and then expanded the reporting later that year.</p>
 <section id="sources" class="level2" data-number="C.1">
 <h2 data-number="C.1" class="anchored" data-anchor-id="sources"><span class="header-section-number">C.1</span> Sources</h2>
-<p>All data used in this book was downloaded as of January 2022 from the SBA data site at <a href="https://data.sba.gov/dataset/ppp-foia" class="uri">https://data.sba.gov/dataset/ppp-foia</a> .</p>
+<p>All data used in this book was downloaded as of December 2022 from the SBA data site at <a href="https://data.sba.gov/dataset/ppp-foia" class="uri">https://data.sba.gov/dataset/ppp-foia</a> , last updated in October.</p>
 <p>The data dictionary is distributed at that same site at <a href="https://data.sba.gov/dataset/ppp-foia/resource/aab8e9f9-36d1-42e1-b3ba-e59c79f1d7f0" class="uri">https://data.sba.gov/dataset/ppp-foia/resource/aab8e9f9-36d1-42e1-b3ba-e59c79f1d7f0</a> in an Excel spreadsheet.</p>
 <p>Here is some other background information on the program: <a href="https://www.sba.gov/funding-programs/loans/covid-19-relief-options/paycheck-protection-program" class="uri">https://www.sba.gov/funding-programs/loans/covid-19-relief-options/paycheck-protection-program</a></p>
 <p>The data was downloaded using a program to concatenate all of the files into one, large data frame. Only minimal standardization and cleaning was done:</p>
 <ul>
-<li>All recipient names are in upper case, and periods were removed.</li>
-<li>All city names are in proper case.</li>
+<li>All recipient names were converted to upper case and punctuation were removed.</li>
+<li>All city names are in proper case. (Casa Grande, not CASA GRANDE)</li>
 </ul>
 <p>PPP loans have two geographic locations included: The location of the borrower, and the city, county, state and congressional district of the project that is being funded. This is especially important for construction and similar trades that have work done on sites.</p>
-<p>Most PPP loans were given 24 months to either repay the debt or request forgiveness. None of them have yet met their maturity date, so none are “charged off” or written off by the SBA.</p>
-<p>Arizona loans were extracted if either the borrower or the project was in the state. It contains 169,268 loans.</p>
+<p>Under the rules, most businesses had to apply for forgiveness within about a year of getting the loans. There were two choices: Apply for forgiveness, or begin paying it back after about 10 months. As of October 2022, 98 percent of the loans given in 2020 had been forgiven, and about 85 percent of the 2021 loans had been forgiven. In SBA parlance, this means they have been “remitted” or “disbursed” to the original lending institution. The <a href="https://en.wikipedia.org/wiki/Paycheck_Protection_Program">Wikipedia page</a> on the program provides a pretty detailed discussion of the details.</p>
 </section>
 <section id="data-used-in-the-tutorials" class="level2" data-number="C.2">
 <h2 data-number="C.2" class="anchored" data-anchor-id="data-used-in-the-tutorials"><span class="header-section-number">C.2</span> Data used in the tutorials</h2>
+<p>The data extracted from this textbook contains loans in Arizona if either the borrower or the project was in the state. It contains 169,259 loans.</p>
 <p>The columns were renamed and then a selection of those columns were used in the tutorials.</p>
-<p>The files referenced in the tutorials have a selection of columns used out of this list:</p>
+<p>Here is the record layout as used in these tutorials:</p>
+<div style="font-size:smaller;">
 <table class="table">
 <colgroup>
-<col style="width: 44%">
-<col style="width: 22%">
-<col style="width: 33%">
+<col style="width: 15%">
+<col style="width: 10%">
+<col style="width: 75%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -330,7 +379,7 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td>loan_number</td>
+<td>loan_id</td>
 <td>numeric</td>
 <td>The original, unique loan number that was provided by SBA</td>
 </tr>
@@ -372,7 +421,7 @@ ul.task-list li input[type="checkbox"] {
 <tr class="odd">
 <td>franchise_name</td>
 <td>chr</td>
-<td>A “franchise” is a licensed outlet of a larger corporation, such as a McDonald’s store.</td>
+<td>A “franchise” is a licensed outlet of a larger corporation, such as a McDonald’s store. This was not standardized and can be upper, lower or mixed case with punctuation..</td>
 </tr>
 <tr class="even">
 <td>loan_status</td>
@@ -427,7 +476,7 @@ ul.task-list li input[type="checkbox"] {
 <tr class="even">
 <td>project_cong_dist</td>
 <td>chr</td>
-<td>a 5-character congressional district indicator, such as “AZ-04”</td>
+<td>a 5-character congressional district indicator, such as “AZ-04”. These are districts as of early 2020, and do not reflect redistricting done after that.</td>
 </tr>
 <tr class="odd">
 <td>employees</td>
@@ -442,11 +491,20 @@ ul.task-list li input[type="checkbox"] {
 <tr class="odd">
 <td>naics_code</td>
 <td>chr</td>
-<td>A 6-digit code indicating the industry of the recipient or project. This will be translated into words using another data set.</td>
+<td>A 6-digit code indicating the <a href="https://www.census.gov/naics/">North American Industry Classification</a> code of the recipient or project. This will be translated into words using another data set.</td>
 </tr>
 </tbody>
 </table>
-<p>There were other columns in the original data set, but many of them were almost never filled in, or were shown to be inaccurate estimates. For example, out of nearly 170,000 loans, 120,000 of them had no information on race or ethnicity of the business owner. None were marked as veteran-owned or had an owner’s gender filled out. Some other columns, such as the current lender (as opposed to the one that made the loan) added complexity without adding much for our purposes.</p>
+</div>
+<p>There were other columns in the original data set, but many of them were almost never filled in, or were shown to be inaccurate estimates.</p>
+<p>For example, out of nearly 170,000 loans, 120,000 of them had no information on race or ethnicity of the business owner. None were marked as veteran-owned or had an owner’s gender filled out. Some other columns, such as the current lender (as opposed to the one that made the loan) added complexity without adding much for our purposes.</p>
+</section>
+<section id="other-data-for-use-in-with-ppp-data" class="level2" data-number="C.3">
+<h2 data-number="C.3" class="anchored" data-anchor-id="other-data-for-use-in-with-ppp-data"><span class="header-section-number">C.3</span> Other data for use in with PPP data</h2>
+<ul>
+<li><p>The NAICS code, a standardized code created by the Office of Management and Budget and used widely by the federal government, will be turned into words in the chapter on joining data.</p></li>
+<li><p><em>Reveal</em> worked with https://geocod.io to add latitude and longitude to each loan, allowing them to match it to Census data. We will look at that data in the mapping / geography portion of the course</p></li>
+</ul>
 
 
 </section>

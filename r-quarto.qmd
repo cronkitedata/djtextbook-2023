@@ -52,7 +52,7 @@ This creates a file with the extension `.RProj` in the folder you designate. Fro
 
 [^r-quarto-2]: The title borrowed from Quarto's own documentation
 
-::: callout-important
+::: callout-warning
 ### Make sure Quarto is installed!
 
 To use Quarto, you must have it installed on your computer. One easy way to do that is to install the `quarto` and `rmarkdown` packages in R, which you did at the [end of the last chapter](r-start.qmd#packages). Do that now if you skipped that step.
@@ -71,7 +71,7 @@ Shannon Pileggi [created a series of gifs](https://www.pipinghotdata.com/posts/2
 ::: 
 -->
 ```
-::: callout-tip
+::: callout-note
 ### Quarto is modern RMarkdown
 
 Many help pages and tutorials in R use the format called "R Markdown" instead of Quarto. Quarto was introduced in mid-2022 as a replacement for RMarkdown, and it seems silly to learn something that is already out of date. Almost everything you see related to RMarkdown will work without any adjustment in Quarto.

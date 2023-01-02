@@ -65,9 +65,9 @@ book:
          - r-quarto.qmd
          - r-data-import.qmd
          - r-verbs.qmd
-#         - r-verb-filter.qmd
-#         - r-verb-groupby.qmd
-#         - r-verb-mutate.qmd
+         - r-verb-filter.qmd
+         - r-verb-groupby.qmd
+         - r-verb-mutate.qmd
 #         - r-verb-join.qmd
 #         - r-recipes.qmd
 #
@@ -76,12 +76,12 @@ book:
 #         - viz-reporting.qmd
 #         - viz-demo.qmd
 #
-#     - part: advanced.qmd
-#       chapters:
-#         - advanced-regex.qmd
-#         - advanced-openrefine.qmd
-#         - advanced-scrape1.qmd
-#         - advanced-scrape2.qmd
+    - part: advanced.qmd
+      chapters:
+         - advanced-regex.qmd
+         - advanced-openrefine.qmd
+         - advanced-scrape1.qmd
+         - advanced-scrape2.qmd
 #
   appendices:
    - appendix-math.qmd

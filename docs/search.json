@@ -646,9 +646,9 @@
   {
     "objectID": "advanced.html",
     "href": "advanced.html",
-    "title": "(PART) Special skills",
+    "title": "Special skills { .unnumbered}",
     "section": "",
-    "text": "Introduction\nThis section includes miscellaneous tutorials for special skills, ranging from simple scraping to understanding regular expressions. These aren’t all written yet, but here are some of the things that will be included:\n\nRegular Expressions in depth : We looked a simple regular expressions using str_detect in R, but this will go more in-depth, including an appendix on how to extract phrases in R that you find using regular expressions. (It’s more arcane than it should be. )\nScraping 101: Looking under the hood of an HTML page and extracting just what you want into a dataset.\nCleaning data with OpenRefine"
+    "text": "Introduction\nThis section includes miscellaneous tutorials for special skills, ranging from simple scraping to understanding regular expressions."
   },
   {
     "objectID": "advanced-regex.html#types-of-regular-expression-patterns",

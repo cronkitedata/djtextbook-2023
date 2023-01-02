@@ -41,7 +41,6 @@ Load the data into your environment using this code chunk:
 ```{r}
 #| eval: true
 #| label: read-az-loans
-#| echo: fenced
 
 ppp_orig <- 
   readRDS( 
@@ -49,6 +48,8 @@ ppp_orig <-
      "https://cronkitedata.s3.amazonaws.com/rdata/ppp_az_loans.RDS"
        )
    )
+
+
 
 ```
 

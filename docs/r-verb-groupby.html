@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.2.269">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Data Reporting - 18&nbsp; Verbs in depth: Aggregating with groups</title>
+<title>Data Reporting - 19&nbsp; Verbs in depth: Aggregating with groups</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -89,8 +89,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./r-verb-mutate.html" rel="next">
-<link href="./r-verb-filter.html" rel="prev">
+<link href="./advanced.html" rel="next">
+<link href="./r-verb-mutate.html" rel="prev">
 <link href="./assets/images/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -126,7 +126,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }"><div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Verbs in depth: Aggregating with groups</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Verbs in depth: Aggregating with groups</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -290,19 +290,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./r-verb-groupby.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Verbs in depth: Aggregating with groups</span></a>
+  <a href="./r-verb-mutate.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Verbs in depth: New from old data with Mutate</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./r-verb-mutate.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Verbs in depth: New from old data with Mutate</span></a>
+  <a href="./r-verb-groupby.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Verbs in depth: Aggregating with groups</span></a>
   </div>
 </li>
       </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./advanced.html" class="sidebar-item-text sidebar-link">Special skills { .unnumbered}</a>
+            <a href="./advanced.html" class="sidebar-item-text sidebar-link">Special skills</a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -362,33 +362,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul>
 <li><a href="#get-an-overview-of-your-data-with-skimr" id="toc-get-an-overview-of-your-data-with-skimr" class="nav-link active" data-scroll-target="#get-an-overview-of-your-data-with-skimr">Get an overview of your data with <code>skimr</code></a></li>
   <li>
-<a href="#summarise" id="toc-summarise" class="nav-link" data-scroll-target="#summarise"><span class="toc-section-number">18.1</span>  <code>summarise</code></a>
+<a href="#summarise" id="toc-summarise" class="nav-link" data-scroll-target="#summarise"><span class="toc-section-number">19.1</span>  <code>summarise</code></a>
   <ul class="collapse">
-<li><a href="#the-dreaded-na" id="toc-the-dreaded-na" class="nav-link" data-scroll-target="#the-dreaded-na"><span class="toc-section-number">18.1.1</span>  The dreaded NA</a></li>
-  <li><a href="#summary-functions" id="toc-summary-functions" class="nav-link" data-scroll-target="#summary-functions"><span class="toc-section-number">18.1.2</span>  Summary functions</a></li>
+<li><a href="#the-dreaded-na" id="toc-the-dreaded-na" class="nav-link" data-scroll-target="#the-dreaded-na"><span class="toc-section-number">19.1.1</span>  The dreaded NA</a></li>
+  <li><a href="#summary-functions" id="toc-summary-functions" class="nav-link" data-scroll-target="#summary-functions"><span class="toc-section-number">19.1.2</span>  Summary functions</a></li>
   </ul>
 </li>
   <li>
-<a href="#grouping" id="toc-grouping" class="nav-link" data-scroll-target="#grouping"><span class="toc-section-number">18.2</span>  Grouping</a>
+<a href="#grouping" id="toc-grouping" class="nav-link" data-scroll-target="#grouping"><span class="toc-section-number">19.2</span>  Grouping</a>
   <ul class="collapse">
-<li><a href="#grouping-by-one-column" id="toc-grouping-by-one-column" class="nav-link" data-scroll-target="#grouping-by-one-column"><span class="toc-section-number">18.2.1</span>  Grouping by one column</a></li>
-  <li><a href="#grouping-by-more-than-one-column" id="toc-grouping-by-more-than-one-column" class="nav-link" data-scroll-target="#grouping-by-more-than-one-column"><span class="toc-section-number">18.2.2</span>  Grouping by more than one column</a></li>
+<li><a href="#grouping-by-one-column" id="toc-grouping-by-one-column" class="nav-link" data-scroll-target="#grouping-by-one-column"><span class="toc-section-number">19.2.1</span>  Grouping by one column</a></li>
+  <li><a href="#grouping-by-more-than-one-column" id="toc-grouping-by-more-than-one-column" class="nav-link" data-scroll-target="#grouping-by-more-than-one-column"><span class="toc-section-number">19.2.2</span>  Grouping by more than one column</a></li>
   <li><a href="#understanding-grouped-data" id="toc-understanding-grouped-data" class="nav-link" data-scroll-target="#understanding-grouped-data">Understanding grouped data</a></li>
   </ul>
 </li>
   <li>
-<a href="#converting-to-wide-spreadsheet-format" id="toc-converting-to-wide-spreadsheet-format" class="nav-link" data-scroll-target="#converting-to-wide-spreadsheet-format"><span class="toc-section-number">18.3</span>  Converting to “wide” (spreadsheet) format</a>
+<a href="#converting-to-wide-spreadsheet-format" id="toc-converting-to-wide-spreadsheet-format" class="nav-link" data-scroll-target="#converting-to-wide-spreadsheet-format"><span class="toc-section-number">19.3</span>  Converting to “wide” (spreadsheet) format</a>
   <ul class="collapse">
-<li><a href="#percentages" id="toc-percentages" class="nav-link" data-scroll-target="#percentages"><span class="toc-section-number">18.3.1</span>  Percentages</a></li>
+<li><a href="#percentages" id="toc-percentages" class="nav-link" data-scroll-target="#percentages"><span class="toc-section-number">19.3.1</span>  Percentages</a></li>
   </ul>
 </li>
-  <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice"><span class="toc-section-number">18.4</span>  Practice</a></li>
+  <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice"><span class="toc-section-number">19.4</span>  Practice</a></li>
   </ul></nav>
 </nav><!-- margin-sidebar --><div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
 <main class="content column-page-right" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title"><span id="r-verb-groupby" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Verbs in depth: Aggregating with groups</span></span></h1>
+<h1 class="title"><span id="r-verb-groupby" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Verbs in depth: Aggregating with groups</span></span></h1>
 </div>
 
 
@@ -428,12 +428,12 @@ In this chapter
 </div>
 <p><img src="assets/images/r-groupby-skim.png" class="img-fluid" style="width:100.0%"></p>
 <p>Using the <code>skimr</code> package is an easy way to get a very detailed overview of your data without having to examine each column.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-</section><section id="summarise" class="level2" data-number="18.1"><h2 data-number="18.1" class="anchored" data-anchor-id="summarise">
-<span class="header-section-number">18.1</span> <code>summarise</code>
+</section><section id="summarise" class="level2" data-number="19.1"><h2 data-number="19.1" class="anchored" data-anchor-id="summarise">
+<span class="header-section-number">19.1</span> <code>summarise</code>
 </h2>
 <p>The <code>summarise</code><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> verb computes summary statistics the number of rows, a sum, and an average. It creates a new data frame with just the summary statistics, and none of the columns from the original data frame. Using it alone produces a data frame with one row. It’s the equivalent of putting nothing in your pivot table in Excel other than the “Values” area.</p>
-<section id="the-dreaded-na" class="level3" data-number="18.1.1"><h3 data-number="18.1.1" class="anchored" data-anchor-id="the-dreaded-na">
-<span class="header-section-number">18.1.1</span> The dreaded NA</h3>
+<section id="the-dreaded-na" class="level3" data-number="19.1.1"><h3 data-number="19.1.1" class="anchored" data-anchor-id="the-dreaded-na">
+<span class="header-section-number">19.1.1</span> The dreaded NA</h3>
 <p>Missing data in computers is always a problem. In R, they are noted as <code>NA</code> (without quotes), to show they’re not available. Sometimes you’ll see <code>NaN</code>, for “Not a number”, which is a form of missing data. The problem is that because they’re unknown, they can’t match anything else, they can’t be considered 0, and they can warp any answers you get.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
 <p>But there’s usually nothing you can do about missing data, so you have to tell the program exactly what to do about them. There are two choices:</p>
 <ul>
@@ -441,8 +441,8 @@ In this chapter
 <li>Ignore them in a computation completely.</li>
 </ul>
 <p>There’s no right answer, and it depends on what you’re doing. In some cases, you know that they stand for the value <code>0</code>, and in others you don’t. We will usually ignore them by adding an <em>argument</em> to every summary function that could be infected by them : <code>na.rm = TRUE</code> , which means, “remove NA’s before you do anything.”.</p>
-</section><section id="summary-functions" class="level3" data-number="18.1.2"><h3 data-number="18.1.2" class="anchored" data-anchor-id="summary-functions">
-<span class="header-section-number">18.1.2</span> Summary functions</h3>
+</section><section id="summary-functions" class="level3" data-number="19.1.2"><h3 data-number="19.1.2" class="anchored" data-anchor-id="summary-functions">
+<span class="header-section-number">19.1.2</span> Summary functions</h3>
 <p>Some of the common functions you’ll use to summarize are :</p>
 <ul>
 <li>
@@ -494,12 +494,12 @@ $ first_loan     &lt;date&gt; 2020-04-03
 $ last_loan      &lt;date&gt; 2021-06-29</code></pre>
 </div>
 </div>
-</section></section><section id="grouping" class="level2" data-number="18.2"><h2 data-number="18.2" class="anchored" data-anchor-id="grouping">
-<span class="header-section-number">18.2</span> Grouping</h2>
+</section></section><section id="grouping" class="level2" data-number="19.2"><h2 data-number="19.2" class="anchored" data-anchor-id="grouping">
+<span class="header-section-number">19.2</span> Grouping</h2>
 <p>Now that you know how to summarize the whole data frame, you’ll want to start getting totals by category. This is the same thing as a pivot table – the columns you use as “groups” are the equivalent of the Rows area in Excel:</p>
 <p><img src="assets/images/r-verb-group-pivotcompare.png" class="img-fluid" style="width:100.0%"></p>
-<section id="grouping-by-one-column" class="level3" data-number="18.2.1"><h3 data-number="18.2.1" class="anchored" data-anchor-id="grouping-by-one-column">
-<span class="header-section-number">18.2.1</span> Grouping by one column</h3>
+<section id="grouping-by-one-column" class="level3" data-number="19.2.1"><h3 data-number="19.2.1" class="anchored" data-anchor-id="grouping-by-one-column">
+<span class="header-section-number">19.2.1</span> Grouping by one column</h3>
 <p>In the PPP data, the “draw” refers to which of the two programs was involved - the original one, or the one passed by Congress in late 2020.</p>
 <p>Here’s how we’d get some key statistics by draw:</p>
 <div class="cell">
@@ -530,8 +530,8 @@ $ last_loan      &lt;date&gt; 2021-06-29</code></pre>
 <span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Notice that unlike pivot tables, we don’t get a total across the bottom. That has to be a separate step (for now, until we go through how to make better looking tables. )</p>
-</section><section id="grouping-by-more-than-one-column" class="level3" data-number="18.2.2"><h3 data-number="18.2.2" class="anchored" data-anchor-id="grouping-by-more-than-one-column">
-<span class="header-section-number">18.2.2</span> Grouping by more than one column</h3>
+</section><section id="grouping-by-more-than-one-column" class="level3" data-number="19.2.2"><h3 data-number="19.2.2" class="anchored" data-anchor-id="grouping-by-more-than-one-column">
+<span class="header-section-number">19.2.2</span> Grouping by more than one column</h3>
 <p>If you wanted to know the numbers outstanding and forgiven by draw, you could add another column to the group by:</p>
 <div class="cell">
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ppp_orig</span> <span class="op">%&gt;%</span></span>
@@ -595,8 +595,8 @@ $ naics_code         &lt;chr&gt; "722310", "221122", "621610", "621111", "517311
 </div>
 </div>
 <p>Notice the “Groups” row at the top – that tells you it’s still got three piles.</p>
-</section></section><section id="converting-to-wide-spreadsheet-format" class="level2" data-number="18.3"><h2 data-number="18.3" class="anchored" data-anchor-id="converting-to-wide-spreadsheet-format">
-<span class="header-section-number">18.3</span> Converting to “wide” (spreadsheet) format</h2>
+</section></section><section id="converting-to-wide-spreadsheet-format" class="level2" data-number="19.3"><h2 data-number="19.3" class="anchored" data-anchor-id="converting-to-wide-spreadsheet-format">
+<span class="header-section-number">19.3</span> Converting to “wide” (spreadsheet) format</h2>
 <p>Normally, you’ll only want to have one summary statistic shown in a rectangle, with one column spread across the top and another column shown in rows. In R, this is done by “pivoting” your tables.</p>
 <p>In this case, we’re going from a “long” to a “wide” data structure, so it’s called <code>pivot_wider</code>.</p>
 <p>Here’s an explanation of what the command looks like. Don’t try to run this:</p>
@@ -625,8 +625,8 @@ $ naics_code         &lt;chr&gt; "722310", "221122", "621610", "621111", "517311
 </div>
 </div>
 <p>Your instinct will often be that you want to see your data in this form, but you can and should actually do most of your work without it, then turn it on its head when you want to display it. This is usually your very last step.</p>
-<section id="percentages" class="level3" data-number="18.3.1"><h3 data-number="18.3.1" class="anchored" data-anchor-id="percentages">
-<span class="header-section-number">18.3.1</span> Percentages</h3>
+<section id="percentages" class="level3" data-number="19.3.1"><h3 data-number="19.3.1" class="anchored" data-anchor-id="percentages">
+<span class="header-section-number">19.3.1</span> Percentages</h3>
 <p>You noticed that when you created the summaries, there was no option to create a “percent of total” such as the percent of loans in each draw, or the percent of money that had been forgiven.</p>
 <p>You’ll get more on the <code>mutate</code> verb in the next chapter, but it’s used to add a column to a data frame. You can use the same summary statistics you create in the <code>summarise</code> section, but they’ll be added to the existing data frame. Here’s how you can try it first using just one “group_by” column:</p>
 <div class="cell">
@@ -658,8 +658,8 @@ $ naics_code         &lt;chr&gt; "722310", "221122", "621610", "621111", "517311
 </div>
 </div>
 </div>
-</section></section><section id="practice" class="level2" data-number="18.4"><h2 data-number="18.4" class="anchored" data-anchor-id="practice">
-<span class="header-section-number">18.4</span> Practice</h2>
+</section></section><section id="practice" class="level2" data-number="19.4"><h2 data-number="19.4" class="anchored" data-anchor-id="practice">
+<span class="header-section-number">19.4</span> Practice</h2>
 <p>Putting together the grouping and summarizing, along with the commands you learned last chapter to <code>filter</code>, <code>arrange</code> and display the <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code> and <code><a href="https://rdrr.io/r/utils/head.html">tail()</a></code> of a dataset should equip you to write the code for these questions:</p>
 <ol type="1">
 <li>Which lenders provided the most loans?</li>
@@ -809,13 +809,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation column-page-right"><div class="nav-page nav-page-previous">
-      <a href="./r-verb-filter.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Verbs in depth: Select, arrange, filter</span></span>
+      <a href="./r-verb-mutate.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Verbs in depth: New from old data with Mutate</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./r-verb-mutate.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Verbs in depth: New from old data with Mutate</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./advanced.html" class="pagination-link">
+        <span class="nav-page-text">Special skills</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

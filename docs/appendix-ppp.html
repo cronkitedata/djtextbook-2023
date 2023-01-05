@@ -240,19 +240,19 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./r-verb-groupby.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Verbs in depth: Aggregating with groups</span></a>
+  <a href="./r-verb-mutate.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Verbs in depth: New from old data with Mutate</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./r-verb-mutate.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Verbs in depth: New from old data with Mutate</span></a>
+  <a href="./r-verb-groupby.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Verbs in depth: Aggregating with groups</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./advanced.html" class="sidebar-item-text sidebar-link">Special skills { .unnumbered}</a>
+            <a href="./advanced.html" class="sidebar-item-text sidebar-link">Special skills</a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -401,12 +401,12 @@ ul.task-list li input[type="checkbox"] {
 <tr class="odd">
 <td>borrower_address</td>
 <td>chr</td>
-<td>All proper-case, punctuation removed</td>
+<td>All proper-case, punctuation removed - may include suite or apartment numbers.</td>
 </tr>
 <tr class="even">
 <td>borrower_city</td>
 <td>chr</td>
-<td>All proper-case, punctuation removed</td>
+<td>All proper-case, punctuation removed but not standardized, so there are a lot of variations of city names.</td>
 </tr>
 <tr class="odd">
 <td>borrower_state</td>
@@ -426,12 +426,12 @@ ul.task-list li input[type="checkbox"] {
 <tr class="even">
 <td>loan_status</td>
 <td>chr</td>
-<td>“Paid in Full”, “Active Un-Disbursed” , “Charged Off”, or “Exemption 4”. . Exemption 4 means that it is still active and has time to apply for forgiveness or payback.</td>
+<td>“Paid in Full”, “Active Un-Disbursed” , “Charged Off”, or “Exemption 4”. . Exemption 4 means that it is still active and has time to apply for forgiveness or payback. So far, there are no “Charged off” loans, but there are those with “Paid in Full” with no forgiveness</td>
 </tr>
 <tr class="odd">
 <td>loan_status_date</td>
 <td>date</td>
-<td></td>
+<td>the last time the loan status was updated</td>
 </tr>
 <tr class="even">
 <td>amount</td>
@@ -503,7 +503,8 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="C.3" class="anchored" data-anchor-id="other-data-for-use-in-with-ppp-data"><span class="header-section-number">C.3</span> Other data for use in with PPP data</h2>
 <ul>
 <li><p>The NAICS code, a standardized code created by the Office of Management and Budget and used widely by the federal government, will be turned into words in the chapter on joining data.</p></li>
-<li><p><em>Reveal</em> worked with https://geocod.io to add latitude and longitude to each loan, allowing them to match it to Census data. We will look at that data in the mapping / geography portion of the course</p></li>
+<li><p>The business Zip Code is the mailing address. I mapped them to actual physical address Zip Codes and downloaded some Census data to attach to each loan. This is rough estimate, and not a great representation of neighborhoods, but it is useful for us to get a sense of the demographics during the <code>join</code> part of the R training.</p></li>
+<li><p><em>Reveal</em> worked with https://geocod.io to add latitude and longitude to each loan, allowing them to match it to Census tracts instead of Zip Codes, a much better way to look at neighborhoods. We will look at that data in the mapping / geography portion of the course</p></li>
 </ul>
 
 

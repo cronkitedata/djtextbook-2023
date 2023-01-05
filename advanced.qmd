@@ -1,4 +1,4 @@
-#Special skills { .unnumbered}
+# Special skills {.-}
 
 
 # Introduction { #advanced-intro .unnumbered}

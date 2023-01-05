@@ -44,13 +44,13 @@ loan_id  |  numeric |  The original, unique loan number that was provided by SBA
 date_approved | date |  |
 draw | chr | "First" draw was April 2020-May 2020. "Second" draw was Jan 2021 to May 2021. |
 borrower_name | chr | All upper-case name of the borrower, with punctuation removed. |
-borrower_address | chr | All proper-case, punctuation removed |
-borrower_city | chr | All proper-case, punctuation removed |
+borrower_address | chr | All proper-case, punctuation removed - may include suite or apartment numbers. |
+borrower_city | chr | All proper-case, punctuation removed  but not standardized, so there are a lot of variations of city names. |
 borrower_state | chr | 2-character upper case postal code |
 borrower_zip | chr | five-digit zip code of the borrower |
 franchise_name | chr | A "franchise" is a licensed outlet of a larger corporation, such as a McDonald's store. This was not standardized and can be upper, lower or mixed case with punctuation..|
-loan_status | chr | "Paid in Full", "Active Un-Disbursed" , "Charged Off", or "Exemption 4". . Exemption 4 means that it is still active and has time to apply for forgiveness or payback.  |
-loan_status_date | date | |
+loan_status | chr | "Paid in Full", "Active Un-Disbursed" , "Charged Off", or "Exemption 4". . Exemption 4 means that it is still active and has time to apply for forgiveness or payback. So far, there are no "Charged off" loans, but there are those with "Paid in Full" with no forgiveness |
+loan_status_date | date | the last time the loan status was updated |
 amount | numeric | The most recent amount approved by the SBA for this loan |
 forgiveness_amount | numeric | The amount forgiven in the loan (paid by taxpayers, not the business). This is NA if it has not been forgiven. |
 forgiveness_date | date | the date the loan was forgiven. NA if it has not been forgiven.  |
@@ -80,4 +80,6 @@ For example, out of  nearly 170,000 loans, 120,000 of them had no information on
 
 - The NAICS code, a standardized code created by the Office of Management and Budget and used widely by the federal government, will be turned into words in the chapter on joining data.
 
-- *Reveal* worked with https://geocod.io to add latitude and longitude to each loan, allowing them to match it to Census data. We will look at that data in the mapping / geography portion of the course 
+- The business Zip Code is the mailing address. I mapped them to actual physical address Zip Codes and downloaded some Census data to attach to each loan. This is rough estimate, and not a great representation of neighborhoods, but it is useful for us to get a sense of the demographics during the `join` part of the R training. 
+
+- *Reveal* worked with https://geocod.io to add latitude and longitude to each loan, allowing them to match it to Census tracts instead of Zip Codes, a much better way to look at neighborhoods. We will look at that data in the mapping / geography portion of the course 

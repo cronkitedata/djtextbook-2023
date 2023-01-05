@@ -241,19 +241,19 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./r-verb-groupby.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Verbs in depth: Aggregating with groups</span></a>
+  <a href="./r-verb-mutate.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Verbs in depth: New from old data with Mutate</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./r-verb-mutate.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Verbs in depth: New from old data with Mutate</span></a>
+  <a href="./r-verb-groupby.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Verbs in depth: Aggregating with groups</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./advanced.html" class="sidebar-item-text sidebar-link">Special skills { .unnumbered}</a>
+            <a href="./advanced.html" class="sidebar-item-text sidebar-link">Special skills</a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -372,14 +372,14 @@ ul.task-list li input[type="checkbox"] {
 <p>This is what your screen probably looks like:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="assets/images/r-start-rstudio.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="assets/images/r-start-rstudio.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">console</figcaption><p></p>
 </figure>
 </div>
 <section id="the-console" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="the-console">The Console</h3>
 <p>The Console is where you can type commands and interact directly with the programming language. Think of it as a very powerful calculator at first. One reason to use it is to install packages.</p>
-<p>If you followed the installation demo, you’ve already used the console to install one package using the command <code>install.packages("tidyverse")</code>. Go back and do that part now if you skipped it.</p>
+<p>If you followed the installation demo, you’ve already used the console to install one package using the command <code>install.packages("tidyverse")</code>. Go back and do that part now if you skipped it. It might take several minutes to finish.</p>
 </section>
 <section id="files-tab" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="files-tab">Files tab</h3>
@@ -387,8 +387,8 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="environment" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="environment">Environment</h3>
-<p>The upper right screen is the Environment, which is where your active <em>variables</em> live. A variable is a named thing. It might be a word, a list of words or numbers, or a data frame (spreadsheet). You will understand this better after you take the Posit “Programming basics” <a href="#tutorials">tutorial referenced below</a>.</p>
-<p>Anything that you want to use has to be listed in that environment before you can reference it. This will make more sense later.</p>
+<p>The upper right screen is the Environment, which is where your active <em>objects</em> live. An object, sometimes called a “variable” in R, is a named thing. It might be a word, a list of words or numbers, or a data frame (spreadsheet). It can even be a little program called a function that you write yourself. You will understand this better after you take the Posit “Programming basics” <a href="#tutorials">tutorial referenced below</a>.</p>
+<p>Anything that you want to use has to be loaded or created into that enivronment first. That might involve importing data from Excel or a text file, or creating data yourself in a program.</p>
 </section>
 <section id="typing-into-the-console" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="typing-into-the-console">Typing into the console</h3>
@@ -464,7 +464,7 @@ Better Googling
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>When you Google for help, put the word “tidyverse” somewhere in your query. Otherwise, you may get answers that look inscrutable and unfamiliar.</p>
+<p>When you Google for help, put the word “tidyverse” somewhere in your query. Otherwise, you may get answers that look inscrutable and unfamiliar. Another good practice is to limit your reponses to the last year or two. There have been a lot of changes in the tidyverse.</p>
 </div>
 </div>
 <section id="installing-packages" class="level3" data-number="13.4.1">
@@ -489,7 +489,7 @@ Warning
 <p>Copy these commands into your Console. They ensure that your packages are up to date, and install a few extras that aren’t included in the Tidyverse. You only have to do this once.</p>
 <div class="inline-code">
 <pre><code>update.packages(ask=FALSE)
-install.packages(c("tidyverse", "janitor" , "quarto", rmarkdown", "swirl", "pacman"))
+install.packages(c("tidyverse", "janitor" , "lubridate", "quarto", rmarkdown", "swirl", "pacman"))
  </code></pre>
 </div>
 </div>

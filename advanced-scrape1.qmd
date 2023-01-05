@@ -74,6 +74,10 @@ This looks like a mess! Don't worry. Switch to the Network tab, and re-load the 
 
 - Right-click on the name of the file, and choose Copy->Copy link, and repeat the process above to convert it to a CSV file.
 
+::: callout-note
+In 2022, the county began limiting the number of results to some random list of 300. It appears that searching for an inmate only checks those first 300 results. (It could have been a coincidence that there were exactly 300 inmate on Jan 3, 2023, but I doubt it.)
+::: 
+
 
 ### An even harder example
 

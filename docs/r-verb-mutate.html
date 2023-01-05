@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.2.269">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Data Reporting - 19&nbsp; Verbs in depth: New from old data with Mutate</title>
+<title>Data Reporting - 18&nbsp; Verbs in depth: New from old data with Mutate</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -89,8 +89,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./advanced.html" rel="next">
-<link href="./r-verb-groupby.html" rel="prev">
+<link href="./r-verb-groupby.html" rel="next">
+<link href="./r-verb-filter.html" rel="prev">
 <link href="./assets/images/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -126,7 +126,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }"><div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Verbs in depth: New from old data with Mutate</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Verbs in depth: New from old data with Mutate</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -290,19 +290,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./r-verb-groupby.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Verbs in depth: Aggregating with groups</span></a>
+  <a href="./r-verb-mutate.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Verbs in depth: New from old data with Mutate</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./r-verb-mutate.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Verbs in depth: New from old data with Mutate</span></a>
+  <a href="./r-verb-groupby.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Verbs in depth: Aggregating with groups</span></a>
   </div>
 </li>
       </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./advanced.html" class="sidebar-item-text sidebar-link">Special skills { .unnumbered}</a>
+            <a href="./advanced.html" class="sidebar-item-text sidebar-link">Special skills</a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -361,23 +361,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
    
   <ul>
 <li>
-<a href="#mutate-to-create-new-columns" id="toc-mutate-to-create-new-columns" class="nav-link active" data-scroll-target="#mutate-to-create-new-columns"><span class="toc-section-number">19.1</span>  <code>mutate</code> to create new columns</a>
+<a href="#mutate-to-create-new-columns" id="toc-mutate-to-create-new-columns" class="nav-link active" data-scroll-target="#mutate-to-create-new-columns"><span class="toc-section-number">18.1</span>  <code>mutate</code> to create new columns</a>
   <ul class="collapse">
-<li><a href="#math-on-columns-compute-difference-and-percent-difference" id="toc-math-on-columns-compute-difference-and-percent-difference" class="nav-link" data-scroll-target="#math-on-columns-compute-difference-and-percent-difference"><span class="toc-section-number">19.1.1</span>  Math on columns: compute difference and percent difference</a></li>
-  <li><a href="#converting-na-to-0" id="toc-converting-na-to-0" class="nav-link" data-scroll-target="#converting-na-to-0"><span class="toc-section-number">19.1.2</span>  Converting NA to 0</a></li>
-  <li><a href="#detail-and-total-with-summary-statistics" id="toc-detail-and-total-with-summary-statistics" class="nav-link" data-scroll-target="#detail-and-total-with-summary-statistics"><span class="toc-section-number">19.1.3</span>  Detail and total with summary statistics</a></li>
+<li><a href="#math-on-columns-compute-difference-and-percent-difference" id="toc-math-on-columns-compute-difference-and-percent-difference" class="nav-link" data-scroll-target="#math-on-columns-compute-difference-and-percent-difference"><span class="toc-section-number">18.1.1</span>  Math on columns: compute difference and percent difference</a></li>
+  <li><a href="#converting-na-to-0" id="toc-converting-na-to-0" class="nav-link" data-scroll-target="#converting-na-to-0"><span class="toc-section-number">18.1.2</span>  Converting NA to 0</a></li>
+  <li><a href="#detail-and-total-with-summary-statistics" id="toc-detail-and-total-with-summary-statistics" class="nav-link" data-scroll-target="#detail-and-total-with-summary-statistics"><span class="toc-section-number">18.1.3</span>  Detail and total with summary statistics</a></li>
   </ul>
 </li>
   <li>
-<a href="#working-with-text-using-conditional-statements" id="toc-working-with-text-using-conditional-statements" class="nav-link" data-scroll-target="#working-with-text-using-conditional-statements"><span class="toc-section-number">19.2</span>  Working with text using conditional statements</a>
+<a href="#categorizing-text-using-conditional-statements" id="toc-categorizing-text-using-conditional-statements" class="nav-link" data-scroll-target="#categorizing-text-using-conditional-statements"><span class="toc-section-number">18.2</span>  Categorizing text using conditional statements</a>
   <ul class="collapse">
-<li><a href="#categories-using-if_else" id="toc-categories-using-if_else" class="nav-link" data-scroll-target="#categories-using-if_else"><span class="toc-section-number">19.2.1</span>  Categories using <code>if_else</code></a></li>
-  <li><a href="#categories-using-fuzzy-matching" id="toc-categories-using-fuzzy-matching" class="nav-link" data-scroll-target="#categories-using-fuzzy-matching"><span class="toc-section-number">19.2.2</span>  Categories using fuzzy matching</a></li>
-  <li><a href="#more-than-one-outcome" id="toc-more-than-one-outcome" class="nav-link" data-scroll-target="#more-than-one-outcome"><span class="toc-section-number">19.2.3</span>  More than one outcome</a></li>
+<li><a href="#two-categories-using-if_else" id="toc-two-categories-using-if_else" class="nav-link" data-scroll-target="#two-categories-using-if_else"><span class="toc-section-number">18.2.1</span>  Two categories using <code>if_else</code></a></li>
+  <li><a href="#two-categories-using-fuzzy-matching" id="toc-two-categories-using-fuzzy-matching" class="nav-link" data-scroll-target="#two-categories-using-fuzzy-matching"><span class="toc-section-number">18.2.2</span>  Two categories using fuzzy matching</a></li>
+  <li><a href="#more-than-two-categories-using-case_when" id="toc-more-than-two-categories-using-case_when" class="nav-link" data-scroll-target="#more-than-two-categories-using-case_when"><span class="toc-section-number">18.2.3</span>  More than two categories using <code>case_when()</code></a></li>
   </ul>
 </li>
   <li>
-<a href="#putting-it-all-together" id="toc-putting-it-all-together" class="nav-link" data-scroll-target="#putting-it-all-together"><span class="toc-section-number">19.3</span>  Putting it all together</a>
+<a href="#putting-it-all-together" id="toc-putting-it-all-together" class="nav-link" data-scroll-target="#putting-it-all-together"><span class="toc-section-number">18.3</span>  Putting it all together</a>
   <ul class="collapse">
 <li><a href="#save-it-for-use-in-another-program" id="toc-save-it-for-use-in-another-program" class="nav-link" data-scroll-target="#save-it-for-use-in-another-program">Save it for use in another program</a></li>
   </ul>
@@ -387,7 +387,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
 <!-- main -->
 <main class="content column-page-right" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title"><span id="r-verb-mutate" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Verbs in depth: New from old data with Mutate</span></span></h1>
+<h1 class="title"><span id="r-verb-mutate" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Verbs in depth: New from old data with Mutate</span></span></h1>
 </div>
 
 
@@ -412,19 +412,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Using conditional commands <code>if_else()</code> and <code>case_when()</code> to create categories</li>
 </ul>
 </div>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This chapter uses a verb called <code>count()</code> to count up the number of rows in each category. We’ll get into this in much more detail in the next chapter, but it’s helpful to use it now to show you the results of creating new categories from old data.</p>
-</div>
-</div>
 <p>This continues the work using Arizona Paycheck Protection Program loans. Full documentation of the dataset is in the <a href="appendix-ppp.html">Appendix</a>.</p>
 <div class="alert-success alert-dothis p-3">
 <p>To follow along, open your PPP project and create a new markdown the usual way, including the usual setup chunk.</p>
@@ -439,8 +426,8 @@ Note
 <span>       <span class="op">)</span></span>
 <span>   <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="mutate-to-create-new-columns" class="level2" data-number="19.1"><h2 data-number="19.1" class="anchored" data-anchor-id="mutate-to-create-new-columns">
-<span class="header-section-number">19.1</span> <code>mutate</code> to create new columns</h2>
+<section id="mutate-to-create-new-columns" class="level2" data-number="18.1"><h2 data-number="18.1" class="anchored" data-anchor-id="mutate-to-create-new-columns">
+<span class="header-section-number">18.1</span> <code>mutate</code> to create new columns</h2>
 <p>Use the verb <code>mutate</code> whenever you want to create or change existing columns in your data.</p>
 <p>Examples of this include:</p>
 <ul>
@@ -462,36 +449,37 @@ Warning
 <p>This chapter assumes you have gone through the <a href="./r-verb-filter.html">filtering</a> chapter. Many of the expressions and functions are the same, so if they don’t look familiar to you, consider reviewing that chapter (again) first.</p>
 </div>
 </div>
-<section id="math-on-columns-compute-difference-and-percent-difference" class="level3" data-number="19.1.1"><h3 data-number="19.1.1" class="anchored" data-anchor-id="math-on-columns-compute-difference-and-percent-difference">
-<span class="header-section-number">19.1.1</span> Math on columns: compute difference and percent difference</h3>
-<p>Here’s an example of computing the difference and percent difference between the amount received and the amount forgiven. Before you run this, try to think of why a reporter might be interested in this list, especially in the order that it’s being listed.</p>
+<p><code>mutate</code> uses the syntax:</p>
+<pre><code>    mutate ( new_column_name = function (arguments))</code></pre>
+<p>That’s pretty abstract, so we’ll do this using examples.</p>
+<section id="math-on-columns-compute-difference-and-percent-difference" class="level3" data-number="18.1.1"><h3 data-number="18.1.1" class="anchored" data-anchor-id="math-on-columns-compute-difference-and-percent-difference">
+<span class="header-section-number">18.1.1</span> Math on columns: compute difference and percent difference</h3>
+<p>Here’s an example of computing the difference and percent difference between the amount received and the amount forgiven. Before you run this, try to think of why a reporter might be interested in this list.</p>
 <p>Use the single “=” sign to provide a name for the new column and create more than one new column using a comma between them:</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ppp_orig</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">select</span> <span class="op">(</span> <span class="va">borrower_name</span>, <span class="va">borrower_city</span>, <span class="va">amount</span>, <span class="va">forgiveness_amount</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span> <span class="op">(</span> <span class="va">forgiveness_amount</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">mutate</span> <span class="op">(</span> amt_diff <span class="op">=</span>  <span class="va">forgiveness_amount</span><span class="op">-</span><span class="va">amount</span>, </span>
-<span>           amt_pct_diff <span class="op">=</span> <span class="va">amt_diff</span> <span class="op">/</span> <span class="va">amount</span>  <span class="op">*</span> <span class="fl">100</span> <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">arrange</span>  <span class="op">(</span> <span class="fu">desc</span><span class="op">(</span><span class="va">amt_diff</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ppp_orig <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span> ( <span class="at">amt_diff =</span>  forgiveness_amount<span class="sc">-</span>amount, </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">amt_pct_diff =</span> amt_diff <span class="sc">/</span> amount  <span class="sc">*</span> <span class="dv">100</span> ) <span class="sc">|&gt;</span>                   <span class="co"># compute new columns</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span> ( borrower_name, borrower_city, amount, forgiveness_amount) <span class="sc">|&gt;</span>   <span class="co"># pick out a few columns</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>).                                                                <span class="co"># show the first five rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="converting-na-to-0" class="level3" data-number="19.1.2"><h3 data-number="19.1.2" class="anchored" data-anchor-id="converting-na-to-0">
-<span class="header-section-number">19.1.2</span> Converting NA to 0</h3>
-<p>NOTE: Beginning with this code chunk, the tutorial begins saving interim data frames every time you make a change.</p>
+<p>If you look hard enough, you’ll realize that there are a lot of rows with <code>NA</code> instead of a value. That’s because whenever you do anything with a missing value, the result is missing. Missing values infect everything they touch. You often have to deal with them before you can do anything else.</p>
+</section><section id="converting-na-to-0" class="level3" data-number="18.1.2"><h3 data-number="18.1.2" class="anchored" data-anchor-id="converting-na-to-0">
+<span class="header-section-number">18.1.2</span> Converting NA to 0</h3>
 <p>We would like to convert the forgiven amount from a missing value to zero, under the idea that if they have not filled it out, nothing has (yet) been forgiven. Of course, we’d have to check that with the SBA before publication.</p>
 <p>There is a specific function used for that: <code>replace_na()</code>, with two arguments: The column you want to check for missing values, and the value you want to use instead. This isn’t limited to numbers – you can do the same thing with words, often replacing NA with “Unknown”.</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ppp_forgiven_fixed</span> <span class="op">&lt;-</span> </span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ppp_forgiven_fixed</span> <span class="op">&lt;-</span> </span>
 <span>  <span class="va">ppp_orig</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">mutate</span> <span class="op">(</span>amount_forgiven <span class="op">=</span> <span class="fu">replace_na</span><span class="op">(</span><span class="va">forgiveness_amount</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>(Note that nothing came out in this code chunk because the result was saved into a new data frame variable.)</p>
-</section><section id="detail-and-total-with-summary-statistics" class="level3" data-number="19.1.3"><h3 data-number="19.1.3" class="anchored" data-anchor-id="detail-and-total-with-summary-statistics">
-<span class="header-section-number">19.1.3</span> Detail and total with summary statistics</h3>
-<p>You can use <code>mutate</code> to put summary statistics next to your values so you can see whether or not they are similar to the average or median. (If you skipped the last section, it will always come out as <code>NA</code>, because they infect everything they touch. )</p>
+</section><section id="detail-and-total-with-summary-statistics" class="level3" data-number="18.1.3"><h3 data-number="18.1.3" class="anchored" data-anchor-id="detail-and-total-with-summary-statistics">
+<span class="header-section-number">18.1.3</span> Detail and total with summary statistics</h3>
+<p>You can use <code>mutate</code> to put summary statistics next to your values so you can see whether or not they are similar to the average or median. (If you skipped converting the <code>NA</code> values above, the answers will always come out as <code>NA</code>, because they infect everything they touch. )</p>
 <p>ˆ</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ppp_forgiven_fixed</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ppp_forgiven_fixed</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">mutate</span> <span class="op">(</span> avg_forgiven <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">amount_forgiven</span><span class="op">)</span>, </span>
 <span>           median_forgiven <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">amount_forgiven</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">select</span> <span class="op">(</span><span class="va">borrower_name</span>, <span class="va">amount_forgiven</span>, <span class="va">avg_forgiven</span>, <span class="va">median_forgiven</span> <span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -505,11 +493,11 @@ Warning
 </div>
 </div>
 </div>
-</section></section><section id="working-with-text-using-conditional-statements" class="level2" data-number="19.2"><h2 data-number="19.2" class="anchored" data-anchor-id="working-with-text-using-conditional-statements">
-<span class="header-section-number">19.2</span> Working with text using conditional statements</h2>
-<p>Very often, you’ll want to categorize entries in a database in order to make it simpler to count and sum the values in a meaningful way. For example, the <code>business_type</code> column has 23 different values, and isn’t always filled in. Here’s a list with the number of loans in each category:</p>
+</section></section><section id="categorizing-text-using-conditional-statements" class="level2" data-number="18.2"><h2 data-number="18.2" class="anchored" data-anchor-id="categorizing-text-using-conditional-statements">
+<span class="header-section-number">18.2</span> Categorizing text using conditional statements</h2>
+<p>Very often, you’ll want to categorize entries in a database in order to make it simpler to count and sum the values in a meaningful way. For example, the <code>business_type</code> column has 24 different values, including <code>NA</code> . Here’s a list with the number of loans in each category:</p>
 <div class="cell" data-rows.print="25">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#| label: print-forgiven</span></span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#| label: print-forgiven</span></span>
 <span><span class="co">#| eval: true</span></span>
 <span><span class="co">#| echo: false </span></span>
 <span></span>
@@ -525,19 +513,32 @@ Warning
 </div>
 </div>
 <p>One way to work with these is to create new columns with yes-no indicators for certain types of businesses like non-profits or individuals vs.&nbsp;companies.</p>
-<section id="categories-using-if_else" class="level3" data-number="19.2.1"><h3 data-number="19.2.1" class="anchored" data-anchor-id="categories-using-if_else">
-<span class="header-section-number">19.2.1</span> Categories using <code>if_else</code>
+<section id="two-categories-using-if_else" class="level3" data-number="18.2.1"><h3 data-number="18.2.1" class="anchored" data-anchor-id="two-categories-using-if_else">
+<span class="header-section-number">18.2.1</span> Two categories using <code>if_else</code>
 </h3>
 <p>The function to do this is <code>if_else()</code> , which tests a condition exactly the same way <code>filter</code> did, but then assigns a value based on whether it’s met or not. You list the condition first, then a comma , then what should happen if the condition is true, and then what should happen if it’s false.</p>
 <p>The condition is done the same way you did it in a filter, but instead of picking out the rows that match, <code>mutate</code> acts on them separately from the rows that don’t match.</p>
 <p>There’s no “maybe”, except for NA’s in the original value. Here’s the general form of what it looks like:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>new_column_name = if_else ( test the old column for something as in a a filter,</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                         give it a value if it's true,</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                         give it another value if it's not true)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>new_column_name = if_else ( test the old column for something as in a a filter,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                         give it a value if it's true,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                         give it another value if it's not true)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>So here is a way to do this with the business_type using the same %in% operator you used in the <code>filter</code> lesson, saving it to new data frame in your Environment, then displaying the first 10 types of businesses using <code>count()</code></p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This code chunk uses a verb called <code>count()</code> to count up the number of rows in each category. We’ll get into this in much more detail in the next chapter, but it’s helpful to use it now to show you the results of creating new categories from old data.</p>
+</div>
+</div>
 <div class="cell" data-rows.print="10">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#| label: m-category-indiv </span></span>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#| label: m-category-indiv </span></span>
 <span><span class="co">#| eval: true </span></span>
 <span><span class="co">#| echo: true</span></span>
 <span></span>
@@ -565,11 +566,11 @@ Warning
 </div>
 </div>
 </div>
-</section><section id="categories-using-fuzzy-matching" class="level3" data-number="19.2.2"><h3 data-number="19.2.2" class="anchored" data-anchor-id="categories-using-fuzzy-matching">
-<span class="header-section-number">19.2.2</span> Categories using fuzzy matching</h3>
+</section><section id="two-categories-using-fuzzy-matching" class="level3" data-number="18.2.2"><h3 data-number="18.2.2" class="anchored" data-anchor-id="two-categories-using-fuzzy-matching">
+<span class="header-section-number">18.2.2</span> Two categories using fuzzy matching</h3>
 <p>You can also use the same <code>str_like()</code> function you used in filtering. Here, it sets whether or not the borrower was a non-profit. Remember, a <code>%</code> means “anything or nothing, and a <code>_</code> means”any single character but it must be present”. In our case, the word is shown as “Non Profit” and “Non-Profit”. Once. you’ve set it to your new words, you can just filter on the new value:</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ppp_category_nonprofit</span> <span class="op">&lt;-</span></span>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ppp_category_nonprofit</span> <span class="op">&lt;-</span></span>
 <span>  <span class="va">ppp_category_indiv</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">mutate</span> <span class="op">(</span> is_nonprofit <span class="op">=</span> </span>
 <span>             <span class="fu">if_else</span> <span class="op">(</span> <span class="fu">str_like</span><span class="op">(</span><span class="va">business_type</span>, <span class="st">"%Non_Profit%"</span><span class="op">)</span> , </span>
@@ -591,8 +592,9 @@ Warning
 </div>
 </div>
 <p>(The profit categorization is unclear for some of these types, such as professional associations , tribal concerns and cooperatives.)</p>
-</section><section id="more-than-one-outcome" class="level3" data-number="19.2.3"><h3 data-number="19.2.3" class="anchored" data-anchor-id="more-than-one-outcome">
-<span class="header-section-number">19.2.3</span> More than one outcome</h3>
+</section><section id="more-than-two-categories-using-case_when" class="level3" data-number="18.2.3"><h3 data-number="18.2.3" class="anchored" data-anchor-id="more-than-two-categories-using-case_when">
+<span class="header-section-number">18.2.3</span> More than two categories using <code>case_when()</code>
+</h3>
 <p>Sometimes you will want more than one outcome, such as setting a value for “High”, “Medium” and “Low”. Instead of <code>if_then</code>, use the function <code>case_when</code>, which lets you string along conditions and their outcomes. The tilde (<code>~</code>) is used to show what happens if it’s true, and a TRUE at the end lets you say “everthing else”<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <div class="small">
 <pre><code>original data |&gt; 
@@ -602,11 +604,11 @@ Warning
               TRUE ~ what to do with everything that's left
               )</code></pre>
 </div>
-</section></section><section id="putting-it-all-together" class="level2" data-number="19.3"><h2 data-number="19.3" class="anchored" data-anchor-id="putting-it-all-together">
-<span class="header-section-number">19.3</span> Putting it all together</h2>
+</section></section><section id="putting-it-all-together" class="level2" data-number="18.3"><h2 data-number="18.3" class="anchored" data-anchor-id="putting-it-all-together">
+<span class="header-section-number">18.3</span> Putting it all together</h2>
 <p>Here is how you could set a column to with five types of borrowers instead of three. Once you put it together, you have a much more manageable list of five instead of 25 categories:</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ppp_business_categories</span> <span class="op">&lt;-</span> </span>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ppp_business_categories</span> <span class="op">&lt;-</span> </span>
 <span>  <span class="va">ppp_category_nonprofit</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">mutate</span> <span class="op">(</span>  new_business_type <span class="op">=</span> </span>
 <span>                <span class="fu">case_when</span> <span class="op">(</span>  <span class="fu">str_like</span><span class="op">(</span><span class="va">business_type</span>, <span class="st">"%non_profit%"</span><span class="op">)</span> <span class="op">~</span> <span class="st">"Non-profit"</span>,    <span class="co">#1st category</span></span>
@@ -652,9 +654,9 @@ Tip
 </div>
 </div>
 <section id="save-it-for-use-in-another-program" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="save-it-for-use-in-another-program">Save it for use in another program</h3>
-<p>Saving this for future use means you don’t have to worry anymore about some of the missing values, and you can filter and group by the simpler new business type instead of the original.</p>
+<p>Saving this for future use means you don’t have to worry anymore about some of the missing values, and you can filter and group by the simpler new business type instead of the original. This saves a data file called <code>ppp_edited.RDS</code> in your project folder.</p>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">saveRDS</a></span><span class="op">(</span><span class="va">ppp_business_categories</span>, file<span class="op">=</span><span class="st">"ppp_edited.RDS"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">saveRDS</a></span><span class="op">(</span><span class="va">ppp_business_categories</span>, file<span class="op">=</span><span class="st">"ppp_edited.RDS"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
@@ -794,13 +796,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation column-page-right"><div class="nav-page nav-page-previous">
-      <a href="./r-verb-groupby.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Verbs in depth: Aggregating with groups</span></span>
+      <a href="./r-verb-filter.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Verbs in depth: Select, arrange, filter</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./advanced.html" class="pagination-link">
-        <span class="nav-page-text">Special skills { .unnumbered}</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./r-verb-groupby.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Verbs in depth: Aggregating with groups</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

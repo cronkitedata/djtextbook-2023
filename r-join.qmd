@@ -10,7 +10,29 @@ library(knitr)
 ```
 
 
-You'll often find yourself attempting to put together two or more data sets. To add combine columns -- getting more variables -- use one of the `join` functions. To add rows -- stacking datasets -- use `bind_rows()`. This tutorial only addresses combining columns.
+:::{.alert .alert-secondary}
+
+<p class="alert-heading font-weight-bolder fs-3">
+In this chapter
+</p>
+
+The last big concept we have 
+
+* `select`: Pick out and arrange columns
+* `arrange` : Display rows in a certain order
+* `mutate` : Create new columns using functions and formulas 
+* `filter`: Pick out rows based on a condition
+* `summarise` : Compute summary statistics such as sum, count or median
+* `group_by` : Collapse your data into categories based on a column, as in pivot tables
+
+
+
+You have done all of these in Excel already.
+
+::: 
+
+
+
 
 Reporters use joins to: 
 

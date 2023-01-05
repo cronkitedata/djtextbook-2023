@@ -290,19 +290,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./r-verb-groupby.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Verbs in depth: Aggregating with groups</span></a>
+  <a href="./r-verb-mutate.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Verbs in depth: New from old data with Mutate</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./r-verb-mutate.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Verbs in depth: New from old data with Mutate</span></a>
+  <a href="./r-verb-groupby.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Verbs in depth: Aggregating with groups</span></a>
   </div>
 </li>
       </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./advanced.html" class="sidebar-item-text sidebar-link">Special skills { .unnumbered}</a>
+            <a href="./advanced.html" class="sidebar-item-text sidebar-link">Special skills</a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -366,7 +366,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
 <li><a href="#the-structure-of-a-quarto-document" id="toc-the-structure-of-a-quarto-document" class="nav-link" data-scroll-target="#the-structure-of-a-quarto-document"><span class="toc-section-number">14.2.1</span>  The structure of a Quarto document</a></li>
   <li><a href="#markdown-an-editing-language" id="toc-markdown-an-editing-language" class="nav-link" data-scroll-target="#markdown-an-editing-language">Markdown, an editing language</a></li>
-  <li><a href="#front-matter-yaml-at-the-top" id="toc-front-matter-yaml-at-the-top" class="nav-link" data-scroll-target="#front-matter-yaml-at-the-top">Front matter / YAML at the top</a></li>
+  <li><a href="#frontmatter" id="toc-frontmatter" class="nav-link" data-scroll-target="#frontmatter">Front matter / YAML at the top</a></li>
   <li><a href="#including-r-code-and-its-results" id="toc-including-r-code-and-its-results" class="nav-link" data-scroll-target="#including-r-code-and-its-results"><span class="toc-section-number">14.2.2</span>  Including R code and its results</a></li>
   <li><a href="#rendering-a-document" id="toc-rendering-a-document" class="nav-link" data-scroll-target="#rendering-a-document"><span class="toc-section-number">14.2.3</span>  Rendering a document</a></li>
   <li><a href="#quarto-starts-from-scratch" id="toc-quarto-starts-from-scratch" class="nav-link" data-scroll-target="#quarto-starts-from-scratch">Quarto starts from scratch</a></li>
@@ -379,7 +379,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="#example-document" id="toc-example-document" class="nav-link" data-scroll-target="#example-document"><span class="toc-section-number">14.3.1</span>  Example document</a></li>
   </ul>
 </li>
-  <li><a href="#other-resources" id="toc-other-resources" class="nav-link" data-scroll-target="#other-resources"><span class="toc-section-number">14.4</span>  Other resources</a></li>
+  <li><a href="#quarto-resources" id="toc-quarto-resources" class="nav-link" data-scroll-target="#quarto-resources"><span class="toc-section-number">14.4</span>  Other resources</a></li>
   </ul></nav>
 </nav><!-- margin-sidebar --><div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
@@ -463,8 +463,8 @@ Quarto is modern RMarkdown
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Many help pages and tutorials in R use the format called “R Markdown” instead of Quarto. Quarto was introduced in mid-2022 as a replacement for RMarkdown, and it seems silly to learn something that is already out of date. Almost everything you see related to RMarkdown will work without any adjustment in Quarto.</p>
-<p>You can use .Rmd files in RStudio instead of Quarto, and everything below the first few lines will generally be the same.</p>
+<p>Many help pages and tutorials in R use the format called “R Markdown” instead of Quarto. Quarto was introduced in mid-2022 as a replacement for RMarkdown, and it seems silly to learn something that is already out of date.</p>
+<p>Quarto files end with the extension <code>.qmd</code>. RMarkdown end with the extension <code>.Rmd</code>. Both will work in RStudio, but the “Render” button becomes “Knit” in RMarkdown. The only substantive difference is in the part between the three dashes at the top.</p>
 </div>
 </div>
 <section id="the-structure-of-a-quarto-document" class="level3" data-number="14.2.1"><h3 data-number="14.2.1" class="anchored" data-anchor-id="the-structure-of-a-quarto-document">
@@ -478,6 +478,7 @@ Quarto is modern RMarkdown
 </ol></section><section id="markdown-an-editing-language" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="markdown-an-editing-language">Markdown, an editing language</h3>
 <p>Quarto is based on markdown<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, which was invented as an easy way for early Wikepedia editors, who were used to text editors like Word, to write simple documents that would automatically be rendered into the more complicated HTML of the web.</p>
 <div class="alert alert-success alert-dothis">
+<p>Review the first five sections of the <a href="https://quarto.org/docs/authoring/markdown-basics.html">markdown basics</a> instructions from Quarto, paying attention to:</p>
 <ul>
 <li>
 <a href="https://quarto.org/docs/authoring/markdown-basics.html#text-formatting">Text formatting</a>, like bold and italic</li>
@@ -488,8 +489,9 @@ Quarto is modern RMarkdown
 <li>Optional: <a href="https://quarto.org/docs/authoring/markdown-basics.html#tables">Tables</a>
 </li>
 </ul>
+<p>We probably won’t use anything below the Tables section in this class.</p>
 </div>
-</section><section id="front-matter-yaml-at-the-top" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="front-matter-yaml-at-the-top">Front matter / YAML at the top</h3>
+</section><section id="frontmatter" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="frontmatter">Front matter / YAML at the top</h3>
 <p>The way the R knows how to process the page is by reading the very top of the file and looking at the section between three dashes. This is called “front matter”, and it’s extremely picky about indentations and the exact words you use.</p>
 <p>The default setup is very basic. You can use options in this front matter to make it look a little more polished. Here is some code you can use instead of the default to make it look a little better, add a table of contents, and allow your readers to download the underlying code. It also embeds all of the images and data you use in your page in the final output so that you can share your html page through email without copying those external items.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
@@ -583,21 +585,26 @@ Switching to Source mode
 </div>
 <p>Here are the steps:</p>
 <ul>
-<li>Create a new Quarto document in the project you created above.</li>
-<li>Find an image of your favorite animal or another image you like, and save it in that project folder.</li>
+<li>Find an image of your favorite animal or another image you like, and save it in the project folder that you created above.</li>
+<li>Open RStudio, and open the project through the verty top right corner of your screen or through the file menu</li>
+<li>Create a new Quarto document.</li>
+<li>Switch to Source mode from Visual mode .</li>
+<li>Delete the entire default entry, including the front matter.</li>
+<li>Copy the <a href="#frontmatter">code above</a> to the very top of the page. Don’t leave any blank lines above it.</li>
 <li>Save the new Quarto document using the name <code>yourlastname-firstquarto</code>
 </li>
-<li>In the document, delete all of the standard entry and replace it with:
+<li>The area below the three dashes is your document. In it, create:
 <ul>
 <li>A subhed introducing a subtopic, called “About me”</li>
-<li>Within that heading, a list of three things about yourself or about a topic you love, in a bulletted list.</li>
+<li>Within that heading, a list of three things about yourself or about a topic you love, in an unordered (bulleted) list.</li>
 <li>Another subhed , called “An image I love”, with some text below it describing why you love it</li>
 <li>The image that you saved into your project folder</li>
 <li>Another subhed called “Some R code”</li>
 <li>A code chunk, in which you create a variable , assign it a value, and then print it out.</li>
 </ul>
 </li>
-<li>Render the document to a final html file.</li>
+<li>Save your work</li>
+<li>Render the document to a final html file. (Rendering automatically saves, but it’s good practice to do it yourself.)</li>
 </ul>
 <section id="example-document" class="level3" data-number="14.3.1"><h3 data-number="14.3.1" class="anchored" data-anchor-id="example-document">
 <span class="header-section-number">14.3.1</span> Example document</h3>
@@ -608,7 +615,7 @@ Switching to Source mode
 <li>There is an error in that top YAML section. Copy the code above and try again. It’s really picky.</li>
 <li>There is an error in your R code.</li>
 <li>Everything’s too smushed together. Give your document room to breathe by inserting blank lines between elements. When you first get started, switching to Visual mode will help you figure out where you might have gone wrong.</li>
-</ol></section></section><section id="other-resources" class="level2" data-number="14.4"><h2 data-number="14.4" class="anchored" data-anchor-id="other-resources">
+</ol></section></section><section id="quarto-resources" class="level2" data-number="14.4"><h2 data-number="14.4" class="anchored" data-anchor-id="quarto-resources">
 <span class="header-section-number">14.4</span> Other resources</h2>
 <ul>
 <li><a href="https://quarto.org/docs/get-started/hello/rstudio.html">Quarto’s Getting Started guide</a></li>

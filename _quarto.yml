@@ -66,8 +66,8 @@ book:
          - r-data-import.qmd
          - r-verbs.qmd
          - r-verb-filter.qmd
-         - r-verb-groupby.qmd
          - r-verb-mutate.qmd
+         - r-verb-groupby.qmd
 #         - r-verb-join.qmd
 #         - r-recipes.qmd
 #
@@ -75,6 +75,8 @@ book:
 #       chapters:
 #         - viz-reporting.qmd
 #         - viz-demo.qmd
+#         - viz-tables.qmd
+#         - viz-practice.qmd
 #
     - part: advanced.qmd
       chapters:

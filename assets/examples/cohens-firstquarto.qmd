@@ -17,11 +17,6 @@ Here are three things you might not know about me:
 -   Before I came to Cronkite, I'd never lived further west than Western New York.
 -   I went to school at UNC but at taught at Duke. Which one has my loyalty?
 
-I want a numbered list here:
-
-1.  first item
-2.  second item
-
 ## My favorite animal
 
 Here is a picture of my favorite animal, downloaded from <https://unsplash.com>

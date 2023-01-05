@@ -241,19 +241,19 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./r-verb-groupby.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Verbs in depth: Aggregating with groups</span></a>
+  <a href="./r-verb-mutate.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Verbs in depth: New from old data with Mutate</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./r-verb-mutate.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Verbs in depth: New from old data with Mutate</span></a>
+  <a href="./r-verb-groupby.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Verbs in depth: Aggregating with groups</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./advanced.html" class="sidebar-item-text sidebar-link">Special skills { .unnumbered}</a>
+            <a href="./advanced.html" class="sidebar-item-text sidebar-link">Special skills</a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -314,8 +314,8 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#install-r-and-rstudio" id="toc-install-r-and-rstudio" class="nav-link active" data-scroll-target="#install-r-and-rstudio"><span class="toc-section-number">12.1</span>  Install R and RStudio</a>
   <ul class="collapse">
-  <li><a href="#install-r" id="toc-install-r" class="nav-link" data-scroll-target="#install-r"><span class="toc-section-number">12.1.1</span>  Install R</a></li>
-  <li><a href="#install-rstudio" id="toc-install-rstudio" class="nav-link" data-scroll-target="#install-rstudio"><span class="toc-section-number">12.1.2</span>  Install RStudio</a></li>
+  <li><a href="#details-on-installing-r" id="toc-details-on-installing-r" class="nav-link" data-scroll-target="#details-on-installing-r"><span class="toc-section-number">12.1.1</span>  Details on installing R</a></li>
+  <li><a href="#details-on-installing-rstudio" id="toc-details-on-installing-rstudio" class="nav-link" data-scroll-target="#details-on-installing-rstudio"><span class="toc-section-number">12.1.2</span>  Details on installing RStudio</a></li>
   <li><a href="#emergency-backup-plan" id="toc-emergency-backup-plan" class="nav-link" data-scroll-target="#emergency-backup-plan"><span class="toc-section-number">12.1.3</span>  Emergency backup plan</a></li>
   </ul></li>
   <li><a href="#set-up-rstudio-for-data-reporting" id="toc-set-up-rstudio-for-data-reporting" class="nav-link" data-scroll-target="#set-up-rstudio-for-data-reporting"><span class="toc-section-number">12.2</span>  Set up RStudio for data reporting</a></li>
@@ -360,24 +360,13 @@ ul.task-list li input[type="checkbox"] {
 <li>R is the programming language itself, and has to be installed first. Andrew Heiss has called it the “engine” behind your work.</li>
 <li>RStudio, made by the company <a href="https://posit.co">posit.co</a>, is the way we’ll interact with the programming language. Install it second. Heiss calls it the “fancy car” that you drive.</li>
 </ul>
-<section id="install-r" class="level3" data-number="12.1.1">
-<h3 data-number="12.1.1" class="anchored" data-anchor-id="install-r"><span class="header-section-number">12.1.1</span> Install R</h3>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Follow a tutorial instead
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If it’s easier, you can follow this interactive tutorial on installing R, RStudio and the tidyverse on your computer:</p>
+<div class="alert-success alert-dothis p-3 mb-2">
+<p>Try following this tutorial for installing R, RStudio and the package called the <code>tidyverse</code> on your computer.</p>
 <p><a href="https://learnr-examples.shinyapps.io/ex-setup-r/#section-welcome" class="uri">https://learnr-examples.shinyapps.io/ex-setup-r/#section-welcome</a> .</p>
+</div>
 <p>The name of the company has changed from RStudio to Posit, so some of the links may now take you to the Posit site. The name of the software – RStudio – has not changed.</p>
-<p>You can skip the part about installing the tidyverse— we’ll do that in the next chapter.</p>
-</div>
-</div>
+<section id="details-on-installing-r" class="level3" data-number="12.1.1">
+<h3 data-number="12.1.1" class="anchored" data-anchor-id="details-on-installing-r"><span class="header-section-number">12.1.1</span> Details on installing R</h3>
 <p>There are two versions of R for Mac users: The traditional one and the one for the new M1 chip on the latest machines. Choose the one that matches your machine by checking the apple in the upper left and looking at “About this Mac”. It will say “Apple M1” as the processor if you have it.</p>
 <p>Link to find your version: <a href="https://cloud.r-project.org/" class="uri">https://cloud.r-project.org/</a></p>
 <p><strong>Mac OS:</strong></p>
@@ -390,8 +379,8 @@ Follow a tutorial instead
 <p><strong>Windows 10/11:</strong></p>
 <p>You only need the “base” version for our class.</p>
 </section>
-<section id="install-rstudio" class="level3" data-number="12.1.2">
-<h3 data-number="12.1.2" class="anchored" data-anchor-id="install-rstudio"><span class="header-section-number">12.1.2</span> Install RStudio</h3>
+<section id="details-on-installing-rstudio" class="level3" data-number="12.1.2">
+<h3 data-number="12.1.2" class="anchored" data-anchor-id="details-on-installing-rstudio"><span class="header-section-number">12.1.2</span> Details on installing RStudio</h3>
 <p>There is no special RStudio version for Mac M1’s. As of December, 2022, these are the versions:</p>
 <ul>
 <li><a href="https://download1.rstudio.org/electron/windows/RStudio-2022.12.0-353.exe">RStudio for Windows 10/11</a></li>
@@ -413,6 +402,7 @@ Mac users: Command line tools
 <p>If R asks you if you want to install packages from “source”, say “No”.</p>
 </div>
 </div>
+<p>If you go all the way through the tutorial, installing the tidyverse will take a while and look like it’s stuck. It’s not.</p>
 </section>
 <section id="emergency-backup-plan" class="level3" data-number="12.1.3">
 <h3 data-number="12.1.3" class="anchored" data-anchor-id="emergency-backup-plan"><span class="header-section-number">12.1.3</span> Emergency backup plan</h3>

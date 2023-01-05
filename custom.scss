@@ -78,6 +78,12 @@ pre {
   padding-top: 2rem;
 }
 
+// embedded videos are too big.
+.quarto-video {
+  margin: 1rem 2rem 1rem 2rem;
+  width: 80% !important;
+}
+
 .standout {
   color: $color-foot;
 }
@@ -86,6 +92,9 @@ pre {
   background-color: $color-foot !important;
   opacity: .8;
   color: var(--bs-gray-100);
+  // top right bottom left
+  padding: 1rem;
+  margin: 1rem 3rem 1rem 2rem;
 }
 
 .alert-dothis a:any-link {
@@ -96,6 +105,8 @@ pre {
     background-color: var(--bs-blue);
   }
 }
+
+
 
 /* Printing ------------------------------------------------ */
 

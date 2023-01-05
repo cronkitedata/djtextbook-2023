@@ -9,25 +9,30 @@ In this chapter
 -   Change default settings for working in data reporting
 :::
 
-## Install R and RStudio
+
+
+## Install R and RStudio 
 
 -   R is the programming language itself, and has to be installed first. Andrew Heiss has called it the "engine" behind your work.
 -   RStudio, made by the company [posit.co](https://posit.co), is the way we'll interact with the programming language. Install it second. Heiss calls it the "fancy car" that you drive.
 
 
-### Install R
+::: {.alert-success .alert-dothis .p-3 .mb-2}
 
-::: callout-note
-### Follow a tutorial instead
-If it's easier, you can follow this interactive tutorial on installing R, RStudio and the tidyverse on your computer:
+Try following this tutorial for installing R, RStudio and the package called the `tidyverse` on your computer. 
 
 <https://learnr-examples.shinyapps.io/ex-setup-r/#section-welcome> .
 
+
+::: 
+
+
 The name of the company has changed from RStudio to Posit, so some of the links may now take you to the Posit site. The name of the software -- RStudio -- has not changed.
 
-You can skip the part about installing the tidyverse--- we'll do that in the next chapter.
- 
-::: 
+
+### Details on installing R
+
+
 
 There are two versions of R for Mac users: The traditional one and the one for the new M1 chip on the latest machines. Choose the one that matches your machine by checking the apple in the upper left and looking at "About this Mac". It will say "Apple M1" as the processor if you have it.
 
@@ -41,7 +46,7 @@ Link to find your version: <https://cloud.r-project.org/>
 
 You only need the "base" version for our class.
 
-### Install RStudio
+### Details on installing RStudio
 
 There is no special RStudio version for Mac M1's. As of December, 2022, these are the versions:
 
@@ -60,6 +65,9 @@ If later during package installation you get errors that mention "git" or "xcode
 
 If R asks you if you want to install packages from "source", say "No".
 :::
+
+If you go all the way through the tutorial, installing the tidyverse will take a while and look like it's stuck. It's not.
+
 
 ### Emergency backup plan
 
@@ -90,9 +98,13 @@ Before you start, decide on a folder you'll use to store all of your R work.
 
 Here's a video of what you should do. It also gives you a little reminder of how your computer is organized in folders. 
 
-::: {.content-visible when-format="html"}
-{{< video "https://www.youtube.com/embed/KbAcoHbEanI" >}}
+
+
+::: {.content-visible when-format="html" }
+
+{{< video "https://youtu.be/KbAcoHbEanI"  >}}
 :::
+
 
 <!-- don't try to keep it for pdf format-->
 

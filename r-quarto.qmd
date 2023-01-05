@@ -74,9 +74,9 @@ Shannon Pileggi [created a series of gifs](https://www.pipinghotdata.com/posts/2
 ::: callout-note
 ### Quarto is modern RMarkdown
 
-Many help pages and tutorials in R use the format called "R Markdown" instead of Quarto. Quarto was introduced in mid-2022 as a replacement for RMarkdown, and it seems silly to learn something that is already out of date. Almost everything you see related to RMarkdown will work without any adjustment in Quarto.
+Many help pages and tutorials in R use the format called "R Markdown" instead of Quarto. Quarto was introduced in mid-2022 as a replacement for RMarkdown, and it seems silly to learn something that is already out of date. 
 
-You can use .Rmd files in RStudio instead of Quarto, and everything below the first few lines will generally be the same. 
+Quarto files end with the extension `.qmd`. RMarkdown end with the extension `.Rmd`. Both will work in RStudio, but the "Render" button becomes "Knit" in RMarkdown. The only substantive difference is in the part between the three dashes at the top. 
 
 :::
 
@@ -96,14 +96,19 @@ Quarto is based on markdown^[<https://en.wikipedia.org/wiki/Markdown>], which wa
 
 ::: {.alert .alert-success .alert-dothis}
 
+Review the first five sections of the [markdown basics](https://quarto.org/docs/authoring/markdown-basics.html) instructions from Quarto, paying attention to: 
+
 - [Text formatting](https://quarto.org/docs/authoring/markdown-basics.html#text-formatting), like bold and italic
 - [Links](https://quarto.org/docs/authoring/markdown-basics.html#links-images)
 - [Headings](https://quarto.org/docs/authoring/markdown-basics.html#headings) 
 - [Lists](https://quarto.org/docs/authoring/markdown-basics.html#lists) (ordered and unordered)
 - Optional: [Tables](https://quarto.org/docs/authoring/markdown-basics.html#tables)
+
+We probably won't use anything below the Tables section in this class. 
+
 :::
 
-### Front matter / YAML at the top {.unnumbered}
+### Front matter / YAML at the top {.unnumbered #frontmatter}
 
 The way the R knows how to process the page is by reading the very top of the file and looking at the section between three dashes. This is called "front matter", and it's extremely picky about indentations and the exact words you use.
 
@@ -223,17 +228,22 @@ Practice by creating a new document with three things about yourself in a list, 
 
 Here are the steps:
 
--   Create a new Quarto document in the project you created above.
--   Find an image of your favorite animal or another image you like, and save it in that project folder. 
+-   Find an image of your favorite animal or another image you like, and save it in the project folder that you created above. 
+-   Open RStudio, and open the project through the verty top right corner of your screen or through the file menu
+-   Create a new Quarto document. 
+-   Switch to Source mode from Visual mode . 
+-   Delete the entire default entry, including the front matter.
+-   Copy the [code above](#frontmatter) to the very top of the page. Don't leave any blank lines above it. 
 -   Save the new Quarto document using the name `yourlastname-firstquarto` 
--   In the document, delete all of the standard entry and replace it with: 
+-   The area below the three dashes is your document. In it, create:
     -   A subhed introducing a subtopic, called "About me"
-    -   Within that heading, a list of three things about yourself or about a topic you love, in a bulletted list.
+    -   Within that heading, a list of three things about yourself or about a topic you love, in an unordered (bulleted) list.
     -   Another subhed , called "An image I love", with some text below it describing why you love it
     -   The image that you saved into your project folder
     -   Another subhed called "Some R code" 
     -   A code chunk, in which you create a variable , assign it a value, and then print it out.
-- Render the document to a final html file. 
+- Save your work
+- Render the document to a final html file. (Rendering automatically saves, but it's good practice to do it yourself.)
 
 
 
@@ -251,7 +261,7 @@ There are several reasons it might not work:
 
 
 
-## Other resources
+## Other resources {#quarto-resources}
 
 * [Quarto's Getting Started guide](https://quarto.org/docs/get-started/hello/rstudio.html)
 * [Heiss's video on R Markdown](https://youtu.be/fT5xI1cmE2c), which is very similar to Quarto. (13 minutes). It's great about showing you the glitches you might run into. The differences between Quarto and RMarkdown are : 

@@ -398,7 +398,7 @@ In this chapter
 <li>
 <code>filter</code>: Pick out rows based on a condition</li>
 <li>
-<code>summarise</code> : Compute summary statistics such as sum, count or median</li>
+<code>summarize</code> : Compute summary statistics such as sum, count or median</li>
 <li>
 <code>group_by</code> : Collapse your data into categories based on a column, as in pivot tables</li>
 </ul>
@@ -504,7 +504,7 @@ Single vs.&nbsp;double “=”
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">top100</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">summarise</span> <span class="op">(</span> number_of_entries <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span> , </span>
+<span>  <span class="fu">summarize</span> <span class="op">(</span> number_of_entries <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span> , </span>
 <span>              first_entry <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">chart_date</span><span class="op">)</span>, </span>
 <span>              last_entry<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">chart_date</span><span class="op">)</span></span>
 <span>              <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -520,11 +520,11 @@ Single vs.&nbsp;double “=”
 </section><section id="grouping-with-summary-statistics-aggregating" class="level2 page-columns page-full" data-number="16.3"><h2 data-number="16.3" class="anchored" data-anchor-id="grouping-with-summary-statistics-aggregating">
 <span class="header-section-number">16.3</span> Grouping with summary statistics (aggregating)</h2>
 <p>Your questions will often be around the idea of “the most” or “the biggest” something. Like in Excel, you could do this by guessing and filtering one thing after another. Or you could make a list of the items, then count them up all at once.</p>
-<p>To get the performer with the most appearances on the list, you combine <code>group_by</code> with <code>summarise</code> to count within each group. We’ll go into this in a lot more detail in future chapters.</p>
+<p>To get the performer with the most appearances on the list, you combine <code>group_by</code> with <code>summarize</code> to count within each group. We’ll go into this in a lot more detail in future chapters.</p>
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">top100</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">group_by</span> <span class="op">(</span> <span class="va">performer</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">summarise</span> <span class="op">(</span> times_on_list <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span> <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">summarize</span> <span class="op">(</span> times_on_list <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span> <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">arrange</span> <span class="op">(</span><span class="fu">desc</span> <span class="op">(</span> <span class="va">times_on_list</span> <span class="op">)</span><span class="op">)</span>  <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span> <span class="op">(</span><span class="fl">10</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -541,15 +541,15 @@ Single vs.&nbsp;double “=”
 <ul>
 <li>Began with the <code>top100</code> data frame that was loaded earlier from the saved version, and then</li>
 <li>Made one row for each performer using <code>group_by</code>, and then</li>
-<li>Counted the number of times each one appeared using <code>summarise</code> and <code>n()</code> and named the new column <code>times_on_list</code>, and then</li>
-<li>Sorted, or <code>arrange</code> the list in descending order by that new column created during the summarise step, and then</li>
+<li>Counted the number of times each one appeared using <code>summarize</code> and <code>n()</code> and named the new column <code>times_on_list</code>, and then</li>
+<li>Sorted, or <code>arrange</code> the list in descending order by that new column created during the summarize step, and then</li>
 <li>Printed off the first 10 rows.</li>
 </ul>
 <p>In Excel, we had trouble sorting a pivot table with city and state as rows. Here, that’s not a problem:</p>
 <div class="cell">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">top100</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">group_by</span> <span class="op">(</span> <span class="va">song</span>, <span class="va">performer</span><span class="op">)</span>  <span class="op">|&gt;</span></span>
-<span>  <span class="fu">summarise</span> <span class="op">(</span> times_on_list <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span> , </span>
+<span>  <span class="fu">summarize</span> <span class="op">(</span> times_on_list <span class="op">=</span> <span class="fu">n</span><span class="op">(</span><span class="op">)</span> , </span>
 <span>              last_time_on_list <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">chart_date</span><span class="op">)</span>,</span>
 <span>              highest_position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">this_week</span><span class="op">)</span></span>
 <span>            <span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -606,7 +606,7 @@ Single vs.&nbsp;double “=”
 <li>
 <code>filter</code>, to pick out rows based on a condition</li>
 <li>
-<code>summarise</code> to compute summary statistics like “how many?” and “how much? or”smallest” and “largest”</li>
+<code>summarize</code> to compute summary statistics like “how many?” and “how much? or”smallest” and “largest”</li>
 <li>
 <code>group_by</code> to create a single row for each unique item in a list.</li>
 </ul>

@@ -124,7 +124,7 @@ format:
     theme: cosmos
     embed-resources: true
     toc: true
-    codetools: true
+    code-tools: true
     page-layout: full
     df-print: paged
 ---

@@ -19,7 +19,7 @@ You only need a handful of key verbs of the tidyverse to get a lot done:
 * `arrange` : Display rows in a certain order
 * `mutate` : Create new columns using functions and formulas 
 * `filter`: Pick out rows based on a condition
-* `summarise` : Compute summary statistics such as sum, count or median
+* `summarize` : Compute summary statistics such as sum, count or median
 * `group_by` : Collapse your data into categories based on a column, as in pivot tables
 
 
@@ -153,7 +153,7 @@ In this case, because we've done nothing else, it will match the number of rows 
 ```{r top100-sums, echo=TRUE, eval=knitr::is_html_output()}
 
 top100 |>
-  summarise ( number_of_entries = n() , 
+  summarize ( number_of_entries = n() , 
               first_entry = min(chart_date), 
               last_entry= max(chart_date)
               )
@@ -165,14 +165,14 @@ top100 |>
 
 Your questions will often be around the idea of "the most" or "the biggest" something. Like in Excel, you could do this by guessing and filtering one thing after another. Or you could make a list of the items, then count them up all at once. 
 
-To get the performer with the most appearances on the list, you combine `group_by` with `summarise` to count within each group.  We'll go into this in a lot more detail in future chapters.
+To get the performer with the most appearances on the list, you combine `group_by` with `summarize` to count within each group.  We'll go into this in a lot more detail in future chapters.
 
 
 ```{r top100-performer, echo=TRUE, eval=knitr::is_html_output()}
 
 top100 |>
   group_by ( performer) |>
-  summarise ( times_on_list = n() ) |>
+  summarize ( times_on_list = n() ) |>
   arrange (desc ( times_on_list ))  |>
   head (10)
 
@@ -187,8 +187,8 @@ That code chunk:
 
 * Began with the `top100` data frame that was loaded earlier from the saved version, and then
 * Made one row for each  performer using `group_by`, and then 
-* Counted the number of times each one appeared using `summarise` and `n()` and named the new column `times_on_list`, and then
-* Sorted, or `arrange` the list in descending order by that new column created during the summarise step, and then 
+* Counted the number of times each one appeared using `summarize` and `n()` and named the new column `times_on_list`, and then
+* Sorted, or `arrange` the list in descending order by that new column created during the summarize step, and then 
 * Printed off the first 10 rows. 
 
 In Excel, we had trouble sorting a pivot table with city and state as rows. Here, that's not a problem:
@@ -197,7 +197,7 @@ In Excel, we had trouble sorting a pivot table with city and state as rows. Here
 
 top100 |>
   group_by ( song, performer)  |>
-  summarise ( times_on_list = n() , 
+  summarize ( times_on_list = n() , 
               last_time_on_list = max(chart_date),
               highest_position = min(this_week)
             ) |>
@@ -218,7 +218,7 @@ So some of the songs that were on the list the longest never made it to #1. (You
 
 top100 |>
   group_by ( song, performer)  |>
-  summarise ( times_on_list = n() , 
+  summarize ( times_on_list = n() , 
               last_time_on_list = max(chart_date),
               highest_position = min(this_week)
             ) |>
@@ -274,7 +274,7 @@ You've now seen most of the key verbs of the tidyverse, and how they can be put 
 * `mutate` , which you saw in the last chapter, to calculate new variables.
 * `select`,  which lets you pick out columns in the order you want to see them
 * `filter`, to pick out rows based on a condition
-* `summarise` to compute summary statistics like "how many?" and "how much? or "smallest" and "largest"
+* `summarize` to compute summary statistics like "how many?" and "how much? or "smallest" and "largest"
 * `group_by` to create a single row for each unique item in a list. 
 
 

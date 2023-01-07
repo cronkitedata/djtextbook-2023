@@ -431,13 +431,21 @@ Update your packages
 <p>The <code>str_like()</code> function in this chapter was added to the tidyverse in December 2022. If you installed packages before that, go to the “Packages” tab in the bottom right panel, find the <code>stringr</code> package, and press the “Update” button before continuing. Alternatively, in the console, run the command <code>update.packages(ask=FALSE)</code></p>
 </div>
 </div>
-<p>To follow along, you should load the PPP data into a new object called <code>ppp_orig</code>. It’s saved on the internet, which means using a <em>nested</em> function to tell R to go out in the world to find it rather than just looking in your project folder. That function is <code><a href="https://rdrr.io/r/base/connections.html">url()</a></code></p>
+<div class="alert alert-success alert-dothis">
+<p>To follow along, you should</p>
+<ol type="1">
+<li>Open or re-open your project</li>
+<li>Create a new Quarto document with the <a href="https://gist.github.com/sarahcnyt/e60ad2d7ccf65498fc88791f3bb683ae">standard front matter (YAML) and libraries</a>
+</li>
+<li>Load the PPP data into a new object called <code>ppp_orig</code>. It’s saved on the internet, which means using a <em>nested</em> function to tell R to go out in the world to find it rather than just looking in your project folder. That function is <code><a href="https://rdrr.io/r/base/connections.html">url()</a></code>:</li>
+</ol>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ppp_orig</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span> <span class="op">(</span> </span>
 <span>               <span class="fu"><a href="https://rdrr.io/r/base/connections.html">url</a></span> <span class="op">(</span> </span>
 <span>                 <span class="st">"https://cronkitedata.s3.amazonaws.com/rdata/ppp_az_loans.RDS"</span></span>
 <span>                 <span class="op">)</span></span>
 <span>               <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 <section id="select-columns" class="level2" data-number="17.1"><h2 data-number="17.1" class="anchored" data-anchor-id="select-columns">
 <span class="header-section-number">17.1</span> <code>select</code> columns</h2>

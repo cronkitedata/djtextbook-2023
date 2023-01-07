@@ -8,7 +8,5 @@
 .Rapp.history
 _main.log
 _common.R
-/scratch
 /.quarto
-
 /.quarto/

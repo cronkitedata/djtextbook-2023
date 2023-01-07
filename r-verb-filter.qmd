@@ -41,7 +41,14 @@ This the next several chapters are based on Paycheck Protection Program, or PPP,
 The `str_like()` function in this chapter was added to the tidyverse in December 2022. If you installed packages before that, go to the "Packages" tab in the bottom right panel, find the `stringr` package, and press the "Update" button before continuing. Alternatively, in the console, run the command `update.packages(ask=FALSE)`
 :::
 
-To follow along, you should load the PPP data into a new object called `ppp_orig`. It's saved on the internet, which means using a *nested* function to tell R to go out in the world to find it rather than just looking in your project folder. That function is `url()`  
+
+::: {.alert .alert-success .alert-dothis}
+
+To follow along, you should 
+
+1. Open or re-open your project
+2. Create a new Quarto document with the [standard front matter (YAML) and libraries](https://gist.github.com/sarahcnyt/e60ad2d7ccf65498fc88791f3bb683ae)
+3. Load the PPP data into a new object called `ppp_orig`. It's saved on the internet, which means using a *nested* function to tell R to go out in the world to find it rather than just looking in your project folder. That function is `url()`:
 
 
 ```{r}
@@ -58,6 +65,7 @@ ppp_orig <- readRDS (
 ```
 
 
+::: 
 
 ## `select` columns
 

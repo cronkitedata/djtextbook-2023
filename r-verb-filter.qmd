@@ -7,6 +7,14 @@ execute:
   eval: false
 --- 
 
+
+::: callout-danger
+This doesn't work all that well. The dataxray package depends on fontawesome (sigh) and the data explorer is a little hard to understand. GGally doesn't work on variables with a lot of unique values. So just stick with skimr 
+
+Can leave this here, but consider not publishing. 
+::: 
+
+
 # Verbs in depth: Select, arrange, filter {#r-verb-filter}
 
 ```{r}

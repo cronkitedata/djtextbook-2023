@@ -13,7 +13,7 @@ Most journalism uses data collected for one purpose for something entirely diffe
 
 ### Trace data and administrative records {-}
 
-In "[The Art of Access](https://www.amazon.com/Art-Access-Strategies-Acquiring-Records/dp/1604265507)", David Cullier  and Charles N. Davis describe a process of tracking down the life and times of a dataset. Their purpose is to make sure they know how to request it from a government agency. The same idea applies to using data that we acquire elsewhere. 
+In "[The Art of Access](https://www.amazon.com/Art-Access-Strategies-Acquiring-Records/dp/1604265507)", David Cuillier  and Charles N. Davis describe a process of tracking down the life and times of a dataset. Their purpose is to make sure they know how to request it from a government agency. The same idea applies to using data that we acquire elsewhere. 
 
 Understanding how and why data exists is crucial to understanding what you, as a reporter, might do with it. 
 

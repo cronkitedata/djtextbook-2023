@@ -46,21 +46,10 @@ I almost always go into the Excel preferences, and under "Tables & Filters" turn
 6. Drag the "department" to the Values area and make sure it says "Count of Department". 
 7. Drag the pd_total to the Values area, and make sure it says "Sum of pd_total". If it doesn't, change the pivot table calculation to "Sum". Repeat that three times, with "average", "min" and "max". 
 
-### Describe one department {-}
-
-Here are some questions you have about each department in the city. Answer them for a department of your choice: 
-
-* What was the highest and lowest payout they made? 
-* How many claims were made, and how many were paid out? 
-* What was the total amount paid and the average per claim? 
-
-
 ### Other questions {-}
 
 1. What department had the most claims made against them from FY 2015-16 to through 2019-2020? 
 
 2. How much did the city pay in that time because of complaints against Streets. Did any department pay more? 
 
-3. On average, how much did the city pay vs. the amount that was requested? Include only those complaints that have been resolved -- not those that are still underway or have been reopened. 
-
-4. Your turn: Ask an interesting question of this data and try to answer it. 
+3. Your turn: Ask an interesting question of this data and try to answer it. 

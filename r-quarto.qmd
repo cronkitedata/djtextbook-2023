@@ -21,8 +21,7 @@ In this chapter:
 -   Render your document - you can do it as often as you want to see drafts.
 :::
 
-I suggest that, beginning with this chapter, you start collecting code examples that you can save in a document with a description of what they mean in your own words.  This reference document can be anywhere -- a Google Doc, a Quarto doc, or anywhere else. You won't be running that code, but you'll have something you can copy and paste that exemplifies how you think of it. 
-
+I suggest that, beginning with this chapter, you start collecting code examples that you can save in a document with a description of what they mean in your own words. This reference document can be anywhere -- a Google Doc, a Quarto doc, or anywhere else. You won't be running that code, but you'll have something you can copy and paste that exemplifies how you think of it.
 
 ## R projects
 
@@ -74,10 +73,9 @@ Shannon Pileggi [created a series of gifs](https://www.pipinghotdata.com/posts/2
 ::: callout-note
 ### Quarto is modern RMarkdown
 
-Many help pages and tutorials in R use the format called "R Markdown" instead of Quarto. Quarto was introduced in mid-2022 as a replacement for RMarkdown, and it seems silly to learn something that is already out of date. 
+Many help pages and tutorials in R use the format called "R Markdown" instead of Quarto. Quarto was introduced in mid-2022 as a replacement for RMarkdown, and it seems silly to learn something that is already out of date.
 
-Quarto files end with the extension `.qmd`. RMarkdown end with the extension `.Rmd`. Both will work in RStudio, but the "Render" button becomes "Knit" in RMarkdown. The only substantive difference is in the part between the three dashes at the top. 
-
+Quarto files end with the extension `.qmd`. RMarkdown end with the extension `.Rmd`. Both will work in RStudio, but the "Render" button becomes "Knit" in RMarkdown. The only substantive difference is in the part between the three dashes at the top.
 :::
 
 ### The structure of a Quarto document
@@ -91,31 +89,31 @@ There are four parts to a Quarto document:
 
 ### Markdown, an editing language {.unnumbered}
 
-Quarto is based on markdown^[<https://en.wikipedia.org/wiki/Markdown>], which was invented as an easy way for early Wikepedia editors, who were used to text editors like Word, to write simple documents that would automatically be rendered into the more complicated HTML of the web.
+Quarto is based on markdown[^r-quarto-3], which was invented as an easy way for early Wikepedia editors, who were used to text editors like Word, to write simple documents that would automatically be rendered into the more complicated HTML of the web.
 
+[^r-quarto-3]: <https://en.wikipedia.org/wiki/Markdown>
 
 ::: {.alert .alert-success .alert-dothis}
+Review the first five sections of the [markdown basics](https://quarto.org/docs/authoring/markdown-basics.html) instructions from Quarto, paying attention to:
 
-Review the first five sections of the [markdown basics](https://quarto.org/docs/authoring/markdown-basics.html) instructions from Quarto, paying attention to: 
+-   [Text formatting](https://quarto.org/docs/authoring/markdown-basics.html#text-formatting), like bold and italic
+-   [Links](https://quarto.org/docs/authoring/markdown-basics.html#links-images)
+-   [Headings](https://quarto.org/docs/authoring/markdown-basics.html#headings)
+-   [Lists](https://quarto.org/docs/authoring/markdown-basics.html#lists) (ordered and unordered)
+-   Optional: [Tables](https://quarto.org/docs/authoring/markdown-basics.html#tables)
 
-- [Text formatting](https://quarto.org/docs/authoring/markdown-basics.html#text-formatting), like bold and italic
-- [Links](https://quarto.org/docs/authoring/markdown-basics.html#links-images)
-- [Headings](https://quarto.org/docs/authoring/markdown-basics.html#headings) 
-- [Lists](https://quarto.org/docs/authoring/markdown-basics.html#lists) (ordered and unordered)
-- Optional: [Tables](https://quarto.org/docs/authoring/markdown-basics.html#tables)
-
-We probably won't use anything below the Tables section in this class. 
-
+We probably won't use anything below the Tables section in this class.
 :::
 
-### Front matter / YAML at the top {.unnumbered #frontmatter}
+### Front matter / YAML at the top {#frontmatter .unnumbered}
 
 The way the R knows how to process the page is by reading the very top of the file and looking at the section between three dashes. This is called "front matter", and it's extremely picky about indentations and the exact words you use.
 
-The default setup is very basic. You can use options in this front matter to make it look a little more polished. Here is some code you can use instead of the default to make it look a little better, add a table of contents, and allow your readers to download the underlying code. It also embeds all of the images and data you use in your page in the final output so that you can share your html page through email without copying those external items.^[Beware: This can result in large files, sometimes too large for email systems.]
+The default setup is very basic. You can use options in this front matter to make it look a little more polished. Here is some code you can use instead of the default to make it look a little better, add a table of contents, and allow your readers to download the underlying code. It also embeds all of the images and data you use in your page in the final output so that you can share your html page through email without copying those external items.[^r-quarto-4]
 
+[^r-quarto-4]: Beware: This can result in large files, sometimes too large for email systems.
 
-```yaml
+``` yaml
 ---
 title: "A title for your page"
 author: "Your name"
@@ -130,26 +128,22 @@ format:
 ---
 ```
 
-
 ### Including R code and its results
 
-So far, nothing is different from a simple Google doc or Word document -- there is no computer code or data involved. But the value of Quarto is that it allows you to mix your analysis with your writing in one place. 
+So far, nothing is different from a simple Google doc or Word document -- there is no computer code or data involved. But the value of Quarto is that it allows you to mix your analysis with your writing in one place.
 
-You'll do that through `code chunks` -- little snippets of working code that you insert within your narrative which, when processed, will also include the results. 
+You'll do that through `code chunks` -- little snippets of working code that you insert within your narrative which, when processed, will also include the results.
 
 To insert a code chunk:
 
 -   Use the +C button on the top right of your screen. ( ![](assets/images/r-quarto-insertchunk.png){width="25" height="16"})
 -   Use the keyboard shortcut CMD/CTL-OPT/ALT-i
 
-
 ::: {.content-visible when-format="html"}
 ![](https://cronkitedata.s3.amazonaws.com/images/r-quarto-insertcode.gif)
-
 :::
 
-
-The following code chunk creates a new variable called `my_variable`, another called `my_name`, then prints out the value stored in the `my_name` one. Copying it into your document will create a code chunk for you. 
+The following code chunk creates a new variable called `my_variable`, another called `my_name`, then prints out the value stored in the `my_name` one. Copying it into your document will create a code chunk for you.
 
 ```{r}
 #| echo: fenced
@@ -171,103 +165,88 @@ my_name
 
 This might not seem like much, but think about how it helps you do your analysis. You can write all of your notes right where you do the work. You don't have to copy and paste information from one place to another, or share out-of-date spreadsheets with your teammates.
 
-
 ### Rendering a document
 
+The document remains in markdown format until you render it. There are several ways to do that, most easily by pressing the "Render" button at the top of the page.
 
-The document remains in markdown format until you render it. There are several ways to do that, most easily by pressing the "Render" button at the top of the page. 
-
-::: grid 
-
-:::: g-col-8
-
-When that button is pushed, Quarto converts your document to an HTML document that can be shared or published. It will be listed as a new file in your project: 
-
-::::
-
-:::: g-col-4
-
-![rendered files](assets/images/r-quarto-firstquarto.png){width="3in"}
-::::
+::: grid
+::: g-col-8
+When that button is pushed, Quarto converts your document to an HTML document that can be shared or published. It will be listed as a new file in your project:
 :::
 
+::: g-col-4
+![rendered files](assets/images/r-quarto-firstquarto.png){width="3in"}
+:::
+:::
 
+### Quarto starts from scratch {.unnumbered}
 
-### Quarto starts from scratch  {.unnumbered}
+You may have worked in a document for a while and saved a bunch of items in your environment.
 
-You may have worked in a document for a while and saved a bunch of items in your environment. 
+Quarto doesn't care!
 
-Quarto doesn't care! 
-
-Every time it creates your document, it starts from a clean environment --- everything you use must be created in the program itself, either by loading a package, importing some data, or doing some analysis. We'll go through that later, but one good practice is to periodically clear your environment and run all of the code chunks from the top to make sure they don't depend on anything else. You'll do this in the walkthrough. 
+Every time it creates your document, it starts from a clean environment --- everything you use must be created in the program itself, either by loading a package, importing some data, or doing some analysis. We'll go through that later, but one good practice is to periodically clear your environment and run all of the code chunks from the top to make sure they don't depend on anything else. You'll do this in the walkthrough.
 
 ### Source vs. Visual modes
 
-RStudio lets you use what it calls "Visual" mode to hide the markdown code for you, and present you with a draft of what your document may look like. It also uses point-and-click methods to insert images and headings and other elements. For now, we should use the "Source" mode, which may not be the default for your machine. Later on it will be fine to switch back and forth, but the visual mode doesn't work very well with the results of your commands so it's worth understanding a little about what is going on behind the scenes. 
+RStudio lets you use what it calls "Visual" mode to hide the markdown code for you, and present you with a draft of what your document may look like. It also uses point-and-click methods to insert images and headings and other elements. For now, we should use the "Source" mode, which may not be the default for your machine. Later on it will be fine to switch back and forth, but the visual mode doesn't work very well with the results of your commands so it's worth understanding a little about what is going on behind the scenes.
 
 ::: callout-note
 ### Switching to Source mode
-RStudio usually creates a Quarto document in "Visual" mode, which hides the underlying coding from you and allows you to use point-and-click menus to structure your document. 
 
-This tutorial will have you switch to "Source" mode so that you can see the underlying structure. 
+RStudio usually creates a Quarto document in "Visual" mode, which hides the underlying coding from you and allows you to use point-and-click menus to structure your document.
+
+This tutorial will have you switch to "Source" mode so that you can see the underlying structure.
 
 ![](assets/images/r-quarto-source-visual.png)
 
 In practice, visual mode makes data tables look all squished and difficult to navigate until you've rendered them. This is something we do a lot, so I end up working in the source document pretty frequently.
 
-You can set up RStudio to default to source mode by changing the global options under Tools -> Global Options , then look for R Markdown, and the Visual tab.  
-::: 
+You can set up RStudio to default to source mode by changing the global options under Tools -\> Global Options , then look for R Markdown, and the Visual tab.
+:::
 
 ## Walkthrough - your first document
 
 ::: {.alert .alert-success .alert-dothis}
-Practice by creating a new document with three things about yourself in a list, a picture of an animal you love or some other image you like, and a code chunk. 
-::: 
-
-
+Practice by creating a new document with three things about yourself in a list, a picture of an animal you love or some other image you like, and a code chunk.
+:::
 
 Here are the steps:
 
--   Find an image of your favorite animal or another image you like, and save it in the project folder that you created above. 
+-   Find an image of your favorite animal or another image you like, and save it in the project folder that you created above.
 -   Open RStudio, and open the project through the verty top right corner of your screen or through the file menu
--   Create a new Quarto document. 
--   Switch to Source mode from Visual mode . 
+-   Create a new Quarto document.
+-   Switch to Source mode from Visual mode .
 -   Delete the entire default entry, including the front matter.
--   Copy the [code above](#frontmatter) to the very top of the page. Don't leave any blank lines above it. 
--   Save the new Quarto document using the name `yourlastname-firstquarto` 
+-   Copy the [code above](#frontmatter) to the very top of the page. Don't leave any blank lines above it.
+-   Save the new Quarto document using the name `yourlastname-firstquarto`
 -   The area below the three dashes is your document. In it, create:
     -   A subhed introducing a subtopic, called "About me"
     -   Within that heading, a list of three things about yourself or about a topic you love, in an unordered (bulleted) list.
     -   Another subhed , called "An image I love", with some text below it describing why you love it
     -   The image that you saved into your project folder
-    -   Another subhed called "Some R code" 
+    -   Another subhed called "Some R code"
     -   A code chunk, in which you create a variable , assign it a value, and then print it out.
-- Save your work
-- Render the document to a final html file. (Rendering automatically saves, but it's good practice to do it yourself.)
-
-
+-   Save your work
+-   Render the document to a final html file. (Rendering automatically saves, but it's good practice to do it yourself.)
 
 ### Example document
+
+You can look at the [original Quarto code](https://cronkitedata.s3.amazonaws.com/markdown_templates/cohens-firstquarto.qmd) and the [rendered document](https://cronkitedata.s3.amazonaws.com/markdown_templates/cohens-firstquarto.html), but remember that if you were doing this yourself, you'd have to have the image saved in the same folder as your project.
 
 ![](assets/images/r-quarto-first-moose.png){width="100%"}
 
 There are several reasons it might not work:
 
 1.  You haven't saved the document yet.
-2.  There is an error in that top YAML section. Copy the code above and try again. It's really picky. 
-3.  There is an error in your R code. 
-4.  Everything's too smushed together. Give your document room to breathe by inserting blank lines between elements. When you first get started, switching to Visual mode will help you figure out where you might have gone wrong. 
-
-
-
+2.  There is an error in that top YAML section. Copy the code above and try again. It's really picky.
+3.  There is an error in your R code.
+4.  Everything's too smushed together. Give your document room to breathe by inserting blank lines between elements. When you first get started, switching to Visual mode will help you figure out where you might have gone wrong.
 
 ## Other resources {#quarto-resources}
 
-* [Quarto's Getting Started guide](https://quarto.org/docs/get-started/hello/rstudio.html)
-* [Heiss's video on R Markdown](https://youtu.be/fT5xI1cmE2c), which is very similar to Quarto. (13 minutes). It's great about showing you the glitches you might run into. The differences between Quarto and RMarkdown are : 
-  * The `output: html_document` line should be `format: html`
-  * The name of the file ends with .qmd, not .Rmd
-  * The "knit" button is really a "render" button. 
-  
-  
-
+-   [Quarto's Getting Started guide](https://quarto.org/docs/get-started/hello/rstudio.html)
+-   [Heiss's video on R Markdown](https://youtu.be/fT5xI1cmE2c), which is very similar to Quarto. (13 minutes). It's great about showing you the glitches you might run into. The differences between Quarto and RMarkdown are :
+    -   The `output: html_document` line should be `format: html`
+    -   The name of the file ends with .qmd, not .Rmd
+    -   The "knit" button is really a "render" button.

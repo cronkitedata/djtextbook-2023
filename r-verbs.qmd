@@ -244,7 +244,7 @@ I've made a dataset for you that contains the 21 No.1 songs that stayed on the H
 
 
 # read the data
-readRDS("scratch/top_songs.RDS") |> 
+readRDS(url("https://cronkitedata.s3.amazonaws.com/rdata/top_songs.RDS")) |> 
 # start the plot
   ggplot ( 
         aes ( x=chart_date, y=hit, color=this_week ) 

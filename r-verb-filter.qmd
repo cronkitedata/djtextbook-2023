@@ -5,15 +5,7 @@ format:
     number-depth: 2
 execute:
   eval: false
---- 
-
-
-::: callout-danger
-This doesn't work all that well. The dataxray package depends on fontawesome (sigh) and the data explorer is a little hard to understand. GGally doesn't work on variables with a lot of unique values. So just stick with skimr 
-
-Can leave this here, but consider not publishing. 
-::: 
-
+---
 
 # Verbs in depth: Select, arrange, filter {#r-verb-filter}
 
@@ -49,15 +41,12 @@ This the next several chapters are based on Paycheck Protection Program, or PPP,
 The `str_like()` function in this chapter was added to the tidyverse in December 2022. If you installed packages before that, go to the "Packages" tab in the bottom right panel, find the `stringr` package, and press the "Update" button before continuing. Alternatively, in the console, run the command `update.packages(ask=FALSE)`
 :::
 
-
 ::: {.alert .alert-success .alert-dothis}
+To follow along, you should
 
-To follow along, you should 
-
-1. Open or re-open your project
-2. Create a new Quarto document with the [standard front matter (YAML) and libraries](https://gist.github.com/sarahcnyt/e60ad2d7ccf65498fc88791f3bb683ae)
-3. Load the PPP data into a new object called `ppp_orig`. It's saved on the internet, which means using a *nested* function to tell R to go out in the world to find it rather than just looking in your project folder. That function is `url()`:
-
+1.  Open or re-open your project
+2.  Create a new Quarto document with the [standard front matter (YAML) and libraries](https://gist.github.com/sarahcnyt/e60ad2d7ccf65498fc88791f3bb683ae)
+3.  Load the PPP data into a new object called `ppp_orig`. It's saved on the internet, which means using a *nested* function to tell R to go out in the world to find it rather than just looking in your project folder. That function is `url()`:
 
 ```{r}
 #| label: load-data
@@ -71,15 +60,13 @@ ppp_orig <- readRDS (
 
 
 ```
-
-
-::: 
+:::
 
 ## `select` columns
 
 The `select` verb allows you to pick out columns by name or by their order in the data frame. Selecting columns is case-sensitive: a column called `amount` is completely different than a column named `Amount`. That's one reason to use our style of always converting column names to lower case.
 
-`select` is the easiest verb to understand it so it's shown here first. But in practice, I usually include it as my last verb in a code chunk because some columns that I don't care about in the end are needed for filtering or creating new columns. 
+`select` is the easiest verb to understand it so it's shown here first. But in practice, I usually include it as my last verb in a code chunk because some columns that I don't care about in the end are needed for filtering or creating new columns.
 
 There a [lot of ways](https://dplyr.tidyverse.org/reference/select.html) to pick out column names that are based on their name, their position, their type or other characteristics. Here are a few:
 
@@ -138,7 +125,7 @@ Here are the *operators* , or symbols, you'll use to make the conditions you wan
 
 ::: small
 | Operator   | Data types    | Meaning                                                                                                                            |
-|----------------------------|----------------------|----------------------|
+|------------|---------------|------------------------------------------------------------------------------------------------------------------------------------|
 | `==`       | All           | Equals, exactly. Note the double-equals sign, which distinguishes it from an assignment operator, such as setting new column name. |
 | `>` , `>=` | date, numeric | Greater than / greater than or equal to.                                                                                           |
 | `<`, `<=`  | date, numeric | Less than / less than or equal to.                                                                                                 |
@@ -152,7 +139,7 @@ In each of these cases, the column name goes on the left of the operator, and th
 
 You can combine them using the Boolean operators `and` and `or`, which are used in other contexts like advanced Google searches :
 
--   `&` means "and".  which means that **both** conditions must be true. It **narrows** your search. (You can also separate the conditions with commas instead of ampersands) Think of it as a fish net, with smaller openings so only littler fish can geth through.
+-   `&` means "and". which means that **both** conditions must be true. It **narrows** your search. (You can also separate the conditions with commas instead of ampersands) Think of it as a fish net, with smaller openings so only littler fish can geth through.
 
 -   `|` (the verticle bar, near the Return key) means "or" , which means that **either** condition can be true. It **widens** your search. It is a fish net with bigger openings, so both big and little fish can get through.
 
@@ -212,7 +199,7 @@ ppp_small |>
 
 #### Narrowed to under \$100,000 {.unnumbered}
 
-To narrow it just to loans under \$100,000, you can use an "&" condition, or add another filter. In practice, I will often try to separate my "AND" conditions into a new filter command --- it's sometimes easier to read than a  lot of `(|&,)` symbols. 
+To narrow it just to loans under \$100,000, you can use an "&" condition, or add another filter. In practice, I will often try to separate my "AND" conditions into a new filter command --- it's sometimes easier to read than a lot of `(|&,)` symbols.
 
 ```{r}
 #| label: ppp-add-100k
@@ -266,38 +253,38 @@ ppp_small |>
 ```
 
 ::: callout-warning
-Be careful when using missing data or combining conditions when you negate. The answer is often very different than you intended. It often behaves  opposite of what you intended.
-::: 
+Be careful when using missing data or combining conditions when you negate. The answer is often very different than you intended. It often behaves opposite of what you intended.
+:::
 
 ## Using `str_like()` for inexact matches
 
-The operators we've examined so far are pretty limited. You have to know exactly what's in a character column, which can get pretty annoying when you are trying to nail down a story based on data entered by humans into computers. 
+The operators we've examined so far are pretty limited. You have to know exactly what's in a character column, which can get pretty annoying when you are trying to nail down a story based on data entered by humans into computers.
 
-But you can also use the results of formulas, or *expressions* as a condition, as long as they result in a TRUE or FALSE answer. One of the most powerful is the function `str_like()`, which was added to the tidyverse in late 2022. It allows you to use wildcard characters to find words and phrases that begin with or contain some characters, and it's not case-sensitive! 
+But you can also use the results of formulas, or *expressions* as a condition, as long as they result in a TRUE or FALSE answer. One of the most powerful is the function `str_like()`, which was added to the tidyverse in late 2022. It allows you to use wildcard characters to find words and phrases that begin with or contain some characters, and it's not case-sensitive!
 
 ::: callout-tip
 There is a whole set of these ["string" functions](https://stringr.tidyverse.org/articles/stringr.html) available in the tidyverse through its `stringr` package. We'll get to some of the more common ones later in the book, especially those related to a powerful pattern-matching method called "regular expressions" or "regex".
-::: 
+:::
 
-The difference in using functions is that you'll structure your command a little differently. Instead of 
+The difference in using functions is that you'll structure your command a little differently. Instead of
 
-`borrower_city == "Scottsdale"`, you'll use a formula that looks like 
+`borrower_city == "Scottsdale"`, you'll use a formula that looks like
 
-`str_like(borrower_city, "scottsdale")`, where the function name comes first, then, inside parentheses, are the column you want to check and the value you want to look for. 
+`str_like(borrower_city, "scottsdale")`, where the function name comes first, then, inside parentheses, are the column you want to check and the value you want to look for.
 
-`str_like()` uses wildcards to stand in for characters you're not sure about. They are: 
+`str_like()` uses wildcards to stand in for characters you're not sure about. They are:
 
-- `_` for one missing character. Use it when you aren't sure of spelling.   
-The condition `summari_e` would be TRUE if the word were "summarise" or "summarize". 
+-   `_` for one missing character. Use it when you aren't sure of spelling.\
+    The condition `summari_e` would be TRUE if the word were "summarise" or "summarize".
 
-- `%` for any number of unknown characters, or a missing character.   
-For example, `N% SCOTTSDALE R%` would match "North Scottsdale Road", "N. Scottsdale Rd" or "North Scottsdale Rd." but not "Scottsdale" or "N Scottsdale Ave". 
+-   `%` for any number of unknown characters, or a missing character.\
+    For example, `N% SCOTTSDALE R%` would match "North Scottsdale Road", "N. Scottsdale Rd" or "North Scottsdale Rd." but not "Scottsdale" or "N Scottsdale Ave".
 
-Smart use of wildcards can often save you a lot of typing! 
+Smart use of wildcards can often save you a lot of typing!
 
-### Examples {-}
+### Examples {.unnumbered}
 
-You might want to use str_like whenever you filter for words just because it doesn't care about upper and lower case. 
+You might want to use str_like whenever you filter for words just because it doesn't care about upper and lower case.
 
 This example would find borrowers who had addresses that were "CENTRAL AVE", "Central Ave" or "central ave". It excludes anyone with a street address, a suite number, or anyone on North Central Ave. because there is no wildcard:
 
@@ -310,7 +297,8 @@ ppp_small |>
 
 
 ```
-But this one finds all of the borrowers on Central Avenue: 
+
+But this one finds all of the borrowers on Central Avenue:
 
 ```{r}
 #| label: first-wildcards
@@ -324,23 +312,21 @@ ppp_small |>
 
 ```
 
-If you examine some of the answers, you'll see why having wildcards is so important --- there's really no way to guess how, exactly, a borrower might have entered their address. There's no standardization on this or on many other columns in the data. 
-
+If you examine some of the answers, you'll see why having wildcards is so important --- there's really no way to guess how, exactly, a borrower might have entered their address. There's no standardization on this or on many other columns in the data.
 
 ## A note on `NA`, or missing data
 
 ::: callout-warning
-A filter will never return any rows that are missing, or `NA` in the column you test. This is true both when you are trying to include them, and when you're trying to include everything except something else. 
-::: 
+A filter will never return any rows that are missing, or `NA` in the column you test. This is true both when you are trying to include them, and when you're trying to include everything except something else.
+:::
 
+In most data sets, there is at least a little missing data. In this case, the forgiveness amount never shows the value zero. Instead, it shows `NA`, or the R symbol for missing data.
 
-In most data sets, there is at least a little missing data. In this case, the forgiveness amount never shows the value zero. Instead, it shows `NA`, or the R symbol for missing data. 
+This isn't the same as the letters "NA". It's a special type of value that means "nothing". It's not zero, it's not higher or lower than any other value, it doesn't ever equal anything and it doesn't ever NOT equal anything! It stands for a value that is truly unknown. In fact, an `NA` never even matches another `NA`, because we don't know anything about either one.
 
-This isn't the same as the letters "NA". It's a special type of value that means "nothing". It's not zero, it's not higher or lower than any other value, it doesn't ever equal anything and it doesn't ever NOT equal anything! It stands for a value that is truly unknown. In fact, an `NA` never even matches another `NA`, because we don't know anything about either one.  
+This means you can't filter for `NA` values directly and often have to take them into account.
 
-This means you can't filter for `NA` values directly and often have to take them into account. 
-
-To filter for `NA` values, you'll use a special function --- `is.na()` --- designed to pick out these bad actors: 
+To filter for `NA` values, you'll use a special function --- `is.na()` --- designed to pick out these bad actors:
 
 ```{r}
 #| label: filter-na
@@ -352,17 +338,15 @@ ppp_small |>
 
 ```
 
-We'll come back to this later, but for now just remember that missing data is a scourge on your analysis, and it will almost always be a problem you have to solve. 
-
+We'll come back to this later, but for now just remember that missing data is a scourge on your analysis, and it will almost always be a problem you have to solve.
 
 ## Your turn
 
-Create a new Quarto document in your project. Add a sub-heading that provides documentation and sourcing of the data. You can load the data at the same time using this code chunk: 
+Create a new Quarto document in your project. Add a sub-heading that provides documentation and sourcing of the data. You can load the data at the same time using this code chunk:
 
-```{{r}} 
+``` {{r}}
 
 ppp_orig <- readRDS( url ( "https://cronkitedata.s3.amazonaws.com/rdata/ppp_az_loans.RDS"))
-
 ```
 
 Next, add a code chunk with the `glimpse(ppp_orig)` command to get a list of the columns in order.
@@ -373,26 +357,22 @@ Create code chunks that will filter for the following values. You can select jus
 
 Find the following sets of loans, and try to think about why these might make for interesting or possible story ideas.
 
-1.  At least $1 million
+1.  At least \$1 million
 
-2.  Under $1,000
+2.  Under \$1,000
 
-3.  Under $1,000 for projects in Maricopa County
+3.  Under \$1,000 for projects in Maricopa County
 
 4.  Loans that were paid in full but not forgiven. In other words, the borrower decided to pay it back rather than ask for taxpayers to cover it. (These loans are shown as missing, or `NA` in the forgiveness_amount column)
 
-6.  Loans in Phoenix, Scottsdale and Tempe
+5.  Loans in Phoenix, Scottsdale and Tempe
 
-7.  Loans in Arizona that were for projects out of state.
+6.  Loans in Arizona that were for projects out of state.
 
-8.  McDonald's franchises. (I removed the apostrophe.)
+7.  McDonald's franchises. (I removed the apostrophe.)
 
-9.  Any loan to a Native American tribe or nation or reservation. Hint: It's hard to do this because "NATION" could be part of the word "NATIONAL" and "TRIBE" could be part of the word "TRIBECA" and "RESERVATION" could be part of the word "PRESERVATION". See how far you can get using your wildcards. 
+8.  Any loan to a Native American tribe or nation or reservation. Hint: It's hard to do this because "NATION" could be part of the word "NATIONAL" and "TRIBE" could be part of the word "TRIBECA" and "RESERVATION" could be part of the word "PRESERVATION". See how far you can get using your wildcards.
 
 ### Your questions
 
-Create a new section in your document, and list three additional filters that might yield something interesting.  Before each attempt you make, write a sentence that describes, in plain English, what you are trying to find. Then after running your attempt, write a sentence summing up what you see in the result. Was it what you expected? Anything interesting? 
-
-
-
-
+Create a new section in your document, and list three additional filters that might yield something interesting. Before each attempt you make, write a sentence that describes, in plain English, what you are trying to find. Then after running your attempt, write a sentence summing up what you see in the result. Was it what you expected? Anything interesting?

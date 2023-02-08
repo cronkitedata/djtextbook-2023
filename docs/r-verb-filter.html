@@ -400,21 +400,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
   
 
-</header><div class="callout-danger callout callout-style-default no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Danger
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This doesn’t work all that well. The dataxray package depends on fontawesome (sigh) and the data explorer is a little hard to understand. GGally doesn’t work on variables with a lot of unique values. So just stick with skimr</p>
-<p>Can leave this here, but consider not publishing.</p>
-</div>
-</div>
-<div class="alert alert-secondary">
+</header><div class="alert alert-secondary">
 <div class="alert-heading font-weight-bolder fs-3">
 <p>In this chapter</p>
 </div>
@@ -709,8 +695,7 @@ Warning
 <div class="sourceCode" id="cb14"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>ppp_orig <span class="ot">&lt;-</span> <span class="fu">readRDS</span>( <span class="fu">url</span> ( <span class="st">"https://cronkitedata.s3.amazonaws.com/rdata/ppp_az_loans.RDS"</span>))</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Next, add a code chunk with the <code>glimpse(ppp_orig)</code> command to get a list of the columns in order.</p>
 <section id="filtering-your-data" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="filtering-your-data">Filtering your data</h3>
 <p>Create code chunks that will filter for the following values. You can select just the columns you want to see in whatever sort order makes sense for you to troubleshoot. You can rewrite the list below into plain English sentences to introduce the code chunks.</p>

@@ -33,7 +33,7 @@ In this chapter:
 
 -   `group_by` and `summarize` are the tidyverse's version of Excel pivot tables, with many more possibilities.
 -   R is picky and will create different rows for the tiniest difference between values, such as "Lettuce" vs. "lettuce".
--   `group_by` without `summarize` often go together. [^r-verb-groupby-1]
+-   `group_by` and `summarize` often go together. [^r-verb-groupby-1]
 -   You will often have to accommodate missing data, or the dreaded "NA" values.
 -   Compute percent of total using grouped data
 -   Go from "long" database format to "wide" spreadsheet format and back using `pivot_` functions.
@@ -71,13 +71,15 @@ ppp_orig <- readRDS (
 
 ### `summarize`
 
-`summarize`[^r-verb-groupby-2] computes summary statistics such as the number of rows in a data frame or the sum of dollar values. It removes the original columns completely, and only produces the summary statistics you compute within that statement. **Using `summarize` alone produces a data frame with one row.** It's the equivalent of putting nothing in your pivot table in Excel other than the "Values" area
+`summarize`[^r-verb-groupby-2] computes summary statistics such as the number of rows in a data frame or the sum of dollar values. It removes the original columns completely, and only produces the summary statistics you compute within that statement. **Using `summarize` alone produces a data frame with one row.** It's the equivalent of putting nothing in your pivot table in Excel other than the "Values" area.
 
 [^r-verb-groupby-2]: A synonym for the British spelling `summarise`, which you'll see in a lot of examples
 
+Another way to think of `summarize` is that it collapses your list of items (loans, in our example) into a statistical report.
+
 #### The dreaded `NA`
 
-You saw in the `mutate` section that missing values are always a problem. Because they're unknown, they can't match anything else, they can't be considered 0, and they can warp any answers you get.\^\[In other languages, these are often `null` values. It's the same idea.\] But there's usually nothing you can do about missing data, so you have to tell the program exactly what to do about them.
+You saw in the `mutate` section that missing values are always a problem. Because they're unknown, they can't match anything else, they can't be considered 0, and they can warp any answers you get. But there's usually nothing you can do about missing data, so you have to tell the program exactly what to do about them.
 
 There are two choices:
 
@@ -179,7 +181,7 @@ Here are a couple of things to note about grouped output:
 ::: callout-warning
 ## Naming your columns
 
-Note that the name of the columns doesn't always follow our standard. In this case, `# of loans` has a special character and spaces. In order to create or use it, you must enclose them in back-tics (\\\`) or you'll get an error.
+Note that the name of the columns doesn't always follow our standard. In this case, `# of loans` has a special character and spaces. In order to create or use it, you must enclose them in back-tics (\`) or you'll get an error.
 :::
 
 ::: callout-tip
@@ -305,8 +307,7 @@ ppp_orig |>
 
 #### What happens if you have more than one group?
 
-Aha! This is where the idea of grouped data gets a little confusing. It depends on exactly how you did. your summarize statement. But if you use the default mechanism, the "all_loans" is the subtotal.\
-When you add a second group_by, R keeps those columns and creates a percentage based on the subtotal:
+This is where the idea of grouped data gets a little confusing. It depends on exactly how you did your summarize statement. But if you use the default mechanism, the "all_loans" is the subtotal. The default behavior is that the "groups" are kept for all but the last column listed in the group_by statement, meaning any summaries you do off of the data will refer to the subtotal. 
 
 ```{r}
 #| label: grp-pctsub
@@ -410,7 +411,7 @@ ppp_orig |>
 
 ```
 
-    The other possibilities are : `.groups="drop"` and `".groups="keep"` (Note the period before the word "groups". I have no idea why, but sometimes options are indicated this way.)
+  The other possibilities are : `.groups="drop"` and `".groups="keep"` (Note the period before the word "groups". I have no idea why, but sometimes options are indicated this way.)
 
 2.  Suppress all messages either for the whole document or for the code chunk. Here's what your YAML would look like if you added `message: false` to it. (This has the benefit of suppressing a lot of other annoying messages that you might not care about as well):
 
@@ -447,6 +448,7 @@ The concept of tidy data was outlined by Hadley Wickham in a [seminal paper](htt
 -   Each column is a "variable", in that it defines a single attribute, such as height, weight, or zip code.
 -   Each row an "observation", which contains all values of the variables measured on the same unit (say, person)
 -   Each "value" (usually number, text or date) belongs to a variable and an observation -- it lies in the intersection of the two, and is seen in a cell.
+-   Each dataset, or spreadsheet, or data frame, refers to a different type of unit. There would be one for people, another for traffic tickets and a third for vehicles. These are the nouns that we've talked so much about.
 
 Our PPP data starts in tidy form, but we converted it to un-tidy data by pivoting it.
 
@@ -485,3 +487,7 @@ We'll come back to all of that, but just remember that it's possible to do all k
 This method will start over for each county, so it will be `NA` for the first month within each county.
 
 (Your instinct may have been to pivot the data to show each month in its own column, then compute the percent change on each of those columns -- something that could get really old really quickly. )
+
+This is just one example of how grouped data is quite powerful when used correctly. There are many others, such as extracting the most recent event in a court history by case. Try to think about how one group would be computed, and then don't worry how the rest will work -- R will do that thinking for you. 
+
+

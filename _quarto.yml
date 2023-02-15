@@ -68,8 +68,8 @@ book:
          - r-verb-filter.qmd
          - r-verb-mutate.qmd
          - r-verb-groupby.qmd
-#         - r-verb-join.qmd
-#         - r-recipes.qmd
+         - r-join.qmd
+         - r-recipes.qmd
 #
 #     - part: viz.qmd
 #       chapters:

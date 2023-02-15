@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Reporting - 21&nbsp; Open refine walkthrough</title>
+<title>Data Reporting - 23&nbsp; Open refine walkthrough</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -135,7 +135,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Open refine walkthrough</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Open refine walkthrough</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -312,6 +312,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="./r-verb-groupby.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Verbs in depth: Aggregating with groups</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-verb-join.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Verbs in depth: Matchmaking with joins</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-recipes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Recipes</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -324,22 +334,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./advanced-regex.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Regular Expressions for pattern matching</span></a>
+  <a href="./advanced-regex.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Regular Expressions for pattern matching</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./advanced-openrefine.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Open refine walkthrough</span></a>
+  <a href="./advanced-openrefine.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Open refine walkthrough</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./advanced-scrape1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Scraping without programming</span></a>
+  <a href="./advanced-scrape1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Scraping without programming</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./advanced-scrape2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Introduction to scraping in R</span></a>
+  <a href="./advanced-scrape2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Introduction to scraping in R</span></a>
   </div>
 </li>
       </ul>
@@ -375,33 +385,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#installing-openrefine" id="toc-installing-openrefine" class="nav-link active" data-scroll-target="#installing-openrefine"><span class="toc-section-number">21.1</span>  Installing OpenRefine</a>
+  <li><a href="#installing-openrefine" id="toc-installing-openrefine" class="nav-link active" data-scroll-target="#installing-openrefine"><span class="toc-section-number">23.1</span>  Installing OpenRefine</a>
   <ul class="collapse">
   <li><a href="#mac-users-unidentified-developer" id="toc-mac-users-unidentified-developer" class="nav-link" data-scroll-target="#mac-users-unidentified-developer">Mac users: Unidentified developer</a></li>
   <li><a href="#windows-users" id="toc-windows-users" class="nav-link" data-scroll-target="#windows-users">Windows users</a></li>
   <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations">Limitations</a></li>
   <li><a href="#following-the-walkthrough" id="toc-following-the-walkthrough" class="nav-link" data-scroll-target="#following-the-walkthrough">Following the walkthrough</a></li>
   </ul></li>
-  <li><a href="#starting-openrefine" id="toc-starting-openrefine" class="nav-link" data-scroll-target="#starting-openrefine"><span class="toc-section-number">21.2</span>  Starting OpenRefine</a></li>
-  <li><a href="#importing-data" id="toc-importing-data" class="nav-link" data-scroll-target="#importing-data"><span class="toc-section-number">21.3</span>  Importing data</a>
+  <li><a href="#starting-openrefine" id="toc-starting-openrefine" class="nav-link" data-scroll-target="#starting-openrefine"><span class="toc-section-number">23.2</span>  Starting OpenRefine</a></li>
+  <li><a href="#importing-data" id="toc-importing-data" class="nav-link" data-scroll-target="#importing-data"><span class="toc-section-number">23.3</span>  Importing data</a>
   <ul class="collapse">
   <li><a href="#returning-to-your-project" id="toc-returning-to-your-project" class="nav-link" data-scroll-target="#returning-to-your-project">Returning to your project</a></li>
   <li><a href="#rename-or-copy-columns" id="toc-rename-or-copy-columns" class="nav-link" data-scroll-target="#rename-or-copy-columns">Rename or copy columns</a></li>
   </ul></li>
-  <li><a href="#facets" id="toc-facets" class="nav-link" data-scroll-target="#facets"><span class="toc-section-number">21.4</span>  Facets</a></li>
-  <li><a href="#clustering" id="toc-clustering" class="nav-link" data-scroll-target="#clustering"><span class="toc-section-number">21.5</span>  Clustering</a>
+  <li><a href="#facets" id="toc-facets" class="nav-link" data-scroll-target="#facets"><span class="toc-section-number">23.4</span>  Facets</a></li>
+  <li><a href="#clustering" id="toc-clustering" class="nav-link" data-scroll-target="#clustering"><span class="toc-section-number">23.5</span>  Clustering</a>
   <ul class="collapse">
   <li><a href="#clustering-details" id="toc-clustering-details" class="nav-link" data-scroll-target="#clustering-details">Clustering details</a></li>
   <li><a href="#facet-for-long-entries" id="toc-facet-for-long-entries" class="nav-link" data-scroll-target="#facet-for-long-entries">Facet for long entries</a></li>
   </ul></li>
-  <li><a href="#filtering" id="toc-filtering" class="nav-link" data-scroll-target="#filtering"><span class="toc-section-number">21.6</span>  Filtering</a>
+  <li><a href="#filtering" id="toc-filtering" class="nav-link" data-scroll-target="#filtering"><span class="toc-section-number">23.6</span>  Filtering</a>
   <ul class="collapse">
-  <li><a href="#simple-filter" id="toc-simple-filter" class="nav-link" data-scroll-target="#simple-filter"><span class="toc-section-number">21.6.1</span>  Simple filter</a></li>
+  <li><a href="#simple-filter" id="toc-simple-filter" class="nav-link" data-scroll-target="#simple-filter"><span class="toc-section-number">23.6.1</span>  Simple filter</a></li>
   <li><a href="#complex-filter" id="toc-complex-filter" class="nav-link" data-scroll-target="#complex-filter">Complex filter</a></li>
   <li><a href="#split-by-regex" id="toc-split-by-regex" class="nav-link" data-scroll-target="#split-by-regex">Split by regex</a></li>
   <li><a href="#split-using-openrefine-programming-language" id="toc-split-using-openrefine-programming-language" class="nav-link" data-scroll-target="#split-using-openrefine-programming-language">Split using OpenRefine programming language</a></li>
   </ul></li>
-  <li><a href="#finishing-up" id="toc-finishing-up" class="nav-link" data-scroll-target="#finishing-up"><span class="toc-section-number">21.7</span>  Finishing up</a></li>
+  <li><a href="#finishing-up" id="toc-finishing-up" class="nav-link" data-scroll-target="#finishing-up"><span class="toc-section-number">23.7</span>  Finishing up</a></li>
   </ul>
 </nav>
 </nav>
@@ -413,7 +423,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="advanced-openrefine" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Open refine walkthrough</span></span></h1>
+<h1 class="title"><span id="advanced-openrefine" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Open refine walkthrough</span></span></h1>
 </div>
 
 
@@ -433,8 +443,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="alert alert-info">
 <p>Right-click to <a href="https://cronkitedata.s3.amazonaws.com/csv/ppp_az_openrefine_input.csv">download the data</a> for this walkthrough and save it into your projects folder</p>
 </div>
-<section id="installing-openrefine" class="level2" data-number="21.1">
-<h2 data-number="21.1" class="anchored" data-anchor-id="installing-openrefine"><span class="header-section-number">21.1</span> Installing OpenRefine</h2>
+<section id="installing-openrefine" class="level2" data-number="23.1">
+<h2 data-number="23.1" class="anchored" data-anchor-id="installing-openrefine"><span class="header-section-number">23.1</span> Installing OpenRefine</h2>
 <p>Download the latest version from the <a href="https://openrefine.org/download.html">OpenRefine website</a> and follow the instructions there to install.</p>
 <section id="mac-users-unidentified-developer" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="mac-users-unidentified-developer">Mac users: Unidentified developer</h3>
@@ -453,8 +463,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Steps that you should take are shown in bullet points. The rest is explanation.</p>
 </section>
 </section>
-<section id="starting-openrefine" class="level2" data-number="21.2">
-<h2 data-number="21.2" class="anchored" data-anchor-id="starting-openrefine"><span class="header-section-number">21.2</span> Starting OpenRefine</h2>
+<section id="starting-openrefine" class="level2" data-number="23.2">
+<h2 data-number="23.2" class="anchored" data-anchor-id="starting-openrefine"><span class="header-section-number">23.2</span> Starting OpenRefine</h2>
 <p>OpenRefine is a Java-based program that runs inside your browser, but lives on your computer instead of the internet. It runs much better in Chrome than in Safari.</p>
 <ul>
 <li><p>Find the OpenRefine app on your computer, and double-click. When you first start it up, it will open with your default browser.</p></li>
@@ -468,8 +478,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </figure>
 </div>
 </section>
-<section id="importing-data" class="level2" data-number="21.3">
-<h2 data-number="21.3" class="anchored" data-anchor-id="importing-data"><span class="header-section-number">21.3</span> Importing data</h2>
+<section id="importing-data" class="level2" data-number="23.3">
+<h2 data-number="23.3" class="anchored" data-anchor-id="importing-data"><span class="header-section-number">23.3</span> Importing data</h2>
 <p>OpenRefine works best on comma- or tab-delimited data. To create a dataset like that from R, use the function <code>write_csv("path-to-csv-file.csv")</code> , which can be used like any other verb after a continuation pipe.</p>
 <ul>
 <li><p>To follow along with this tutorial, <a href="https://cronkitedata.s3.amazonaws.com/csv/ppp_az_openrefine_input.csv">download the sample data file</a> and save it into your R project folder .</p></li>
@@ -503,8 +513,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>To make a copy, use the dropdown menu <em>Edit column-&gt;Add column based on this column</em> and give it a name.</p>
 </section>
 </section>
-<section id="facets" class="level2" data-number="21.4">
-<h2 data-number="21.4" class="anchored" data-anchor-id="facets"><span class="header-section-number">21.4</span> Facets</h2>
+<section id="facets" class="level2" data-number="23.4">
+<h2 data-number="23.4" class="anchored" data-anchor-id="facets"><span class="header-section-number">23.4</span> Facets</h2>
 <p>For many text columns, you can use facets to edit your data. Under your newly named <code>project_state_refined</code>, choose <em>Facet-&gt;Text facet</em> to get a menu on the left. It will then show you the values it found in that column, and the number of times each one appears, much like at <code>group_by</code> query.</p>
 <p>OpenRefine only acts on rows that are selected, which makes using facets and filtering so powerful. You never have to worry that you’re changing something that you don’t see.</p>
 <div class="quarto-figure quarto-figure-center">
@@ -523,8 +533,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>With the same selection on, change the county name to “OUT OF STATE” using the same method.</p></li>
 </ul>
 </section>
-<section id="clustering" class="level2" data-number="21.5">
-<h2 data-number="21.5" class="anchored" data-anchor-id="clustering"><span class="header-section-number">21.5</span> Clustering</h2>
+<section id="clustering" class="level2" data-number="23.5">
+<h2 data-number="23.5" class="anchored" data-anchor-id="clustering"><span class="header-section-number">23.5</span> Clustering</h2>
 <p>One reason a lot of reporters use OpenRefine is to take advantage of its fuzzy-matching to clean items like names and addresses. It provides about a dozen different algorithms that provide suggestions on ways to change unstandardized values in a column that often make a lot of sense.</p>
 <p>This walkthrough will work on the city name.</p>
 <div class="alert alert-warning">
@@ -585,11 +595,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The list isn’t perfect, but it’s much better than what we started with.</p>
 </section>
 </section>
-<section id="filtering" class="level2" data-number="21.6">
-<h2 data-number="21.6" class="anchored" data-anchor-id="filtering"><span class="header-section-number">21.6</span> Filtering</h2>
+<section id="filtering" class="level2" data-number="23.6">
+<h2 data-number="23.6" class="anchored" data-anchor-id="filtering"><span class="header-section-number">23.6</span> Filtering</h2>
 <p>Even after fixing all of the cities we can through clustering and faceting, there are usually some bad entries left over.</p>
-<section id="simple-filter" class="level3" data-number="21.6.1">
-<h3 data-number="21.6.1" class="anchored" data-anchor-id="simple-filter"><span class="header-section-number">21.6.1</span> Simple filter</h3>
+<section id="simple-filter" class="level3" data-number="23.6.1">
+<h3 data-number="23.6.1" class="anchored" data-anchor-id="simple-filter"><span class="header-section-number">23.6.1</span> Simple filter</h3>
 <ul>
 <li><p>Instead of a Text Facet, choose <em>Text filter</em> from the dropdown menu. Generally, I use regular expressions in this box so I can control where in the column my target word or letters falls.</p></li>
 <li><p>Try filtering for <code>^Phoe</code> after checking the “regular expression” box, and you’ll see a few stray entries for Phoenix that you can change in the facet window.</p></li>
@@ -634,8 +644,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </section>
 </section>
-<section id="finishing-up" class="level2" data-number="21.7">
-<h2 data-number="21.7" class="anchored" data-anchor-id="finishing-up"><span class="header-section-number">21.7</span> Finishing up</h2>
+<section id="finishing-up" class="level2" data-number="23.7">
+<h2 data-number="23.7" class="anchored" data-anchor-id="finishing-up"><span class="header-section-number">23.7</span> Finishing up</h2>
 <ul>
 <li>Try using the clustering and other transformation options to clean up the borrower names. Only change the ones you are sure should be combined.</li>
 </ul>
@@ -789,12 +799,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation column-page-right">
   <div class="nav-page nav-page-previous">
       <a href="./advanced-regex.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Regular Expressions for pattern matching</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Regular Expressions for pattern matching</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./advanced-scrape1.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Scraping without programming</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Scraping without programming</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

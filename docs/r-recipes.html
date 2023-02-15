@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Data Reporting - 21&nbsp; Recipes</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./advanced.html" rel="next">
+<link href="./r-verb-join.html" rel="prev">
+<link href="./assets/images/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script><link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+</head>
+<body class="nav-sidebar floating">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }"><div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Recipes</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./assets/images/favicon.ico" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Data Reporting</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/cronkitedata/djtextbook" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
+    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
+<li>
+          <a class="dropdown-item sidebar-tools-main-item" href="./Data-Reporting.pdf">
+            <i class="bi bi-bi-file-pdf pe-1"></i>
+          Download PDF
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="./Data-Reporting.epub">
+            <i class="bi bi-bi-journal pe-1"></i>
+          Download ePub
+          </a>
+        </li>
+    </ul>
+<a href="" class="quarto-reader-toggle sidebar-tool" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./start.html" class="sidebar-item-text sidebar-link">Reporting with data</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./start-story.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Learn a new way to read</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./start-math.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Newsroom math</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./start-data-def.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Defining “Data”</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./start-data-diary.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Replication and the data diary</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./start-hunt.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Finding the right data for your story</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./start-build-own.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Build your own database</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./xl.html" class="sidebar-item-text sidebar-link">Spreadsheets</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./xl-refresher.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">An Excel Refresher</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./xl-filter-sort.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Sorting and filtering to find stories</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./xl-pivot.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Grouping with pivot tables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./xl-formulas.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Formulas in Excel</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./xl-practice-noc.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Practice exercise</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./r.html" class="sidebar-item-text sidebar-link">R Study Guide</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-install.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Installing R and RStudio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-start.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Getting started with R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-quarto.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Using Quarto</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-data-import.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Getting and saving data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-verbs.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">A quick tour of verbs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-verb-filter.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Verbs in depth: Select, arrange, filter</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-verb-mutate.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Verbs in depth: New from old data with Mutate</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-verb-groupby.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Verbs in depth: Aggregating with groups</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-verb-join.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Verbs in depth: Matchmaking with joins</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-recipes.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Recipes</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./advanced.html" class="sidebar-item-text sidebar-link">Special skills</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./advanced-regex.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Regular Expressions for pattern matching</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./advanced-openrefine.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Open refine walkthrough</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./advanced-scrape1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Scraping without programming</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./advanced-scrape2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Introduction to scraping in R</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">Appendices</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-math.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Newsroom numbers cheat sheet</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-program.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">A gentle intro to programming</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-ppp.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Documentation for PPP data chapters</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+    <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li><a href="#r-annoyances-and-errors" id="toc-r-annoyances-and-errors" class="nav-link active" data-scroll-target="#r-annoyances-and-errors">R annoyances and errors</a></li>
+  <li><a href="#re-using-answers-from-a-previous-step" id="toc-re-using-answers-from-a-previous-step" class="nav-link" data-scroll-target="#re-using-answers-from-a-previous-step"><span class="toc-section-number">21.1</span>  Re-using answers from a previous step</a></li>
+  <li><a href="#filtering" id="toc-filtering" class="nav-link" data-scroll-target="#filtering"><span class="toc-section-number">21.2</span>  Filtering</a></li>
+  <li><a href="#aggregate-count-sum-rows-by-category" id="toc-aggregate-count-sum-rows-by-category" class="nav-link" data-scroll-target="#aggregate-count-sum-rows-by-category"><span class="toc-section-number">21.3</span>  Aggregate (count, sum rows by category)</a></li>
+  <li><a href="#recoding-categories" id="toc-recoding-categories" class="nav-link" data-scroll-target="#recoding-categories"><span class="toc-section-number">21.4</span>  Recoding categories</a></li>
+  <li><a href="#working-with-grouped-data-for-subtotals-changes-percents" id="toc-working-with-grouped-data-for-subtotals-changes-percents" class="nav-link" data-scroll-target="#working-with-grouped-data-for-subtotals-changes-percents"><span class="toc-section-number">21.5</span>  Working with grouped data for subtotals, changes, percents</a></li>
+  <li><a href="#do-the-same-thing-on-many-columns-at-once" id="toc-do-the-same-thing-on-many-columns-at-once" class="nav-link" data-scroll-target="#do-the-same-thing-on-many-columns-at-once"><span class="toc-section-number">21.6</span>  Do the same thing on many columns at once</a></li>
+  <li>
+<a href="#better-looking-tables" id="toc-better-looking-tables" class="nav-link" data-scroll-target="#better-looking-tables"><span class="toc-section-number">21.7</span>  Better looking tables</a>
+  <ul class="collapse">
+<li><a href="#strategy" id="toc-strategy" class="nav-link" data-scroll-target="#strategy">Strategy</a></li>
+  <li><a href="#reactable-sortable-searchable-tables-with-formatted-numbers" id="toc-reactable-sortable-searchable-tables-with-formatted-numbers" class="nav-link" data-scroll-target="#reactable-sortable-searchable-tables-with-formatted-numbers">Reactable: Sortable, searchable tables with formatted numbers</a></li>
+  <li><a href="#pivoted-reactable-table" id="toc-pivoted-reactable-table" class="nav-link" data-scroll-target="#pivoted-reactable-table">Pivoted reactable table</a></li>
+  <li><a href="#static-table-with-subtotals-and-percentages-using-gt" id="toc-static-table-with-subtotals-and-percentages-using-gt" class="nav-link" data-scroll-target="#static-table-with-subtotals-and-percentages-using-gt"><span class="toc-section-number">21.7.1</span>  Static table with subtotals and percentages using <code>gt</code></a></li>
+  </ul>
+</li>
+  </ul></nav>
+</nav><!-- margin-sidebar --><div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content column-page-right" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title"><span id="r-recipes" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Recipes</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header><p>This final chapter on data wrangling in R simply puts together a lot of the code snippets that are easy to forget, and adds some more advanced code examples that you can adapt to your work. There is minimal explanation. Instead, look at at the relevant chapter for more explanation. Over time, I’ll add section links to the examples.</p>
+<p>You can copy and paste these into RStudio’s snippets and use them directly in your program – then you just have to change the references to the variables in your own work.</p>
+<p>These examples use the data from the other chapters, from the PPP program.</p>
+<section id="r-annoyances-and-errors" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="r-annoyances-and-errors">R annoyances and errors</h3>
+<p>There are several annoyances that aren’t consistent from one function in R to the next. When you’re having trouble, look for</p>
+<ul>
+<li><p><strong>Quoting issues</strong> - what kind of quotes, whether they’re needed, and if they’re matched open and closed.</p></li>
+<li>
+<p>Unmatched or missing <strong>parentheses</strong></p>
+<p>Putting words on the wrong side of <strong>equal signs</strong>. To create a new column name, put it on the left. To identify a column to be used as an argument, put it on the right. To filter a column, use two equals signs, with the column name on the left.</p>
+</li>
+<li><p>Are you working with a <strong>list</strong> of items? If so, you need to wrap them in the <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> function, for “combine”</p></li>
+<li><p><strong>Case-sensitivity</strong> in column names; back-ticks for more than one word in a column name rather than quotes.</p></li>
+<li><p>Missing or hanging <strong>pipes</strong> (%&gt;%)</p></li>
+</ul>
+<p>These are the problems that will fix about 80 percent of the code that won’t run once you get more used to it.</p>
+</section><section id="re-using-answers-from-a-previous-step" class="level2" data-number="21.1"><h2 data-number="21.1" class="anchored" data-anchor-id="re-using-answers-from-a-previous-step">
+<span class="header-section-number">21.1</span> Re-using answers from a previous step</h2>
+<p>Assign your code chunk to a new variable in the environment to use it again later. This is usefule when:</p>
+<ul>
+<li>You have a complex filter that you want to apply to future steps.</li>
+<li>You are joining data frames with columns having the same names: select just the columns you need and re-name any of the ones that are the same, except for the join one.</li>
+<li>You have fixed some column types or adjusted their values.</li>
+</ul>
+<p>The assignment operator is <code>&lt;-</code>, which means “pour the answer into this variable name”</p>
+<p>These can all go into one code chunk if you’d like:</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">select_ppp</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">ppp_orig</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span> <span class="op">(</span> <span class="va">project_state</span> <span class="op">==</span> <span class="st">"AZ"</span> <span class="op">&amp;</span> <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span> <span class="op">(</span><span class="va">project_county</span><span class="op">)</span> <span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">mutate</span> <span class="op">(</span> forgiveness_amount <span class="op">=</span> <span class="fu">if_else</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">forgiveness_amount</span><span class="op">)</span>,</span>
+<span>                                         <span class="fl">0</span>, </span>
+<span>                                         <span class="va">forgiveness_amount</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">select</span> <span class="op">(</span> <span class="va">borrower_name</span>, <span class="va">borrower_city</span>, </span>
+<span>           <span class="va">naics_code</span>, </span>
+<span>           <span class="va">amount</span>, <span class="va">forgiveness_amount</span>,</span>
+<span>           <span class="va">date_approved</span>, <span class="va">forgiveness_date</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span></span>
+<span><span class="va">sectors</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">naics_codes</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">select</span> <span class="op">(</span> <span class="va">naics_code</span>, <span class="va">sector_code</span>, <span class="va">sector_desc</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="va">select_ppp</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">left_join</span> <span class="op">(</span> <span class="va">sectors</span>, by<span class="op">=</span><span class="st">"naics_code"</span><span class="op">)</span>  <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">select</span> <span class="op">(</span> <span class="va">borrower_name</span>, <span class="va">forgiveness_amount</span>, <span class="va">sector_desc</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="filtering" class="level2" data-number="21.2"><h2 data-number="21.2" class="anchored" data-anchor-id="filtering">
+<span class="header-section-number">21.2</span> Filtering</h2>
+<ol type="1">
+<li>One condition that’s a number :</li>
+</ol>
+<pre><code>  filter ( amount &gt; 1000 )</code></pre>
+<ol start="2" type="1">
+<li>A number between two values</li>
+</ol>
+<pre><code>  filter ( between ( amount, 0, 1000))</code></pre>
+<ol start="3" type="1">
+<li>An exact phrase or word</li>
+</ol>
+<pre><code>  filter ( project_county == "MARICOPA")</code></pre>
+<ol start="4" type="1">
+<li>One of several possible entries in one column (exactly)</li>
+</ol>
+<pre><code>    filter ( project_county %in% c("MARICOPA", "PIMA", "PINAL" ))</code></pre>
+<ol start="5" type="1">
+<li>Everything except missing values</li>
+</ol>
+<pre><code>    filter ( ! is.na (project_county) )</code></pre>
+<ol start="5" type="1">
+<li>Between two dates date[^Be sure it’s really a date in the data by glimpsing your data frame. If not, turn it into a date first]</li>
+</ol>
+<pre><code>    filter ( approval_date &gt;= "2021-01-24" &amp; 
+           approval_date &lt;= "2021-01-31")</code></pre>
+<ol start="6" type="1">
+<li>Phrases, words or letters at the beginning of a column</li>
+</ol>
+<pre><code>    filter ( str_detect (borrower_type , "^Non-Profit"))</code></pre>
+<ol start="7" type="1">
+<li>Phrases, letters or words at the end of a column</li>
+</ol>
+<pre><code>    filter ( str_detect (borrower_type, "Corporation$"))</code></pre>
+<ol start="8" type="1">
+<li>A word that isn’t part of another word</li>
+</ol>
+<pre><code>    filter ( str_detect ( "\\bNation\\b"))</code></pre>
+<p>All of these examples can be used in a <code>mutate</code> statement to create flags or new values if the conditions are met.</p>
+</section><section id="aggregate-count-sum-rows-by-category" class="level2" data-number="21.3"><h2 data-number="21.3" class="anchored" data-anchor-id="aggregate-count-sum-rows-by-category">
+<span class="header-section-number">21.3</span> Aggregate (count, sum rows by category)</h2>
+<ol type="1">
+<li>Counting (How many?)</li>
+</ol>
+<pre><code>    group_by (project_county) %&gt;%
+    summarise (loans = n() )  %&gt;%
+    arrange ( desc ( loans ))</code></pre>
+<p>Make sure you don’t name the new column containing the count the same thing as a group_by() column.</p>
+<ol start="2" type="1">
+<li>Shortcut for counting:</li>
+</ol>
+<pre><code>     count( project_county, sort=TRUE, name="loans")</code></pre>
+<ol start="3" type="1">
+<li>Counting unique entries</li>
+</ol>
+<p>Sometimes you want to know how many items of a type, not how many rows, are included in a category.</p>
+<pre><code>        group_by ( project_county) %&gt;%
+        summarise ( number_of_loans = n(), 
+                    number_of_industries = n_distinct ( naics_code )
+                    )</code></pre>
+<ol start="4" type="1">
+<li>Summing (how much?)</li>
+</ol>
+<pre><code>    group_by (project_county) %&gt;%
+    summarise ( total_amount = sum (amount, na.rm=T))</code></pre>
+<ol start="5" type="1">
+<li>Shortcut for summing:</li>
+</ol>
+<pre><code>    count ( project_county, weight=amount, name="total_amount")</code></pre>
+</section><section id="recoding-categories" class="level2" data-number="21.4"><h2 data-number="21.4" class="anchored" data-anchor-id="recoding-categories">
+<span class="header-section-number">21.4</span> Recoding categories</h2>
+<p>You’ll often want fewer categories, or numbers in categories, that you want to use instead of the original values. This is done in a mutate statement. Don’t forget to save the output to a new data frame (&lt;-), or you won’t have access to it later on.</p>
+<ol type="1">
+<li>Create yes-no categories . This is really “Yes”, “No” or NA, where there is an NA to begin with.</li>
+</ol>
+<pre><code>    mutate ( corp_yn = if_else  
+                      (str_detect (borrower_type, 
+                                   "Corporation"), 
+                       "Yes", 
+                       "No")
+       )</code></pre>
+<ol start="2" type="1">
+<li>Recode into more than two categories, example using <code>str_detect()</code>
+</li>
+</ol>
+<pre><code>  mutate ( new_type = case_when 
+           (str_detect (borrower_type, 
+                        "Corporation|Company") ~     "
+                        For-profit company", 
+          str_detect (borrower_type,
+                      "(Non-Profit|Cooperative|Association)") ~ 
+                      "Non profit", 
+          str_detect ( borrower_type, 
+                      "(Sole|Self-Employed|Independent)") ~
+                      "Individual", 
+          TRUE ~ "Everyone else")
+        )</code></pre>
+<p>You’ll want to check them when you’re done to make sure:</p>
+<pre><code>        new_dataframe %&gt;%
+        count ( new_type, borrower_type)</code></pre>
+<p>to make sure you coded them properly. Too many <code>NA</code> values means you likely misspelled something or left something out.</p>
+<ol start="3" type="1">
+<li>Recode numbers into categories</li>
+</ol>
+<p>It’s often useful to give them numeric codes in front so they sort properly:</p>
+<pre><code>        mutate ( new_type = 
+                 case_when  (
+                    amount &lt;= 1000 ~ "00-Very low", 
+                    amount &lt;= 10000 ) ~ "01-Low", 
+                    amount &lt;= 100000) ~ "03-Medium", 
+                    amount &gt; 100000 ~ "04-High")
+              )</code></pre>
+<p>This works because the first one that it finds will be used, so a value of exactly 1,000 would be “Very low”, but a value of 1,001 would be “Low”.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+</section><section id="working-with-grouped-data-for-subtotals-changes-percents" class="level2" data-number="21.5"><h2 data-number="21.5" class="anchored" data-anchor-id="working-with-grouped-data-for-subtotals-changes-percents">
+<span class="header-section-number">21.5</span> Working with grouped data for subtotals, changes, percents</h2>
+<ol type="1">
+<li>Percent of total by group</li>
+</ol>
+<pre><code>  group_by ( project_county, sector_desc ) %&gt;%
+  summarise ( loans = n() , .groups="drop_last") %&gt;%
+  mutate ( pct_in_county = loans / sum(loans))</code></pre>
+<ol start="2" type="1">
+<li>Display results as in spreadsheet form</li>
+</ol>
+<p>To see the items across the top, use <code>pivot_wider</code>.</p>
+<pre><code>  group_by ( project_county, new_type) %&gt;%
+  summarise ( loan_count = n() ) %&gt;%
+  pivot_wider ( names_from = new_type, 
+                id_cols = c( project_county), 
+                values_from = loan_count)</code></pre>
+<p>You can add an argument after <code>values_from</code> if you know that any missing values are zero, by using <code>values_fill=0</code></p>
+<p>You usually only choose one column to show down the side, one column to spread across the top, and one column to display the value.</p>
+<ol start="2" type="1">
+<li>
+<p>Complex example: Get the change by year within each county.</p>
+<p>annual_ppp &lt;- mutate ( approve_year = year (approval_date ) ) %&gt;% group_by ( project_county, approve_year) %&gt;% summarise ( loans = n() , amount = sum( amount, na.rm=T), .groups=“drop_last”)</p>
+</li>
+</ol>
+<p>Next, compare them within groups. New functions introduced: <code>complete()</code>, which fills in missing information in a sequence. For example, if there were missing years by county, it would create a row to fill it in. <code><a href="https://rdrr.io/r/stats/lag.html">lag()</a></code> refers to the previous item in a group. First, make a new, summarized data frame with just the columns you nee</p>
+<pre><code>    complete ( project_county, approve_year, 
+              fill= list (amount=0, loans =0) )%&gt;%
+    mutate ( change_loans = loans - lag(loans), 
+             pct_change_loans = change_loans / lag(loans) * 100) </code></pre>
+<ol start="3" type="1">
+<li>
+<p>Pick out the last item in a group, with all of its columns. New verb introduced : <code>slice_tail()</code> . This is particularly useful for chronological events, such as the last thing that happened in a court case, or the most recent complaint against a police officer. This example isn’t a great one, but it gets you the name and other details of the most recent loan for each lender</p>
+<pre><code>arrange ( lender, date_approved) %&gt;%
+group_by ( lender) %&gt;%
+slice_tail()</code></pre>
+</li>
+</ol></section><section id="do-the-same-thing-on-many-columns-at-once" class="level2" data-number="21.6"><h2 data-number="21.6" class="anchored" data-anchor-id="do-the-same-thing-on-many-columns-at-once">
+<span class="header-section-number">21.6</span> Do the same thing on many columns at once</h2>
+<p>These examples use a new concept, called <code>across</code>. It’s a way to do the same thing to all of the columns at the same time, replacing the original value with a new one. They can be tricky to write, and I’m not sure I understand them completely. They can also be really, really slow on large datasets.</p>
+<ol type="1">
+<li>Convert all character columns to upper case for easier filtering</li>
+</ol>
+<pre><code>   mutate (across ( where (is.character) , toupper))</code></pre>
+<ol start="2" type="1">
+<li>Strip all punctuation from a set of columns for easier filtering and grouping</li>
+</ol>
+<p><strong>New functions introduced: str_squish() to remove extra blanks, and str_replace_all() to replace all punctuation with nothing. The ~ is needed to put an expression when you use “across” to refer to a bunch of columns at the same time.</strong></p>
+<pre><code>  mutate ( across ( c(borrower_name, borrower_address, borrower_city),                 ~str_squish( 
+                      str_replace_all ( ., "[:punctuation:]","")
+                            )
+                  )
+        )</code></pre>
+</section><section id="better-looking-tables" class="level2" data-number="21.7"><h2 data-number="21.7" class="anchored" data-anchor-id="better-looking-tables">
+<span class="header-section-number">21.7</span> Better looking tables</h2>
+<p>One of the big annoyances in R is that the results are, well, unreadable. Numbers aren’t formatted, you can’t see all of the data you want, and it’s hard to share the results.</p>
+<p>Think of this as a quick tour of some options you have to make better looking tables and readable output. In practice, I use one of three:</p>
+<ul>
+<li><p><code>reactable</code> provides a powerful way to make sortable, searchable tables in your markdown. It’s great for sharing data with people who just want to explore it. Just be careful not to include so many rows that it can’t be opened effectively in your browser.</p></li>
+<li><p><code>gt</code> makes very professional looking static tables, such as those you might see in a book. They’re good for labeling, footnotes and other details when you don’t want anyone to change anything.</p></li>
+</ul>
+<p>Both <code>reactable</code> and <code>gt</code> will produce subtotals and other math , meaning you can show multiple levels at once. The examples will use the PPP data for each county in Arizona by month.</p>
+<section id="strategy" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="strategy">Strategy</h3>
+<p>Typically, you’ll do all of your data processing in a series of steps that culminate all of the columns you’ll need for any table you want to make – this will include any grouping, joining or computations that you’ve already made.</p>
+<p>This can be a challenge to get right on sorting, but it otherwise works OK.</p>
+<section id="make-the-data-frame-you-want-to-display-and-save-it" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="make-the-data-frame-you-want-to-display-and-save-it">Make the data frame you want to display and save it</h4>
+<p>This example:</p>
+<ol type="1">
+<li><p>Converts dates to months by converting it to a character column formatted as the year-month to keep a sort order proper.</p></li>
+<li><p>Replaces missing counties with “UNKNOWN” and keeps only those in Arizona.</p></li>
+<li><p>Computes totals by month.</p></li>
+<li><p>Saves it to a data frame called <code>ppp_fortable</code>.</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ppp_fortable</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">ppp_orig</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="co"># sort in order so that the months aren't alphapbetized or dependent on the first county</span></span>
+<span>  <span class="fu">arrange</span> <span class="op">(</span> <span class="va">date_approved</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">mutate</span> <span class="op">(</span> month <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="va">date_approved</span>, <span class="st">"%Y-%m"</span><span class="op">)</span>, </span>
+<span>           project_county <span class="op">=</span> <span class="fu">replace_na</span><span class="op">(</span><span class="va">project_county</span>, <span class="st">"UNKNOWN"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span> <span class="op">(</span> <span class="va">project_state</span> <span class="op">==</span> <span class="st">"AZ"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">group_by</span> <span class="op">(</span> <span class="va">project_county</span>, <span class="va">month</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="co">#this at least shows you commas in the values. I haven't had luck using currency on this.</span></span>
+<span>  <span class="fu">summarise</span> <span class="op">(</span> loans  <span class="op">=</span>  <span class="fu">n</span><span class="op">(</span><span class="op">)</span>, </span>
+<span>              total_amt <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">amount</span><span class="op">)</span>,</span>
+<span>              .groups<span class="op">=</span><span class="st">"drop"</span></span>
+<span>  <span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></section><section id="reactable-sortable-searchable-tables-with-formatted-numbers" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="reactable-sortable-searchable-tables-with-formatted-numbers">Reactable: Sortable, searchable tables with formatted numbers</h3>
+<p>This is how you can make a sortable, searchable table. The syntax and grammar of this is completely different than what you’re used to because it’s an implementation of a Javascript library:</p>
+<div class="cell">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ppp_fortable</span> <span class="op">%&gt;%</span></span>
+<span><span class="fu">reactable</span> <span class="op">(</span>  defaultPageSize <span class="op">=</span> <span class="fl">15</span>,</span>
+<span>             defaultColDef <span class="op">=</span> <span class="fu">colDef</span> <span class="op">(</span> filterable<span class="op">=</span><span class="cn">TRUE</span>, </span>
+<span>                                      sortable<span class="op">=</span><span class="cn">TRUE</span>,</span>
+<span>                                      format <span class="op">=</span> <span class="fu">colFormat</span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">0</span>, separators<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span> </span>
+<span>                                       <span class="op">)</span>, </span>
+<span>              columns  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span> <span class="op">(</span></span>
+<span>                  project_county <span class="op">=</span> <span class="fu">colDef</span> <span class="op">(</span><span class="st">"County"</span><span class="op">)</span>, </span>
+<span>                  month <span class="op">=</span> <span class="fu">colDef</span> <span class="op">(</span><span class="st">"Month"</span><span class="op">)</span>, </span>
+<span>                  loans  <span class="op">=</span> <span class="fu">colDef</span> <span class="op">(</span><span class="st">"# of loans"</span>, align<span class="op">=</span><span class="st">"right"</span>, filterable<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>, </span>
+<span>                  total_amt <span class="op">=</span> <span class="fu">colDef</span> <span class="op">(</span><span class="st">"$ amount"</span>, </span>
+<span>                                       align<span class="op">=</span><span class="st">"right"</span>, </span>
+<span>                                      format <span class="op">=</span> <span class="fu">colFormat</span> <span class="op">(</span></span>
+<span>                                              separators<span class="op">=</span><span class="cn">TRUE</span>, prefix<span class="op">=</span><span class="st">"$"</span>, digits<span class="op">=</span><span class="fl">0</span><span class="op">)</span></span>
+<span>                                      <span class="op">)</span></span>
+<span>                  </span>
+<span>                 <span class="op">)</span></span>
+<span>            <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>[react 1]{assets/images/r-recipes-react1.png}{width=100%}</p>
+</section><section id="pivoted-reactable-table" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="pivoted-reactable-table">Pivoted reactable table</h3>
+<p>This isn’t a great example, but you could turn it into a monthly table by pivoting the data before printing. I also added some formatting to this example so you can see how to reduce the size, put in scrollbars, etc. They’re optional.</p>
+<div class="cell">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ppp_fortable</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">arrange</span> <span class="op">(</span> <span class="va">month</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">pivot_wider</span> <span class="op">(</span> names_from <span class="op">=</span> <span class="va">month</span>, </span>
+<span>                values_from <span class="op">=</span> <span class="va">total_amt</span>, </span>
+<span>                values_fill <span class="op">=</span> <span class="fl">0</span>, </span>
+<span>                id_cols <span class="op">=</span> <span class="va">project_county</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">reactable</span> <span class="op">(</span> <span class="co"># these options make it scrollable and smaller print</span></span>
+<span>              wrap<span class="op">=</span><span class="cn">FALSE</span>,</span>
+<span>              width<span class="op">=</span><span class="fl">700</span>,</span>
+<span>              theme <span class="op">=</span> <span class="fu">reactableTheme</span><span class="op">(</span> style<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>fontSize<span class="op">=</span><span class="st">"smaller"</span>, </span>
+<span>                                                 color<span class="op">=</span><span class="st">"DimGray"</span>, </span>
+<span>                                                 fontFamily<span class="op">=</span><span class="st">"sans-serif"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>              <span class="co">#these options set the default column format.</span></span>
+<span>              defaultColDef <span class="op">=</span> <span class="fu">colDef</span> <span class="op">(</span> format<span class="op">=</span><span class="fu">colFormat</span> <span class="op">(</span> </span>
+<span>                                                 separators<span class="op">=</span><span class="cn">TRUE</span>,</span>
+<span>                                                 digits<span class="op">=</span><span class="fl">0</span>, </span>
+<span>                                                 prefix<span class="op">=</span><span class="st">"$"</span></span>
+<span>                                                 <span class="op">)</span>, </span>
+<span>                                       minWidth<span class="op">=</span><span class="fl">150</span><span class="op">)</span> , </span>
+<span>      <span class="co"># Here you'd list anything that defies the normal column defaults</span></span>
+<span>    columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
+<span>        project_county <span class="op">=</span> <span class="fu">colDef</span> <span class="op">(</span><span class="st">"County"</span>, format<span class="op">=</span><span class="fu">colFormat</span><span class="op">(</span>prefix <span class="op">=</span> <span class="st">""</span><span class="op">)</span><span class="op">)</span></span>
+<span>           <span class="op">)</span></span>
+<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="assets/images/r-recipes-react2.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">react_example2</figcaption><p></p>
+</figure>
+</div>
+</section><section id="static-table-with-subtotals-and-percentages-using-gt" class="level3" data-number="21.7.1"><h3 data-number="21.7.1" class="anchored" data-anchor-id="static-table-with-subtotals-and-percentages-using-gt">
+<span class="header-section-number">21.7.1</span> Static table with subtotals and percentages using <code>gt</code>
+</h3>
+<p>This will include a section on <code>gt</code>, which is one option for good-looking static tables. This starts with a data frame containing totals by sector and county, with just a few counties and sectors picked out.</p>
+<p>There is a LOT of typing to do to get a good looking static table, but it can be worth it. Consider saving a simple example to your Rstudio snippets to pull out whenever you need it.</p>
+<div class="cell">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://gt.rstudio.com/">gt</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">ppp_subtotals</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">group_by</span> <span class="op">(</span><span class="va">project_county</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span> <span class="op">(</span> <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/fmt_number.html">fmt_number</a></span> <span class="op">(</span> columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">loans</span><span class="op">)</span>, decimals<span class="op">=</span><span class="fl">0</span>, sep_mark<span class="op">=</span><span class="st">","</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/fmt_currency.html">fmt_currency</a></span> <span class="op">(</span> columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">amount</span>, <span class="va">forgiven</span><span class="op">)</span>, </span>
+<span>                           currency <span class="op">=</span> <span class="st">"USD"</span>, </span>
+<span>                           decimals<span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/summary_rows.html">summary_rows</a></span> <span class="op">(</span> columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">loans</span><span class="op">:</span><span class="va">forgiven</span><span class="op">)</span>,</span>
+<span>                  groups<span class="op">=</span><span class="cn">TRUE</span>, </span>
+<span>                  fns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span> Total<span class="op">=</span><span class="st">"sum"</span><span class="op">)</span>, </span>
+<span>                  formatter <span class="op">=</span> <span class="va">fmt_number</span>, </span>
+<span>                  decimals<span class="op">=</span><span class="fl">0</span>, </span>
+<span>                 use_seps<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/grand_summary_rows.html">grand_summary_rows</a></span> <span class="op">(</span> </span>
+<span>       columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span> <span class="va">amount</span><span class="op">:</span><span class="va">forgiven</span><span class="op">)</span>, </span>
+<span>       fns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span> <span class="op">(</span>`Grand Total` <span class="op">=</span> <span class="st">"sum"</span><span class="op">)</span>, </span>
+<span>       formatter <span class="op">=</span> <span class="va">fmt_currency</span>,</span>
+<span>       decimals<span class="op">=</span><span class="fl">0</span></span>
+<span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div id="nrgcrycdyy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+:where(#nrgcrycdyy) .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+:where(#nrgcrycdyy) .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#nrgcrycdyy) .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+:where(#nrgcrycdyy) .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+:where(#nrgcrycdyy) .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+:where(#nrgcrycdyy) .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#nrgcrycdyy) .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#nrgcrycdyy) .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+:where(#nrgcrycdyy) .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+:where(#nrgcrycdyy) .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+:where(#nrgcrycdyy) .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+:where(#nrgcrycdyy) .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+:where(#nrgcrycdyy) .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+:where(#nrgcrycdyy) .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+:where(#nrgcrycdyy) .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+:where(#nrgcrycdyy) .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+:where(#nrgcrycdyy) .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+:where(#nrgcrycdyy) .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#nrgcrycdyy) .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+:where(#nrgcrycdyy) .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+:where(#nrgcrycdyy) .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#nrgcrycdyy) .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+:where(#nrgcrycdyy) .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+:where(#nrgcrycdyy) .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#nrgcrycdyy) .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#nrgcrycdyy) .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+:where(#nrgcrycdyy) .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+:where(#nrgcrycdyy) .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#nrgcrycdyy) .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#nrgcrycdyy) .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#nrgcrycdyy) .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#nrgcrycdyy) .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#nrgcrycdyy) .gt_left {
+  text-align: left;
+}
+
+:where(#nrgcrycdyy) .gt_center {
+  text-align: center;
+}
+
+:where(#nrgcrycdyy) .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+:where(#nrgcrycdyy) .gt_font_normal {
+  font-weight: normal;
+}
+
+:where(#nrgcrycdyy) .gt_font_bold {
+  font-weight: bold;
+}
+
+:where(#nrgcrycdyy) .gt_font_italic {
+  font-style: italic;
+}
+
+:where(#nrgcrycdyy) .gt_super {
+  font-size: 65%;
+}
+
+:where(#nrgcrycdyy) .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+:where(#nrgcrycdyy) .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+:where(#nrgcrycdyy) .gt_indent_1 {
+  text-indent: 5px;
+}
+
+:where(#nrgcrycdyy) .gt_indent_2 {
+  text-indent: 10px;
+}
+
+:where(#nrgcrycdyy) .gt_indent_3 {
+  text-indent: 15px;
+}
+
+:where(#nrgcrycdyy) .gt_indent_4 {
+  text-indent: 20px;
+}
+
+:where(#nrgcrycdyy) .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table">
+<thead class="gt_col_headings"><tr>
+<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id=""></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="sector">sector</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="loans">loans</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="amount">amount</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="forgiven">forgiven</th>
+    </tr></thead>
+<tbody class="gt_table_body">
+<tr class="gt_group_heading_row">
+<th colspan="5" class="gt_group_heading" scope="colgroup" id="COCONINO">COCONINO</th>
+    </tr>
+<tr class="gt_row_group_first">
+<th id="stub_1_1" scope="row" class="gt_row gt_left gt_stub"></th>
+<td headers="COCONINO stub_1_1 sector" class="gt_row gt_left">45 - Retail Trade</td>
+<td headers="COCONINO stub_1_1 loans" class="gt_row gt_right">142</td>
+<td headers="COCONINO stub_1_1 amount" class="gt_row gt_right">$6,034,677</td>
+<td headers="COCONINO stub_1_1 forgiven" class="gt_row gt_right">$5,962,291</td>
+</tr>
+<tr>
+<th id="stub_1_2" scope="row" class="gt_row gt_left gt_stub"></th>
+<td headers="COCONINO stub_1_2 sector" class="gt_row gt_left">54 - Professional and Technical Services</td>
+<td headers="COCONINO stub_1_2 loans" class="gt_row gt_right">332</td>
+<td headers="COCONINO stub_1_2 amount" class="gt_row gt_right">$14,194,790</td>
+<td headers="COCONINO stub_1_2 forgiven" class="gt_row gt_right">$13,676,552</td>
+</tr>
+<tr>
+<th id="stub_1_3" scope="row" class="gt_row gt_left gt_stub"></th>
+<td headers="COCONINO stub_1_3 sector" class="gt_row gt_left">72 - Accommodation and Food Services</td>
+<td headers="COCONINO stub_1_3 loans" class="gt_row gt_right">518</td>
+<td headers="COCONINO stub_1_3 amount" class="gt_row gt_right">$75,391,291</td>
+<td headers="COCONINO stub_1_3 forgiven" class="gt_row gt_right">$72,535,436</td>
+</tr>
+<tr>
+<th id="summary_stub_COCONINO_1" scope="row" class="gt_row gt_left gt_stub gt_summary_row gt_first_summary_row thick gt_last_summary_row">Total</th>
+<td headers="COCONINO summary_stub_COCONINO_1 sector" class="gt_row gt_left gt_summary_row gt_first_summary_row thick gt_last_summary_row">—</td>
+<td headers="COCONINO summary_stub_COCONINO_1 loans" class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row">992</td>
+<td headers="COCONINO summary_stub_COCONINO_1 amount" class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row">95,620,758</td>
+<td headers="COCONINO summary_stub_COCONINO_1 forgiven" class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row">92,174,278</td>
+</tr>
+<tr class="gt_group_heading_row">
+<th colspan="5" class="gt_group_heading" scope="colgroup" id="MARICOPA">MARICOPA</th>
+    </tr>
+<tr class="gt_row_group_first">
+<th id="stub_1_4" scope="row" class="gt_row gt_left gt_stub"></th>
+<td headers="MARICOPA stub_1_4 sector" class="gt_row gt_left">45 - Retail Trade</td>
+<td headers="MARICOPA stub_1_4 loans" class="gt_row gt_right">4,394</td>
+<td headers="MARICOPA stub_1_4 amount" class="gt_row gt_right">$229,027,540</td>
+<td headers="MARICOPA stub_1_4 forgiven" class="gt_row gt_right">$218,304,429</td>
+</tr>
+<tr>
+<th id="stub_1_5" scope="row" class="gt_row gt_left gt_stub"></th>
+<td headers="MARICOPA stub_1_5 sector" class="gt_row gt_left">54 - Professional and Technical Services</td>
+<td headers="MARICOPA stub_1_5 loans" class="gt_row gt_right">17,512</td>
+<td headers="MARICOPA stub_1_5 amount" class="gt_row gt_right">$1,171,100,691</td>
+<td headers="MARICOPA stub_1_5 forgiven" class="gt_row gt_right">$1,122,126,511</td>
+</tr>
+<tr>
+<th id="stub_1_6" scope="row" class="gt_row gt_left gt_stub"></th>
+<td headers="MARICOPA stub_1_6 sector" class="gt_row gt_left">72 - Accommodation and Food Services</td>
+<td headers="MARICOPA stub_1_6 loans" class="gt_row gt_right">7,847</td>
+<td headers="MARICOPA stub_1_6 amount" class="gt_row gt_right">$1,016,154,442</td>
+<td headers="MARICOPA stub_1_6 forgiven" class="gt_row gt_right">$974,105,942</td>
+</tr>
+<tr>
+<th id="summary_stub_MARICOPA_1" scope="row" class="gt_row gt_left gt_stub gt_summary_row gt_first_summary_row thick gt_last_summary_row">Total</th>
+<td headers="MARICOPA summary_stub_MARICOPA_1 sector" class="gt_row gt_left gt_summary_row gt_first_summary_row thick gt_last_summary_row">—</td>
+<td headers="MARICOPA summary_stub_MARICOPA_1 loans" class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row">29,753</td>
+<td headers="MARICOPA summary_stub_MARICOPA_1 amount" class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row">2,416,282,673</td>
+<td headers="MARICOPA summary_stub_MARICOPA_1 forgiven" class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row">2,314,536,882</td>
+</tr>
+<tr class="gt_group_heading_row">
+<th colspan="5" class="gt_group_heading" scope="colgroup" id="PIMA">PIMA</th>
+    </tr>
+<tr class="gt_row_group_first">
+<th id="stub_1_7" scope="row" class="gt_row gt_left gt_stub"></th>
+<td headers="PIMA stub_1_7 sector" class="gt_row gt_left">45 - Retail Trade</td>
+<td headers="PIMA stub_1_7 loans" class="gt_row gt_right">792</td>
+<td headers="PIMA stub_1_7 amount" class="gt_row gt_right">$37,770,870</td>
+<td headers="PIMA stub_1_7 forgiven" class="gt_row gt_right">$36,163,649</td>
+</tr>
+<tr>
+<th id="stub_1_8" scope="row" class="gt_row gt_left gt_stub"></th>
+<td headers="PIMA stub_1_8 sector" class="gt_row gt_left">54 - Professional and Technical Services</td>
+<td headers="PIMA stub_1_8 loans" class="gt_row gt_right">2,525</td>
+<td headers="PIMA stub_1_8 amount" class="gt_row gt_right">$153,636,306</td>
+<td headers="PIMA stub_1_8 forgiven" class="gt_row gt_right">$149,970,397</td>
+</tr>
+<tr>
+<th id="stub_1_9" scope="row" class="gt_row gt_left gt_stub"></th>
+<td headers="PIMA stub_1_9 sector" class="gt_row gt_left">72 - Accommodation and Food Services</td>
+<td headers="PIMA stub_1_9 loans" class="gt_row gt_right">1,429</td>
+<td headers="PIMA stub_1_9 amount" class="gt_row gt_right">$185,384,342</td>
+<td headers="PIMA stub_1_9 forgiven" class="gt_row gt_right">$174,265,551</td>
+</tr>
+<tr>
+<th id="summary_stub_PIMA_1" scope="row" class="gt_row gt_left gt_stub gt_summary_row gt_first_summary_row thick gt_last_summary_row">Total</th>
+<td headers="PIMA summary_stub_PIMA_1 sector" class="gt_row gt_left gt_summary_row gt_first_summary_row thick gt_last_summary_row">—</td>
+<td headers="PIMA summary_stub_PIMA_1 loans" class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row">4,746</td>
+<td headers="PIMA summary_stub_PIMA_1 amount" class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row">376,791,518</td>
+<td headers="PIMA summary_stub_PIMA_1 forgiven" class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row">360,399,597</td>
+</tr>
+<tr class="gt_group_heading_row">
+<th colspan="5" class="gt_group_heading" scope="colgroup" id="PINAL">PINAL</th>
+    </tr>
+<tr class="gt_row_group_first">
+<th id="stub_1_10" scope="row" class="gt_row gt_left gt_stub"></th>
+<td headers="PINAL stub_1_10 sector" class="gt_row gt_left">45 - Retail Trade</td>
+<td headers="PINAL stub_1_10 loans" class="gt_row gt_right">190</td>
+<td headers="PINAL stub_1_10 amount" class="gt_row gt_right">$3,514,729</td>
+<td headers="PINAL stub_1_10 forgiven" class="gt_row gt_right">$3,009,373</td>
+</tr>
+<tr>
+<th id="stub_1_11" scope="row" class="gt_row gt_left gt_stub"></th>
+<td headers="PINAL stub_1_11 sector" class="gt_row gt_left">54 - Professional and Technical Services</td>
+<td headers="PINAL stub_1_11 loans" class="gt_row gt_right">526</td>
+<td headers="PINAL stub_1_11 amount" class="gt_row gt_right">$12,573,265</td>
+<td headers="PINAL stub_1_11 forgiven" class="gt_row gt_right">$11,299,255</td>
+</tr>
+<tr>
+<th id="stub_1_12" scope="row" class="gt_row gt_left gt_stub"></th>
+<td headers="PINAL stub_1_12 sector" class="gt_row gt_left">72 - Accommodation and Food Services</td>
+<td headers="PINAL stub_1_12 loans" class="gt_row gt_right">338</td>
+<td headers="PINAL stub_1_12 amount" class="gt_row gt_right">$17,078,884</td>
+<td headers="PINAL stub_1_12 forgiven" class="gt_row gt_right">$16,205,790</td>
+</tr>
+<tr>
+<th id="summary_stub_PINAL_1" scope="row" class="gt_row gt_left gt_stub gt_summary_row gt_first_summary_row thick gt_last_summary_row">Total</th>
+<td headers="PINAL summary_stub_PINAL_1 sector" class="gt_row gt_left gt_summary_row gt_first_summary_row thick gt_last_summary_row">—</td>
+<td headers="PINAL summary_stub_PINAL_1 loans" class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row">1,054</td>
+<td headers="PINAL summary_stub_PINAL_1 amount" class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row">33,166,878</td>
+<td headers="PINAL summary_stub_PINAL_1 forgiven" class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row">30,514,417</td>
+</tr>
+<tr>
+<th id="grand_summary_stub_1" scope="row" class="gt_row gt_left gt_stub gt_grand_summary_row gt_first_grand_summary_row gt_last_summary_row">Grand Total</th>
+<td headers="grand_summary_stub_1 sector" class="gt_row gt_left gt_grand_summary_row gt_first_grand_summary_row gt_last_summary_row">—</td>
+<td headers="grand_summary_stub_1 loans" class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row gt_last_summary_row">—</td>
+<td headers="grand_summary_stub_1 amount" class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row gt_last_summary_row">$2,921,861,827</td>
+<td headers="grand_summary_stub_1 forgiven" class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row gt_last_summary_row">$2,797,625,175</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+</section></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
+<ol>
+<li id="fn1"><p>A more precise way to do it would be : <code>amount &lt; 1000 ~ "Very Low", between ( amount, 1000.01, 10000) ~ "Low"</code> , etc. But it relies on numbers that are never more precise than two digits.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><nav class="page-navigation column-page-right"><div class="nav-page nav-page-previous">
+      <a href="./r-verb-join.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Verbs in depth: Matchmaking with joins</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./advanced.html" class="pagination-link">
+        <span class="nav-page-text">Special skills</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">Data reporting for investigative journalism, Spring 2023 was written by Sarah Cohen</div>   
+    <div class="nav-footer-right">Produced with <a href="https://quarto.org">Quarto</a></div>
+  </div>
+</footer>
+
+
+</body></html>

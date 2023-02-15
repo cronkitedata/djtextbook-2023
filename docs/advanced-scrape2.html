@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.2.269">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Data Reporting - 23&nbsp; Introduction to scraping in R</title>
+<title>Data Reporting - 25&nbsp; Introduction to scraping in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -126,7 +126,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }"><div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Introduction to scraping in R</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Introduction to scraping in R</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -298,6 +298,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="./r-verb-groupby.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Verbs in depth: Aggregating with groups</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-verb-join.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Verbs in depth: Matchmaking with joins</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-recipes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Recipes</span></a>
+  </div>
+</li>
       </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -310,22 +320,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./advanced-regex.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Regular Expressions for pattern matching</span></a>
+  <a href="./advanced-regex.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Regular Expressions for pattern matching</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./advanced-openrefine.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Open refine walkthrough</span></a>
+  <a href="./advanced-openrefine.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Open refine walkthrough</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./advanced-scrape1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Scraping without programming</span></a>
+  <a href="./advanced-scrape1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Scraping without programming</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./advanced-scrape2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Introduction to scraping in R</span></a>
+  <a href="./advanced-scrape2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Introduction to scraping in R</span></a>
   </div>
 </li>
       </ul>
@@ -361,16 +371,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
    
   <ul>
 <li>
-<a href="#understanding-a-web-page-and-its-structure" id="toc-understanding-a-web-page-and-its-structure" class="nav-link active" data-scroll-target="#understanding-a-web-page-and-its-structure"><span class="toc-section-number">23.1</span>  Understanding a web page and its structure</a>
+<a href="#understanding-a-web-page-and-its-structure" id="toc-understanding-a-web-page-and-its-structure" class="nav-link active" data-scroll-target="#understanding-a-web-page-and-its-structure"><span class="toc-section-number">25.1</span>  Understanding a web page and its structure</a>
   <ul class="collapse">
 <li><a href="#a-special-type-table" id="toc-a-special-type-table" class="nav-link" data-scroll-target="#a-special-type-table">A special type: table</a></li>
   <li><a href="#a-harder-example-ballotpedia" id="toc-a-harder-example-ballotpedia" class="nav-link" data-scroll-target="#a-harder-example-ballotpedia">A harder example: Ballotpedia</a></li>
-  <li><a href="#getting-the-link" id="toc-getting-the-link" class="nav-link" data-scroll-target="#getting-the-link"><span class="toc-section-number">23.1.1</span>  Getting the link</a></li>
+  <li><a href="#getting-the-link" id="toc-getting-the-link" class="nav-link" data-scroll-target="#getting-the-link"><span class="toc-section-number">25.1.1</span>  Getting the link</a></li>
   </ul>
 </li>
-  <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn"><span class="toc-section-number">23.2</span>  Your turn</a></li>
+  <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn"><span class="toc-section-number">25.2</span>  Your turn</a></li>
   <li>
-<a href="#cheat-sheet" id="toc-cheat-sheet" class="nav-link" data-scroll-target="#cheat-sheet"><span class="toc-section-number">23.3</span>  Cheat sheet</a>
+<a href="#cheat-sheet" id="toc-cheat-sheet" class="nav-link" data-scroll-target="#cheat-sheet"><span class="toc-section-number">25.3</span>  Cheat sheet</a>
   <ul class="collapse">
 <li><a href="#html-tags-elements" id="toc-html-tags-elements" class="nav-link" data-scroll-target="#html-tags-elements">HTML tags / elements</a></li>
   <li><a href="#common-attributes-for-tags" id="toc-common-attributes-for-tags" class="nav-link" data-scroll-target="#common-attributes-for-tags">Common attributes for tags</a></li>
@@ -378,13 +388,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#examples-of-common-css-selectors" id="toc-examples-of-common-css-selectors" class="nav-link" data-scroll-target="#examples-of-common-css-selectors">Examples of common CSS selectors</a></li>
   </ul>
 </li>
-  <li><a href="#going-further" id="toc-going-further" class="nav-link" data-scroll-target="#going-further"><span class="toc-section-number">23.4</span>  Going further</a></li>
+  <li><a href="#going-further" id="toc-going-further" class="nav-link" data-scroll-target="#going-further"><span class="toc-section-number">25.4</span>  Going further</a></li>
   </ul></nav>
 </nav><!-- margin-sidebar --><div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
 <main class="content column-page-right" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title"><span id="advanced-scrape2" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Introduction to scraping in R</span></span></h1>
+<h1 class="title"><span id="advanced-scrape2" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Introduction to scraping in R</span></span></h1>
 </div>
 
 
@@ -405,8 +415,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>If there is one reason to sign up for DataCamp it may be for the value of their scraping lessons.</p>
 <p>This chapter assumes you are, by now, relatively comfortable with R code chunks. In particular, it’s assumed you know how to assign the output of a piece of code to a new variable, and that you understand the pipe structure with the key verbs of the tidyverse.</p>
-<section id="understanding-a-web-page-and-its-structure" class="level2" data-number="23.1"><h2 data-number="23.1" class="anchored" data-anchor-id="understanding-a-web-page-and-its-structure">
-<span class="header-section-number">23.1</span> Understanding a web page and its structure</h2>
+<section id="understanding-a-web-page-and-its-structure" class="level2" data-number="25.1"><h2 data-number="25.1" class="anchored" data-anchor-id="understanding-a-web-page-and-its-structure">
+<span class="header-section-number">25.1</span> Understanding a web page and its structure</h2>
 <p>Web pages are written in HTML, even if they don’t have “html” at the end of the file name.</p>
 <p>HTML is like an upside-down tree. It has a trunk, which is an <code>&lt;html&gt;</code> tag, then two main branches: <code>&lt;head&gt;</code> and <code>&lt;body&gt;</code>. The content of the page branches out from the <code>body</code> tag:</p>
 <div class="quarto-figure quarto-figure-center">
@@ -563,8 +573,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p></p><figcaption class="figure-caption">office image</figcaption><p></p>
 </figure>
 </div>
-</section><section id="getting-the-link" class="level3" data-number="23.1.1"><h3 data-number="23.1.1" class="anchored" data-anchor-id="getting-the-link">
-<span class="header-section-number">23.1.1</span> Getting the link</h3>
+</section><section id="getting-the-link" class="level3" data-number="25.1.1"><h3 data-number="25.1.1" class="anchored" data-anchor-id="getting-the-link">
+<span class="header-section-number">25.1.1</span> Getting the link</h3>
 <p>Before, in Google Sheets, we had no way to pick up the list of links that would tell us what city each member was in. That’s also true when we use the html_table() function to turn it into a data frame:</p>
 <div class="cell">
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">office_table</span> <span class="op">&lt;-</span> </span>
@@ -609,8 +619,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>(The str_extract () function matches everything after the last slash , because we put parentheses around the last part, which is a a capture group. This capability used to be very difficut in R – now it’s a bit easier. )</p>
 <p>It doesn’t work perfectly, but it generally gets us a bit closer to a city name.</p>
-</section></section><section id="your-turn" class="level2" data-number="23.2"><h2 data-number="23.2" class="anchored" data-anchor-id="your-turn">
-<span class="header-section-number">23.2</span> Your turn</h2>
+</section></section><section id="your-turn" class="level2" data-number="25.2"><h2 data-number="25.2" class="anchored" data-anchor-id="your-turn">
+<span class="header-section-number">25.2</span> Your turn</h2>
 <p>A lot of people use IMDB pages as practice for scraping because its HTML is a little primitive. Try extracting the name, year, rating, and rank of each item in this list <a href="https://www.imdb.com/chart/toptv/?ref_=nv_tvv_250" class="uri">https://www.imdb.com/chart/toptv/?ref_=nv_tvv_250</a></p>
 <p>Hints:</p>
 <ul>
@@ -620,8 +630,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>To extract title and its link, use the <code>a</code> tag</p></li>
 <li><p>To get the full information from the rating column, including the number of votes that it’s based on, use the <code>strong</code> tag then the <code>title</code> attribute. See if you can figure that one out.</p></li>
 <li><p>To put them all together, use the add_column() verb</p></li>
-</ul></section><section id="cheat-sheet" class="level2" data-number="23.3"><h2 data-number="23.3" class="anchored" data-anchor-id="cheat-sheet">
-<span class="header-section-number">23.3</span> Cheat sheet</h2>
+</ul></section><section id="cheat-sheet" class="level2" data-number="25.3"><h2 data-number="25.3" class="anchored" data-anchor-id="cheat-sheet">
+<span class="header-section-number">25.3</span> Cheat sheet</h2>
 <section id="html-tags-elements" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="html-tags-elements">HTML tags / elements</h3>
 <p>Each tag has an opening and closing it. This is what a “p” open and close tag looks like, with the text inside it shown on the page:</p>
 <pre><code>&lt;p&gt; This is a paragraph &lt;/p&gt;
@@ -841,8 +851,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>You have to go through the whole path to an element if you need it, which is why you have to look in the inspector section of your browser or use the CSS Selector Gadget (a chrome extension that I’ve never been able to work properly!)</p>
-</section></section><section id="going-further" class="level2" data-number="23.4"><h2 data-number="23.4" class="anchored" data-anchor-id="going-further">
-<span class="header-section-number">23.4</span> Going further</h2>
+</section></section><section id="going-further" class="level2" data-number="25.4"><h2 data-number="25.4" class="anchored" data-anchor-id="going-further">
+<span class="header-section-number">25.4</span> Going further</h2>
 <p>The CSS selectors shown in this chapter are a little limiting – you’ll find times when the information you’re seeking isn’t defined using those selectors. That’s when the XPATH selectors we saw in the last chapter are used. It’s beyond the scope of this tutorial, but ask for some help or try to find XPATH examples if you can’t figure out how to get to a part of the page with your css selections – it’s pretty common for this to happen.</p>
 
 
@@ -986,7 +996,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script><nav class="page-navigation column-page-right"><div class="nav-page nav-page-previous">
       <a href="./advanced-scrape1.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Scraping without programming</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Scraping without programming</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

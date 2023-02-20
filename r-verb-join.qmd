@@ -59,6 +59,10 @@ Examples of relational databases include:
 
 This conforms to the **tidy data** principles that you examined in the last chapter. 
 
+Usually, you will have what is known as a "1-to-many" join. That is, there are many instances of a value in one table's column, but just one instance of it in the lookup or related table. The superheroes example above is one of those instances: There are many entries for DC comics in the superhero table, but just one in the publisher table. 
+
+If this isn't true, you will have what is known as "many-to-many" joins, which is, in layman's terms, a bowl of tangled spaghetti. Each match will be duplicated the number of times it is in the related table. Experts call this a cartesian join, and it's usually bad. 
+
 ### join syntax
 
 ::: callout-tip
@@ -90,6 +94,18 @@ The new version of the join verb has a lot of new capabilities, including "fuzzy
 
 ## Matchmaking with joins
 
+
+
+### Attaching characteristics to a dataset {.unnumbered}
+
+You'll often want to learn more about a geographic area's demographics, voting habits or other characteristics, and match it to other data. Sometimes it's simple: Find the demographics of counties that switched from Trump to Biden as a way to isolate places you might want to visit. Another example from voting might be to find the precinct that has the highest percentage of Latino citizens in the county, then match that precinct against the voter registration rolls to get a list of people you might want to interview on election day. In these instances, the `join` is used as a filter, but it comes from a different table. .
+
+This is also common when you have data by zip code or some other geography, and you want to find clusters of interesting potential stories, such as PPP loans in minority neighborhoods.
+
+### Summarize data against another dataset {.unnumbered}
+
+The previous examples all result in lists of potential story people or places. If you use join on summarized data, you can characterize a broad range of activity across new columns. Simplified, this is how you can write that more PPP money went to predominantly white neighborhoods than those that were majority Black.
+
 ### "Enterprise" joins {.unnumbered}
 
 Investigative reporters often use joins in ways unintended by the data creators. In the 1990s, they dubbed these "enterprise" joins, referring to the enterprising reporters who thought of them. In these instances, reporters combine data sets in ways that find needles in haystacks, such as: 
@@ -112,15 +128,7 @@ In different contexts, you'll want to minimize different kinds of errors. For ex
 
 You'll see stories of this kind write around the lack of precision -- they'll often say, "we verified x cases of...." rather than pretend that they know of them all.
 
-### Attaching characteristics to a dataset {.unnumbered}
 
-You'll often want to learn more about a geographic area's demographics, voting habits or other characteristics, and match it to other data. Sometimes it's simple: Find the demographics of counties that switched from Trump to Biden as a way to isolate places you might want to visit. Another example from voting might be to find the precinct that has the highest percentage of Latino citizens in the county, then match that precinct against the voter registration rolls to get a list of people you might want to interview on election day. In these instances, the `join` is used as a filter, but it comes from a different table. .
-
-This is also common when you have data by zip code or some other geography, and you want to find clusters of interesting potential stories, such as PPP loans in minority neighborhoods.
-
-### Summarize data against another dataset {.unnumbered}
-
-The previous examples all result in lists of potential story people or places. If you use join on summarized data, you can characterize a broad range of activity across new columns. Simplified, this is how you can write that more PPP money went to predominantly white neighborhoods than those that were majority Black.
 
 ## Using lookup tables: PPP industry codes
 
@@ -171,7 +179,6 @@ ppp_orig |>
 
 
 ```
-
 
 
 ## Joining risks

@@ -380,9 +380,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li>
 <a href="#matchmaking-with-joins" id="toc-matchmaking-with-joins" class="nav-link" data-scroll-target="#matchmaking-with-joins"><span class="toc-section-number">20.2</span>  Matchmaking with joins</a>
   <ul class="collapse">
-<li><a href="#enterprise-joins" id="toc-enterprise-joins" class="nav-link" data-scroll-target="#enterprise-joins">“Enterprise” joins</a></li>
-  <li><a href="#attaching-characteristics-to-a-dataset" id="toc-attaching-characteristics-to-a-dataset" class="nav-link" data-scroll-target="#attaching-characteristics-to-a-dataset">Attaching characteristics to a dataset</a></li>
+<li><a href="#attaching-characteristics-to-a-dataset" id="toc-attaching-characteristics-to-a-dataset" class="nav-link" data-scroll-target="#attaching-characteristics-to-a-dataset">Attaching characteristics to a dataset</a></li>
   <li><a href="#summarize-data-against-another-dataset" id="toc-summarize-data-against-another-dataset" class="nav-link" data-scroll-target="#summarize-data-against-another-dataset">Summarize data against another dataset</a></li>
+  <li><a href="#enterprise-joins" id="toc-enterprise-joins" class="nav-link" data-scroll-target="#enterprise-joins">“Enterprise” joins</a></li>
   </ul>
 </li>
   <li>
@@ -470,6 +470,8 @@ Update your packages!
 <li>A court docket data system, which usually has many types of rows: A master case table links to information on charges, defendants, lawyers, sentences and court hearings.</li>
 </ul>
 <p>This conforms to the <strong>tidy data</strong> principles that you examined in the last chapter.</p>
+<p>Usually, you will have what is known as a “1-to-many” join. That is, there are many instances of a value in one table’s column, but just one instance of it in the lookup or related table. The superheroes example above is one of those instances: There are many entries for DC comics in the superhero table, but just one in the publisher table.</p>
+<p>If this isn’t true, you will have what is known as “many-to-many” joins, which is, in layman’s terms, a bowl of tangled spaghetti. Each match will be duplicated the number of times it is in the related table. Experts call this a cartesian join, and it’s usually bad.</p>
 </section><section id="join-syntax" class="level3" data-number="20.1.2"><h3 data-number="20.1.2" class="anchored" data-anchor-id="join-syntax">
 <span class="header-section-number">20.1.2</span> join syntax</h3>
 <div class="callout-tip callout callout-style-default callout-captioned">
@@ -524,7 +526,12 @@ Tip
 </div>
 </section></section></section><section id="matchmaking-with-joins" class="level2" data-number="20.2"><h2 data-number="20.2" class="anchored" data-anchor-id="matchmaking-with-joins">
 <span class="header-section-number">20.2</span> Matchmaking with joins</h2>
-<section id="enterprise-joins" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="enterprise-joins">“Enterprise” joins</h3>
+<section id="attaching-characteristics-to-a-dataset" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="attaching-characteristics-to-a-dataset">Attaching characteristics to a dataset</h3>
+<p>You’ll often want to learn more about a geographic area’s demographics, voting habits or other characteristics, and match it to other data. Sometimes it’s simple: Find the demographics of counties that switched from Trump to Biden as a way to isolate places you might want to visit. Another example from voting might be to find the precinct that has the highest percentage of Latino citizens in the county, then match that precinct against the voter registration rolls to get a list of people you might want to interview on election day. In these instances, the <code>join</code> is used as a filter, but it comes from a different table. .</p>
+<p>This is also common when you have data by zip code or some other geography, and you want to find clusters of interesting potential stories, such as PPP loans in minority neighborhoods.</p>
+</section><section id="summarize-data-against-another-dataset" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="summarize-data-against-another-dataset">Summarize data against another dataset</h3>
+<p>The previous examples all result in lists of potential story people or places. If you use join on summarized data, you can characterize a broad range of activity across new columns. Simplified, this is how you can write that more PPP money went to predominantly white neighborhoods than those that were majority Black.</p>
+</section><section id="enterprise-joins" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="enterprise-joins">“Enterprise” joins</h3>
 <p>Investigative reporters often use joins in ways unintended by the data creators. In the 1990s, they dubbed these “enterprise” joins, referring to the enterprising reporters who thought of them. In these instances, reporters combine data sets in ways that find needles in haystacks, such as:</p>
 <ul>
 <li>School bus drivers who have had tickets for driving while intoxicated.</li>
@@ -538,11 +545,6 @@ Tip
 <p>These are false negatives, or Type II errors in statistics.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
 <p>In different contexts, you’ll want to minimize different kinds of errors. For example, if you are looking for something extremely rare, and you want to examine every possible case – like a child sex offender working in a day care center – you might choose to make a “loose” match and get lots of false positives, which you can check. If you want to limit your reporting only to the most promising leads, you’ll be willing to live with missing some cases in order to be more sure of the joins you find.</p>
 <p>You’ll see stories of this kind write around the lack of precision – they’ll often say, “we verified x cases of….” rather than pretend that they know of them all.</p>
-</section><section id="attaching-characteristics-to-a-dataset" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="attaching-characteristics-to-a-dataset">Attaching characteristics to a dataset</h3>
-<p>You’ll often want to learn more about a geographic area’s demographics, voting habits or other characteristics, and match it to other data. Sometimes it’s simple: Find the demographics of counties that switched from Trump to Biden as a way to isolate places you might want to visit. Another example from voting might be to find the precinct that has the highest percentage of Latino citizens in the county, then match that precinct against the voter registration rolls to get a list of people you might want to interview on election day. In these instances, the <code>join</code> is used as a filter, but it comes from a different table. .</p>
-<p>This is also common when you have data by zip code or some other geography, and you want to find clusters of interesting potential stories, such as PPP loans in minority neighborhoods.</p>
-</section><section id="summarize-data-against-another-dataset" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="summarize-data-against-another-dataset">Summarize data against another dataset</h3>
-<p>The previous examples all result in lists of potential story people or places. If you use join on summarized data, you can characterize a broad range of activity across new columns. Simplified, this is how you can write that more PPP money went to predominantly white neighborhoods than those that were majority Black.</p>
 </section></section><section id="using-lookup-tables-ppp-industry-codes" class="level2" data-number="20.3"><h2 data-number="20.3" class="anchored" data-anchor-id="using-lookup-tables-ppp-industry-codes">
 <span class="header-section-number">20.3</span> Using lookup tables: PPP industry codes</h2>
 <p>The PPP data has a code called the <code>naics_code</code>, which is an industry coding system created by the Census to categorize all economic activity.</p>

@@ -1,7 +1,18 @@
+---
+execute: 
+   echo: true
+   output: false
+output: 
+   html: 
+      number-depth: 2
+--- 
+
 # Recipes {#r-recipes}
 
 
-```{r setup, include=FALSE}
+```{r}
+#| label: setup
+#| include: false
 
 library(tidyverse)
 library(lubridate)
@@ -36,7 +47,9 @@ There are several annoyances that aren't consistent from one function in R to th
 
 -   **Case-sensitivity** in column names; back-ticks for more than one word in a column name rather than quotes.
 
--   Missing or hanging **pipes** (%\>%)
+-   Missing or hanging **pipes** (`|>`)
+
+- You often have to run your code chunk twice after fixing an error. (There is still a mistake in R's innards that has to get flushed out.)
 
 These are the problems that will fix about 80 percent of the code that won't run once you get more used to it.
 
@@ -52,14 +65,16 @@ The assignment operator is `<-`, which means "pour the answer into this variable
 
 These can all go into one code chunk if you'd like: 
 
-```{r save_for_later, results="hide", fig.keep="none" }
+```{r}
+#| label: save_for_later
+#| fig-keep: none
 
 select_ppp <- 
-  ppp_orig %>%
-  filter ( project_state == "AZ" & !is.na (project_county) ) %>%
+  ppp_orig |>
+  filter ( project_state == "AZ" & !is.na (project_county) ) |>
   mutate ( forgiveness_amount = if_else (is.na(forgiveness_amount),
                                          0, 
-                                         forgiveness_amount)) %>%
+                                         forgiveness_amount)) |>
   select ( borrower_name, borrower_city, 
            naics_code, 
            amount, forgiveness_amount,
@@ -68,19 +83,69 @@ select_ppp <-
 
 
 sectors <- 
-  naics_codes %>%
+  naics_codes |>
   select ( naics_code, sector_code, sector_desc)
 
 
-select_ppp %>%
-  left_join ( sectors, by="naics_code")  %>%
-  select ( borrower_name, forgiveness_amount, sector_desc) %>%
+select_ppp |>
+  left_join ( sectors, by="naics_code")  |>
+  select ( borrower_name, forgiveness_amount, sector_desc) |>
   head(5)
 
 
 ```
 
+## Importing / reading data
 
+* If you are referring to a file on your computer or on the web, then it must be in quotes. 
+* Use the proper library and function to read the data. 
+* Check the output for proper treatment of text, dates and numbers, especially with Excel and text imports
+
+
+#### Reading R files
+
+Two types of data files: RDS files contain one data frame, which you have to assign to a new object. Rda files have multiple objects that are already named.  Use `readRDS ( url ( ....) ) ` to read data stored on the internet instead of in your project.
+
+``` 
+mydata <- readRDS ( "mydata_file.RDS")
+load ( "mydata_file.Rda")
+
+```
+
+#### Reading text (csv) files 
+
+Use `read_csv()`, `read_tsv()`, `read_delimited()` and various fixed file formats. Match the type of your file with the proper function. These require that the tidyverse or `readr` libraries are already loaded. 
+
+#### Reading Excel files
+
+
+
+``` 
+library (readxl)          # put this with the rest of your libraries.
+mydata <- read_excel("mydata_file.xlsx", 
+                      sheet = "sheet_name")  
+```
+
+There is no `url()` option for reading Excel files. They must be stored in your project.  One approach is to download the file in your code: 
+
+```
+download.file ( "https://address-of-file.xlsx", "myfilename.xlsx")
+mydata <- read_excel ("myfilename.xlsx")
+```
+
+
+#### Import options
+
+There are options in most of the importing functions that tell you how to treat each column and let you rename at the same time. One approach is : 
+
+``` 
+read_csv ( "mydata_file.csv", 
+           coltypes = col(.default = "c")
+           )
+           
+```
+
+To keep everything as text, which you can convert later. 
 
 
 ## Filtering
@@ -114,7 +179,7 @@ select_ppp %>%
     filter ( ! is.na (project_county) )
 ```
 
-5.  Between two dates date[^Be sure it's really a date in the data by glimpsing your data frame. If not, turn it into a date first]
+5.  Between two dates . Be sure it's really a date in the data by glimpsing your data frame. If not, turn it into a date first.
 
 ```
     filter ( approval_date >= "2021-01-24" & 
@@ -123,18 +188,13 @@ select_ppp %>%
 6.  Phrases, words or letters at the beginning of a column
 
 ```
-    filter ( str_detect (borrower_type , "^Non-Profit"))
+    filter ( str_like (borrower_type , "Non-Profit%"))
 ```
 
 7.  Phrases, letters or words at the end of a column
 
 ```
-    filter ( str_detect (borrower_type, "Corporation$"))
-```
-8.  A word that isn't part of another word
-
-```
-    filter ( str_detect ( "\\bNation\\b"))
+    filter ( str_like  (borrower_type, "Corporation%"))
 ```
 
 All of these examples can be used in a `mutate` statement to create flags or new values if the conditions are met.  
@@ -144,8 +204,8 @@ All of these examples can be used in a `mutate` statement to create flags or new
 1.  Counting (How many?)
 
 ```
-    group_by (project_county) %>%
-    summarise (loans = n() )  %>%
+    group_by (project_county) |>
+    summarize (loans = n() )  |>
     arrange ( desc ( loans ))
 ```
 
@@ -163,8 +223,8 @@ Make sure you don't name the new column containing the count the same thing as a
 Sometimes you want to know how many items of a type, not how many rows, are included in a category.
 
 ```
-        group_by ( project_county) %>%
-        summarise ( number_of_loans = n(), 
+        group_by ( project_county) |>
+        summarize ( number_of_loans = n(), 
                     number_of_industries = n_distinct ( naics_code )
                     )
 ```
@@ -173,8 +233,8 @@ Sometimes you want to know how many items of a type, not how many rows, are incl
 4.  Summing (how much?)
 
 ```
-    group_by (project_county) %>%
-    summarise ( total_amount = sum (amount, na.rm=T))
+    group_by (project_county) |>
+    summarize ( total_amount = sum (amount, na.rm=T))
 ```
 
 5. Shortcut for summing:
@@ -199,32 +259,27 @@ You'll often want fewer categories, or numbers in categories, that you want to u
        )
 ```
 
-2. Recode into more than two categories, example using `str_detect()`
+2. Recode into more than two categories using `case_when()`
+
+This example introduces `str_detect()`, which uses regular expressions. We'll go over that later in the book. 
 
 ```
-  mutate ( new_type = case_when 
-           (str_detect (borrower_type, 
-                        "Corporation|Company") ~     "
-                        For-profit company", 
-          str_detect (borrower_type,
-                      "(Non-Profit|Cooperative|Association)") ~ 
-                      "Non profit", 
-          str_detect ( borrower_type, 
-                      "(Sole|Self-Employed|Independent)") ~
-                      "Individual", 
-          TRUE ~ "Everyone else")
-        )
+  mutate (  new_business_type = 
+                case_when (  str_like(business_type, "%non_profit%") ~ "Non-profit",    #1st category
+
+                             business_type %in% 
+                               c("Independent Contractors", 
+                                "Sole Proprietorship", 
+                                "Self-Employed Individuals", 
+                                  "Single Member LLC")              ~ "Individual",    # 2nd category
+                             
+                             business_type == "Tribal Concerns"     ~ "Tribal concerns",    #3rd category
+                             
+                             str_detect (business_type, "LLC|Company|Corporation|Partnership") ~ "Companies",  #4th category
+                             
+                             TRUE ~ "Other")         #catchall 5th category
+            )
 ```
-
-You'll want to check them when you're done to make sure: 
-
-```
-        new_dataframe %>%
-        count ( new_type, borrower_type)
-```
-
-to make sure you coded them properly. Too many `NA` values means you likely misspelled something or left something out.
-
 
 3. Recode numbers into categories
 
@@ -240,7 +295,7 @@ It's often useful to give them numeric codes in front so they sort properly:
               )
 ```
 
-This works because the first one that it finds will be used, so a value of exactly 1,000 would be "Very low", but a value of 1,001 would be "Low".^[A more precise way to do it would be : `amount < 1000 ~ "Very Low", between ( amount, 1000.01, 10000) ~ "Low"` , etc. But it relies on numbers that are never more precise than two digits.]
+This works because the first one that it finds will be used, so a value of exactly 1,000 would be "Very low", but a value of 1,001 would be "Low".
 
 
 ## Working with grouped data for subtotals, changes, percents
@@ -248,8 +303,8 @@ This works because the first one that it finds will be used, so a value of exact
 1.  Percent of total by group
 
 ```
-  group_by ( project_county, sector_desc ) %>%
-  summarise ( loans = n() , .groups="drop_last") %>%
+  group_by ( project_county, sector_desc ) |>
+  summarize ( loans = n() , .groups="drop_last") |>
   mutate ( pct_in_county = loans / sum(loans))
 ```
 
@@ -258,8 +313,8 @@ This works because the first one that it finds will be used, so a value of exact
 To see the items across the top, use `pivot_wider`. 
 
 ```
-  group_by ( project_county, new_type) %>%
-  summarise ( loan_count = n() ) %>%
+  group_by ( project_county, new_type) |>
+  summarize ( loan_count = n() ) |>
   pivot_wider ( names_from = new_type, 
                 id_cols = c( project_county), 
                 values_from = loan_count)
@@ -272,9 +327,9 @@ You usually only choose one column to show down the side, one column to spread a
 2.  Complex example: Get the change by year within each county.
 
       annual_ppp <- 
-        mutate  ( approve_year = year (approval_date ) ) %>%
-        group_by ( project_county, approve_year) %>%
-        summarise ( loans = n() , 
+        mutate  ( approve_year = year (approval_date ) ) |>
+        group_by ( project_county, approve_year) |>
+        summarize ( loans = n() , 
                     amount = sum( amount, na.rm=T), 
                     .groups="drop_last") 
                     
@@ -282,210 +337,72 @@ Next, compare them within groups. New functions introduced: `complete()`, which 
 
                     
         complete ( project_county, approve_year, 
-                  fill= list (amount=0, loans =0) )%>%
+                  fill= list (amount=0, loans =0) )|>
         mutate ( change_loans = loans - lag(loans), 
                  pct_change_loans = change_loans / lag(loans) * 100) 
 
 3.  Pick out the last item in a group, with all of its columns. New verb introduced : `slice_tail()` . This is particularly useful for chronological events, such as the last thing that happened in a court case, or the most recent complaint against a police officer. This example isn't a great one, but it gets you the name and other details of the most recent loan for each lender
 
-        arrange ( lender, date_approved) %>%
-        group_by ( lender) %>%
-        slice_tail()
+        arrange ( lender, date_approved) |>
+        group_by ( lender) |>
+        slice_tail(n=1)
 
-## Do the same thing on many columns at once
+NOTE: Don't use `slice_max()`, because it will give you back multiple rows in the event of ties. 
 
-These examples use a new concept, called `across`. It's a way to do the same thing to all of the columns at the same time, replacing the original value with a new one. They can be tricky to write, and I'm not sure I understand them completely. They can also be really, really slow on large datasets.
 
-1.  Convert all character columns to upper case for easier filtering
+## Joining tables
 
-```
-   mutate (across ( where (is.character) , toupper))
-```
-
-2.  Strip all punctuation from a set of columns for easier filtering and grouping
-
-**New functions introduced: str_squish() to remove extra blanks, and str_replace_all() to replace all punctuation with nothing. The \~ is needed to put an expression when you use "across" to refer to a bunch of columns at the same time.**
+New options in the `dplyr` library that contains the `join` verb let us use the same operators in joining that you use in filtering: `==`, `<=`, etc. Usually you will use the "==" operator.  Requires dplyr 1.1, which was released in February 2023. 
 
 ```
-  mutate ( across ( c(borrower_name, borrower_address, borrower_city),                 ~str_squish( 
-                      str_replace_all ( ., "[:punctuation:]","")
-                            )
-                  )
-        )
-```
-
-## Better looking tables
-
-One of the big annoyances in R is that the results are, well, unreadable. Numbers aren't formatted, you can't see all of the data you want, and it's hard to share the results.
-
-Think of this as a quick tour of some options you have to make better looking tables and readable output. In practice, I use one of three:
-
--   `reactable` provides a powerful way to make sortable, searchable tables in your markdown. It's great for sharing data with people who just want to explore it. Just be careful not to include so many rows that it can't be opened effectively in your browser.
-
--   `gt` makes very professional looking static tables, such as those you might see in a book. They're good for labeling, footnotes and other details when you don't want anyone to change anything.
-
-Both `reactable` and `gt` will produce subtotals and other math , meaning you can show multiple levels at once. The examples will use the PPP data for each county in Arizona by month.
-
-### Strategy {-}
-
-Typically, you'll do all of your data processing in a series of steps that culminate all of the columns you'll need for any table you want to make -- this will include any grouping, joining or computations that you've already made.
-
-This can be a challenge to get right on sorting, but it otherwise works OK.
-
-#### Make the data frame you want to display and save it {-}
-
-This example:
-
-1.  Converts dates to months by converting it to a character column formatted as the year-month to keep a sort order proper.
-
-2.  Replaces missing counties with "UNKNOWN" and keeps only those in Arizona.
-
-3.  Computes totals by month.
-
-4.  Saves it to a data frame called `ppp_fortable`.
-
-```{r create_small_table}
-
-ppp_fortable <- 
-  ppp_orig %>%
-  # sort in order so that the months aren't alphapbetized or dependent on the first county
-  arrange ( date_approved) %>%
-  mutate ( month = format(date_approved, "%Y-%m"), 
-           project_county = replace_na(project_county, "UNKNOWN")) %>%
-  filter ( project_state == "AZ") %>%
-  group_by ( project_county, month) %>%
-  #this at least shows you commas in the values. I haven't had luck using currency on this.
-  summarise ( loans  =  n(), 
-              total_amt = sum(amount),
-              .groups="drop"
-  ) 
-
-
-```
-
-### Reactable: Sortable, searchable tables with formatted numbers {-}
-
-This is how you can make a sortable, searchable table. The syntax and grammar of this is completely different than what you're used to because it's an implementation of a Javascript library:
-
-```{r reactable_ex1, eval=FALSE}
-
-
-
-ppp_fortable %>%
-reactable (  defaultPageSize = 15,
-             defaultColDef = colDef ( filterable=TRUE, 
-                                      sortable=TRUE,
-                                      format = colFormat(digits = 0, separators=TRUE) 
-                                       ), 
-              columns  = list (
-                  project_county = colDef ("County"), 
-                  month = colDef ("Month"), 
-                  loans  = colDef ("# of loans", align="right", filterable=FALSE), 
-                  total_amt = colDef ("$ amount", 
-                                       align="right", 
-                                      format = colFormat (
-                                              separators=TRUE, prefix="$", digits=0)
-                                      )
-                  
-                 )
-            )
-
-```
-![react 1]{assets/images/r-recipes-react1.png}{width=100%}
-
-### Pivoted reactable table {-}
-
-This isn't a great example, but you could turn it into a monthly table by pivoting the data before printing. I also added some formatting to this example so you can see how to reduce the size, put in scrollbars, etc. They're optional. 
-
-
-```{r show_across , eval=FALSE}
-
-ppp_fortable %>%
-  ungroup() %>%
-  arrange ( month) %>%
-  pivot_wider ( names_from = month, 
-                values_from = total_amt, 
-                values_fill = 0, 
-                id_cols = project_county) %>%
-  reactable ( # these options make it scrollable and smaller print
-              wrap=FALSE,
-              width=700,
-              theme = reactableTheme( style=list(fontSize="smaller", 
-                                                 color="DimGray", 
-                                                 fontFamily="sans-serif")),
-              #these options set the default column format.
-              defaultColDef = colDef ( format=colFormat ( 
-                                                 separators=TRUE,
-                                                 digits=0, 
-                                                 prefix="$"
-                                                 ), 
-                                       minWidth=150) , 
-      # Here you'd list anything that defies the normal column defaults
-    columns = list(
-        project_county = colDef ("County", format=colFormat(prefix = ""))
-           )
-)
-
-
-
-
-```
-
-![react_example2](assets/images/r-recipes-react2.png){width=100%}
-
-### Static table with subtotals and percentages using `gt`
-
-This will include a section on `gt`, which is one option for good-looking static tables.  This starts with a data frame containing totals by sector and county, with just a few counties and sectors picked out. 
-
-```{r include=FALSE}
-
-ppp_subtotals <-
-  ppp_orig  %>%
-  filter ( project_state=="AZ" & !is.na(project_county) &  
-                                !is.na(naics_code)
-           ) %>%
-  left_join ( naics_codes, by="naics_code") %>%
-  mutate ( sector = paste(sector_code, sector_desc, sep= " - ")) %>%
-  group_by ( sector, project_county) %>%
-  summarise ( loans = n() ,  
-              amount = sum(amount), 
-              forgiven = sum(forgiveness_amount, na.rm=T),
-              .groups="drop") %>%
-  filter ( str_detect (project_county, "MARICOPA|PIMA|PINAL|COCONINO")            & str_detect ( sector, "45|54|72")
+ppp_orig |> 
+  select ( borrower_name, amount, naics_code) |> 
+  inner_join ( naics_codes, 
+               join_by (naics_code == naics_code) 
   )
+```
 
+## Quarto document tips
+
+### YAML (front matter) {-}
+
+The YAML is very picky about exact casing, spacing and other details. If you try to render and you get a `YAML error`, it is likely at the top. 
+
+
+Typical YAML front matter that goes within the three dashes beginning on the very first line:
+
+```yaml
+
+title: "Name of document"
+author: "Your name"
+output: 
+  html: 
+    theme: cosmo
+    code-tools: true
+    embed-resources: true
+    toc: true
+execute: 
+   warning: true
+   error: true
+```
+  
+  
+
+### Code chunk options {-}
+
+These must be the very first rows in your code chunk, and must start in the first position, with spacing as shown. Use `#| label: setup` in the first code chunk to run it automatically every time you start up R. 
+
+```{r}
+#| label: name-of-chunk
+#| message: false
+#| warning: false
 
 ```
 
 
-There is  a LOT of typing to do to get a good looking static table, but it can be worth it. Consider saving a simple example to your Rstudio snippets to pull out whenever you need it. 
+### Nothing runs; everything is gray {-}
 
+You probably erased the last three back-ticks at the end of the code chunk. You may need to restart R to get it re-set. 
 
-```{r gt_table}
-
-library(gt)
-
-ppp_subtotals %>%
-  group_by (project_county) %>%
-  gt ( ) %>%
-  fmt_number ( columns = c(loans), decimals=0, sep_mark=",") %>%
-  fmt_currency ( columns = c(amount, forgiven), 
-                           currency = "USD", 
-                           decimals= 0) %>%
-  summary_rows ( columns = c(loans:forgiven),
-                  groups=TRUE, 
-                  fns = list( Total="sum"), 
-                  formatter = fmt_number, 
-                  decimals=0, 
-                 use_seps=TRUE) %>%
-  grand_summary_rows ( 
-       columns = c( amount:forgiven), 
-       fns = list (`Grand Total` = "sum"), 
-       formatter = fmt_currency,
-       decimals=0
-  )
-
-
-```
 
 

@@ -372,18 +372,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul>
 <li><a href="#r-annoyances-and-errors" id="toc-r-annoyances-and-errors" class="nav-link active" data-scroll-target="#r-annoyances-and-errors">R annoyances and errors</a></li>
   <li><a href="#re-using-answers-from-a-previous-step" id="toc-re-using-answers-from-a-previous-step" class="nav-link" data-scroll-target="#re-using-answers-from-a-previous-step"><span class="toc-section-number">21.1</span>  Re-using answers from a previous step</a></li>
-  <li><a href="#filtering" id="toc-filtering" class="nav-link" data-scroll-target="#filtering"><span class="toc-section-number">21.2</span>  Filtering</a></li>
-  <li><a href="#aggregate-count-sum-rows-by-category" id="toc-aggregate-count-sum-rows-by-category" class="nav-link" data-scroll-target="#aggregate-count-sum-rows-by-category"><span class="toc-section-number">21.3</span>  Aggregate (count, sum rows by category)</a></li>
-  <li><a href="#recoding-categories" id="toc-recoding-categories" class="nav-link" data-scroll-target="#recoding-categories"><span class="toc-section-number">21.4</span>  Recoding categories</a></li>
-  <li><a href="#working-with-grouped-data-for-subtotals-changes-percents" id="toc-working-with-grouped-data-for-subtotals-changes-percents" class="nav-link" data-scroll-target="#working-with-grouped-data-for-subtotals-changes-percents"><span class="toc-section-number">21.5</span>  Working with grouped data for subtotals, changes, percents</a></li>
-  <li><a href="#do-the-same-thing-on-many-columns-at-once" id="toc-do-the-same-thing-on-many-columns-at-once" class="nav-link" data-scroll-target="#do-the-same-thing-on-many-columns-at-once"><span class="toc-section-number">21.6</span>  Do the same thing on many columns at once</a></li>
+  <li><a href="#importing-reading-data" id="toc-importing-reading-data" class="nav-link" data-scroll-target="#importing-reading-data"><span class="toc-section-number">21.2</span>  Importing / reading data</a></li>
+  <li><a href="#filtering" id="toc-filtering" class="nav-link" data-scroll-target="#filtering"><span class="toc-section-number">21.3</span>  Filtering</a></li>
+  <li><a href="#aggregate-count-sum-rows-by-category" id="toc-aggregate-count-sum-rows-by-category" class="nav-link" data-scroll-target="#aggregate-count-sum-rows-by-category"><span class="toc-section-number">21.4</span>  Aggregate (count, sum rows by category)</a></li>
+  <li><a href="#recoding-categories" id="toc-recoding-categories" class="nav-link" data-scroll-target="#recoding-categories"><span class="toc-section-number">21.5</span>  Recoding categories</a></li>
+  <li><a href="#working-with-grouped-data-for-subtotals-changes-percents" id="toc-working-with-grouped-data-for-subtotals-changes-percents" class="nav-link" data-scroll-target="#working-with-grouped-data-for-subtotals-changes-percents"><span class="toc-section-number">21.6</span>  Working with grouped data for subtotals, changes, percents</a></li>
+  <li><a href="#joining-tables" id="toc-joining-tables" class="nav-link" data-scroll-target="#joining-tables"><span class="toc-section-number">21.7</span>  Joining tables</a></li>
   <li>
-<a href="#better-looking-tables" id="toc-better-looking-tables" class="nav-link" data-scroll-target="#better-looking-tables"><span class="toc-section-number">21.7</span>  Better looking tables</a>
+<a href="#quarto-document-tips" id="toc-quarto-document-tips" class="nav-link" data-scroll-target="#quarto-document-tips"><span class="toc-section-number">21.8</span>  Quarto document tips</a>
   <ul class="collapse">
-<li><a href="#strategy" id="toc-strategy" class="nav-link" data-scroll-target="#strategy">Strategy</a></li>
-  <li><a href="#reactable-sortable-searchable-tables-with-formatted-numbers" id="toc-reactable-sortable-searchable-tables-with-formatted-numbers" class="nav-link" data-scroll-target="#reactable-sortable-searchable-tables-with-formatted-numbers">Reactable: Sortable, searchable tables with formatted numbers</a></li>
-  <li><a href="#pivoted-reactable-table" id="toc-pivoted-reactable-table" class="nav-link" data-scroll-target="#pivoted-reactable-table">Pivoted reactable table</a></li>
-  <li><a href="#static-table-with-subtotals-and-percentages-using-gt" id="toc-static-table-with-subtotals-and-percentages-using-gt" class="nav-link" data-scroll-target="#static-table-with-subtotals-and-percentages-using-gt"><span class="toc-section-number">21.7.1</span>  Static table with subtotals and percentages using <code>gt</code></a></li>
+<li><a href="#yaml-front-matter" id="toc-yaml-front-matter" class="nav-link" data-scroll-target="#yaml-front-matter">YAML (front matter)</a></li>
+  <li><a href="#code-chunk-options" id="toc-code-chunk-options" class="nav-link" data-scroll-target="#code-chunk-options">Code chunk options</a></li>
+  <li><a href="#nothing-runs-everything-is-gray" id="toc-nothing-runs-everything-is-gray" class="nav-link" data-scroll-target="#nothing-runs-everything-is-gray">Nothing runs; everything is gray</a></li>
   </ul>
 </li>
   </ul></nav>
@@ -417,7 +417,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
 <li><p>Are you working with a <strong>list</strong> of items? If so, you need to wrap them in the <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> function, for “combine”</p></li>
 <li><p><strong>Case-sensitivity</strong> in column names; back-ticks for more than one word in a column name rather than quotes.</p></li>
-<li><p>Missing or hanging <strong>pipes</strong> (%&gt;%)</p></li>
+<li><p>Missing or hanging <strong>pipes</strong> (<code>|&gt;</code>)</p></li>
+<li><p>You often have to run your code chunk twice after fixing an error. (There is still a mistake in R’s innards that has to get flushed out.)</p></li>
 </ul>
 <p>These are the problems that will fix about 80 percent of the code that won’t run once you get more used to it.</p>
 </section><section id="re-using-answers-from-a-previous-step" class="level2" data-number="21.1"><h2 data-number="21.1" class="anchored" data-anchor-id="re-using-answers-from-a-previous-step">
@@ -432,11 +433,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>These can all go into one code chunk if you’d like:</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">select_ppp</span> <span class="op">&lt;-</span> </span>
-<span>  <span class="va">ppp_orig</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span> <span class="op">(</span> <span class="va">project_state</span> <span class="op">==</span> <span class="st">"AZ"</span> <span class="op">&amp;</span> <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span> <span class="op">(</span><span class="va">project_county</span><span class="op">)</span> <span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="va">ppp_orig</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span> <span class="op">(</span> <span class="va">project_state</span> <span class="op">==</span> <span class="st">"AZ"</span> <span class="op">&amp;</span> <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span> <span class="op">(</span><span class="va">project_county</span><span class="op">)</span> <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">mutate</span> <span class="op">(</span> forgiveness_amount <span class="op">=</span> <span class="fu">if_else</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">forgiveness_amount</span><span class="op">)</span>,</span>
 <span>                                         <span class="fl">0</span>, </span>
-<span>                                         <span class="va">forgiveness_amount</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>                                         <span class="va">forgiveness_amount</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">select</span> <span class="op">(</span> <span class="va">borrower_name</span>, <span class="va">borrower_city</span>, </span>
 <span>           <span class="va">naics_code</span>, </span>
 <span>           <span class="va">amount</span>, <span class="va">forgiveness_amount</span>,</span>
@@ -445,17 +446,53 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span></span>
 <span></span>
 <span><span class="va">sectors</span> <span class="op">&lt;-</span> </span>
-<span>  <span class="va">naics_codes</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="va">naics_codes</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">select</span> <span class="op">(</span> <span class="va">naics_code</span>, <span class="va">sector_code</span>, <span class="va">sector_desc</span><span class="op">)</span></span>
 <span></span>
 <span></span>
-<span><span class="va">select_ppp</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">left_join</span> <span class="op">(</span> <span class="va">sectors</span>, by<span class="op">=</span><span class="st">"naics_code"</span><span class="op">)</span>  <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">select</span> <span class="op">(</span> <span class="va">borrower_name</span>, <span class="va">forgiveness_amount</span>, <span class="va">sector_desc</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span><span class="va">select_ppp</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">left_join</span> <span class="op">(</span> <span class="va">sectors</span>, by<span class="op">=</span><span class="st">"naics_code"</span><span class="op">)</span>  <span class="op">|&gt;</span></span>
+<span>  <span class="fu">select</span> <span class="op">(</span> <span class="va">borrower_name</span>, <span class="va">forgiveness_amount</span>, <span class="va">sector_desc</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["borrower_name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["forgiveness_amount"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["sector_desc"],"name":[3],"type":["chr"],"align":["left"]}],"data":[{"1":"SFE HOLDINGS LLC","2":"10108219","3":"Accommodation and Food Services"},{"1":"NAVAJO TRIBAL UTILITY AUTHORITY","2":"9882528","3":"Utilities"},{"1":"HOME HEALTH AGENCY ARIZONA LLC","2":"10133389","3":"Health Care and Social Assistance"},{"1":"ARIZONA COMMUNITY PHYSICIANS PC","2":"10131667","3":"Health Care and Social Assistance"},{"1":"NEXTIVA INC","2":"10126027","3":"Information"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
 </div>
-</section><section id="filtering" class="level2" data-number="21.2"><h2 data-number="21.2" class="anchored" data-anchor-id="filtering">
-<span class="header-section-number">21.2</span> Filtering</h2>
+</div>
+</div>
+</section><section id="importing-reading-data" class="level2" data-number="21.2"><h2 data-number="21.2" class="anchored" data-anchor-id="importing-reading-data">
+<span class="header-section-number">21.2</span> Importing / reading data</h2>
+<ul>
+<li>If you are referring to a file on your computer or on the web, then it must be in quotes.</li>
+<li>Use the proper library and function to read the data.</li>
+<li>Check the output for proper treatment of text, dates and numbers, especially with Excel and text imports</li>
+</ul>
+<section id="reading-r-files" class="level4"><h4 class="anchored" data-anchor-id="reading-r-files">Reading R files</h4>
+<p>Two types of data files: RDS files contain one data frame, which you have to assign to a new object. Rda files have multiple objects that are already named. Use <code>readRDS ( url ( ....) )</code> to read data stored on the internet instead of in your project.</p>
+<pre><code>mydata &lt;- readRDS ( "mydata_file.RDS")
+load ( "mydata_file.Rda")
+</code></pre>
+</section><section id="reading-text-csv-files" class="level4"><h4 class="anchored" data-anchor-id="reading-text-csv-files">Reading text (csv) files</h4>
+<p>Use <code>read_csv()</code>, <code>read_tsv()</code>, <code>read_delimited()</code> and various fixed file formats. Match the type of your file with the proper function. These require that the tidyverse or <code>readr</code> libraries are already loaded.</p>
+</section><section id="reading-excel-files" class="level4"><h4 class="anchored" data-anchor-id="reading-excel-files">Reading Excel files</h4>
+<pre><code><a href="https://readxl.tidyverse.org">library (readxl)          # put this with the rest of your libraries.
+mydata &lt;- read_excel("mydata_file.xlsx", 
+                      sheet = "sheet_name")  </a></code></pre>
+<p>There is no <code><a href="https://rdrr.io/r/base/connections.html">url()</a></code> option for reading Excel files. They must be stored in your project. One approach is to download the file in your code:</p>
+<pre><code>download.file ( "https://address-of-file.xlsx", "myfilename.xlsx")
+mydata &lt;- read_excel ("myfilename.xlsx")</code></pre>
+</section><section id="import-options" class="level4"><h4 class="anchored" data-anchor-id="import-options">Import options</h4>
+<p>There are options in most of the importing functions that tell you how to treat each column and let you rename at the same time. One approach is :</p>
+<pre><code>read_csv ( "mydata_file.csv", 
+           coltypes = col(.default = "c")
+           )
+           </code></pre>
+<p>To keep everything as text, which you can convert later.</p>
+</section></section><section id="filtering" class="level2" data-number="21.3"><h2 data-number="21.3" class="anchored" data-anchor-id="filtering">
+<span class="header-section-number">21.3</span> Filtering</h2>
 <ol type="1">
 <li>One condition that’s a number :</li>
 </ol>
@@ -477,30 +514,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <pre><code>    filter ( ! is.na (project_county) )</code></pre>
 <ol start="5" type="1">
-<li>Between two dates date[^Be sure it’s really a date in the data by glimpsing your data frame. If not, turn it into a date first]</li>
+<li>Between two dates . Be sure it’s really a date in the data by glimpsing your data frame. If not, turn it into a date first.</li>
 </ol>
 <pre><code>    filter ( approval_date &gt;= "2021-01-24" &amp; 
            approval_date &lt;= "2021-01-31")</code></pre>
 <ol start="6" type="1">
 <li>Phrases, words or letters at the beginning of a column</li>
 </ol>
-<pre><code>    filter ( str_detect (borrower_type , "^Non-Profit"))</code></pre>
+<pre><code>    filter ( str_like (borrower_type , "Non-Profit%"))</code></pre>
 <ol start="7" type="1">
 <li>Phrases, letters or words at the end of a column</li>
 </ol>
-<pre><code>    filter ( str_detect (borrower_type, "Corporation$"))</code></pre>
-<ol start="8" type="1">
-<li>A word that isn’t part of another word</li>
-</ol>
-<pre><code>    filter ( str_detect ( "\\bNation\\b"))</code></pre>
+<pre><code>    filter ( str_like  (borrower_type, "Corporation%"))</code></pre>
 <p>All of these examples can be used in a <code>mutate</code> statement to create flags or new values if the conditions are met.</p>
-</section><section id="aggregate-count-sum-rows-by-category" class="level2" data-number="21.3"><h2 data-number="21.3" class="anchored" data-anchor-id="aggregate-count-sum-rows-by-category">
-<span class="header-section-number">21.3</span> Aggregate (count, sum rows by category)</h2>
+</section><section id="aggregate-count-sum-rows-by-category" class="level2" data-number="21.4"><h2 data-number="21.4" class="anchored" data-anchor-id="aggregate-count-sum-rows-by-category">
+<span class="header-section-number">21.4</span> Aggregate (count, sum rows by category)</h2>
 <ol type="1">
 <li>Counting (How many?)</li>
 </ol>
-<pre><code>    group_by (project_county) %&gt;%
-    summarise (loans = n() )  %&gt;%
+<pre><code>    group_by (project_county) |&gt;
+    summarize (loans = n() )  |&gt;
     arrange ( desc ( loans ))</code></pre>
 <p>Make sure you don’t name the new column containing the count the same thing as a group_by() column.</p>
 <ol start="2" type="1">
@@ -511,21 +544,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Counting unique entries</li>
 </ol>
 <p>Sometimes you want to know how many items of a type, not how many rows, are included in a category.</p>
-<pre><code>        group_by ( project_county) %&gt;%
-        summarise ( number_of_loans = n(), 
+<pre><code>        group_by ( project_county) |&gt;
+        summarize ( number_of_loans = n(), 
                     number_of_industries = n_distinct ( naics_code )
                     )</code></pre>
 <ol start="4" type="1">
 <li>Summing (how much?)</li>
 </ol>
-<pre><code>    group_by (project_county) %&gt;%
-    summarise ( total_amount = sum (amount, na.rm=T))</code></pre>
+<pre><code>    group_by (project_county) |&gt;
+    summarize ( total_amount = sum (amount, na.rm=T))</code></pre>
 <ol start="5" type="1">
 <li>Shortcut for summing:</li>
 </ol>
 <pre><code>    count ( project_county, weight=amount, name="total_amount")</code></pre>
-</section><section id="recoding-categories" class="level2" data-number="21.4"><h2 data-number="21.4" class="anchored" data-anchor-id="recoding-categories">
-<span class="header-section-number">21.4</span> Recoding categories</h2>
+</section><section id="recoding-categories" class="level2" data-number="21.5"><h2 data-number="21.5" class="anchored" data-anchor-id="recoding-categories">
+<span class="header-section-number">21.5</span> Recoding categories</h2>
 <p>You’ll often want fewer categories, or numbers in categories, that you want to use instead of the original values. This is done in a mutate statement. Don’t forget to save the output to a new data frame (&lt;-), or you won’t have access to it later on.</p>
 <ol type="1">
 <li>Create yes-no categories . This is really “Yes”, “No” or NA, where there is an NA to begin with.</li>
@@ -537,25 +570,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
                        "No")
        )</code></pre>
 <ol start="2" type="1">
-<li>Recode into more than two categories, example using <code>str_detect()</code>
+<li>Recode into more than two categories using <code>case_when()</code>
 </li>
 </ol>
-<pre><code>  mutate ( new_type = case_when 
-           (str_detect (borrower_type, 
-                        "Corporation|Company") ~     "
-                        For-profit company", 
-          str_detect (borrower_type,
-                      "(Non-Profit|Cooperative|Association)") ~ 
-                      "Non profit", 
-          str_detect ( borrower_type, 
-                      "(Sole|Self-Employed|Independent)") ~
-                      "Individual", 
-          TRUE ~ "Everyone else")
-        )</code></pre>
-<p>You’ll want to check them when you’re done to make sure:</p>
-<pre><code>        new_dataframe %&gt;%
-        count ( new_type, borrower_type)</code></pre>
-<p>to make sure you coded them properly. Too many <code>NA</code> values means you likely misspelled something or left something out.</p>
+<p>This example introduces <code>str_detect()</code>, which uses regular expressions. We’ll go over that later in the book.</p>
+<pre><code>  mutate (  new_business_type = 
+                case_when (  str_like(business_type, "%non_profit%") ~ "Non-profit",    #1st category
+
+                             business_type %in% 
+                               c("Independent Contractors", 
+                                "Sole Proprietorship", 
+                                "Self-Employed Individuals", 
+                                  "Single Member LLC")              ~ "Individual",    # 2nd category
+                             
+                             business_type == "Tribal Concerns"     ~ "Tribal concerns",    #3rd category
+                             
+                             str_detect (business_type, "LLC|Company|Corporation|Partnership") ~ "Companies",  #4th category
+                             
+                             TRUE ~ "Other")         #catchall 5th category
+            )</code></pre>
 <ol start="3" type="1">
 <li>Recode numbers into categories</li>
 </ol>
@@ -567,21 +600,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
                     amount &lt;= 100000) ~ "03-Medium", 
                     amount &gt; 100000 ~ "04-High")
               )</code></pre>
-<p>This works because the first one that it finds will be used, so a value of exactly 1,000 would be “Very low”, but a value of 1,001 would be “Low”.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-</section><section id="working-with-grouped-data-for-subtotals-changes-percents" class="level2" data-number="21.5"><h2 data-number="21.5" class="anchored" data-anchor-id="working-with-grouped-data-for-subtotals-changes-percents">
-<span class="header-section-number">21.5</span> Working with grouped data for subtotals, changes, percents</h2>
+<p>This works because the first one that it finds will be used, so a value of exactly 1,000 would be “Very low”, but a value of 1,001 would be “Low”.</p>
+</section><section id="working-with-grouped-data-for-subtotals-changes-percents" class="level2" data-number="21.6"><h2 data-number="21.6" class="anchored" data-anchor-id="working-with-grouped-data-for-subtotals-changes-percents">
+<span class="header-section-number">21.6</span> Working with grouped data for subtotals, changes, percents</h2>
 <ol type="1">
 <li>Percent of total by group</li>
 </ol>
-<pre><code>  group_by ( project_county, sector_desc ) %&gt;%
-  summarise ( loans = n() , .groups="drop_last") %&gt;%
+<pre><code>  group_by ( project_county, sector_desc ) |&gt;
+  summarize ( loans = n() , .groups="drop_last") |&gt;
   mutate ( pct_in_county = loans / sum(loans))</code></pre>
 <ol start="2" type="1">
 <li>Display results as in spreadsheet form</li>
 </ol>
 <p>To see the items across the top, use <code>pivot_wider</code>.</p>
-<pre><code>  group_by ( project_county, new_type) %&gt;%
-  summarise ( loan_count = n() ) %&gt;%
+<pre><code>  group_by ( project_county, new_type) |&gt;
+  summarize ( loan_count = n() ) |&gt;
   pivot_wider ( names_from = new_type, 
                 id_cols = c( project_county), 
                 values_from = loan_count)</code></pre>
@@ -590,720 +623,58 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol start="2" type="1">
 <li>
 <p>Complex example: Get the change by year within each county.</p>
-<p>annual_ppp &lt;- mutate ( approve_year = year (approval_date ) ) %&gt;% group_by ( project_county, approve_year) %&gt;% summarise ( loans = n() , amount = sum( amount, na.rm=T), .groups=“drop_last”)</p>
+<p>annual_ppp &lt;- mutate ( approve_year = year (approval_date ) ) |&gt; group_by ( project_county, approve_year) |&gt; summarize ( loans = n() , amount = sum( amount, na.rm=T), .groups=“drop_last”)</p>
 </li>
 </ol>
 <p>Next, compare them within groups. New functions introduced: <code>complete()</code>, which fills in missing information in a sequence. For example, if there were missing years by county, it would create a row to fill it in. <code><a href="https://rdrr.io/r/stats/lag.html">lag()</a></code> refers to the previous item in a group. First, make a new, summarized data frame with just the columns you nee</p>
 <pre><code>    complete ( project_county, approve_year, 
-              fill= list (amount=0, loans =0) )%&gt;%
+              fill= list (amount=0, loans =0) )|&gt;
     mutate ( change_loans = loans - lag(loans), 
              pct_change_loans = change_loans / lag(loans) * 100) </code></pre>
 <ol start="3" type="1">
 <li>
 <p>Pick out the last item in a group, with all of its columns. New verb introduced : <code>slice_tail()</code> . This is particularly useful for chronological events, such as the last thing that happened in a court case, or the most recent complaint against a police officer. This example isn’t a great one, but it gets you the name and other details of the most recent loan for each lender</p>
-<pre><code>arrange ( lender, date_approved) %&gt;%
-group_by ( lender) %&gt;%
-slice_tail()</code></pre>
+<pre><code>arrange ( lender, date_approved) |&gt;
+group_by ( lender) |&gt;
+slice_tail(n=1)</code></pre>
 </li>
-</ol></section><section id="do-the-same-thing-on-many-columns-at-once" class="level2" data-number="21.6"><h2 data-number="21.6" class="anchored" data-anchor-id="do-the-same-thing-on-many-columns-at-once">
-<span class="header-section-number">21.6</span> Do the same thing on many columns at once</h2>
-<p>These examples use a new concept, called <code>across</code>. It’s a way to do the same thing to all of the columns at the same time, replacing the original value with a new one. They can be tricky to write, and I’m not sure I understand them completely. They can also be really, really slow on large datasets.</p>
-<ol type="1">
-<li>Convert all character columns to upper case for easier filtering</li>
 </ol>
-<pre><code>   mutate (across ( where (is.character) , toupper))</code></pre>
-<ol start="2" type="1">
-<li>Strip all punctuation from a set of columns for easier filtering and grouping</li>
-</ol>
-<p><strong>New functions introduced: str_squish() to remove extra blanks, and str_replace_all() to replace all punctuation with nothing. The ~ is needed to put an expression when you use “across” to refer to a bunch of columns at the same time.</strong></p>
-<pre><code>  mutate ( across ( c(borrower_name, borrower_address, borrower_city),                 ~str_squish( 
-                      str_replace_all ( ., "[:punctuation:]","")
-                            )
-                  )
-        )</code></pre>
-</section><section id="better-looking-tables" class="level2" data-number="21.7"><h2 data-number="21.7" class="anchored" data-anchor-id="better-looking-tables">
-<span class="header-section-number">21.7</span> Better looking tables</h2>
-<p>One of the big annoyances in R is that the results are, well, unreadable. Numbers aren’t formatted, you can’t see all of the data you want, and it’s hard to share the results.</p>
-<p>Think of this as a quick tour of some options you have to make better looking tables and readable output. In practice, I use one of three:</p>
-<ul>
-<li><p><code>reactable</code> provides a powerful way to make sortable, searchable tables in your markdown. It’s great for sharing data with people who just want to explore it. Just be careful not to include so many rows that it can’t be opened effectively in your browser.</p></li>
-<li><p><code>gt</code> makes very professional looking static tables, such as those you might see in a book. They’re good for labeling, footnotes and other details when you don’t want anyone to change anything.</p></li>
-</ul>
-<p>Both <code>reactable</code> and <code>gt</code> will produce subtotals and other math , meaning you can show multiple levels at once. The examples will use the PPP data for each county in Arizona by month.</p>
-<section id="strategy" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="strategy">Strategy</h3>
-<p>Typically, you’ll do all of your data processing in a series of steps that culminate all of the columns you’ll need for any table you want to make – this will include any grouping, joining or computations that you’ve already made.</p>
-<p>This can be a challenge to get right on sorting, but it otherwise works OK.</p>
-<section id="make-the-data-frame-you-want-to-display-and-save-it" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="make-the-data-frame-you-want-to-display-and-save-it">Make the data frame you want to display and save it</h4>
-<p>This example:</p>
-<ol type="1">
-<li><p>Converts dates to months by converting it to a character column formatted as the year-month to keep a sort order proper.</p></li>
-<li><p>Replaces missing counties with “UNKNOWN” and keeps only those in Arizona.</p></li>
-<li><p>Computes totals by month.</p></li>
-<li><p>Saves it to a data frame called <code>ppp_fortable</code>.</p></li>
-</ol>
+<p>NOTE: Don’t use <code>slice_max()</code>, because it will give you back multiple rows in the event of ties.</p>
+</section><section id="joining-tables" class="level2" data-number="21.7"><h2 data-number="21.7" class="anchored" data-anchor-id="joining-tables">
+<span class="header-section-number">21.7</span> Joining tables</h2>
+<p>New options in the <code>dplyr</code> library that contains the <code>join</code> verb let us use the same operators in joining that you use in filtering: <code>==</code>, <code>&lt;=</code>, etc. Usually you will use the “==” operator. Requires dplyr 1.1, which was released in February 2023.</p>
+<pre><code>ppp_orig |&gt; 
+  select ( borrower_name, amount, naics_code) |&gt; 
+  inner_join ( naics_codes, 
+               join_by (naics_code == naics_code) 
+  )</code></pre>
+</section><section id="quarto-document-tips" class="level2" data-number="21.8"><h2 data-number="21.8" class="anchored" data-anchor-id="quarto-document-tips">
+<span class="header-section-number">21.8</span> Quarto document tips</h2>
+<section id="yaml-front-matter" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="yaml-front-matter">YAML (front matter)</h3>
+<p>The YAML is very picky about exact casing, spacing and other details. If you try to render and you get a <code>YAML error</code>, it is likely at the top.</p>
+<p>Typical YAML front matter that goes within the three dashes beginning on the very first line:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Name of document"</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Your name"</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> cosmo</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">code-tools</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">embed-resources</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="fu">execute</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="at">   </span><span class="fu">warning</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="at">   </span><span class="fu">error</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section><section id="code-chunk-options" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="code-chunk-options">Code chunk options</h3>
+<p>These must be the very first rows in your code chunk, and must start in the first position, with spacing as shown. Use <code>#| label: setup</code> in the first code chunk to run it automatically every time you start up R.</p>
 <div class="cell">
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ppp_fortable</span> <span class="op">&lt;-</span> </span>
-<span>  <span class="va">ppp_orig</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="co"># sort in order so that the months aren't alphapbetized or dependent on the first county</span></span>
-<span>  <span class="fu">arrange</span> <span class="op">(</span> <span class="va">date_approved</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">mutate</span> <span class="op">(</span> month <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="va">date_approved</span>, <span class="st">"%Y-%m"</span><span class="op">)</span>, </span>
-<span>           project_county <span class="op">=</span> <span class="fu">replace_na</span><span class="op">(</span><span class="va">project_county</span>, <span class="st">"UNKNOWN"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span> <span class="op">(</span> <span class="va">project_state</span> <span class="op">==</span> <span class="st">"AZ"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">group_by</span> <span class="op">(</span> <span class="va">project_county</span>, <span class="va">month</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="co">#this at least shows you commas in the values. I haven't had luck using currency on this.</span></span>
-<span>  <span class="fu">summarise</span> <span class="op">(</span> loans  <span class="op">=</span>  <span class="fu">n</span><span class="op">(</span><span class="op">)</span>, </span>
-<span>              total_amt <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">amount</span><span class="op">)</span>,</span>
-<span>              .groups<span class="op">=</span><span class="st">"drop"</span></span>
-<span>  <span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
 </div>
-</section></section><section id="reactable-sortable-searchable-tables-with-formatted-numbers" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="reactable-sortable-searchable-tables-with-formatted-numbers">Reactable: Sortable, searchable tables with formatted numbers</h3>
-<p>This is how you can make a sortable, searchable table. The syntax and grammar of this is completely different than what you’re used to because it’s an implementation of a Javascript library:</p>
-<div class="cell">
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ppp_fortable</span> <span class="op">%&gt;%</span></span>
-<span><span class="fu">reactable</span> <span class="op">(</span>  defaultPageSize <span class="op">=</span> <span class="fl">15</span>,</span>
-<span>             defaultColDef <span class="op">=</span> <span class="fu">colDef</span> <span class="op">(</span> filterable<span class="op">=</span><span class="cn">TRUE</span>, </span>
-<span>                                      sortable<span class="op">=</span><span class="cn">TRUE</span>,</span>
-<span>                                      format <span class="op">=</span> <span class="fu">colFormat</span><span class="op">(</span>digits <span class="op">=</span> <span class="fl">0</span>, separators<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span> </span>
-<span>                                       <span class="op">)</span>, </span>
-<span>              columns  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span> <span class="op">(</span></span>
-<span>                  project_county <span class="op">=</span> <span class="fu">colDef</span> <span class="op">(</span><span class="st">"County"</span><span class="op">)</span>, </span>
-<span>                  month <span class="op">=</span> <span class="fu">colDef</span> <span class="op">(</span><span class="st">"Month"</span><span class="op">)</span>, </span>
-<span>                  loans  <span class="op">=</span> <span class="fu">colDef</span> <span class="op">(</span><span class="st">"# of loans"</span>, align<span class="op">=</span><span class="st">"right"</span>, filterable<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>, </span>
-<span>                  total_amt <span class="op">=</span> <span class="fu">colDef</span> <span class="op">(</span><span class="st">"$ amount"</span>, </span>
-<span>                                       align<span class="op">=</span><span class="st">"right"</span>, </span>
-<span>                                      format <span class="op">=</span> <span class="fu">colFormat</span> <span class="op">(</span></span>
-<span>                                              separators<span class="op">=</span><span class="cn">TRUE</span>, prefix<span class="op">=</span><span class="st">"$"</span>, digits<span class="op">=</span><span class="fl">0</span><span class="op">)</span></span>
-<span>                                      <span class="op">)</span></span>
-<span>                  </span>
-<span>                 <span class="op">)</span></span>
-<span>            <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>[react 1]{assets/images/r-recipes-react1.png}{width=100%}</p>
-</section><section id="pivoted-reactable-table" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="pivoted-reactable-table">Pivoted reactable table</h3>
-<p>This isn’t a great example, but you could turn it into a monthly table by pivoting the data before printing. I also added some formatting to this example so you can see how to reduce the size, put in scrollbars, etc. They’re optional.</p>
-<div class="cell">
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ppp_fortable</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">arrange</span> <span class="op">(</span> <span class="va">month</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">pivot_wider</span> <span class="op">(</span> names_from <span class="op">=</span> <span class="va">month</span>, </span>
-<span>                values_from <span class="op">=</span> <span class="va">total_amt</span>, </span>
-<span>                values_fill <span class="op">=</span> <span class="fl">0</span>, </span>
-<span>                id_cols <span class="op">=</span> <span class="va">project_county</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">reactable</span> <span class="op">(</span> <span class="co"># these options make it scrollable and smaller print</span></span>
-<span>              wrap<span class="op">=</span><span class="cn">FALSE</span>,</span>
-<span>              width<span class="op">=</span><span class="fl">700</span>,</span>
-<span>              theme <span class="op">=</span> <span class="fu">reactableTheme</span><span class="op">(</span> style<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>fontSize<span class="op">=</span><span class="st">"smaller"</span>, </span>
-<span>                                                 color<span class="op">=</span><span class="st">"DimGray"</span>, </span>
-<span>                                                 fontFamily<span class="op">=</span><span class="st">"sans-serif"</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>              <span class="co">#these options set the default column format.</span></span>
-<span>              defaultColDef <span class="op">=</span> <span class="fu">colDef</span> <span class="op">(</span> format<span class="op">=</span><span class="fu">colFormat</span> <span class="op">(</span> </span>
-<span>                                                 separators<span class="op">=</span><span class="cn">TRUE</span>,</span>
-<span>                                                 digits<span class="op">=</span><span class="fl">0</span>, </span>
-<span>                                                 prefix<span class="op">=</span><span class="st">"$"</span></span>
-<span>                                                 <span class="op">)</span>, </span>
-<span>                                       minWidth<span class="op">=</span><span class="fl">150</span><span class="op">)</span> , </span>
-<span>      <span class="co"># Here you'd list anything that defies the normal column defaults</span></span>
-<span>    columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
-<span>        project_county <span class="op">=</span> <span class="fu">colDef</span> <span class="op">(</span><span class="st">"County"</span>, format<span class="op">=</span><span class="fu">colFormat</span><span class="op">(</span>prefix <span class="op">=</span> <span class="st">""</span><span class="op">)</span><span class="op">)</span></span>
-<span>           <span class="op">)</span></span>
-<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="assets/images/r-recipes-react2.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">react_example2</figcaption><p></p>
-</figure>
-</div>
-</section><section id="static-table-with-subtotals-and-percentages-using-gt" class="level3" data-number="21.7.1"><h3 data-number="21.7.1" class="anchored" data-anchor-id="static-table-with-subtotals-and-percentages-using-gt">
-<span class="header-section-number">21.7.1</span> Static table with subtotals and percentages using <code>gt</code>
-</h3>
-<p>This will include a section on <code>gt</code>, which is one option for good-looking static tables. This starts with a data frame containing totals by sector and county, with just a few counties and sectors picked out.</p>
-<p>There is a LOT of typing to do to get a good looking static table, but it can be worth it. Consider saving a simple example to your Rstudio snippets to pull out whenever you need it.</p>
-<div class="cell">
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://gt.rstudio.com/">gt</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">ppp_subtotals</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu">group_by</span> <span class="op">(</span><span class="va">project_county</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span> <span class="op">(</span> <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/fmt_number.html">fmt_number</a></span> <span class="op">(</span> columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">loans</span><span class="op">)</span>, decimals<span class="op">=</span><span class="fl">0</span>, sep_mark<span class="op">=</span><span class="st">","</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/fmt_currency.html">fmt_currency</a></span> <span class="op">(</span> columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">amount</span>, <span class="va">forgiven</span><span class="op">)</span>, </span>
-<span>                           currency <span class="op">=</span> <span class="st">"USD"</span>, </span>
-<span>                           decimals<span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/summary_rows.html">summary_rows</a></span> <span class="op">(</span> columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">loans</span><span class="op">:</span><span class="va">forgiven</span><span class="op">)</span>,</span>
-<span>                  groups<span class="op">=</span><span class="cn">TRUE</span>, </span>
-<span>                  fns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span> Total<span class="op">=</span><span class="st">"sum"</span><span class="op">)</span>, </span>
-<span>                  formatter <span class="op">=</span> <span class="va">fmt_number</span>, </span>
-<span>                  decimals<span class="op">=</span><span class="fl">0</span>, </span>
-<span>                 use_seps<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/grand_summary_rows.html">grand_summary_rows</a></span> <span class="op">(</span> </span>
-<span>       columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span> <span class="va">amount</span><span class="op">:</span><span class="va">forgiven</span><span class="op">)</span>, </span>
-<span>       fns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span> <span class="op">(</span>`Grand Total` <span class="op">=</span> <span class="st">"sum"</span><span class="op">)</span>, </span>
-<span>       formatter <span class="op">=</span> <span class="va">fmt_currency</span>,</span>
-<span>       decimals<span class="op">=</span><span class="fl">0</span></span>
-<span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-
-<div id="nrgcrycdyy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>html {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
-}
-
-:where(#nrgcrycdyy) .gt_table {
-  display: table;
-  border-collapse: collapse;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-:where(#nrgcrycdyy) .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-:where(#nrgcrycdyy) .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-:where(#nrgcrycdyy) .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-:where(#nrgcrycdyy) .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 0;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-:where(#nrgcrycdyy) .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-:where(#nrgcrycdyy) .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-:where(#nrgcrycdyy) .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-:where(#nrgcrycdyy) .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-:where(#nrgcrycdyy) .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-:where(#nrgcrycdyy) .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-:where(#nrgcrycdyy) .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-:where(#nrgcrycdyy) .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-:where(#nrgcrycdyy) .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-:where(#nrgcrycdyy) .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-:where(#nrgcrycdyy) .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-:where(#nrgcrycdyy) .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-:where(#nrgcrycdyy) .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-:where(#nrgcrycdyy) .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-:where(#nrgcrycdyy) .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-:where(#nrgcrycdyy) .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-:where(#nrgcrycdyy) .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-:where(#nrgcrycdyy) .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-:where(#nrgcrycdyy) .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-:where(#nrgcrycdyy) .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-:where(#nrgcrycdyy) .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-:where(#nrgcrycdyy) .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-:where(#nrgcrycdyy) .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-:where(#nrgcrycdyy) .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-:where(#nrgcrycdyy) .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-left: 4px;
-  padding-right: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-:where(#nrgcrycdyy) .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-:where(#nrgcrycdyy) .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-:where(#nrgcrycdyy) .gt_left {
-  text-align: left;
-}
-
-:where(#nrgcrycdyy) .gt_center {
-  text-align: center;
-}
-
-:where(#nrgcrycdyy) .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-:where(#nrgcrycdyy) .gt_font_normal {
-  font-weight: normal;
-}
-
-:where(#nrgcrycdyy) .gt_font_bold {
-  font-weight: bold;
-}
-
-:where(#nrgcrycdyy) .gt_font_italic {
-  font-style: italic;
-}
-
-:where(#nrgcrycdyy) .gt_super {
-  font-size: 65%;
-}
-
-:where(#nrgcrycdyy) .gt_footnote_marks {
-  font-style: italic;
-  font-weight: normal;
-  font-size: 75%;
-  vertical-align: 0.4em;
-}
-
-:where(#nrgcrycdyy) .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-:where(#nrgcrycdyy) .gt_indent_1 {
-  text-indent: 5px;
-}
-
-:where(#nrgcrycdyy) .gt_indent_2 {
-  text-indent: 10px;
-}
-
-:where(#nrgcrycdyy) .gt_indent_3 {
-  text-indent: 15px;
-}
-
-:where(#nrgcrycdyy) .gt_indent_4 {
-  text-indent: 20px;
-}
-
-:where(#nrgcrycdyy) .gt_indent_5 {
-  text-indent: 25px;
-}
-</style>
-<table class="gt_table">
-<thead class="gt_col_headings"><tr>
-<th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id=""></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="sector">sector</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="loans">loans</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="amount">amount</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="forgiven">forgiven</th>
-    </tr></thead>
-<tbody class="gt_table_body">
-<tr class="gt_group_heading_row">
-<th colspan="5" class="gt_group_heading" scope="colgroup" id="COCONINO">COCONINO</th>
-    </tr>
-<tr class="gt_row_group_first">
-<th id="stub_1_1" scope="row" class="gt_row gt_left gt_stub"></th>
-<td headers="COCONINO stub_1_1 sector" class="gt_row gt_left">45 - Retail Trade</td>
-<td headers="COCONINO stub_1_1 loans" class="gt_row gt_right">142</td>
-<td headers="COCONINO stub_1_1 amount" class="gt_row gt_right">$6,034,677</td>
-<td headers="COCONINO stub_1_1 forgiven" class="gt_row gt_right">$5,962,291</td>
-</tr>
-<tr>
-<th id="stub_1_2" scope="row" class="gt_row gt_left gt_stub"></th>
-<td headers="COCONINO stub_1_2 sector" class="gt_row gt_left">54 - Professional and Technical Services</td>
-<td headers="COCONINO stub_1_2 loans" class="gt_row gt_right">332</td>
-<td headers="COCONINO stub_1_2 amount" class="gt_row gt_right">$14,194,790</td>
-<td headers="COCONINO stub_1_2 forgiven" class="gt_row gt_right">$13,676,552</td>
-</tr>
-<tr>
-<th id="stub_1_3" scope="row" class="gt_row gt_left gt_stub"></th>
-<td headers="COCONINO stub_1_3 sector" class="gt_row gt_left">72 - Accommodation and Food Services</td>
-<td headers="COCONINO stub_1_3 loans" class="gt_row gt_right">518</td>
-<td headers="COCONINO stub_1_3 amount" class="gt_row gt_right">$75,391,291</td>
-<td headers="COCONINO stub_1_3 forgiven" class="gt_row gt_right">$72,535,436</td>
-</tr>
-<tr>
-<th id="summary_stub_COCONINO_1" scope="row" class="gt_row gt_left gt_stub gt_summary_row gt_first_summary_row thick gt_last_summary_row">Total</th>
-<td headers="COCONINO summary_stub_COCONINO_1 sector" class="gt_row gt_left gt_summary_row gt_first_summary_row thick gt_last_summary_row">—</td>
-<td headers="COCONINO summary_stub_COCONINO_1 loans" class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row">992</td>
-<td headers="COCONINO summary_stub_COCONINO_1 amount" class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row">95,620,758</td>
-<td headers="COCONINO summary_stub_COCONINO_1 forgiven" class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row">92,174,278</td>
-</tr>
-<tr class="gt_group_heading_row">
-<th colspan="5" class="gt_group_heading" scope="colgroup" id="MARICOPA">MARICOPA</th>
-    </tr>
-<tr class="gt_row_group_first">
-<th id="stub_1_4" scope="row" class="gt_row gt_left gt_stub"></th>
-<td headers="MARICOPA stub_1_4 sector" class="gt_row gt_left">45 - Retail Trade</td>
-<td headers="MARICOPA stub_1_4 loans" class="gt_row gt_right">4,394</td>
-<td headers="MARICOPA stub_1_4 amount" class="gt_row gt_right">$229,027,540</td>
-<td headers="MARICOPA stub_1_4 forgiven" class="gt_row gt_right">$218,304,429</td>
-</tr>
-<tr>
-<th id="stub_1_5" scope="row" class="gt_row gt_left gt_stub"></th>
-<td headers="MARICOPA stub_1_5 sector" class="gt_row gt_left">54 - Professional and Technical Services</td>
-<td headers="MARICOPA stub_1_5 loans" class="gt_row gt_right">17,512</td>
-<td headers="MARICOPA stub_1_5 amount" class="gt_row gt_right">$1,171,100,691</td>
-<td headers="MARICOPA stub_1_5 forgiven" class="gt_row gt_right">$1,122,126,511</td>
-</tr>
-<tr>
-<th id="stub_1_6" scope="row" class="gt_row gt_left gt_stub"></th>
-<td headers="MARICOPA stub_1_6 sector" class="gt_row gt_left">72 - Accommodation and Food Services</td>
-<td headers="MARICOPA stub_1_6 loans" class="gt_row gt_right">7,847</td>
-<td headers="MARICOPA stub_1_6 amount" class="gt_row gt_right">$1,016,154,442</td>
-<td headers="MARICOPA stub_1_6 forgiven" class="gt_row gt_right">$974,105,942</td>
-</tr>
-<tr>
-<th id="summary_stub_MARICOPA_1" scope="row" class="gt_row gt_left gt_stub gt_summary_row gt_first_summary_row thick gt_last_summary_row">Total</th>
-<td headers="MARICOPA summary_stub_MARICOPA_1 sector" class="gt_row gt_left gt_summary_row gt_first_summary_row thick gt_last_summary_row">—</td>
-<td headers="MARICOPA summary_stub_MARICOPA_1 loans" class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row">29,753</td>
-<td headers="MARICOPA summary_stub_MARICOPA_1 amount" class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row">2,416,282,673</td>
-<td headers="MARICOPA summary_stub_MARICOPA_1 forgiven" class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row">2,314,536,882</td>
-</tr>
-<tr class="gt_group_heading_row">
-<th colspan="5" class="gt_group_heading" scope="colgroup" id="PIMA">PIMA</th>
-    </tr>
-<tr class="gt_row_group_first">
-<th id="stub_1_7" scope="row" class="gt_row gt_left gt_stub"></th>
-<td headers="PIMA stub_1_7 sector" class="gt_row gt_left">45 - Retail Trade</td>
-<td headers="PIMA stub_1_7 loans" class="gt_row gt_right">792</td>
-<td headers="PIMA stub_1_7 amount" class="gt_row gt_right">$37,770,870</td>
-<td headers="PIMA stub_1_7 forgiven" class="gt_row gt_right">$36,163,649</td>
-</tr>
-<tr>
-<th id="stub_1_8" scope="row" class="gt_row gt_left gt_stub"></th>
-<td headers="PIMA stub_1_8 sector" class="gt_row gt_left">54 - Professional and Technical Services</td>
-<td headers="PIMA stub_1_8 loans" class="gt_row gt_right">2,525</td>
-<td headers="PIMA stub_1_8 amount" class="gt_row gt_right">$153,636,306</td>
-<td headers="PIMA stub_1_8 forgiven" class="gt_row gt_right">$149,970,397</td>
-</tr>
-<tr>
-<th id="stub_1_9" scope="row" class="gt_row gt_left gt_stub"></th>
-<td headers="PIMA stub_1_9 sector" class="gt_row gt_left">72 - Accommodation and Food Services</td>
-<td headers="PIMA stub_1_9 loans" class="gt_row gt_right">1,429</td>
-<td headers="PIMA stub_1_9 amount" class="gt_row gt_right">$185,384,342</td>
-<td headers="PIMA stub_1_9 forgiven" class="gt_row gt_right">$174,265,551</td>
-</tr>
-<tr>
-<th id="summary_stub_PIMA_1" scope="row" class="gt_row gt_left gt_stub gt_summary_row gt_first_summary_row thick gt_last_summary_row">Total</th>
-<td headers="PIMA summary_stub_PIMA_1 sector" class="gt_row gt_left gt_summary_row gt_first_summary_row thick gt_last_summary_row">—</td>
-<td headers="PIMA summary_stub_PIMA_1 loans" class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row">4,746</td>
-<td headers="PIMA summary_stub_PIMA_1 amount" class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row">376,791,518</td>
-<td headers="PIMA summary_stub_PIMA_1 forgiven" class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row">360,399,597</td>
-</tr>
-<tr class="gt_group_heading_row">
-<th colspan="5" class="gt_group_heading" scope="colgroup" id="PINAL">PINAL</th>
-    </tr>
-<tr class="gt_row_group_first">
-<th id="stub_1_10" scope="row" class="gt_row gt_left gt_stub"></th>
-<td headers="PINAL stub_1_10 sector" class="gt_row gt_left">45 - Retail Trade</td>
-<td headers="PINAL stub_1_10 loans" class="gt_row gt_right">190</td>
-<td headers="PINAL stub_1_10 amount" class="gt_row gt_right">$3,514,729</td>
-<td headers="PINAL stub_1_10 forgiven" class="gt_row gt_right">$3,009,373</td>
-</tr>
-<tr>
-<th id="stub_1_11" scope="row" class="gt_row gt_left gt_stub"></th>
-<td headers="PINAL stub_1_11 sector" class="gt_row gt_left">54 - Professional and Technical Services</td>
-<td headers="PINAL stub_1_11 loans" class="gt_row gt_right">526</td>
-<td headers="PINAL stub_1_11 amount" class="gt_row gt_right">$12,573,265</td>
-<td headers="PINAL stub_1_11 forgiven" class="gt_row gt_right">$11,299,255</td>
-</tr>
-<tr>
-<th id="stub_1_12" scope="row" class="gt_row gt_left gt_stub"></th>
-<td headers="PINAL stub_1_12 sector" class="gt_row gt_left">72 - Accommodation and Food Services</td>
-<td headers="PINAL stub_1_12 loans" class="gt_row gt_right">338</td>
-<td headers="PINAL stub_1_12 amount" class="gt_row gt_right">$17,078,884</td>
-<td headers="PINAL stub_1_12 forgiven" class="gt_row gt_right">$16,205,790</td>
-</tr>
-<tr>
-<th id="summary_stub_PINAL_1" scope="row" class="gt_row gt_left gt_stub gt_summary_row gt_first_summary_row thick gt_last_summary_row">Total</th>
-<td headers="PINAL summary_stub_PINAL_1 sector" class="gt_row gt_left gt_summary_row gt_first_summary_row thick gt_last_summary_row">—</td>
-<td headers="PINAL summary_stub_PINAL_1 loans" class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row">1,054</td>
-<td headers="PINAL summary_stub_PINAL_1 amount" class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row">33,166,878</td>
-<td headers="PINAL summary_stub_PINAL_1 forgiven" class="gt_row gt_right gt_summary_row gt_first_summary_row thick gt_last_summary_row">30,514,417</td>
-</tr>
-<tr>
-<th id="grand_summary_stub_1" scope="row" class="gt_row gt_left gt_stub gt_grand_summary_row gt_first_grand_summary_row gt_last_summary_row">Grand Total</th>
-<td headers="grand_summary_stub_1 sector" class="gt_row gt_left gt_grand_summary_row gt_first_grand_summary_row gt_last_summary_row">—</td>
-<td headers="grand_summary_stub_1 loans" class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row gt_last_summary_row">—</td>
-<td headers="grand_summary_stub_1 amount" class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row gt_last_summary_row">$2,921,861,827</td>
-<td headers="grand_summary_stub_1 forgiven" class="gt_row gt_right gt_grand_summary_row gt_first_grand_summary_row gt_last_summary_row">$2,797,625,175</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
+</section><section id="nothing-runs-everything-is-gray" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="nothing-runs-everything-is-gray">Nothing runs; everything is gray</h3>
+<p>You probably erased the last three back-ticks at the end of the code chunk. You may need to restart R to get it re-set.</p>
 
 
-</section></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
-<ol>
-<li id="fn1"><p>A more precise way to do it would be : <code>amount &lt; 1000 ~ "Very Low", between ( amount, 1000.01, 10000) ~ "Low"</code> , etc. But it relies on numbers that are never more precise than two digits.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");

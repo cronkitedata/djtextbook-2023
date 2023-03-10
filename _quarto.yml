@@ -69,18 +69,18 @@ book:
          - r-verb-mutate.qmd
          - r-verb-groupby.qmd
          - r-verb-join.qmd
-#         - r-verb-join-old.qmd
          - r-recipes.qmd
-#
-#     - part: viz.qmd
-#       chapters:
-#         - viz-reporting.qmd
-#         - viz-demo.qmd
+
+    - part: viz.qmd
+      chapters:
+         - viz-reporting.qmd
+         - viz-demo.qmd
 #         - viz-tables.qmd
 #         - viz-practice.qmd
-#
+
     - part: advanced.qmd
       chapters:
+         - advanced-pdf.qmd
          - advanced-regex.qmd
          - advanced-openrefine.qmd
          - advanced-scrape1.qmd

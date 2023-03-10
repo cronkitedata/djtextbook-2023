@@ -1,21 +1,11 @@
-# (PART) Visualization as a reporting tool {-}
+# Visualization as a reporting tool {-}
 
-
-# Introduction {#viz-intro .unnumbered}
 
 ## In this section
 
 The following chapters review ways of looking at your data while reporting. We're leaving publication quality graphic alone -- those often depend on using sites like <datawrapper.de> or D3 javascript to get high-performance visualizations, while static graphics often depend on using Adobe products to make typography and palettes acceptable to your publication. 
 
 Much of this is done in R using the package `ggplot2`, which is part of the tidyverse. If you want to follow along with with interactive aspects, you'll want to install the `plotly` package. There may be others noted in individual sections.  
-
-Working with geography is in the next section. 
-
-
-* [Visualization as reporting tool](viz-reporting.html) - principles for using visualizations to report on stories
-
-* [Visualization demo](viz-demo.html)
-
 
 ## Other resources
 
@@ -27,7 +17,7 @@ This sections just gets to the very basics of making plots in R. Consider the fo
 * [R graph gallery](https://www.r-graph-gallery.com/) has extensive examples and code help - I usually go there to find inspiration for what I want to do with examples on how to do it. There are a lot of extra packages you can add to R that create very specialized graphs. 
 
 
-### Applications for visualization {-}
+## Other applications for visualization {-}
 
 You can use a lot of different types of online and free applications to play around with graphics instead of R. They're less reproducible, and they often come and go as free options, but they're sometimes easier: 
 

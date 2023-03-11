@@ -325,9 +325,8 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-color="#447099" class="quarto-title-block center">
+<section id="title-slide" class="quarto-title-block center">
   <h1 class="title">The PDF problem</h1>
-  <p class="subtitle">Overcoming barriers with pdfs</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -339,8 +338,80 @@ Sarah Cohen
 
   <p class="date">2023-03-10</p>
 </section>
-<section class="slide level2">
+<section id="pdfs-and-public-records" class="slide level2 smaller">
+<h2>PDFs and public records</h2>
+<ul>
+<li><p>No data is born in PDFs. They have to be created from other sources - scanned documents, printed from spreadsheets, or created as reports.</p></li>
+<li><p>Government will frequently give you pdf’s instead of Excel or other raw data forms, sometimes out of ignorance and sometimes to thwart you.</p></li>
+<li><p>Each pdf is unique. Most are sad.</p></li>
+<li><p>You will need a tool to work with them.</p></li>
+<li><p>ALWAYS request another format (plain text, Excel, etc) and request again if you get one. Some public records laws require agencies provide you the original data, not the data converted to PDF form.</p></li>
+</ul>
 
+<img data-src="img/pdf-adobe.png" class="r-stretch"></section>
+<section id="strategy" class="slide level2 smaller">
+<h2>Strategy</h2>
+<h3 id="image-pdfs">Image pdfs</h3>
+<ul>
+<li>Images come from scanned or handwritten documents. They’re just pictures.</li>
+<li>If you can’t select any text, it’s an image.</li>
+<li>You’ll need OCR software to deal with it, and it won’t be pretty</li>
+</ul>
+<h3 id="text-pdfs">Text pdfs</h3>
+<ul>
+<li>Most printed reports and many other documents were created by “Print to PDF”. The underlying text still exists. It’s a little better than pixels.</li>
+<li>They have formatting and nested lines that can make working with the data difficult.</li>
+</ul>
+<h3 id="ask-yourself">Ask yourself</h3>
+<ul>
+<li>Do I need it in data form? Would searching it in Pinpoint or DocumentCloud work just as well for my project?</li>
+<li>Might it be easier or cheaper to re-type it?</li>
+<li>Can I get it another way, such as scraping a website?</li>
+</ul>
+</section>
+<section id="a-simple-example" class="slide level2">
+<h2>A simple example</h2>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">The report</a></li><li><a href="#tabset-1-2">What you want</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/pdf-firearms-simple.png"></p>
+<p></p><figcaption>ATF Firearms Commerce report, 2021</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div id="tabset-1-2">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/pdf-simple.png"></p>
+<p></p><figcaption>Extracted to Excel</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="a-harder-example" class="slide level2">
+<h2>A harder example</h2>
+<p>We’ll be using this example as our test for the tools</p>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">What you have</a></li><li><a href="#tabset-2-2">What you want</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
+<p><img data-src="img/origreport.png"></p>
+</div>
+<div id="tabset-2-2">
+<p><img data-src="img/pdf-converted.png"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="a-really-hard-example" class="slide level2 smaller">
+<h2>A really hard example</h2>
+
+<img data-src="../assets/images/advanced-pdf-azdpsform.png" class="r-stretch"><p>This is a job for something other than a simple PDF converter. Instead, you’ll need to program it or use a different kind of tool. Google Pinpoint’s Table Extractor looks promising for this.</p>
 <div class="footer footer-default">
 <p><a href="../advanced-pdf.qmd">tldr from the Cronkite textbook</a></p>
 </div>
@@ -355,8 +426,6 @@ Sarah Cohen
   <script src="adv-pdf-slides_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="adv-pdf-slides_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="adv-pdf-slides_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="adv-pdf-slides_files/libs/revealjs/plugin/multiplex/socket.io.js"></script>
-  <script src="adv-pdf-slides_files/libs/revealjs/plugin/multiplex/multiplex.js"></script>
   <script src="adv-pdf-slides_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -379,7 +448,6 @@ Sarah Cohen
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'multiplex': {"secret":null,"id":"d2bc827e853933b8","url":"https://reveal-multiplex.glitch.me/"},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -465,7 +533,7 @@ Sarah Cohen
         pause: true,
 
         // Flags if speaker notes should be visible to all viewers
-        showNotes: false,
+        showNotes: true,
 
         // Global override for autoplaying embedded media (null/true/false)
         autoPlayMedia: null,
@@ -553,7 +621,7 @@ Sarah Cohen
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
 
           RevealMath,
-          
+          RevealNotes,
           RevealSearch,
           RevealZoom
         ]

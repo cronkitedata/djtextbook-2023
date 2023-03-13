@@ -17,11 +17,13 @@ Here are two other good tutorials on regular expressions:
 * [From Justin Meyer](https://cronkitedata.s3.amazonaws.com/docs/meyer_regex.pdf) at a recent IRE conference that can serve as a guide.  
 * [From Prof. Christian McDonald of UT-Austin](https://cronkitedata.s3.amazonaws.com/docs/regex_for_rest_of_us.pdf)
 
-If you're using R, you can use a regex using the `stringr` package (part of the tidyverse) using the functions *str_detect* , *str_extract* and their cousins. They look like this:  
+* If you're using R, you can use a regex using the `stringr` package (part of the tidyverse) using the functions *str_detect* , *str_extract* and their cousins. They look like this:  
 
 ```markdown
     str_detect(var_name, regex("pattern")) 
 ````
+
+* The [vignette on the `stringr` package](https://stringr.tidyverse.org/) in the Tidyverse is reasonably helpful. 
 
 ## Types of regular expression patterns
 

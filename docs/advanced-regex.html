@@ -463,13 +463,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In practice, you’ll usually save the pieces of each pattern you’ve found into a variable, then put them back together differently.</p>
 <p>Here are two other good tutorials on regular expressions:</p>
 <ul>
-<li>
-<a href="https://cronkitedata.s3.amazonaws.com/docs/meyer_regex.pdf">From Justin Meyer</a> at a recent IRE conference that can serve as a guide.<br>
-</li>
-<li><a href="https://cronkitedata.s3.amazonaws.com/docs/regex_for_rest_of_us.pdf">From Prof.&nbsp;Christian McDonald of UT-Austin</a></li>
+<li><p><a href="https://cronkitedata.s3.amazonaws.com/docs/meyer_regex.pdf">From Justin Meyer</a> at a recent IRE conference that can serve as a guide.<br></p></li>
+<li><p><a href="https://cronkitedata.s3.amazonaws.com/docs/regex_for_rest_of_us.pdf">From Prof.&nbsp;Christian McDonald of UT-Austin</a></p></li>
+<li><p>If you’re using R, you can use a regex using the <code>stringr</code> package (part of the tidyverse) using the functions <em>str_detect</em> , <em>str_extract</em> and their cousins. They look like this:</p></li>
 </ul>
-<p>If you’re using R, you can use a regex using the <code>stringr</code> package (part of the tidyverse) using the functions <em>str_detect</em> , <em>str_extract</em> and their cousins. They look like this:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">    str_detect(var_name, regex("pattern")) </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>The <a href="https://stringr.tidyverse.org/">vignette on the <code>stringr</code> package</a> in the Tidyverse is reasonably helpful.</li>
+</ul>
 <section id="types-of-regular-expression-patterns" class="level2" data-number="25.1"><h2 data-number="25.1" class="anchored" data-anchor-id="types-of-regular-expression-patterns">
 <span class="header-section-number">25.1</span> Types of regular expression patterns</h2>
 <section id="literal-strings" class="level3" data-number="25.1.1"><h3 data-number="25.1.1" class="anchored" data-anchor-id="literal-strings">

@@ -2,6 +2,8 @@
 execute: 
    echo: true
    output: false
+   error: true
+   eval: false
 output: 
    html: 
       number-depth: 2
@@ -250,7 +252,7 @@ You'll often want fewer categories, or numbers in categories, that you want to u
 
 1.  Create yes-no categories . This is really "Yes", "No" or NA, where there is an NA to begin with.
 
-```
+```{r}
     mutate ( corp_yn = if_else  
                       (str_detect (borrower_type, 
                                    "Corporation"), 
@@ -285,12 +287,12 @@ This example introduces `str_detect()`, which uses regular expressions. We'll go
 
 It's often useful to give them numeric codes in front so they sort properly:
 
-```
+```{r}
         mutate ( new_type = 
                  case_when  (
                     amount <= 1000 ~ "00-Very low", 
-                    amount <= 10000 ) ~ "01-Low", 
-                    amount <= 100000) ~ "03-Medium", 
+                    amount <= 10000  ~ "01-Low", 
+                    amount <= 100000 ~ "03-Medium", 
                     amount > 100000 ~ "04-High")
               )
 ```
@@ -393,6 +395,7 @@ execute:
 These must be the very first rows in your code chunk, and must start in the first position, with spacing as shown. Use `#| label: setup` in the first code chunk to run it automatically every time you start up R. 
 
 ```{r}
+#| echo: fenced
 #| label: name-of-chunk
 #| message: false
 #| warning: false

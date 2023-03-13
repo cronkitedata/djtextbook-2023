@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.253">
+<meta name="generator" content="quarto-1.3.260">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Data Reporting - 16&nbsp; A quick tour of verbs</title>
 <style>
@@ -626,29 +626,29 @@ Single vs.&nbsp;double “=”
 <p>One motivator in learning R is its very sophisticated graphics. Here, you can just copy and paste this code to see how it might work, without worrying about exactly what it does. We’ll learn how to make this interactive in a future lesson.</p>
 <p>I’ve made a dataset for you that contains the 21 No.1 songs that stayed on the Hot 100 for at least a year in this century. (Songs released after late 2020 will be missing, since the data is a little old and there has to have been at least a year since the release.) You can just copy and paste this code chunk and then render your page, just to prove that — even if you don’t understand it yet — it’s not a lot of work to make a reasonable-looking chart.</p>
 <div class="cell page-columns page-full">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: hot-100-top-10-list</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| column: screen-inset-right</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># read the data</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">readRDS</span>( </span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">url</span> (<span class="st">"https://cronkitedata.s3.amazonaws.com/rdata/top_songs.RDS"</span>)</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># start the plot</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span> ( </span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span> ( <span class="at">x=</span>chart_date, <span class="at">y=</span>hit, <span class="at">color=</span>this_week ) </span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        ) <span class="sc">+</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_point</span>(  <span class="at">size=</span> .<span class="dv">25</span>) <span class="sc">+</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co"># make it look a little better</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>( <span class="at">color =</span> <span class="st">"Hot 100 #"</span>) <span class="sc">+</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>( ) <span class="sc">+</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.y =</span> <span class="fu">element_blank</span>(), </span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="co">#         panel.grid.major=element_blank(), </span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position=</span> <span class="st">"bottom"</span>) </span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="cell-code"><code>```lmkoj
+#| label: hot-100-top-10-list
+#| column: screen-inset-right
+
+# read the data
+readRDS( 
+  url ("https://cronkitedata.s3.amazonaws.com/rdata/top_songs.RDS")
+  ) |&gt; 
+# start the plot
+  ggplot ( 
+        aes ( x=chart_date, y=hit, color=this_week ) 
+        ) +
+       geom_point(  size= .25) +
+# make it look a little better
+  labs( color = "Hot 100 #") +
+  theme_minimal( ) +
+  theme(axis.title.x = element_blank(),
+          axis.title.y = element_blank(), 
+#         panel.grid.major=element_blank(), 
+        legend.position= "bottom") 
+```</code></pre>
 <div class="cell-output-display column-screen-inset-right">
-<p><img src="r-verbs_files/figure-html/hot-100-top-10-list-1.png" class="img-fluid" width="672"></p>
+<p><img src="r-verbs_files/figure-html/hot-100-top-10-list-1.png" class="quarto-discovered-preview-image img-fluid" width="672"></p>
 </div>
 </div>
 </section><section id="thoughts-on-the-verbs" class="level2" data-number="16.5"><h2 data-number="16.5" class="anchored" data-anchor-id="thoughts-on-the-verbs">

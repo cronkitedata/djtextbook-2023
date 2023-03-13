@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.253">
+<meta name="generator" content="quarto-1.3.260">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Data Reporting - 14&nbsp; Using Quarto</title>
 <style>
@@ -563,26 +563,26 @@ Quarto is modern RMarkdown
 <p>You’ll do that through <code>code chunks</code> – little snippets of working code that you insert within your narrative which, when processed, will also include the results.</p>
 <p>To insert a code chunk:</p>
 <ul>
-<li>Use the +C button on the top right of your screen. ( <img src="assets/images/r-quarto-insertchunk.png" width="25" height="16">)</li>
+<li>Use the +C button on the top right of your screen. ( <img src="assets/images/r-quarto-insertchunk.png" class="quarto-discovered-preview-image" width="25" height="16">)</li>
 <li>Use the keyboard shortcut CMD/CTL-OPT/ALT-i</li>
 </ul>
 <p><img src="https://cronkitedata.s3.amazonaws.com/images/r-quarto-insertcode.gif" class="img-fluid"></p>
 <p>The following code chunk creates a new variable called <code>my_variable</code>, another called <code>my_name</code>, then prints out the value stored in the <code>my_name</code> one. Copying it into your document will create a code chunk for you.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># A hashtag here means the line is a "comment". R will ignore it.. </span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Anything between ```{r} at the beginning and ``` at the end is the code chunk. </span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># create two new variables here</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>my_variable <span class="ot">&lt;-</span> <span class="dv">13</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>my_name <span class="ot">&lt;-</span> <span class="st">"Sarah"</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">#now print out the one called my_name</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>my_name</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># this is the end of the code chunk</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="cell-code"><code>```lxfts
+# A hashtag here means the line is a "comment". R will ignore it.. 
+# Anything between ```{r} at the beginning and ``` at the end is the code chunk. 
+
+
+# create two new variables here
+my_variable &lt;- 13
+my_name &lt;- "Sarah"
+
+#now print out the one called my_name
+my_name
+
+# this is the end of the code chunk
+```</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Sarah"</code></pre>
 </div>

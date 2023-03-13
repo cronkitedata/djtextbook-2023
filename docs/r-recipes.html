@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.253">
+<meta name="generator" content="quarto-1.3.260">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Data Reporting - 21&nbsp; Recipes</title>
 <style>
@@ -497,14 +497,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>  <span class="fu">left_join</span> <span class="op">(</span> <span class="va">sectors</span>, by<span class="op">=</span><span class="st">"naics_code"</span><span class="op">)</span>  <span class="op">|&gt;</span></span>
 <span>  <span class="fu">select</span> <span class="op">(</span> <span class="va">borrower_name</span>, <span class="va">forgiveness_amount</span>, <span class="va">sector_desc</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-
-<div data-pagedtable="false">
-  <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":["borrower_name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["forgiveness_amount"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["sector_desc"],"name":[3],"type":["chr"],"align":["left"]}],"data":[{"1":"SFE HOLDINGS LLC","2":"10108219","3":"Accommodation and Food Services"},{"1":"NAVAJO TRIBAL UTILITY AUTHORITY","2":"9882528","3":"Utilities"},{"1":"HOME HEALTH AGENCY ARIZONA LLC","2":"10133389","3":"Health Care and Social Assistance"},{"1":"ARIZONA COMMUNITY PHYSICIANS PC","2":"10131667","3":"Health Care and Social Assistance"},{"1":"NEXTIVA INC","2":"10126027","3":"Information"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
-</div>
 </div>
 </section><section id="importing-reading-data" class="level2" data-number="21.2"><h2 data-number="21.2" class="anchored" data-anchor-id="importing-reading-data">
 <span class="header-section-number">21.2</span> Importing / reading data</h2>
@@ -606,12 +598,14 @@ mydata &lt;- read_excel ("myfilename.xlsx")</code></pre>
 <ol type="1">
 <li>Create yes-no categories . This is really “Yes”, “No” or NA, where there is an NA to begin with.</li>
 </ol>
-<pre><code>    mutate ( corp_yn = if_else  
-                      (str_detect (borrower_type, 
-                                   "Corporation"), 
-                       "Yes", 
-                       "No")
-       )</code></pre>
+<div class="cell">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span>    <span class="fu">mutate</span> <span class="op">(</span> corp_yn <span class="op">=</span> <span class="fu">if_else</span>  </span>
+<span>                      <span class="op">(</span><span class="fu">str_detect</span> <span class="op">(</span><span class="va">borrower_type</span>, </span>
+<span>                                   <span class="st">"Corporation"</span><span class="op">)</span>, </span>
+<span>                       <span class="st">"Yes"</span>, </span>
+<span>                       <span class="st">"No"</span><span class="op">)</span></span>
+<span>       <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <ol start="2" type="1">
 <li>Recode into more than two categories using <code>case_when()</code>
 </li>
@@ -636,13 +630,15 @@ mydata &lt;- read_excel ("myfilename.xlsx")</code></pre>
 <li>Recode numbers into categories</li>
 </ol>
 <p>It’s often useful to give them numeric codes in front so they sort properly:</p>
-<pre><code>        mutate ( new_type = 
-                 case_when  (
-                    amount &lt;= 1000 ~ "00-Very low", 
-                    amount &lt;= 10000 ) ~ "01-Low", 
-                    amount &lt;= 100000) ~ "03-Medium", 
-                    amount &gt; 100000 ~ "04-High")
-              )</code></pre>
+<div class="cell">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span>        <span class="fu">mutate</span> <span class="op">(</span> new_type <span class="op">=</span> </span>
+<span>                 <span class="fu">case_when</span>  <span class="op">(</span></span>
+<span>                    <span class="va">amount</span> <span class="op">&lt;=</span> <span class="fl">1000</span> <span class="op">~</span> <span class="st">"00-Very low"</span>, </span>
+<span>                    <span class="va">amount</span> <span class="op">&lt;=</span> <span class="fl">10000</span>  <span class="op">~</span> <span class="st">"01-Low"</span>, </span>
+<span>                    <span class="va">amount</span> <span class="op">&lt;=</span> <span class="fl">100000</span> <span class="op">~</span> <span class="st">"03-Medium"</span>, </span>
+<span>                    <span class="va">amount</span> <span class="op">&gt;</span> <span class="fl">100000</span> <span class="op">~</span> <span class="st">"04-High"</span><span class="op">)</span></span>
+<span>              <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>This works because the first one that it finds will be used, so a value of exactly 1,000 would be “Very low”, but a value of 1,001 would be “Low”.</p>
 </section><section id="working-with-grouped-data-for-subtotals-changes-percents" class="level2" data-number="21.6"><h2 data-number="21.6" class="anchored" data-anchor-id="working-with-grouped-data-for-subtotals-changes-percents">
 <span class="header-section-number">21.6</span> Working with grouped data for subtotals, changes, percents</h2>

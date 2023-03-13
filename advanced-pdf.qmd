@@ -1,5 +1,6 @@
 # Working with PDF files {#advanced-pdf}
 
+[Slide show from this chapter](https://cronkitedata.s3.amazonaws.com/slides/adv-pdf/adv-pdf/adv-pdf/adv-pdf-slides.html)
 
 ## The PDF problem
 
@@ -87,15 +88,19 @@ Here's a quick video of how Tabula works on this document:
 
 Usually, [Cometdocs](https://cometdocs.com) is one of the most reliable conversions. But even after setting up an account, this is what I got:
 
+At times, Investigative Reporters and Editors has arranged for free professional accounts. Check if they still have the program if you're a member. 
+
 ![](assets/images/advanced-pdf-cometdocs.png)
 
 ### zamzar
 
-[Zamzar](https://zamzar.com) did quite well with this, producing a file that can be used because it kept the concept of two columns and didn't smush rows together.
+[Zamzar](https://zamzar.com) did quite well with this, producing a file that can be used because it kept the concept of two columns and didn't smush rows together.    
+
+![](assets/images/advanced-pdf-zamzar.png)
 
 ### Adobe Acrobat ($)
 
-Every ASU student has an automatic account for the full version of Adobe Acrobat online. It's usually the best option, but in this case it turns into a complete mess: 
+Every ASU student has an automatic account for the full version of Adobe Acrobat. The online version has limited capabilities, but it also allows you to download the full version. But in this instance, it failed miserably: 
 
 ::: {#fig-adobe layout-ncol=2}
 
@@ -110,7 +115,7 @@ It tried to replicate the way the data looks in the page, which smushed together
 
 ### Able2Extract ($)
 
-[Able2Extract](https://www.investintech.com/prod_a2e.htm) from Invetintech.com is an all-purpose PDF extractor and producer, with the professional version costing $200. But it's got a lot of options for tricky tables, and it also does OCR-ing before trying to extract any information. (Only Acrobat on the above list does that as well.) It's the one I use most frequently. In this case, it did nothing different than the free versions, but it also permits you to keep the position on the page instead of converting to an Excel or CSV file, making it easier if you want to manually parse the lines. 
+[Able2Extract](https://www.investintech.com/prod_a2e.htm) from Invetintech.com is an all-purpose PDF extractor and producer, with the professional version costing $200. It's got a lot of options for tricky tables, and it also does OCR if necessary before trying to extract any information. (Only Acrobat on the above list does that as well.) It's the one I use most frequently. In this case, it did nothing different than the free versions, but it also permits you to keep the position on the page instead of converting to an Excel or CSV file, making it easier if you want to manually parse the lines. 
 
 
 ### Google Pinpoint's Table Extractor

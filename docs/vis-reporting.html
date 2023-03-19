@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./viz-demo.html" rel="next">
-<link href="./viz.html" rel="prev">
+<link href="./vis-demo.html" rel="next">
+<link href="./vis.html" rel="prev">
 <link href="./assets/images/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -75,7 +75,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./viz.html">Visualization as a reporting tool</a></li><li class="breadcrumb-item"><a href="./viz-reporting.html"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Visualization as a reporting tool</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./vis.html">Visualization as a reporting tool</a></li><li class="breadcrumb-item"><a href="./vis-reporting.html"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Visualization as a reporting tool</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -295,7 +295,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./viz.html" class="sidebar-item-text sidebar-link">
+            <a href="./vis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Visualization as a reporting tool</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -304,13 +304,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./viz-reporting.html" class="sidebar-item-text sidebar-link active">
+  <a href="./vis-reporting.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Visualization as a reporting tool</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./viz-demo.html" class="sidebar-item-text sidebar-link">
+  <a href="./vis-demo.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Visualization demo</span></span></a>
   </div>
 </li>
@@ -486,6 +486,11 @@ ul.task-list li input[type="checkbox"] {
 <p>Looking at a table of numbers is mind-numbing. It’s hard to pick out what’s important. Some of the most imaginative visualizations come in the form of tables. In fact, there’s even a <a href="https://community.rstudio.com/c/table-gallery/64">contest among R users to build the best tables</a>. <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <p>One simple example is this analysis of federal prosecutions of gun charges over three administrations. We were curious: which statutes are the ones that Joe Biden is prioritizing compared with previous administrations? And was there a major downturn in prosecutions during the pandemic? These “sparklines” on the data table help show the trends, even when the numbers themselves are very different:</p>
 <p><img src="assets/images/vis-reporting-sparkline-example.png" class="img-fluid"></p>
+</section>
+<section id="networks-of-companies-people-or-programs" class="level4">
+<h4 class="anchored" data-anchor-id="networks-of-companies-people-or-programs">Networks of companies, people or programs</h4>
+<p>This is an example of a network analysis of Medicare charges among nephrologists – kidney doctors. We had heard that one consultant was showing doctors how to do procedures in their offices that were traditionally done in hospitals. The procedures had unusually high billing rates in doctors’ offices, but very low ones in hospital settings. These networks looked at the similarity across doctors’ practices by comparing the proportions of billing codes, then clustering them when they matched about 75 percent of the time. The area of red, large circles on the right turned out to be the same consulting practice. Sadly, the reporter who worked on this tip left the paper before we had a chance to publish.</p>
+<p><img src="assets/images/vis-reporting-gephi.png" class="img-fluid" style="width:75.0%"></p>
 </section>
 </section>
 <section id="tips-for-exploratory-visualizations" class="level2" data-number="22.2">
@@ -769,12 +774,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation column-page-right">
   <div class="nav-page nav-page-previous">
-      <a href="./viz.html" class="pagination-link">
+      <a href="./vis.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Visualization as a reporting tool</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./viz-demo.html" class="pagination-link">
+      <a href="./vis-demo.html" class="pagination-link">
         <span class="nav-page-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Visualization demo</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>

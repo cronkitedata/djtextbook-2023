@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/index.html</loc>
-    <lastmod>2023-03-13T17:24:47.295Z</lastmod>
+    <lastmod>2023-03-16T18:39:30.006Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/start.html</loc>
@@ -102,15 +102,15 @@
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/viz.html</loc>
-    <lastmod>2023-03-13T17:24:47.476Z</lastmod>
+    <lastmod>2023-03-16T18:39:32.142Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/viz-reporting.html</loc>
-    <lastmod>2023-03-13T17:24:47.480Z</lastmod>
+    <lastmod>2023-03-19T17:19:32.997Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/viz-demo.html</loc>
-    <lastmod>2023-03-13T17:24:47.499Z</lastmod>
+    <lastmod>2023-03-19T17:20:37.939Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/advanced.html</loc>
@@ -147,5 +147,21 @@
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/appendix-ppp.html</loc>
     <lastmod>2023-03-13T17:24:47.563Z</lastmod>
+  </url>
+  <url>
+    <loc>https://cronkitedata.github.io/djtextbook/vis-reporting.html</loc>
+    <lastmod>2023-03-19T17:33:47.998Z</lastmod>
+  </url>
+  <url>
+    <loc>https://cronkitedata.github.io/djtextbook/vis.html</loc>
+    <lastmod>2023-03-19T17:32:40.402Z</lastmod>
+  </url>
+  <url>
+    <loc>https://cronkitedata.github.io/djtextbook/vis-demo.html</loc>
+    <lastmod>2023-03-19T17:52:25.263Z</lastmod>
+  </url>
+  <url>
+    <loc>https://cronkitedata.github.io/djtextbook/vis-tables.html</loc>
+    <lastmod>2023-03-19T21:08:40.880Z</lastmod>
   </url>
 </urlset>

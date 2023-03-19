@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.260">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Data Reporting - 24&nbsp; Report-making in R</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./advanced.html" rel="next">
+<link href="./vis-demo.html" rel="prev">
+<link href="./assets/images/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<script src="site_libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
+<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="site_libs/datatables-binding-0.27/datatables.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="site_libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="site_libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="site_libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
+<link href="site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<script src="site_libs/core-js-2.5.3/shim.min.js"></script>
+<script src="site_libs/react-17.0.0/react.min.js"></script>
+<script src="site_libs/react-17.0.0/react-dom.min.js"></script>
+<script src="site_libs/reactwidget-1.0.0/react-tools.js"></script>
+<link href="site_libs/reactable-0.4.3/reactable.css" rel="stylesheet">
+<script src="site_libs/reactable-binding-0.4.3/reactable.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./vis.html">Visualization as a reporting tool</a></li><li class="breadcrumb-item"><a href="./vis-tables.html"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Report-making in R</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./assets/images/favicon.ico" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Data Reporting</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/cronkitedata/djtextbook" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Data-Reporting.pdf">
+              <i class="bi bi-bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Data-Reporting.epub">
+              <i class="bi bi-bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./start.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reporting with data</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./start-story.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Learn a new way to read</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./start-math.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Newsroom math</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./start-data-def.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Defining “Data”</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./start-data-diary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Replication and the data diary</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./start-hunt.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Finding the right data for your story</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./start-build-own.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Build your own database</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./xl.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Spreadsheets</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./xl-refresher.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">An Excel Refresher</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./xl-filter-sort.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Sorting and filtering to find stories</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./xl-pivot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Grouping with pivot tables</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./xl-formulas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Formulas in Excel</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./xl-practice-noc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Practice exercise</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R Study Guide</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-install.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Installing R and RStudio</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-start.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Getting started with R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-quarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Using Quarto</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-data-import.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Getting and saving data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-verbs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">A quick tour of verbs</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-verb-filter.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Verbs in depth: Select, arrange, filter</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-verb-mutate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Verbs in depth: New from old data with Mutate</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-verb-groupby.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Verbs in depth: Aggregating with groups</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-verb-join.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Verbs in depth: Matchmaking with joins</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r-recipes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Recipes</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./vis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Visualization as a reporting tool</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vis-reporting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Visualization as a reporting tool</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vis-demo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Visualization demo</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./vis-tables.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Report-making in R</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./advanced.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Special skills</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./advanced-pdf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Working with PDF files</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./advanced-regex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Regular Expressions for pattern matching</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./advanced-openrefine.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Open refine walkthrough</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./advanced-scrape1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Scraping without programming</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./advanced-scrape2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Introduction to scraping in R</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-math.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Newsroom numbers cheat sheet</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-program.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">A gentle intro to programming</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-ppp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Documentation for PPP data chapters</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#interactive-tables-with-dt" id="toc-interactive-tables-with-dt" class="nav-link active" data-scroll-target="#interactive-tables-with-dt"><span class="header-section-number">24.0.1</span> Interactive tables with <code>DT</code></a></li>
+  <li><a href="#interactive-tables-with-reactable" id="toc-interactive-tables-with-reactable" class="nav-link" data-scroll-target="#interactive-tables-with-reactable"><span class="header-section-number">24.1</span> Interactive tables with <code>reactable</code></a></li>
+  <li><a href="#crosstabs-with-the-janitor-library" id="toc-crosstabs-with-the-janitor-library" class="nav-link" data-scroll-target="#crosstabs-with-the-janitor-library"><span class="header-section-number">24.2</span> Crosstabs with the <code>janitor</code> library</a>
+  <ul class="collapse">
+  <li><a href="#a-simple-one-way-table" id="toc-a-simple-one-way-table" class="nav-link" data-scroll-target="#a-simple-one-way-table"><span class="header-section-number">24.2.1</span> A simple one-way table</a></li>
+  </ul></li>
+  <li><a href="#static-tables-with-gt" id="toc-static-tables-with-gt" class="nav-link" data-scroll-target="#static-tables-with-gt"><span class="header-section-number">24.3</span> Static tables with gt</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content column-page-right" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Report-making in R</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>So far, we’ve focused on the input to data analysis, but not as much on the output. We’ve stressed the need for “tidy” data, but I would be willing to bet that your instinct is to turn it into what we might call a report – something that is easier to read and consume rather than easy to analyze.</p>
+<p>You’ve already seen that it’s almost impossible to read a table of numbers using R’s default method of printing them out. There are several useful packages available to make better-looking charts of numbers that will be more useful for both a finished document and for your own understanding.</p>
+<div class="alert alert-secondary">
+<div class="alert-heading font-weight-bolder fs-3">
+<p>What we want from tables and reports</p>
+</div>
+<ul>
+<li>Numbers with formatting, such as percent, dollar signs and commas.</li>
+<li>Automatic wrapping of cells so that you don’t have to scroll to find columns.</li>
+<li>Totals and sub-totals shown on the same table as the detail.</li>
+<li>Printable tables that summarize your data succinctly so that you can write from it, or….</li>
+<li>Interactive tables with filtering, searching and sorting so you can explore it.</li>
+<li>Automatically produce crosstabs with values, totals and percentages.</li>
+</ul>
+<div class="alert-heading font-weight-bolder fs-3">
+<p>Libraries used in this chapter</p>
+</div>
+<p>Be sure to install the following packages before attempting to follow this chapter.</p>
+<ul>
+<li><code>reactable</code> , for interactive tables that can incorporate small graphic elements.</li>
+<li><code>DT</code>, for interactive tables with a few different features, including selectable columns.</li>
+<li><code>gt</code> and its cousin, <code>gtsummary</code> , for static tables with formatting, labelling and totals.</li>
+</ul>
+<p>You have already installed the <code>janitor</code> package, which has a function to create crosstab tables with values and percentages already computed.</p>
+</div>
+<p>Most of these packages will be demonstrated with a random sample of the PPP data we’ve worked with so far. One issue with the interactive tables is that there is no maximum number of rows – they’ll just choke if you try to print 300,000 rows.</p>
+<ol type="1">
+<li>Use a <code>select</code> statement to set the column headings. Don’t forget the back-ticks.</li>
+<li>These are basic search and sort – nothing fancy.</li>
+<li>I usually use “compact” because I’m trying to fit as many columns on the page as possible.</li>
+<li>This is the very confusing Javascript part of the library. I just try to find examples.</li>
+</ol>
+<p>The important element of this is that, by using the complicated “currency” format as the default for all numeric data, it can look OK, but still sorts correctly. (Most other solutions turn numbers in text, so that $4.00 is more than $10.00, since it’s alphabetical.)</p>
+<section id="interactive-tables-with-dt" class="level3" data-number="24.0.1">
+<h3 data-number="24.0.1" class="anchored" data-anchor-id="interactive-tables-with-dt"><span class="header-section-number">24.0.1</span> Interactive tables with <code>DT</code></h3>
+<p><code>DT</code> is a translation of a popular Javascript library called “datatable”. It, too, has difficult syntax because it is based on that language, not R. You can get a pretty usable table with just a few lines of code:</p>
+<p>There are many more features of datatables, but this is often enough to get you started</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-1"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-1-1"><a href="#annotated-cell-1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
+<span id="annotated-cell-1-2"><a href="#annotated-cell-1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-1-3"><a href="#annotated-cell-1-3" aria-hidden="true" tabindex="-1"></a>ppp_orig <span class="sc">|&gt;</span> </span>
+<span id="annotated-cell-1-4"><a href="#annotated-cell-1-4" aria-hidden="true" tabindex="-1"></a> <span class="fu">select</span> ( borrower_name<span class="sc">:</span>borrower_city, date_approved, amount, forgiveness_amount) <span class="sc">|&gt;</span> </span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-1-5" class="code-annotation-target"><a href="#annotated-cell-1-5" aria-hidden="true" tabindex="-1"></a> <span class="fu">datatable</span>(</span>
+<span id="annotated-cell-1-6"><a href="#annotated-cell-1-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">options =</span> <span class="fu">list</span> ( </span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-1-7" class="code-annotation-target"><a href="#annotated-cell-1-7" aria-hidden="true" tabindex="-1"></a>                    <span class="at">scrollX=</span><span class="cn">TRUE</span>,</span>
+<span id="annotated-cell-1-8"><a href="#annotated-cell-1-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">pageLength =</span> <span class="dv">5</span></span>
+<span id="annotated-cell-1-9"><a href="#annotated-cell-1-9" aria-hidden="true" tabindex="-1"></a>                )</span>
+<span id="annotated-cell-1-10"><a href="#annotated-cell-1-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span>   </span>
+<span id="annotated-cell-1-11"><a href="#annotated-cell-1-11" aria-hidden="true" tabindex="-1"></a> <span class="fu">formatCurrency</span>( <span class="at">columns =</span> <span class="fu">c</span>(<span class="st">"amount"</span>, <span class="st">"forgiveness_amount"</span>), </span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-1-12" class="code-annotation-target"><a href="#annotated-cell-1-12" aria-hidden="true" tabindex="-1"></a>                   <span class="at">digits =</span> <span class="dv">0</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="5" data-code-annotation="1">Create a datatable.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="7" data-code-annotation="2">Turn on a left-right scrollbar and reduce the default number of rows shown.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="12" data-code-annotation="3">Format the two amounts as currency. <a href="https://rstudio.github.io/DT/functions.html">Other format options</a> exist for regular numbers and percentages.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-4917f6d6ac544c3da707" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-4917f6d6ac544c3da707">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150","151","152","153","154","155","156","157","158","159","160","161","162","163","164","165","166","167","168","169","170","171","172","173","174","175","176","177","178","179","180","181","182","183","184","185","186","187","188","189","190","191","192","193","194","195","196","197","198","199","200","201","202","203","204","205","206","207","208","209","210","211","212","213","214","215","216","217","218","219","220","221","222","223","224","225","226","227","228","229","230","231","232","233","234","235","236","237","238","239","240","241","242","243","244","245","246","247","248","249","250","251","252","253","254","255","256","257","258","259","260","261","262","263","264","265","266","267","268","269","270","271","272","273","274","275"],["TRUE PARTNERS LLC","IKMD PLLC","TRAILS WEST INC","DIVERSIFIED CONSTRUCTION LLC","MAMA THAI LLC","MYKEY VENTURES LLC","ONE MISSION INC","TRANSMISSION FACTORY","DESERT ENERGETICS LLC","AZ EXPRESS GLASS AND MIRROR LLC","BOMBAZ ENTERPRISES LLC","TORRO MEDIA LLC","SOUTH MOUNTAIN XERISCAPE INC","URBAN REALTY AMP DEVELOPMENT LLC","MORE LIFE COUNSELING SERVICES LLC","CARRIE BLACK MONTANO","JOSEPH S MAZEL DMD","OPEN SPACE LLC","PAUL F MARISCHEN DDS LTD","MELISSA LAZZERONI LLC","RIGOBIGO INC","MRH COMMISSION LLC","SKIN BY JESSICA LLC","BRIAN MATTHEW PENNY","KIEARRA EADDY","ASHLEY SIMMS","NATIVE AMERICAN CONNECTIONS INC","OHECK VENTURE LLC","LYECE RAMSEY","94 HUNDRED CORPORATE CENTER LLLP","HI TEA LLC","CAREFREE RESTAURANT GROUP LLC","STRATUS DATA SYSTEMS INC","WAYBRIGHT ACADEMY LLC","RAGING GINGERS LLC","BWB EDUCATION GROUP","MAYNE SPEAKERS INC","SKIN CARE INTERNATIONAL LLC","MKTS LLC","STUTTGART SOUTHWEST GERMAN II","SAN AGUSTIN TRADING COMPANY","HEART MANAGEMENT COMPANY","CONNOLLYS SPORTS GRILL","MATTHEW CLARK","TAMARA VODVARKA","LOS TAQUITOS II INC","TOMAS MARTIN","TRUCK AMP TRAILER PARTS INC","DANIEL DUNKER","JEROME IRBY","MARYVALE ANIMAL HOSPITAL LTD","TRIO FOREST PRODUCTS INC","LIMO BUS COMPLIANCE LLC","COCHISE PETROLEUM EQUIPMENT COMPANY INC","BELAY GEBRESENBET","FLEMING TRAILERS INC","PARK PLAZA LIQUOR AMP DELI LLC","AVA YELLEN","NOVOGN LLC","PERFORMANCE INSULATION INCORPORATED","MATTHEW COLE COGGINS","DAMIANO ENTERPRISES INC DBA","INNOVATIVE HEALTH LLC","DAAIIM BROWN","JEFFERY TRONE","DENISE GAFF PLLC","LATASHA KENT","AMANDA PECKHAM","SHIRLEY PINT","SNVG INC","TA PERFORMANCE PRODUCTS INC","SOUTHEASTERN ARIZONA COMMUNITY UNIQUE SERVICES","REBA HAWLEY","GHC ADVISORS LLC","APRIL KIBLER","KWO LLC","SWEET THANGS BAKERY CAFE","ANGELES ENTERPRISE LLC","THE LAW OFFICE OF MARK F WILLIMANN LLC","FRANK VUTRANO","CARTERDEA LLC","YOGA PURA ENTERPRISES INC","LORI PLOETNER INSURANCE AGENCY INC","CIGAR KING LLC","PRAMUKH LLC","DOUBLED D BUSINESS ENTERPRISES LLC","ATLAS GROUP SERVICES LLC","BLUE PRARIER FAMILY LIMITED PARTNERSHIP","KORALI VILLAFANE","BONNEMA WEALTH MANAGEMENT LLC","PAMPR CUSTOM PAINTING LLC","JAYNE L HORAN","CT DECORATIVE FINISHES LLC","IMPERIO SALON DE RECEPCIONES LLC","ROSETTA HOSKINS","LANCE D GREEN DDS PC","ONE SIMPLE COMPANY LLC","ELIZABETH NOHPAL","AMAZON VALLEY ENGINEERING LLC","CATINA FOSTER","SUPERCHARGED ELECTRIC INC","YUL SAN LLC","UBOSS LLC","1ST AMERICAN COMMERCIAL LENDING","ESTY SPOT LLC","SAMANTHA ALCANTAR","MGR RACING LLC","LORI FAIRCHILDSWARTZ PLLC","MALONEY PLUMBING LLC","MINDY SHANK","SARA LYNN ENTERPRISES LLC","BRYAN UNIVERSITY LLC","SWR ENTERPRISES INC","SOMETHING NEW MEDIA LLC","GREEN CONSTRUCTION LLC","STEVEN PANNHORST","UPFRONT PLANNING AMP ENTITLEMENTS LLC","YUDITH RAMIREZ DIAZ","HABITAT RENOVATIONS LLC","BATES BUILDER OF FINE HOMES LLC","JENNIFER RAGLAND","ABDULLAH ALMAMUN","PINES EDGE II LLC DBA WHISPERING PINES RESORT","LA STALLA","ACEY SYSTEMS LLC","GRAYHAWK AWARDS ENGRAVING LLC","HD SALON LLC","STACY LLOYD","PREFERRED BENEFITS LLC","ABDULLAH ALMAMUN","SONIC DRIVEIN PHOENIX AZ CHANDLER BOULEVARD LLC","HYPERFIT LLC","PAPADAKIS HAIR","CASTLE MARKETING INC","DIETERICH LEE CONSTRUCTION","JEANNA DELCOTTO","TRUE ALLIANCE LLC","SUBTAWEE LLC","MOUNTAIN AC INC","URBAN YOGA LLC","EASTSIDE PERFORMANCE INC","ALLAJAH CORPORAL","PEDRO MOLINA","CAFE ROKA LLC","SQUICKMONS ENGINEERING AUTOMATION","YUMA PRO POOL SERVICE LLC","ANTECH CORPORATION","THE RUSTIC WRENCH","HEIDORN FITNESS GAINEY VILLAGE LLC","JANA MELINDA PHOTOGRAPHY","HERTZBERG HEALTHCARE RESOURCES","MARTEL WILEY","TURBIVILLE INC","ARIZONA CLASSIC EXTERMINATING LLC","AMBER AROS","BROWNS NEW CREDIT BUREAU","RICHARD JOHN IWANSKI","AEROZONE INC","FORCE IMPACT TECHNOLOGIES INC","VARQES GLOM","REDBOARD CIRCUITS","MLSMCS PLLC DBA SMITH FAMILY DENTISTRY","HEATHER KIM","NEXUS SOLUTIONS LLC","JENNIFER HALL","MARYA 225 LLC","CG SAHAJ LLC","SINCERE PLASTIC SURGEONS PLLC","REBOUND PHYSICAL THERAPY INC","SMH ORGANIC FAMILY FARMS LLC","MAMUDIJE LLESHI","ARCADIA STEAKHOUSE LLC","DAN HUTCHENS WOODWORKING INC","DRAGON KOI COACHING INC","MEISHA FOX","DANNY BANTON","JASON N MAYER PLLC","GLOMPMED LLC","ARIZONA RUBBER CO","CHINA CITY BUFFET LLC","ANDERSON AUTO SERVICE INC","CL UPHOLSTERY LLC","JEREMY FRANKLIN","PAPERPLANE LLC","AMY TORRES","MARK BARRON JACOBS DBA MARKSMAN COMPUTERS AND NETWORKING","GABRIEL RATTLEY","DUC M PHAM MD PC","PALMS RESTAURANT AND MARKET","SARAH SALINAS","SOUNDART USA","TUFFELMIRE CONSULTING SERVICES LLC","JANNY SOCARRAS ROQUE","DELEX REALTY LLC","KBM MEDICAL MANAGEMENT LLC","MARTINEE NAILS AND SPA LLC","FRANKLIN FRANKLIN LLC","TIFFANY SILAS","E J SERVICES INC","DONNA DECKER DESIGN INC","SOUTHERN ARIZONA NEUROPSYCHOLOGY ASSOCIATES","ELC GOLF SALES INC","ANDREA NAGY","SALON BLISSFUL LLC","RICKY MELENDREZ","RINCON TRADING COMPANY LLC","CATALINA COFFEE LLC","NATALEE RALLO","DANIEL ROSS","MARIA BERKLEY","HEATHER DO","RONNICA TAYLOR","HALID Z MUZAFFAROV","JL CHUNG MING LLC","ROBERT LOMELI","FLOOR PLAN IMAGING LLC","PREFERRED COATINGS INC","CAMERON REITER","MEYER LAW PC","JOHN SHIRTS LLC","STEVEN IVORY","FRANCIS BERMUDEZ","ERICK GOLLIDAY","LASHAY CALHOUN","EDWARD HUMPHRIES","TAG MEDICAL AND STAFFING PLLC","SIMPSON CATTLE LIMITED PARTNERSHIP","FRANCISCO JAVIER GALARZA CELAYA","EAT DRINK SHOP ACCOUNTING AMP TAX PLLC","FINGER ROCK TECHNOLOGY LLC","COUNTRY STRONG GREENHOUSES LLC","ASTURMEX LLC","INTERMOUNTAIN WEST CIVIL CONSTRUCTORS INC","DELAS CLASSIC CLEANING SERVICE","ALAM ENTERPRISE LLC","OLSEN AUDIO GROUP INC","MATTHEW VILLA","DANITA LIGHTFOOT","PROVISION COFFEE LLC","RODERICK STEVENS","HONG DIEP THI TRAN","SEDONA EYE CARE PC","DAVID G BEDNAR PC","TRITON MEDICAL SOLUTIONS LLC","CAN YOU IMAGINE LLC","ARIZONA VACATION RENTAL SERVICE LLC","CIRCLES OF LIFE HOME CARE","LOW COST SPAY NEUTER CLINIC INC","TIANNA STRAUGHTER","KLIPPER AUTOMOTIVE LLC","DUSTIN SABA","ROXANN BATISTE","PROFESSIONAL PATCHING CONCRETE","GLOBAL CHAMBER LLC","HOMELAND INSURANCE GROUP LLC","AB SHAW INC","FRANEK GROUP LLC","PBC EXPRESS LLC","RHIANNON PRIBBLE","MELISA ANDERSON","THE HAMPTON HOUSE LLC","JOANN REDIC","SARAH CRAWFORD","ONE SOURCE ACCOUNTING SOLUTION LLC","DEDICATED DENTAL SERVICE","CNK VENTURES LLC","TERRY EDWARDS","JOSEPHINE GARCIA","WESLEY G WILSON MD PC","RIO RICO MARKETPLACE LLC","TONYS AUTO GLASS INC","ALEESIA MCCOWIN","HEATHER MCCLOUD","KANTO RESTAURANT LLC","PANDA MEDICAL ASSOCIATES LLC"],["579 W 6th St","7878 N 16th St Ste 250","945 4th St W","947 S 48th Street Suite 127","45 S Willow Creek St","122 S Arizona Ave Apt C","1 N 1st Street Suite 612","2330 W Glendale Ave","2221 N Gila Verde","3116 W Thomas Rd Ste 605","1130 S 5th Street","3809 W Griswold Rd","6435 S 26th St","21 E 6th St Unit 319","1413 S 237th Ln","35323 N 94th Street","9220 E Mountain View Rd Suite 207","1930 E Rose Ln","3443 N Central Ave Ste 700","10501 Seven Way E","3200 Shangri Dr","8660 E Nora St","963 N Gilbert Rd Suite 11","699 W Magee Rd Apt 16201","905 S Dorsey Ln Apt 111","118 S Madison Av","4520 N Central Ave Ste 600","5812 N 12th St Unit 40","1010 N 2nd Ave","9375 East Shea Blvd Suite 100","18517 N 20th Pl","19568 N 84th St","14362 N Frank Lloyd Wright Blvd","10492 E Raintree Dr","52 W Cortez De Sedona Az 86351","5333 N Camino Real","13440 N 44th St Apt 3116","3580 S Greythorne Way","4263 E Reins Rd","1844 E 6th St","120 S Avenida Del Convento Ste 110","1331 N 7th Street Suite 375","2605 W Carefree Hwy","7021 W Mcdowell Rd Apt 139","1712 E Guadalupe Rd Ste 107","7000 N 16th St 140","1841 E 2nd Ave","2702 N Flowing Wells Dr","4520 E Baseline Rd Apt 2157","30 W Carter Dr","4801 N 75th Ave","959 S Center St","2132 W Angelo Way","333 Black Canyon Hwy","1652 N 52nd St Apt 6","17033 N 63rd Ave","402 W Goodwin St","3940 N Miller Rd Ste G","9903 E Rosemary Ln","245 S Plumer Ave Ste 11","7844 South Jentilly Ln","5602 E Mckellips Rd","1435 N Hayden Rd","4715 N Black Canyon Hwy Apt 2097","2575 Tanglewood Ln","2087 E Shade Tree Ln","4748 W Sierra Vista Dr","1535 N Scottsdale Rd","1121 N Clark Rd","317 E Port Au Prince Ln","16167 N 81st St","1124 Thatcher Blvd Suite 102","6022 N Cave Creek Rd","14850 N Scottsdale Rd Ste 375","825 South Dewey Road","3025 S 46th St","5735 E Mckellips Rd Ste 107","21001 N Tatum Blvd 1630 Ste 607","2625 E Hedrick Dr","28319 N 138th St","5130 East Presidio Road","15440 N 7th Street","8282 W Cactus Rd Ste 142","7830 E Gelding Drive","3399 N Scottsdale Rd","2004 E Irvington Rd","3440 W Lewis Ave Ste E","1818 S Seton Ave","1518 W Lama Dr","7373 E Doubletree Ranch Rd Ste 200","6615 N Placita De Santas","8549 E San Miguel Ave","7205 E Natal Ave","2647 W Glendale Ave Ste 5","8521 E Mcdowell Rd","1225 Willow Creek Rd","Ste 101 4106 E Presidio St","773 E Brenda Dr","2 S 35th Ave 6357","10602 W Rosewood Dr10602 W Rosewood Dr","19933 Mariposa Dr","2450 W Happy Valley Rd","3370 North Hayden Road","26306 N 50th Dr","823 E Rockwell Dr","15380 W Young St","14038 S 35th Cir","2560 Plaza Hermosa","9119 N 7th Street Suite 201","3040 N 2nd St","39226 N 29th Ave","350 W Washington St Ste 100","12235 W Morning Vista Dr","315 W Elliot Rd","28809 N 51st St","1576 Gettysvue Way","9562 E Knoll Cir","608 N 9th St Apt 20","8101 Mcdowell Rd","8347 E Kalil Dr","3240 E Camelback Rd 21","2105 W Del Oro Cir","237 E White Mountain Blvd","4855 E Warner Rd Ste 29","6979 W Kings Ave","15979 N 76th St Ste B","49 N Coronado Dr Ste B","6901 E Chauncey Ln Apt 1171","10749 N 121st Pl","2105 W Del Oro Cir","4302 E Chandler Blvd","14811 N 73rd St","1712 E Guadalupe Rd","4500 E Main St Ste 3","19208 N 33rd Ave","49237 W Papago Rd Ste 7","5235 E Southern Ave Suite D106302","4040 S Arizona Ave Ste 7","1107 E Calle Monte Vista","1 E Lexington Ave","4161 E Hampton Cir","911 E Camelback Rd","6241 E 34th St","35 Main St","3620 E Broadway Rd Suite 9","4815 E County 12th St","4261 S Country Club Rd","2307 W Houston Ave","8777 N Scottsdale Rd Suite 307","6216 W Cortez St","1941 W Guadalupe Rd 117","1207 E Pecan Rd","12068 Morning Dr W","3191 S White Mountain Rd Ste 5","4702 E 26th St","1700 S 1st Ave 211","2301 S Stearman Dr","220 S Stearman Dr","1138 W Redondo Dr","6445 S Maple Ave Apt 217","2309 W Yahoo Trl","1475 S 20th Ave","21700 W Pima St","1 N 1st Street Suite 600","25616 W Nancy Ln","32704 N 70th St","151 N27 Th Ave","7930 E Thompson Peak Pkwy Ste","349 W Gleneagles Dr","17534 W Rose Ln","14394","5101 N 44th St","8550 N 91st Ave 10","155 Ridge Trail Dr","2024 West Kathleen Road","2155 E Liberty Ln Apt 269","5650 N Camino De La Noche","5812 E Little Wells Pass","2939 31st Ave","2235 S Power Rd 85208","22002 N 23rd Ave","1900 N Mcclintock Dr Ste 11","14723 W Orange Dr","500 S Mill Ave 599","3307 East Geronimo Court","6643 E Julia St","250 E Ray Rd Apt 3072","15215 S 48th St Ste 113","3502 W Greenway Rd Ste 1","7416 W Fawn Dr","6633 East Greenway Parkway","382 Butterfield Rd 40","4825 North Limonero Circle","17224 N 43rd Ave Suite 102","3408 E Cherokee St","1525 S Higley Rd Ste 103","371 Garden St C","1617 S 3rd Ave","1850 W Orange Grove Rd","15651 N 83rd Way Ste 1","403 W Cool Dr Ste 107","33015 N 53rd Way","3014 N Hayden Rd Ste 122","8378 W Thunderbird Rd Ste 105","8220 N Hayden Rd Ste C110","8610 N Morning View Dr","9665 N Thornydale Rd Ste 110","1335 W Palo Verde Dr","1311 N Avenida Kuehn","1289 W Falls Canyon Dr","7705 N Oracle Rd Ste 109","3234 W Pecan Rd","3141 W Echo Lane","Ste 11 4312 W Cactus Rd","2233 N 65th Dr","60 E Rio Salado Pkwy 900","4540 East Mazatzal Drive","15717 W Watson Ln","9169 E Carol Way","4833 E Cooper St","1408 N Central Ave Apt 166","4802 N 12th St Apt 1095","8135 N 35th Ave","6610 N 93rd Ave Apt 2117","1851 E Renegade Trl","2601 N 3rd St Ste 106","501 S Tegner St","6671 S Avenida Don Fernando","12506 N Granville Canyon Way","5030 N Post Trail","5545 N Star","4700 N Central Ave","1564 N Alma School Road Suite 200","608 N Palm Cir","3556 W Baseline Rd Ste 154","7845 Evans Rd","4128 N 22nd St Apt 6","638 W 6th Ave","2461 E Derringer Way","164 Park Place","2972 W Ina Rd","95 Soldiers Pass Rd Ste A1","121 E Birch Ave Ste 409","9280 S Kyrene Rd Ste 112","1725 W Williams Dr Ste 11","5340 E Carmel Ave","1529 E Laredo St","1707 E Andy Devine Ave","2433 W Mai","6621 N Thornydale Rd","5029 N 23rd Ave Apt 4","9770 E Creek St","22205 N 88th Ave","1475 N Scottsdale Rd Ste 200","1220 Alma School Rd","16229 S Greenfield Rd","7727 S Apricot Dr","1926 W Bonanza Ln","7815 W Monterey Way","5244 S 13th Ave","3638 W Denton Lane","125 N 108th Ave","4225 N 21st St Unit 26","1759 W Canary Way","4001 S Mission Rd","1816 W Baseline Rd","5020 W Thunderbird Rd Apt 265","1655 W Ajo Way Unit 635","10540 E Cortez Dr","1611 Duelo Court","417 W Irvington Rd","2022 N Nevada St","11338 E 26th Pl","1633 S Highway 92","6760 West Thunderbird Road Suite E100"],["Tempe","Phoenix","Benson","Tempe","Chandler","Prescott","Phoenix","Phoenix","Mesa","Phoenix","Cottonwood","Phoenix","Phoenix","Tempe","Buckeye","Scottsdale","Scottsdale","Phoenix","Phoenix","Tucson","Kingman","Mesa","Gilbert","Tucson","Tempe","Yuma","Phoenix","Phoenix","Phoenix","Scottsdale","Phoenix","Scottsdale","Scottsdale","Scottsdale","Sedona","Tucson","Phoenix","Chandler","Gilbert","Tempe","Tucson","Phoenix","Phoenix","Phoenix","Tempe","Phoenix","Mesa","Tucson","Phoenix","Tempe","Phoenix","Mesa","Queen Creek","Phoenix","Phoenix","Glendale","Prescott","Scottsdale","Scottsdale","Tucson","Tempe","Mesa","Scottsdale","Phoenix","Lake Havasu City","Cottonwood","Glendale","Tempe","Show Low","Phoenix","Scottsdale","Safford","Cave Creek","Scottsdale","DeweyHumboldt","Phoenix","Mesa","Phoenix","Tucson","Scottsdale","Scottsdale","Phoenix","Peoria","Naco","Scottsdale","Tucson","Phoenix","Gilbert","Tucson","Scottsdale","Tucson","Scottsdale","Mesa","Phoenix","Scottsdale","Prescott","Mesa","Casa Grande","Phoenix","Avondale","Litchfield Park","Phoenix","Scottsdale","Phoenix","Chandler","Surprise","Phoenix","Lake Havasu","Phoenix","Phoenix","Phoenix","Tempe","Peoria","Tempe","Cave Creek","Prescott","Mesa","Phoenix","Scottsdale","Scottsdale","Phoenix","Mesa","Pinetop","Phoenix","Peoria","Scottsdale","Sierra Vista","Phoenix","Scottsdale","Mesa","Phoenix","Scottsdale","Tempe","Mesa","Phoenix","Maricopa","Mesa","Chandler","Tempe","Phoenix","Mesa","Phoenix","Tucson","Bisbee","Phoenix","Yuma","Tucson","Apache Junction","Scottsdale","Glendale","Mesa","Phoenix","Peoria","Show Low","Tucson","Yuma","Chandler","Chandler","Gilbert","Tempe","Phoenix","Safford","Buckeye","Phoenix","Buckeye","Scottsdale","Phoenix","Scottsdale","Phoenix","Waddell","Surprise","Phoenix","Peoria","Sedona","Phoenix","Phoenix","Tucson","Cave Creek","Phoenix","Mesa","Phoenix","Tempe","Litchfield Park","Tempe","Gilbert","Tucson","Chandler","Phoenix","Phoenix","Laveen","Scottsdale","Chino Valley","Phoenix","Glendale","Phoenix","Gilbert","Prescott","Phoenix","Tucson","Scottsdale","Tucson","Cave Creek","Scottsdale","Peoria","Scottsdale","Tucson","Tucson","Wickenburg","Tucson","Casa Grande","Oro Valley","Phoenix","Phoenix","Glendale","Phoenix","Tempe","Cave Creek","Surprise","Scottsdale","Tucson","Avondale","Phoenix","Phoenix","Glendale","San Tan Valley","Phoenix","Wickenburg","Tucson","Oro Valley","Tucson","Tucson","Phoenix","Mesa","Buckeye","Laveen","Scottsdale","Phoenix","Mesa","Chandler","Sierra Vista","Tucson","Sedona","Flagstaff","Tempe","Phoenix","Mesa","Chandler","Kingman","Mesa","Tucson","Phoenix","Tucson","Glendale","Scottsdale","Mesa","Gilbert","Tempe","Phoenix","Phoenix","Phoenix","Phoenix","Avondale","Phoenix","Chandler","Tucson","Mesa","Glendale","Tucson","Scottsdale","Rio Rico","Tucson","Chandler","Yuma","Sierra Vista","Peoria"],["2020-04-29","2020-04-15","2020-04-15","2020-04-28","2020-05-01","2020-05-28","2020-05-01","2020-05-01","2021-03-31","2020-05-01","2020-05-01","2020-04-30","2021-01-22","2020-05-01","2020-05-01","2020-04-30","2020-04-06","2020-05-01","2020-04-30","2020-04-30","2020-05-01","2020-05-01","2020-05-01","2020-06-17","2021-04-07","2020-05-27","2021-01-27","2021-03-15","2021-04-22","2020-04-27","2020-05-01","2020-05-01","2021-01-23","2021-01-30","2020-06-26","2020-04-30","2021-03-03","2020-05-10","2020-05-11","2020-08-05","2021-04-01","2020-04-15","2021-01-29","2021-05-22","2021-03-26","2020-05-01","2021-03-25","2020-05-01","2021-05-20","2021-04-24","2020-05-01","2020-04-09","2021-02-22","2020-04-07","2021-03-30","2021-01-20","2020-05-01","2021-01-23","2020-04-29","2021-02-10","2020-04-28","2020-05-01","2020-04-15","2021-05-12","2021-03-31","2021-02-04","2021-04-04","2021-03-29","2020-05-01","2020-07-22","2020-05-01","2020-05-01","2021-04-28","2021-03-05","2021-04-23","2020-04-28","2021-01-29","2020-04-13","2021-03-12","2021-02-02","2020-05-01","2020-04-29","2020-05-03","2020-04-06","2021-01-22","2020-05-04","2021-02-20","2021-01-22","2021-04-28","2020-04-15","2020-05-01","2020-07-13","2021-01-26","2020-05-29","2021-02-25","2020-05-06","2020-04-30","2021-04-24","2021-01-26","2021-03-17","2020-04-16","2020-04-10","2020-04-30","2021-03-16","2020-04-30","2021-03-30","2021-01-30","2020-05-01","2020-04-14","2021-04-16","2020-05-01","2020-04-15","2020-05-12","2021-02-16","2020-05-01","2021-05-12","2020-05-01","2021-04-26","2020-04-12","2021-04-15","2020-04-27","2021-05-22","2020-04-12","2021-02-09","2021-02-20","2020-07-15","2021-02-06","2021-01-20","2020-04-27","2021-04-24","2020-04-15","2020-04-28","2021-03-05","2020-05-01","2021-02-17","2021-01-23","2020-04-28","2021-03-06","2020-05-01","2021-02-05","2021-04-28","2021-04-26","2021-03-31","2021-03-12","2020-04-28","2020-04-30","2020-05-12","2020-05-13","2020-05-01","2020-08-05","2020-05-01","2021-04-26","2021-02-20","2020-05-01","2021-04-28","2020-07-29","2021-02-06","2020-04-06","2021-02-02","2021-04-05","2020-06-05","2020-05-01","2021-01-25","2020-05-01","2021-04-16","2021-03-04","2020-05-02","2020-05-01","2021-01-22","2020-05-11","2021-02-03","2021-01-25","2020-05-01","2020-05-01","2020-05-20","2021-04-24","2020-06-25","2020-04-29","2020-05-01","2021-01-22","2020-06-25","2021-02-13","2021-05-21","2020-05-01","2020-05-20","2020-04-15","2021-04-11","2021-02-23","2021-03-31","2021-04-22","2020-06-16","2020-05-01","2020-05-28","2020-06-19","2021-01-25","2020-05-04","2020-06-12","2021-04-13","2021-03-25","2020-04-27","2021-04-01","2020-04-04","2021-02-23","2021-04-21","2021-02-27","2021-05-27","2021-03-27","2021-02-09","2021-03-20","2021-04-11","2021-03-26","2021-04-24","2020-08-05","2020-06-26","2021-05-20","2020-04-09","2020-05-02","2021-05-12","2020-04-30","2021-04-07","2021-03-26","2021-05-13","2021-04-26","2021-03-20","2021-03-26","2020-04-30","2020-06-03","2021-05-22","2020-05-01","2020-06-26","2021-05-26","2020-06-04","2020-05-01","2021-05-05","2021-02-12","2020-05-01","2021-04-17","2021-03-04","2020-04-14","2020-04-28","2020-05-07","2020-05-01","2020-05-01","2021-01-30","2021-01-28","2021-02-08","2021-04-05","2020-04-05","2021-04-07","2020-04-28","2021-04-22","2021-04-28","2021-03-06","2020-05-06","2020-05-04","2020-05-01","2020-04-27","2020-07-31","2021-02-13","2021-05-20","2020-05-01","2021-05-18","2021-02-22","2021-01-27","2021-04-28","2020-05-01","2021-04-03","2020-06-26","2021-03-02","2020-04-29","2020-05-01","2021-05-22","2021-03-31","2020-04-09","2020-04-16"],[41600,14600,40156,13098.22,32387,10000,152200,28500,8333.32,54340,14400,44155,78975.27,33137,2150,14400,72000,3125,44900,50021,77142,33624,5065,10592,20207,32274.6,1624490,3600,8020,35800,897,280330,211200,19012,3100,3595,3837,6250,11805,55000,10902,52900,130342,20833,1447.5,86645,3529.44,90000,20832,20833,62202,290000,28615,65300,4977,133597.5,411070,8207,10195,63792,7500,50000,1939550,20833,20832,15582,19500,13541,60000,15717,111945,91900,10800,20800,20832,65700,31552,90850,18800,15254,20862,25435,21097,78636,56308,22850,311300,46620,20781,20800,16100,19477,30872,1895,20000,46600,52083.32,5087,75490,3613,30725,211000,19500,10312,12210,1109,18797,16800,73300,3238,11041,1314810,23025,8847,11660,29166,8332,20775,281460,20833.32,5351.67,16820,43322,73377,38900,23775,5455,20800,9895,16820,81072.5,17400,2445,78695,32382,140600,32500,35630,49581,11445,7741.11,4166,3957,52062,26982,28017,121255,37005,106127,8892,7625,20833,27050,20922,18110,70200,4700,875700,120000,20833,80912.5,57350,4126,20833,16041,8333,12750,165687,119000,65500,20485,533900,92070,14612,9402,1041,4200,12500,115272,84906,31982.5,24880,29165,18247,5062,11000,20832,45040,37736,20575,19290,25575,1165.74,70720,68000,8440,6012,18146,9102,33155,146106,12500,2691.05,64221,10053.13,12000,37374.65,1841,6752,3635,13863,5665,3050,10037.5,20833,42100,25130,7442,78400,18317,19627,20832,6250,20832,20833.32,1757,13000,2475,8958,21680,5842,112500,200600,12825,10000,55612,20400,16770,36500,2833.34,20800,146610,24817,378300,20833.32,16718,14112,176200,20832,35335.82,2495,4632,163564,10813,15655,114500,41200,13728,2397,20832,59753,20507,12360.42,2708,234247,64175,8332,2594,41632,4502.4,119145,20579,11910,118100,50818],[41971.55,14737.48,40402.51,13235.39,32675.3,10103.29,142940.22,23618.47,8371.9,54711.29,14586.59,44616.57,79313.11,21062.21,2174.62,14556.8,72628,3157.58,45359.58,50454.52,78228.42,34044.99,4090.39,10713.59,20303.54,32652.17,1632657.57,3634.03,0,36273.74,904.54,282872.17,213006.93,19124.49,3121.53,0,3881.78,6300.68,11884.89,55414.03,10978.76,53212.99,131252.61,0,1457.1,87612.05,3563.77,90833,21046.69,20900.92,62698.13,293043.01,28778.07,65784.31,4999.26,134523.53,415411.81,8240.51,10301.48,64226.14,7586.25,50406.97,1957921.85,20937.74,0,15661.4,19614.86,0,60522.74,15945.22,112892.7,77108.85,10895.87,21068.09,20907.91,66473.8,31831.21,91804.63,18930.83,15317.94,20992.24,25743.7,21310.86,79635.65,56670.87,23079.13,313530.98,46814.25,0,20924.8,16238.06,19697.57,31058.92,0,0,46944.32,52734,5112.29,76563.41,3662,31024.67,213127.34,19679.83,10437.72,12322.4,1115.38,18947.44,16923.35,74049.29,3249.53,11135.68,433980.11,23203.65,8917.78,11768.87,29313.83,6424.81,20854.12,283441.79,21023.71,5388.77,16852.72,43721.79,73783.09,39156.09,23945.86,5505.37,20941.56,9982.56,16867,81932.77,17586.57,0,79624.25,32500.88,141142.87,32691.44,35905.28,50196.35,0,7777.67,4197.05,3977.99,52290.22,27346.44,28391.58,122650.26,37387.22,0,8935.97,7726.32,0,27235.59,21160.07,0,70644.6,4713.39,886159.75,120456.67,0,81612.93,57871.44,4151.66,21020.78,16122.74,8368.84,12862.13,167639.99,120049.81,66189.57,20586.29,537607.64,93303.49,14809.29,9504.01,0,4235.23,12614.38,116551.05,85750.41,32307.25,25006.1,29367.53,18409.43,5124.27,11119.78,20909.54,45536.57,37981.03,20775.03,19584.37,25923.24,1175.32,71409.76,68258.78,8546.67,6041.65,0,9215.23,33481.02,147098.72,12622.22,2718.4,64481.4,10130.53,12033.67,37757.61,1849.42,6769.02,3661.35,13924.91,5696,0,6064.13,0,42545.56,25393,7470.11,79076.6,18569.93,19774.75,20971.46,0,20923.43,20912.66,0,13150.3,0,3165.41,21843.34,5862.28,113275,201962.98,12857.06,10084.66,56133.08,20556.97,16861.3,36872,2855.54,20953.29,148146.55,25009.42,0,20971.63,16780.75,14187.39,178363.34,20908.38,35881.56,2508.72,4657.38,0,10954.47,15814.55,115634.57,31400.2,13926.29,2410.92,20919.96,60291.6,0,12489.78,2719.66,236627.98,64570.6,0,2614.54,41827.04,3524.57,120244.51,0,11978.15,108667.52,51509.96]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>borrower_name<\/th>\n      <th>borrower_address<\/th>\n      <th>borrower_city<\/th>\n      <th>date_approved<\/th>\n      <th>amount<\/th>\n      <th>forgiveness_amount<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"scrollX":true,"pageLength":5,"columnDefs":[{"targets":5,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatCurrency(data, \"$\", 0, 3, \",\", \".\", true, null);\n  }"},{"targets":6,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatCurrency(data, \"$\", 0, 3, \",\", \".\", true, null);\n  }"},{"className":"dt-right","targets":[5,6]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[5,10,25,50,100]}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="interactive-tables-with-reactable" class="level2" data-number="24.1">
+<h2 data-number="24.1" class="anchored" data-anchor-id="interactive-tables-with-reactable"><span class="header-section-number">24.1</span> Interactive tables with <code>reactable</code></h2>
+<p>The <code>reactable</code> library is highly customizable, but it can involve a lot of typing to get a good table.</p>
+<p>The basic idea is that you select the columns you want to display, then define their format and other details one by one. There are several useful defaults for the whole table, such as the number format. One way to simplify the typing is to just create the names of the columns you want to see in a <code>select</code> statement, then put a default number format for the dollar amounts. A <a href="https://glin.github.io/reactable/reference/colDef.html">full list of options</a> is available on the help page for reactable.</p>
+<div class="cell" data-code-annotations="hover">
+<div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode r code-annotation-code code-with-copy"><code class="sourceCode r"><span id="annotated-cell-2-1"><a href="#annotated-cell-2-1" aria-hidden="true" tabindex="-1"></a>ppp_orig <span class="sc">|&gt;</span> </span>
+<span id="annotated-cell-2-2"><a href="#annotated-cell-2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span> (</span>
+<span id="annotated-cell-2-3"><a href="#annotated-cell-2-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">Borrower =</span> borrower_name, </span>
+<span id="annotated-cell-2-4"><a href="#annotated-cell-2-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">City =</span> borrower_city, </span>
+<span id="annotated-cell-2-5"><a href="#annotated-cell-2-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Zip code</span><span class="st">`</span> <span class="ot">=</span> borrower_zip, </span>
+<span id="annotated-cell-2-6"><a href="#annotated-cell-2-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Loan amount</span><span class="st">`</span> <span class="ot">=</span> amount, </span>
+<span id="annotated-cell-2-7"><a href="#annotated-cell-2-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Amt forgiven</span><span class="st">`</span> <span class="ot">=</span> forgiveness_amount</span>
+<span id="annotated-cell-2-8"><a href="#annotated-cell-2-8" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
+<span id="annotated-cell-2-9"><a href="#annotated-cell-2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">reactable</span> (   </span>
+<span id="annotated-cell-2-10"><a href="#annotated-cell-2-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">sortable =</span> <span class="cn">TRUE</span>,</span>
+<span id="annotated-cell-2-11"><a href="#annotated-cell-2-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">filterable =</span> <span class="cn">TRUE</span>,</span>
+<span id="annotated-cell-2-12"><a href="#annotated-cell-2-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">searchable =</span> <span class="cn">TRUE</span>,</span>
+<span id="annotated-cell-2-13"><a href="#annotated-cell-2-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">defaultPageSize =</span> <span class="dv">5</span>,</span>
+<span id="annotated-cell-2-14"><a href="#annotated-cell-2-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">compact =</span> <span class="cn">TRUE</span> ,</span>
+<span id="annotated-cell-2-15"><a href="#annotated-cell-2-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">striped=</span><span class="cn">TRUE</span>,</span>
+<span id="annotated-cell-2-16"><a href="#annotated-cell-2-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">defaultColDef =</span></span>
+<span id="annotated-cell-2-17"><a href="#annotated-cell-2-17" aria-hidden="true" tabindex="-1"></a>        <span class="fu">colDef</span> ( </span>
+<span id="annotated-cell-2-18"><a href="#annotated-cell-2-18" aria-hidden="true" tabindex="-1"></a>                <span class="at">format =</span> </span>
+<span id="annotated-cell-2-19"><a href="#annotated-cell-2-19" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">colFormat</span> ( <span class="at">currency=</span><span class="st">"USD"</span>, <span class="at">separators =</span> <span class="cn">TRUE</span>, <span class="at">digits =</span> <span class="dv">0</span>)</span>
+<span id="annotated-cell-2-20"><a href="#annotated-cell-2-20" aria-hidden="true" tabindex="-1"></a>                )</span>
+<span id="annotated-cell-2-21"><a href="#annotated-cell-2-21" aria-hidden="true" tabindex="-1"></a>     )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div class="reactable html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-21fd9431ea24f9c30f1d" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-21fd9431ea24f9c30f1d">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Borrower":["TRUE PARTNERS LLC","IKMD PLLC","TRAILS WEST INC","DIVERSIFIED CONSTRUCTION LLC","MAMA THAI LLC","MYKEY VENTURES LLC","ONE MISSION INC","TRANSMISSION FACTORY","DESERT ENERGETICS LLC","AZ EXPRESS GLASS AND MIRROR LLC","BOMBAZ ENTERPRISES LLC","TORRO MEDIA LLC","SOUTH MOUNTAIN XERISCAPE INC","URBAN REALTY AMP DEVELOPMENT LLC","MORE LIFE COUNSELING SERVICES LLC","CARRIE BLACK MONTANO","JOSEPH S MAZEL DMD","OPEN SPACE LLC","PAUL F MARISCHEN DDS LTD","MELISSA LAZZERONI LLC","RIGOBIGO INC","MRH COMMISSION LLC","SKIN BY JESSICA LLC","BRIAN MATTHEW PENNY","KIEARRA EADDY","ASHLEY SIMMS","NATIVE AMERICAN CONNECTIONS INC","OHECK VENTURE LLC","LYECE RAMSEY","94 HUNDRED CORPORATE CENTER LLLP","HI TEA LLC","CAREFREE RESTAURANT GROUP LLC","STRATUS DATA SYSTEMS INC","WAYBRIGHT ACADEMY LLC","RAGING GINGERS LLC","BWB EDUCATION GROUP","MAYNE SPEAKERS INC","SKIN CARE INTERNATIONAL LLC","MKTS LLC","STUTTGART SOUTHWEST GERMAN II","SAN AGUSTIN TRADING COMPANY","HEART MANAGEMENT COMPANY","CONNOLLYS SPORTS GRILL","MATTHEW CLARK","TAMARA VODVARKA","LOS TAQUITOS II INC","TOMAS MARTIN","TRUCK AMP TRAILER PARTS INC","DANIEL DUNKER","JEROME IRBY","MARYVALE ANIMAL HOSPITAL LTD","TRIO FOREST PRODUCTS INC","LIMO BUS COMPLIANCE LLC","COCHISE PETROLEUM EQUIPMENT COMPANY INC","BELAY GEBRESENBET","FLEMING TRAILERS INC","PARK PLAZA LIQUOR AMP DELI LLC","AVA YELLEN","NOVOGN LLC","PERFORMANCE INSULATION INCORPORATED","MATTHEW COLE COGGINS","DAMIANO ENTERPRISES INC DBA","INNOVATIVE HEALTH LLC","DAAIIM BROWN","JEFFERY TRONE","DENISE GAFF PLLC","LATASHA KENT","AMANDA PECKHAM","SHIRLEY PINT","SNVG INC","TA PERFORMANCE PRODUCTS INC","SOUTHEASTERN ARIZONA COMMUNITY UNIQUE SERVICES","REBA HAWLEY","GHC ADVISORS LLC","APRIL KIBLER","KWO LLC","SWEET THANGS BAKERY CAFE","ANGELES ENTERPRISE LLC","THE LAW OFFICE OF MARK F WILLIMANN LLC","FRANK VUTRANO","CARTERDEA LLC","YOGA PURA ENTERPRISES INC","LORI PLOETNER INSURANCE AGENCY INC","CIGAR KING LLC","PRAMUKH LLC","DOUBLED D BUSINESS ENTERPRISES LLC","ATLAS GROUP SERVICES LLC","BLUE PRARIER FAMILY LIMITED PARTNERSHIP","KORALI VILLAFANE","BONNEMA WEALTH MANAGEMENT LLC","PAMPR CUSTOM PAINTING LLC","JAYNE L HORAN","CT DECORATIVE FINISHES LLC","IMPERIO SALON DE RECEPCIONES LLC","ROSETTA HOSKINS","LANCE D GREEN DDS PC","ONE SIMPLE COMPANY LLC","ELIZABETH NOHPAL","AMAZON VALLEY ENGINEERING LLC","CATINA FOSTER","SUPERCHARGED ELECTRIC INC","YUL SAN LLC","UBOSS LLC","1ST AMERICAN COMMERCIAL LENDING","ESTY SPOT LLC","SAMANTHA ALCANTAR","MGR RACING LLC","LORI FAIRCHILDSWARTZ PLLC","MALONEY PLUMBING LLC","MINDY SHANK","SARA LYNN ENTERPRISES LLC","BRYAN UNIVERSITY LLC","SWR ENTERPRISES INC","SOMETHING NEW MEDIA LLC","GREEN CONSTRUCTION LLC","STEVEN PANNHORST","UPFRONT PLANNING AMP ENTITLEMENTS LLC","YUDITH RAMIREZ DIAZ","HABITAT RENOVATIONS LLC","BATES BUILDER OF FINE HOMES LLC","JENNIFER RAGLAND","ABDULLAH ALMAMUN","PINES EDGE II LLC DBA WHISPERING PINES RESORT","LA STALLA","ACEY SYSTEMS LLC","GRAYHAWK AWARDS ENGRAVING LLC","HD SALON LLC","STACY LLOYD","PREFERRED BENEFITS LLC","ABDULLAH ALMAMUN","SONIC DRIVEIN PHOENIX AZ CHANDLER BOULEVARD LLC","HYPERFIT LLC","PAPADAKIS HAIR","CASTLE MARKETING INC","DIETERICH LEE CONSTRUCTION","JEANNA DELCOTTO","TRUE ALLIANCE LLC","SUBTAWEE LLC","MOUNTAIN AC INC","URBAN YOGA LLC","EASTSIDE PERFORMANCE INC","ALLAJAH CORPORAL","PEDRO MOLINA","CAFE ROKA LLC","SQUICKMONS ENGINEERING AUTOMATION","YUMA PRO POOL SERVICE LLC","ANTECH CORPORATION","THE RUSTIC WRENCH","HEIDORN FITNESS GAINEY VILLAGE LLC","JANA MELINDA PHOTOGRAPHY","HERTZBERG HEALTHCARE RESOURCES","MARTEL WILEY","TURBIVILLE INC","ARIZONA CLASSIC EXTERMINATING LLC","AMBER AROS","BROWNS NEW CREDIT BUREAU","RICHARD JOHN IWANSKI","AEROZONE INC","FORCE IMPACT TECHNOLOGIES INC","VARQES GLOM","REDBOARD CIRCUITS","MLSMCS PLLC DBA SMITH FAMILY DENTISTRY","HEATHER KIM","NEXUS SOLUTIONS LLC","JENNIFER HALL","MARYA 225 LLC","CG SAHAJ LLC","SINCERE PLASTIC SURGEONS PLLC","REBOUND PHYSICAL THERAPY INC","SMH ORGANIC FAMILY FARMS LLC","MAMUDIJE LLESHI","ARCADIA STEAKHOUSE LLC","DAN HUTCHENS WOODWORKING INC","DRAGON KOI COACHING INC","MEISHA FOX","DANNY BANTON","JASON N MAYER PLLC","GLOMPMED LLC","ARIZONA RUBBER CO","CHINA CITY BUFFET LLC","ANDERSON AUTO SERVICE INC","CL UPHOLSTERY LLC","JEREMY FRANKLIN","PAPERPLANE LLC","AMY TORRES","MARK BARRON JACOBS DBA MARKSMAN COMPUTERS AND NETWORKING","GABRIEL RATTLEY","DUC M PHAM MD PC","PALMS RESTAURANT AND MARKET","SARAH SALINAS","SOUNDART USA","TUFFELMIRE CONSULTING SERVICES LLC","JANNY SOCARRAS ROQUE","DELEX REALTY LLC","KBM MEDICAL MANAGEMENT LLC","MARTINEE NAILS AND SPA LLC","FRANKLIN FRANKLIN LLC","TIFFANY SILAS","E J SERVICES INC","DONNA DECKER DESIGN INC","SOUTHERN ARIZONA NEUROPSYCHOLOGY ASSOCIATES","ELC GOLF SALES INC","ANDREA NAGY","SALON BLISSFUL LLC","RICKY MELENDREZ","RINCON TRADING COMPANY LLC","CATALINA COFFEE LLC","NATALEE RALLO","DANIEL ROSS","MARIA BERKLEY","HEATHER DO","RONNICA TAYLOR","HALID Z MUZAFFAROV","JL CHUNG MING LLC","ROBERT LOMELI","FLOOR PLAN IMAGING LLC","PREFERRED COATINGS INC","CAMERON REITER","MEYER LAW PC","JOHN SHIRTS LLC","STEVEN IVORY","FRANCIS BERMUDEZ","ERICK GOLLIDAY","LASHAY CALHOUN","EDWARD HUMPHRIES","TAG MEDICAL AND STAFFING PLLC","SIMPSON CATTLE LIMITED PARTNERSHIP","FRANCISCO JAVIER GALARZA CELAYA","EAT DRINK SHOP ACCOUNTING AMP TAX PLLC","FINGER ROCK TECHNOLOGY LLC","COUNTRY STRONG GREENHOUSES LLC","ASTURMEX LLC","INTERMOUNTAIN WEST CIVIL CONSTRUCTORS INC","DELAS CLASSIC CLEANING SERVICE","ALAM ENTERPRISE LLC","OLSEN AUDIO GROUP INC","MATTHEW VILLA","DANITA LIGHTFOOT","PROVISION COFFEE LLC","RODERICK STEVENS","HONG DIEP THI TRAN","SEDONA EYE CARE PC","DAVID G BEDNAR PC","TRITON MEDICAL SOLUTIONS LLC","CAN YOU IMAGINE LLC","ARIZONA VACATION RENTAL SERVICE LLC","CIRCLES OF LIFE HOME CARE","LOW COST SPAY NEUTER CLINIC INC","TIANNA STRAUGHTER","KLIPPER AUTOMOTIVE LLC","DUSTIN SABA","ROXANN BATISTE","PROFESSIONAL PATCHING CONCRETE","GLOBAL CHAMBER LLC","HOMELAND INSURANCE GROUP LLC","AB SHAW INC","FRANEK GROUP LLC","PBC EXPRESS LLC","RHIANNON PRIBBLE","MELISA ANDERSON","THE HAMPTON HOUSE LLC","JOANN REDIC","SARAH CRAWFORD","ONE SOURCE ACCOUNTING SOLUTION LLC","DEDICATED DENTAL SERVICE","CNK VENTURES LLC","TERRY EDWARDS","JOSEPHINE GARCIA","WESLEY G WILSON MD PC","RIO RICO MARKETPLACE LLC","TONYS AUTO GLASS INC","ALEESIA MCCOWIN","HEATHER MCCLOUD","KANTO RESTAURANT LLC","PANDA MEDICAL ASSOCIATES LLC"],"City":["Tempe","Phoenix","Benson","Tempe","Chandler","Prescott","Phoenix","Phoenix","Mesa","Phoenix","Cottonwood","Phoenix","Phoenix","Tempe","Buckeye","Scottsdale","Scottsdale","Phoenix","Phoenix","Tucson","Kingman","Mesa","Gilbert","Tucson","Tempe","Yuma","Phoenix","Phoenix","Phoenix","Scottsdale","Phoenix","Scottsdale","Scottsdale","Scottsdale","Sedona","Tucson","Phoenix","Chandler","Gilbert","Tempe","Tucson","Phoenix","Phoenix","Phoenix","Tempe","Phoenix","Mesa","Tucson","Phoenix","Tempe","Phoenix","Mesa","Queen Creek","Phoenix","Phoenix","Glendale","Prescott","Scottsdale","Scottsdale","Tucson","Tempe","Mesa","Scottsdale","Phoenix","Lake Havasu City","Cottonwood","Glendale","Tempe","Show Low","Phoenix","Scottsdale","Safford","Cave Creek","Scottsdale","DeweyHumboldt","Phoenix","Mesa","Phoenix","Tucson","Scottsdale","Scottsdale","Phoenix","Peoria","Naco","Scottsdale","Tucson","Phoenix","Gilbert","Tucson","Scottsdale","Tucson","Scottsdale","Mesa","Phoenix","Scottsdale","Prescott","Mesa","Casa Grande","Phoenix","Avondale","Litchfield Park","Phoenix","Scottsdale","Phoenix","Chandler","Surprise","Phoenix","Lake Havasu","Phoenix","Phoenix","Phoenix","Tempe","Peoria","Tempe","Cave Creek","Prescott","Mesa","Phoenix","Scottsdale","Scottsdale","Phoenix","Mesa","Pinetop","Phoenix","Peoria","Scottsdale","Sierra Vista","Phoenix","Scottsdale","Mesa","Phoenix","Scottsdale","Tempe","Mesa","Phoenix","Maricopa","Mesa","Chandler","Tempe","Phoenix","Mesa","Phoenix","Tucson","Bisbee","Phoenix","Yuma","Tucson","Apache Junction","Scottsdale","Glendale","Mesa","Phoenix","Peoria","Show Low","Tucson","Yuma","Chandler","Chandler","Gilbert","Tempe","Phoenix","Safford","Buckeye","Phoenix","Buckeye","Scottsdale","Phoenix","Scottsdale","Phoenix","Waddell","Surprise","Phoenix","Peoria","Sedona","Phoenix","Phoenix","Tucson","Cave Creek","Phoenix","Mesa","Phoenix","Tempe","Litchfield Park","Tempe","Gilbert","Tucson","Chandler","Phoenix","Phoenix","Laveen","Scottsdale","Chino Valley","Phoenix","Glendale","Phoenix","Gilbert","Prescott","Phoenix","Tucson","Scottsdale","Tucson","Cave Creek","Scottsdale","Peoria","Scottsdale","Tucson","Tucson","Wickenburg","Tucson","Casa Grande","Oro Valley","Phoenix","Phoenix","Glendale","Phoenix","Tempe","Cave Creek","Surprise","Scottsdale","Tucson","Avondale","Phoenix","Phoenix","Glendale","San Tan Valley","Phoenix","Wickenburg","Tucson","Oro Valley","Tucson","Tucson","Phoenix","Mesa","Buckeye","Laveen","Scottsdale","Phoenix","Mesa","Chandler","Sierra Vista","Tucson","Sedona","Flagstaff","Tempe","Phoenix","Mesa","Chandler","Kingman","Mesa","Tucson","Phoenix","Tucson","Glendale","Scottsdale","Mesa","Gilbert","Tempe","Phoenix","Phoenix","Phoenix","Phoenix","Avondale","Phoenix","Chandler","Tucson","Mesa","Glendale","Tucson","Scottsdale","Rio Rico","Tucson","Chandler","Yuma","Sierra Vista","Peoria"],"Zip code":["85281","85020","85602","85281","85225","86303","85004","85021","85207","85017","86326","85051","85042","85281","85326","85262","85258","85016","85012","85747","86409","85207","85234","85704","85281","85364","85012","85014","85003","85260","85022","85255","85260","85255","86351","85718","85032","85248","85297","85281","85745","85006","85085","85035","85283","85020","85204","85703","85042","85282","85033","85211","85142","85009","85008","85308","86303","85251","85260","85719","85284","85215","85257","85015","86403","86326","85301","85281","85901","85022","85260","85546","85331","85254","86327","85040","85215","85050","85716","85262","85254","85022","85381","85620","85251","85714","85009","85295","85746","85258","85704","85250","85209","85051","85257","86301","85215","85122","85009","85392","85340","85085","85251","85083","85225","85374","85044","86406","85020","85012","85086","85281","85383","85284","85331","86301","85207","85006","85257","85260","85018","85202","85935","85044","85382","85260","85635","85054","85259","85202","85044","85260","85283","85205","85027","85139","85206","85248","85284","85012","85206","85014","85711","85603","85040","85365","85714","85120","85253","85304","85202","85040","85383","85901","85711","85364","85286","85286","85233","85283","85085","85546","85326","85004","85326","85266","85009","85255","85023","85355","85379","85018","85345","86351","85023","85048","85718","85331","85017","85209","85027","85281","85340","85281","85295","85710","85225","85044","85053","85339","85254","86323","85037","85308","85044","85296","86305","85003","85704","85260","85704","85331","85251","85381","85258","85704","85742","85390","85715","85122","85704","85041","85051","85304","85035","85281","85331","85379","85260","85711","85323","85014","85051","85305","85143","85004","85390","85757","85755","85750","85750","85012","85201","85326","85339","85260","85016","85210","85286","85635","85741","86336","86001","85284","85027","85206","85225","86401","85201","85741","85015","85730","85308","85257","85210","85295","85284","85085","85033","85041","85019","85323","85016","85286","85746","85202","85306","85713","85259","85648","85714","85225","85367","85635","85381"],"Loan amount":[41600,14600,40156,13098.22,32387,10000,152200,28500,8333.32,54340,14400,44155,78975.27,33137,2150,14400,72000,3125,44900,50021,77142,33624,5065,10592,20207,32274.6,1624490,3600,8020,35800,897,280330,211200,19012,3100,3595,3837,6250,11805,55000,10902,52900,130342,20833,1447.5,86645,3529.44,90000,20832,20833,62202,290000,28615,65300,4977,133597.5,411070,8207,10195,63792,7500,50000,1939550,20833,20832,15582,19500,13541,60000,15717,111945,91900,10800,20800,20832,65700,31552,90850,18800,15254,20862,25435,21097,78636,56308,22850,311300,46620,20781,20800,16100,19477,30872,1895,20000,46600,52083.32,5087,75490,3613,30725,211000,19500,10312,12210,1109,18797,16800,73300,3238,11041,1314810,23025,8847,11660,29166,8332,20775,281460,20833.32,5351.67,16820,43322,73377,38900,23775,5455,20800,9895,16820,81072.5,17400,2445,78695,32382,140600,32500,35630,49581,11445,7741.11,4166,3957,52062,26982,28017,121255,37005,106127,8892,7625,20833,27050,20922,18110,70200,4700,875700,120000,20833,80912.5,57350,4126,20833,16041,8333,12750,165687,119000,65500,20485,533900,92070,14612,9402,1041,4200,12500,115272,84906,31982.5,24880,29165,18247,5062,11000,20832,45040,37736,20575,19290,25575,1165.74,70720,68000,8440,6012,18146,9102,33155,146106,12500,2691.05,64221,10053.13,12000,37374.65,1841,6752,3635,13863,5665,3050,10037.5,20833,42100,25130,7442,78400,18317,19627,20832,6250,20832,20833.32,1757,13000,2475,8958,21680,5842,112500,200600,12825,10000,55612,20400,16770,36500,2833.34,20800,146610,24817,378300,20833.32,16718,14112,176200,20832,35335.82,2495,4632,163564,10813,15655,114500,41200,13728,2397,20832,59753,20507,12360.42,2708,234247,64175,8332,2594,41632,4502.4,119145,20579,11910,118100,50818],"Amt forgiven":[41971.55,14737.48,40402.51,13235.39,32675.3,10103.29,142940.22,23618.47,8371.9,54711.29,14586.59,44616.57,79313.11,21062.21,2174.62,14556.8,72628,3157.58,45359.58,50454.52,78228.42,34044.99,4090.39,10713.59,20303.54,32652.17,1632657.57,3634.03,0,36273.74,904.54,282872.17,213006.93,19124.49,3121.53,0,3881.78,6300.68,11884.89,55414.03,10978.76,53212.99,131252.61,0,1457.1,87612.05,3563.77,90833,21046.69,20900.92,62698.13,293043.01,28778.07,65784.31,4999.26,134523.53,415411.81,8240.51,10301.48,64226.14,7586.25,50406.97,1957921.85,20937.74,0,15661.4,19614.86,0,60522.74,15945.22,112892.7,77108.85,10895.87,21068.09,20907.91,66473.8,31831.21,91804.63,18930.83,15317.94,20992.24,25743.7,21310.86,79635.65,56670.87,23079.13,313530.98,46814.25,0,20924.8,16238.06,19697.57,31058.92,0,0,46944.32,52734,5112.29,76563.41,3662,31024.67,213127.34,19679.83,10437.72,12322.4,1115.38,18947.44,16923.35,74049.29,3249.53,11135.68,433980.11,23203.65,8917.78,11768.87,29313.83,6424.81,20854.12,283441.79,21023.71,5388.77,16852.72,43721.79,73783.09,39156.09,23945.86,5505.37,20941.56,9982.56,16867,81932.77,17586.57,0,79624.25,32500.88,141142.87,32691.44,35905.28,50196.35,0,7777.67,4197.05,3977.99,52290.22,27346.44,28391.58,122650.26,37387.22,0,8935.97,7726.32,0,27235.59,21160.07,0,70644.6,4713.39,886159.75,120456.67,0,81612.93,57871.44,4151.66,21020.78,16122.74,8368.84,12862.13,167639.99,120049.81,66189.57,20586.29,537607.64,93303.49,14809.29,9504.01,0,4235.23,12614.38,116551.05,85750.41,32307.25,25006.1,29367.53,18409.43,5124.27,11119.78,20909.54,45536.57,37981.03,20775.03,19584.37,25923.24,1175.32,71409.76,68258.78,8546.67,6041.65,0,9215.23,33481.02,147098.72,12622.22,2718.4,64481.4,10130.53,12033.67,37757.61,1849.42,6769.02,3661.35,13924.91,5696,0,6064.13,0,42545.56,25393,7470.11,79076.6,18569.93,19774.75,20971.46,0,20923.43,20912.66,0,13150.3,0,3165.41,21843.34,5862.28,113275,201962.98,12857.06,10084.66,56133.08,20556.97,16861.3,36872,2855.54,20953.29,148146.55,25009.42,0,20971.63,16780.75,14187.39,178363.34,20908.38,35881.56,2508.72,4657.38,0,10954.47,15814.55,115634.57,31400.2,13926.29,2410.92,20919.96,60291.6,0,12489.78,2719.66,236627.98,64570.6,0,2614.54,41827.04,3524.57,120244.51,0,11978.15,108667.52,51509.96]},"columns":[{"id":"Borrower","name":"Borrower","type":"character","format":{"cell":{"digits":0,"separators":true,"currency":"USD"},"aggregated":{"digits":0,"separators":true,"currency":"USD"}}},{"id":"City","name":"City","type":"character","format":{"cell":{"digits":0,"separators":true,"currency":"USD"},"aggregated":{"digits":0,"separators":true,"currency":"USD"}}},{"id":"Zip code","name":"Zip code","type":"character","format":{"cell":{"digits":0,"separators":true,"currency":"USD"},"aggregated":{"digits":0,"separators":true,"currency":"USD"}}},{"id":"Loan amount","name":"Loan amount","type":"numeric","format":{"cell":{"digits":0,"separators":true,"currency":"USD"},"aggregated":{"digits":0,"separators":true,"currency":"USD"}}},{"id":"Amt forgiven","name":"Amt forgiven","type":"numeric","format":{"cell":{"digits":0,"separators":true,"currency":"USD"},"aggregated":{"digits":0,"separators":true,"currency":"USD"}}}],"filterable":true,"searchable":true,"defaultPageSize":5,"striped":true,"compact":true,"dataKey":"fd7f5e47f6ab52876b31d6b6ec7a4aca"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>This is often enough to get a table that you can look at quickly, even without rendering it. It’s useful to look through the results of your work so you can check it. Sometimes I just stick <code>reactable()</code> at the end of any code chunk to get a default version for exploration.</p>
+<p>A more sophisticated one might have color coding for the values, or set the column widths so that the borrower name and city take up more space than the other columns.</p>
+<p>It’s a lot of typing for something so simple, but I save it as a code snippet in RStudio and use a shortcut to paste it into a code chunk.</p>
+<p>There is much, much more that reactable tables can do (like <a href="https://glin.github.io/reactable/articles/womens-world-cup/womens-world-cup.html">this</a>), but this is a good start toward something readable and presentable to your colleagues. It is also possible to create collapsable rows for large tables, and total rows at the bottom.</p>
+</section>
+<section id="crosstabs-with-the-janitor-library" class="level2" data-number="24.2">
+<h2 data-number="24.2" class="anchored" data-anchor-id="crosstabs-with-the-janitor-library"><span class="header-section-number">24.2</span> Crosstabs with the <code>janitor</code> library</h2>
+<p>We’ve gone through the exercise of creating a grouping, counting, then computing a percentage of total using our usual verbs. The <code>janitor</code> package provides a utility for doing that.</p>
+<p>Here’s an example with the full PPP dataset:</p>
+<p>The <code>tabyl</code> function does one and only one thing: Count and compute percentages of totals. It creates an output data frame that you can style any way you want. You can do 1-, 2- or 3-way tables, but no more. This example creates the table, then formats it using a datatable as above.</p>
+<section id="a-simple-one-way-table" class="level3" data-number="24.2.1">
+<h3 data-number="24.2.1" class="anchored" data-anchor-id="a-simple-one-way-table"><span class="header-section-number">24.2.1</span> A simple one-way table</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-3-1"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a>ppp <span class="sc">|&gt;</span> </span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-3-2" class="code-annotation-target"><a href="#annotated-cell-3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span> ( lender ) <span class="sc">|&gt;</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-3-3" class="code-annotation-target"><a href="#annotated-cell-3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span> ( <span class="fu">desc</span> (percent)) <span class="sc">|&gt;</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-3-4" class="code-annotation-target"><a href="#annotated-cell-3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span> (<span class="dv">5</span>) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-3-5"><a href="#annotated-cell-3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">datatable</span> (   </span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-3-6" class="code-annotation-target"><a href="#annotated-cell-3-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">rownames =</span> <span class="cn">FALSE</span></span>
+<span id="annotated-cell-3-7"><a href="#annotated-cell-3-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-3-8" class="code-annotation-target"><a href="#annotated-cell-3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">formatPercentage</span> (<span class="st">"percent"</span>) <span class="sc">|&gt;</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-3-9" class="code-annotation-target"><a href="#annotated-cell-3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">formatRound</span> (<span class="at">columns =</span><span class="st">"n"</span>,  <span class="at">digits=</span><span class="dv">0</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="2" data-code-annotation="1">Create a one-way data table with count (n) and percent</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="3" data-code-annotation="2">Sort it from highest to lowest</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="4" data-code-annotation="3">Keep only the top 5,</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="6" data-code-annotation="4">create our default datatable</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="8" data-code-annotation="5">Format the percentages</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="9" data-code-annotation="6">Format the raw numbers</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-d6427a93dc41f18e7145" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-d6427a93dc41f18e7145">{"x":{"filter":"none","vertical":false,"data":[["JPMorgan Chase Bank, National Association","Bank of America, National Association","Wells Fargo Bank, National Association","Prestamos CDFI, LLC","Zions Bank, A Division of"],[17148,11702,10679,9508,8328],[0.101312190193727,0.0691366485681707,0.0630926568158857,0.0561742654748049,0.0492027011857567]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>lender<\/th>\n      <th>n<\/th>\n      <th>percent<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":1,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 0, 3, \",\", \".\", null);\n  }"},{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatPercentage(data, 0, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[1,2]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render","options.columnDefs.1.render"],"jsHooks":[]}</script>
+</div>
+</div>
+<section id="two-way-table-with-tabyls" class="level4">
+<h4 class="anchored" data-anchor-id="two-way-table-with-tabyls">Two-way table with tabyls</h4>
+<p>That’s good, but we have wanted some 2-way tables, the way we did in the group by chapter. Here’s an example:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>ppp <span class="sc">|&gt;</span> </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span> ( loan_status, draw)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["loan_status"],"name":[1],"type":["chr"],"align":["left"]},{"label":["First"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Second"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Active Un-Disbursed","2":"3","3":"0"},{"1":"Exemption 4","2":"13573","3":"3898"},{"1":"Paid in Full","2":"115139","3":"36646"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>This just created the simple counts. There are some “adorn” functions in the package that let you work with the numbers and percentages.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-5"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-5-1"><a href="#annotated-cell-5-1" aria-hidden="true" tabindex="-1"></a>ppp <span class="sc">|&gt;</span> </span>
+<span id="annotated-cell-5-2"><a href="#annotated-cell-5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span> (loan_status, draw) <span class="sc">|&gt;</span> </span>
+<span id="annotated-cell-5-3"><a href="#annotated-cell-5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_totals</span> (<span class="fu">c</span>(<span class="st">"row"</span>, <span class="st">"col"</span>)) <span class="sc">|&gt;</span> </span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-5-4" class="code-annotation-target"><a href="#annotated-cell-5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_percentages</span>(<span class="st">"col"</span> ) <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-5-5"><a href="#annotated-cell-5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_pct_formatting</span> (<span class="at">digits=</span><span class="dv">0</span>) <span class="sc">|&gt;</span> </span>
+<span id="annotated-cell-5-6"><a href="#annotated-cell-5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_ns</span>() <span class="sc">|&gt;</span> </span>
+<span id="annotated-cell-5-7"><a href="#annotated-cell-5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_title</span> () </span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-5" data-code-lines="4" data-code-annotation="1">Change “col” to “row” if you want it to add to 100% across rather than down; “all” if you want it to be a percent of the grand total.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":[1],"type":["chr"],"align":["left"]},{"label":["draw"],"name":[2],"type":["chr"],"align":["left"]},{"label":[""],"name":[3],"type":["chr"],"align":["left"]},{"label":[""],"name":[4],"type":["chr"],"align":["left"]}],"data":[{"1":"loan_status","2":"First","3":"Second","4":"Total"},{"1":"Active Un-Disbursed","2":"0%       (3)","3":"0%      (0)","4":"0%       (3)"},{"1":"Exemption 4","2":"11%  (13,573)","3":"10%  (3,898)","4":"10%  (17,471)"},{"1":"Paid in Full","2":"89% (115,139)","3":"90% (36,646)","4":"90% (151,785)"},{"1":"Total","2":"100% (128,715)","3":"100% (40,544)","4":"100% (169,259)"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>This is not a very well documented or developed package, and it balks at giving the “adorn” commands out of order. So sometimes it’s not all that helpful, but it does create good crosstabs quickly.</p>
+</section>
+</section>
+</section>
+<section id="static-tables-with-gt" class="level2" data-number="24.3">
+<h2 data-number="24.3" class="anchored" data-anchor-id="static-tables-with-gt"><span class="header-section-number">24.3</span> Static tables with gt</h2>
+<p>Section TK.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation column-page-right">
+  <div class="nav-page nav-page-previous">
+      <a href="./vis-demo.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Visualization demo</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./advanced.html" class="pagination-link">
+        <span class="nav-page-text">Special skills</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Data reporting for investigative journalism, Spring 2023 was written by Sarah Cohen</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">Produced with <a href="https://quarto.org">Quarto</a></div>
+  </div>
+</footer>
+
+
+
+</body></html>

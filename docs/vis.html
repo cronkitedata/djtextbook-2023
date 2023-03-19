@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Reporting - 22&nbsp; Visualization as a reporting tool</title>
+<title>Data Reporting - Visualization as a reporting tool</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./viz-demo.html" rel="next">
-<link href="./viz.html" rel="prev">
+<link href="./vis-reporting.html" rel="next">
+<link href="./r-recipes.html" rel="prev">
 <link href="./assets/images/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -75,7 +75,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./viz.html">Visualization as a reporting tool</a></li><li class="breadcrumb-item"><a href="./viz-reporting.html"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Visualization as a reporting tool</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./vis.html">Visualization as a reporting tool</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -295,7 +295,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./viz.html" class="sidebar-item-text sidebar-link">
+            <a href="./vis.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Visualization as a reporting tool</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -304,13 +304,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./viz-reporting.html" class="sidebar-item-text sidebar-link active">
+  <a href="./vis-reporting.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Visualization as a reporting tool</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./viz-demo.html" class="sidebar-item-text sidebar-link">
+  <a href="./vis-demo.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Visualization demo</span></span></a>
   </div>
 </li>
@@ -392,16 +392,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#examples" id="toc-examples" class="nav-link active" data-scroll-target="#examples"><span class="header-section-number">22.1</span> Examples</a></li>
-  <li><a href="#tips-for-exploratory-visualizations" id="toc-tips-for-exploratory-visualizations" class="nav-link" data-scroll-target="#tips-for-exploratory-visualizations"><span class="header-section-number">22.2</span> Tips for exploratory visualizations</a>
-  <ul class="collapse">
-  <li><a href="#use-small-multiples-to-quickly-orient-yourself-in-a-large-dataset" id="toc-use-small-multiples-to-quickly-orient-yourself-in-a-large-dataset" class="nav-link" data-scroll-target="#use-small-multiples-to-quickly-orient-yourself-in-a-large-dataset">Use small multiples to quickly orient yourself in a large dataset</a></li>
-  <li><a href="#look-at-your-data-from-all-directions" id="toc-look-at-your-data-from-all-directions" class="nav-link" data-scroll-target="#look-at-your-data-from-all-directions">Look at your data from all directions</a></li>
-  <li><a href="#dont-assume" id="toc-dont-assume" class="nav-link" data-scroll-target="#dont-assume">Don’t assume</a></li>
-  <li><a href="#avoid-obsessiong-over-precision-and-presentation-details" id="toc-avoid-obsessiong-over-precision-and-presentation-details" class="nav-link" data-scroll-target="#avoid-obsessiong-over-precision-and-presentation-details">Avoid obsessiong over precision and presentation details</a></li>
-  <li><a href="#create-chronologies-of-cases-and-events" id="toc-create-chronologies-of-cases-and-events" class="nav-link" data-scroll-target="#create-chronologies-of-cases-and-events">Create chronologies of cases and events</a></li>
-  <li><a href="#meet-with-designers-and-graphics-editors-early-and-often" id="toc-meet-with-designers-and-graphics-editors-early-and-often" class="nav-link" data-scroll-target="#meet-with-designers-and-graphics-editors-early-and-often">Meet with designers and graphics editors early and often</a></li>
-  </ul></li>
+  <li><a href="#in-this-section" id="toc-in-this-section" class="nav-link active" data-scroll-target="#in-this-section">In this section</a></li>
+  <li><a href="#other-resources" id="toc-other-resources" class="nav-link" data-scroll-target="#other-resources">Other resources</a></li>
+  <li><a href="#other-applications-for-visualization" id="toc-other-applications-for-visualization" class="nav-link" data-scroll-target="#other-applications-for-visualization">Other applications for visualization</a></li>
   </ul>
 </nav>
 </nav>
@@ -414,7 +407,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="viz-reporting" class="quarto-section-identifier"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Visualization as a reporting tool</span></span></h1>
+<h1 class="title">Visualization as a reporting tool</h1>
 </div>
 
 
@@ -429,108 +422,33 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>NOTE: This chapter is adapted from a handout created for IRE around 2012, and used in the original data journalism handbook.</p>
-<p>This chapter is an introduction to using visualization in a very specific way: To improve your reporting and work with colleagues. It ignores the elements that are important for publication, such as scalability, clarity of labels and font / color combinations.</p>
-<div class="alert alert-secondary">
-<div class="alert-heading font-weight-bolder fs-3">
-<p>Reporters use visualization methods to:</p>
-</div>
+<section id="in-this-section" class="level2">
+<h2 class="anchored" data-anchor-id="in-this-section">In this section</h2>
+<p>The following chapters review ways of looking at your data while reporting. We’re leaving publication quality graphic alone – those often depend on using sites like &lt;datawrapper.de&gt; or D3 javascript to get high-performance visualizations, while static graphics often depend on using Adobe products to make typography and palettes acceptable to your publication.</p>
+<p>Much of this is done in R using the package <code>ggplot2</code>, which is part of the tidyverse. If you want to follow along with with interactive aspects, you’ll want to install the <code>plotly</code> package. There may be others noted in individual sections.</p>
+</section>
+<section id="other-resources" class="level2">
+<h2 class="anchored" data-anchor-id="other-resources">Other resources</h2>
+<p>This sections just gets to the very basics of making plots in R. Consider the following resources if you want to get into it in more detail:</p>
 <ul>
-<li>Find outliers and holes in your data that you might miss using other methods.</li>
-<li>Link time and place to find compelling reporting targets</li>
-<li>Link organizations, events and people in proper chronological order</li>
-<li>Reveal scale and proportion at the same time – very difficult in tables of numbers.</li>
+<li>“<a href="https://socviz.co/">Visualization with R</a>”, by Kiernan Healy. an excellent introduction to both the concepts of visualization and how to do it in R using ggplot (mainly).</li>
+<li>“<a href="https://www.journalismcourses.org/course/datavizforstorytelling/">Data Visualization for Storytelling and Discovery”</a>”, a free online course that was given by the Knight Center in 2018. The videos and assignments are still available, from Alberto Cairo. Parts of his book, The Truthful Art, are included for free in the materials for that course.</li>
+<li>“<a href="https://datajournalism.com/read/handbook/one/understanding-data/using-data-visualization-to-find-insights-in-data">Using data visualization to find insights in data</a>”, by Gregor Aisch, former New York Times assistant graphics editor. His examples were created before the Tidyverse became popular, so his R code may not translate well for you.</li>
+<li><a href="https://www.r-graph-gallery.com/">R graph gallery</a> has extensive examples and code help - I usually go there to find inspiration for what I want to do with examples on how to do it. There are a lot of extra packages you can add to R that create very specialized graphs.</li>
 </ul>
-</div>
-<p>Visualization for reporting is our version of the “exploratory data analysis” process used in data science and statistics. Using this method, we worry less about communicating our findings , and more about discovering patterns or story ideas. The purpose is to learn more, not to communicate a point.</p>
-<p>Some differences between exploratory visualization and viz for publication include:</p>
+</section>
+<section id="other-applications-for-visualization" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="other-applications-for-visualization">Other applications for visualization</h2>
+<p>You can use a lot of different types of online and free applications to play around with graphics instead of R. They’re less reproducible, and they often come and go as free options, but they’re sometimes easier:</p>
 <ul>
-<li>You may never show your exporatory work to anyone. They’re more like notes, which might be used for only a few minutes.</li>
-<li>Communication takes extreme care with color palettes, accessibility issues and typography. They are annotated and clearly labeled.</li>
-<li>Publication graphics tell a story you’ve already discovered. Exploratory graphics uncover stories you might have missed.</li>
-<li>Breaking some of the rules used to avoid misleading readers, can show patterns or a lack of it in that are worth reporting out.</li>
-<li>You can’t write around missing or bad data in publication ; use exploration to find holes in the data for reporting.</li>
+<li><a href="https://www.datawrapper.de">Datawrapper.de</a> , which is used in a lot of newsrooms. If you want to publish a visualization, it can link directly from R. It’s also easy to use on its own. If you want to eventually publish your visualizations, this is probably the one that is most compatible with newsrooms.</li>
+<li><a href="https://flourish.studio">Flourish</a> (recently purchased by Canva, so who knows? But you can now create private visualizations without paying. )</li>
+<li><a href="https://rawgraphs.io">RAWGraphs</a>, made for designers to sketch their work before digging deep into Adobe Illustrator. It’s a little hard to use unless your data is in just the right form.</li>
+<li><a href="https://public.tableau.com/en-us/s/">Tableau Public</a>, made mainly for business intelligence, but a free version is available. I haven’t used it for a while for a few reasons: Newsrooms don’t use it much because it doesn’t scale well to mobile; it’s hard to save drafts in the free version; it’s a little hard to get used to the interface for a quick visualization.</li>
+<li>The underlying <a href="https://observablehq.com/@d3/learn-d3">D3</a> language of graphics, which is written in Javascript, is what powers a lot of these products. It’s what the professional visual storyteller use. (Aside: javascript is probably the second language you’d want to learn. It helps with scraping and is used extensively newsrooms because it’s the language of the web and mobile, so there are people to help you. But it’s not easy.)</li>
 </ul>
-<p>Getting started sometimes means just putting in a visual form the notes you’ve already taken. Consider this graphic, which ran in the Washington Post in 2006:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="assets/images/vis-reporting-farm-timeline.png" class="quarto-discovered-preview-image img-fluid figure-img" style="width:100.0%"></p>
-<p></p><figcaption class="figure-caption">farm timeline</figcaption><p></p>
-</figure>
-</div>
-<p>It shows the portion of farm income associated with subsidies and key events over the past 45 years, and was built over a series of months. Finding data that could be used over time with similar definitions and similar meanings was a challenge. Investigating all of the peaks and troughs helped us keep context in mind as we did the rest of our reporting. It also meant that one chore was pretty much finished before the stories were written.</p>
-<section id="examples" class="level2" data-number="22.1">
-<h2 data-number="22.1" class="anchored" data-anchor-id="examples"><span class="header-section-number">22.1</span> Examples</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<section id="size-and-growth-at-once" class="level4">
-<h4 class="anchored" data-anchor-id="size-and-growth-at-once">Size and growth at once</h4>
-<p>This graphic was used for less than five minutes, but helped us see that there was one company that would be a good candidate for further reporting. The details are unimportant, but it showed that this company began quite small and grew quite quickly — the characteristic we were seeking. The others were not as strong candidates.</p>
-</section>
-</div><div class="column" style="width:50%;">
-<p><img src="assets/images/vis-reporting-ccm.png" class="img-fluid"></p>
-</div>
-</div>
-<div class="columns">
-<div class="column" style="width:50%;">
-<section id="reviewing-two-data-points-in-a-long-list" class="level4">
-<h4 class="anchored" data-anchor-id="reviewing-two-data-points-in-a-long-list">Reviewing two data points in a long list</h4>
-<p><img src="assets/images/vis-reporting-ppp-business.png" class="img-fluid"></p>
-</section>
-</div><div class="column my-4 align-bottom" style="width:50%;">
-<p>This graphic shows the difference between the percent of businesses that got PPP loans in majority Latino zip codes compared to majority white non-Hispanic, based on four different measures. We used it at Reveal to identify places that might be the right place for a story – those where, across a series of measures, the difference was noticable, and the number of loans was large enough to warrant investigating. The team decided to center the story in Los Angeles, though it also reported on Dallas.</p>
-</div>
-</div>
-<section id="text-with-graphics" class="level4">
-<h4 class="anchored" data-anchor-id="text-with-graphics">Text with graphics</h4>
-<p>Looking at a table of numbers is mind-numbing. It’s hard to pick out what’s important. Some of the most imaginative visualizations come in the form of tables. In fact, there’s even a <a href="https://community.rstudio.com/c/table-gallery/64">contest among R users to build the best tables</a>. <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-<p>One simple example is this analysis of federal prosecutions of gun charges over three administrations. We were curious: which statutes are the ones that Joe Biden is prioritizing compared with previous administrations? And was there a major downturn in prosecutions during the pandemic? These “sparklines” on the data table help show the trends, even when the numbers themselves are very different:</p>
-<p><img src="assets/images/vis-reporting-sparkline-example.png" class="img-fluid"></p>
-</section>
-</section>
-<section id="tips-for-exploratory-visualizations" class="level2" data-number="22.2">
-<h2 data-number="22.2" class="anchored" data-anchor-id="tips-for-exploratory-visualizations"><span class="header-section-number">22.2</span> Tips for exploratory visualizations</h2>
-<section id="use-small-multiples-to-quickly-orient-yourself-in-a-large-dataset" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="use-small-multiples-to-quickly-orient-yourself-in-a-large-dataset">Use small multiples to quickly orient yourself in a large dataset</h3>
-<p>“Small multiples” are repeated images, usually over time or place. This example shows where each round of agricultural disaster payments went, which helped us decide on where to focus our reporting – Kansas and North Dakota.</p>
-<p><img src="assets/images/vis-reporting-disaster-smallmultiples.png" class="img-fluid"></p>
-</section>
-<section id="look-at-your-data-from-all-directions" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="look-at-your-data-from-all-directions">Look at your data from all directions</h3>
-<p>When you’re trying to understand a story or a dataset, there’s no wrong way to look at it; try it every way you can think of, and you’ll get a different perspective. If you’re reporting on crime, you might look at one set of charts with change in violent crimes in a year; another might be the percent change; the other might be a comparison to other cities; and another might be a change over time. Use raw numbers, percentages and indexes.</p>
-<p>Look at them on different scales. Try following the rule that the x-axis must be zero. Then break that rule and see if you learn more. Try out logarithms and square roots for data with odd distributions.</p>
-<p>Keep in mind the research done on visual perception. William Cleveland’s experiments showed that the eye sees change in an image when the average slope is about 45 degrees. This suggests you ignore the admonitions to always start at zero and instead work toward the most insightful graphic. Other research in epidemiology has suggested you find a target level as a boundary for your chart. Each of these ways helps you see the data in different ways. When they’ve stopped telling you anything new, you know you’re done.</p>
-</section>
-<section id="dont-assume" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="dont-assume">Don’t assume</h3>
-<p>Now that you’ve looked at your data a variety of ways, you’ve probably found records that don’t seem right – you may not understand what they meant in the first place, or there are some outliers that seem like they are typos, or there are trends that seem backwards.</p>
-<p>If you want to publish anything based on your early exploration or in a published visualization, you have to resolve these questions and you can’t make assumptions. They’re either interesting stories or mistakes; interesting challenges to common wisdom or misunderstanding.</p>
-<p>It’s not unusual for local governments to provide spreadsheets filled with errors, and it’s also easy to misunderstand government jargon in a dataset.</p>
-<p>First, walk back your own work. Have you read the documentation, its caveats and does the problem exist in the original version of the data? If everything on your end seems right, then it’s time to pick up the phone. You’re going to have to get it resolved if you plan to use it, so you might as well get started now.</p>
-<p>That said, not every mistake is important. In campaign finance records, it’s common to have several hundred postal codes that don’t exist in a database of 100,000 records. As long as they’re not all in the same city or within a candidate, the occasional bad data record just doesn’t matter.</p>
-<p>The question to ask yourself is: if I were to use this, would readers have a fundamentally accurate view of what the data says?</p>
-</section>
-<section id="avoid-obsessiong-over-precision-and-presentation-details" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="avoid-obsessiong-over-precision-and-presentation-details">Avoid obsessiong over precision and presentation details</h3>
-<p>The flip side of not asking enough questions is obsessing over precision before it matters. Your exploratory graphics should be generally correct, but don’t worry if you have various levels of rounding, if they don’t add up to exactly 100 percent or if you are missing one or two years’ data out of 20. This is part of the exploration process. You’ll still see the big trends and know what you have to collect before it’s time for publication.</p>
-<p>In fact, you might consider taking away labeling and scale markers, much like the charts above, to even better get an overall sense of the data.</p>
-</section>
-<section id="create-chronologies-of-cases-and-events" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="create-chronologies-of-cases-and-events">Create chronologies of cases and events</h3>
-<p>At the start of any complex story, begin building chronologies of key events and cases. These are easily done in a spreadsheet or a data collection system like Airtable. You will eventually need one.</p>
-</section>
-<section id="meet-with-designers-and-graphics-editors-early-and-often" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="meet-with-designers-and-graphics-editors-early-and-often">Meet with designers and graphics editors early and often</h3>
-<p>Brainstorm about possible graphics with the artists and designers in your newsroom. They will have good ways to look at your data, suggestions of how it might work interactively, and know how to connect data and stories. It will make your reporting much easier if you know what you have to collect early on, or if you can alert your team that a graphic isn’t possible when you can’t collect it.</p>
 
 
-</section>
-</section>
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p>These are painstakingly built and are meant for publication, but you can see how much they can convey using color, size, shape and other elements within a table of numbers.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
 </section>
 
 </main> <!-- /main -->
@@ -769,13 +687,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation column-page-right">
   <div class="nav-page nav-page-previous">
-      <a href="./viz.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Visualization as a reporting tool</span>
+      <a href="./r-recipes.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Recipes</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./viz-demo.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Visualization demo</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./vis-reporting.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Visualization as a reporting tool</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

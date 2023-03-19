@@ -71,11 +71,11 @@ book:
          - r-verb-join.qmd
          - r-recipes.qmd
 
-    - part: viz.qmd
+    - part: vis.qmd
       chapters:
-         - viz-reporting.qmd
-         - viz-demo.qmd
-#         - viz-tables.qmd
+         - vis-reporting.qmd
+         - vis-demo.qmd
+         - vis-tables.qmd
 #         - viz-practice.qmd
 
     - part: advanced.qmd

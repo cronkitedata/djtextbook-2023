@@ -1,8 +1,24 @@
-# Visualization demo { #viz-demo }
+# Visualization demo { #vis-demo }
 
-This chapter walks through a built-in dataset in R to show you the concepts of creating visualizations. It works because the data behaves quite well for the demo -- something we can't count on in actual journalism datasets. 
 
-This will make more sense if you watch the videos from the Knight Center course in Module 1, [parts 2](https://www.youtube.com/watch?v=Y_fyspMAAnw&list=PL0tDk-f4v1ugEg01UdiXB9QL0AaSSsaYs&index=52&ab_channel=KnightCenter) and [part 3](https://www.youtube.com/watch?v=XTHRzmvSa6c&list=PL0tDk-f4v1ugEg01UdiXB9QL0AaSSsaYs&index=5), which refer to "visual encodings". 
+
+This chapter walks through a built-in dataset in R to show you the concepts of creating visualizations. It works because the data behaves quite well for the demo -- something we can't count on in actual journalism datasets. This will make more sense if you watch the videos from the Knight Center course in Module 1, [parts 2](https://www.youtube.com/watch?v=Y_fyspMAAnw&list=PL0tDk-f4v1ugEg01UdiXB9QL0AaSSsaYs&index=52&ab_channel=KnightCenter) and [part 3](https://www.youtube.com/watch?v=XTHRzmvSa6c&list=PL0tDk-f4v1ugEg01UdiXB9QL0AaSSsaYs&index=5), which refer to "visual encodings". 
+
+
+::: {.alert .alert-secondary}
+::: {.alert-heading .font-weight-bolder .fs-3}
+Resources for visualization concepts and R programming
+:::
+
+There are entire books and courses created by experts in visualization, and I don't want to even try to repeat their work here. Instead, here are some resources to get you started with visualization concepts and R programming:
+
+- The [Knight Center's Visualization for Storytelling and Discovery](https://journalismcourses.org/course/datavizforstorytelling/) self-guided course, by one of the most accomplished practitioner and researcher of visualization in news, Alberto Cairo. The course is over, but the videos remain online. The first module is an excellent introduction to the concepts.
+- The data visualization entries from [R for Data Science](https://r4ds.had.co.nz/data-visualisation.html), by Hadley Wickham
+- [Data Visualization, A Practical Introduction](https://socviz.co/index.html), by Kiernan Healy
+- [The R graph gallery](https://r-graph-gallery.com/), providing inspiration, coding examples and add-on libraries you might want to use. It's really helpful to learn what different types of charts are called.  
+
+:::
+
 
 
 
@@ -71,10 +87,6 @@ We're going to skip the labeling and annotation parts for now. That would come u
 ### Good resources
 
 * [R Graphics Cookbook](http://www.cookbook-r.com/Graphs/) , done entirely in ggplot2.
-
-* The data visualization entries from [R for Data Science](https://r4ds.had.co.nz/data-visualisation.html), by Hadley Wickham
-
-* [Data Visualization, A Practical Introduction](https://socviz.co/index.html), by Kiernan Healy
 
 
 ## Building you graph in pieces using gapminder

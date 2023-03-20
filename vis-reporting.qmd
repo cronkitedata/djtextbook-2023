@@ -1,7 +1,5 @@
 # Visualization as a reporting tool {#viz-reporting}
 
-NOTE: This chapter is adapted from a handout created for IRE around 2012, and used in the original data journalism handbook.
-
 This chapter is an introduction to using visualization in a very specific way: To improve your reporting and work with colleagues. It ignores the elements that are important for publication, such as scalability, clarity of labels and font / color combinations.
 
 ::: {.alert .alert-secondary}
@@ -107,7 +105,8 @@ First, walk back your own work. Have you read the documentation, its caveats and
 
 That said, not every mistake is important. In campaign finance records, it's common to have several hundred postal codes that don't exist in a database of 100,000 records. As long as they're not all in the same city or within a candidate, the occasional bad data record just doesn't matter.
 
-The question to ask yourself is: if I were to use this, would readers have a fundamentally accurate view of what the data says?
+*Ask yourself: if I were to use this, would readers have a fundamentally accurate view of what the data says?*
+
 
 ### Avoid obsessiong over precision and presentation details {.unnumbered}
 

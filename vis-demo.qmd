@@ -16,6 +16,7 @@ There are entire books and courses created by experts in visualization, and I do
 - The data visualization entries from [R for Data Science](https://r4ds.had.co.nz/data-visualisation.html), by Hadley Wickham
 - [Data Visualization, A Practical Introduction](https://socviz.co/index.html), by Kiernan Healy
 - [The R graph gallery](https://r-graph-gallery.com/), providing inspiration, coding examples and add-on libraries you might want to use. It's really helpful to learn what different types of charts are called.  
+* "[Using data visualization to find insights in data](https://datajournalism.com/read/handbook/one/understanding-data/using-data-visualization-to-find-insights-in-data)", by Gregor Aisch, former New York Times assistant graphics editor. His examples were created before the Tidyverse became popular, so his R code may not translate well for you.
 
 :::
 
@@ -36,14 +37,16 @@ You can use this command in the Console to install them at the same time:
 
 Then, load your packages, including the new ones you just installed:
 
-```{r setup, echo=TRUE, message=FALSE,  warning=FALSE, results="hide"}
+```{r}
+#| message: false
+#| warning: false
+#| output: false
+#| label: setup 
 
 library(gapminder)
 library(tidyverse)
 library(ggplot2)
 library(plotly)
-
-knitr::opts_chunk$set(cache=FALSE)
 
 options(digits=2, scipen=99)
 
@@ -67,7 +70,7 @@ One quirk of ggplot is that instead of the `%>%` pipe command , it uses `+` inst
 
 The basic structure of the plot is: 
 
-```markdown
+```r
       ggplot (  data = df_name, 
                 aes (
                   x = column_name,
@@ -84,11 +87,6 @@ The basic structure of the plot is:
 
 We're going to skip the labeling and annotation parts for now. That would come under layering and legends. In practice, these options can be mixed througout the command. 
 
-### Good resources
-
-* [R Graphics Cookbook](http://www.cookbook-r.com/Graphs/) , done entirely in ggplot2.
-
-
 ## Building you graph in pieces using gapminder
 
 Gapminder is a datast made famous in a viral 2010 TED talk. It contains the life expectency and income (GDP per capita) by country for 200 years. The data is in 5-year increments, through 2007. 
@@ -100,7 +98,10 @@ Gapminder is a datast made famous in a viral 2010 TED talk. It contains the life
 Just pull out the latest year (2007) for our practice
 
 ```{r getyear, echo=TRUE}
+
 #what is gapminder? Life expectancy by country, only goes to 2007. Take the latest year.
+
+
 gapminder_2007 <-
   gapminder %>%
   filter ( year == 2007)

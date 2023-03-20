@@ -74,8 +74,8 @@ book:
     - part: vis.qmd
       chapters:
          - vis-reporting.qmd
-         - vis-demo.qmd
          - vis-tables.qmd
+         - vis-demo.qmd
 #         - viz-practice.qmd
 
     - part: advanced.qmd

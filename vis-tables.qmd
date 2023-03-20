@@ -31,7 +31,13 @@ Be sure to install the following packages before attempting to follow this chapt
 You have already installed the `janitor` package, which has a function to create crosstab tables with values and percentages already computed.
 ::: 
 
-Most of these packages will be demonstrated with a random sample of the PPP data we've worked with so far. One issue with the interactive tables is that there is no maximum number of rows -- they'll just choke if you try to print 300,000 rows.
+::: {.callout-warning}
+## Number formatting
+There are a lot of ways to turn a big number into something readable in R. The problem is that most of these turn them into character, or text, columns. That's ok if your data is already sorted in the order you want to see it. But it wrecks the ability to sort (`arrange`) -- "$4" is seen as larger than "$10" as text because 4 comes after 1 in the alphabet. The formatting options in the tables below are difficult to implement, but maintain sortability. The same thing happens with dates.
+::: 
+
+
+Most of these packages will be demonstrated with a random sample of the PPP data we've worked with so far. 
 
 ```{r}
 #| include: false
@@ -68,15 +74,6 @@ ppp_orig <- readRDS (
 
 
 
-
-1. Use a `select` statement to set the column headings. Don't forget the back-ticks.
-2. These are basic search and sort -- nothing fancy. 
-3. I usually use "compact" because I'm trying to fit as many columns on the page as possible.
-4. This is the very confusing Javascript part of the library. I just try to find examples.
-
-The important element of this is that, by using the complicated "currency" format as the default for all numeric data, it can look OK, but still sorts correctly. (Most other solutions turn numbers in text, so that $4.00 is more than $10.00, since it's alphabetical.)
-
-
 ### Interactive tables with `DT`
 
 `DT` is a translation of a popular Javascript library called "datatable". It, too,  has difficult syntax because it is based on that language, not R. You can get a pretty usable table with just a few lines of code:
@@ -108,9 +105,11 @@ ppp_orig |>
 2. Format the two amounts as currency. [Other format options](https://rstudio.github.io/DT/functions.html) exist for regular numbers and percentages.
 
 
+One problem with the `DT` package is that the documentation is inscrutable if you don't know Javascript. It is bare bones in R, and most Google searches send you to the Javascript documentation. I usually futz around and look for examples. 
+
 ## Interactive tables with `reactable`
 
-The `reactable` library is highly customizable, but it can involve a lot of typing to get a good table. 
+The `reactable` library is highly customizable, but it can involve a lot of typing to get a good table. The documentation is excellent and there are great examples in the wild. It was used to produce the table above that contained the sparklines. 
 
 The basic idea is that you select the columns you want to display, then define their format and other details one by one. There are several useful defaults for the whole table, such as the number format. One way to simplify the typing is to just create the names of the columns you want to see in a `select` statement, then put a default number format for the dollar amounts. A [full list of options](https://glin.github.io/reactable/reference/colDef.html) is available on the help page for reactable.
 
@@ -141,9 +140,13 @@ ppp_orig |>
 
 ```
 
-This is often enough to get a table that you can look at quickly, even without rendering it. It's useful to look through the results of your work so you can check it. Sometimes I just stick `reactable()` at the end of any code chunk to get a default version for exploration.
+1. using the `select` verb that we've already seen, pick out the columns for the table and rename them. Don't forget the back-ticks if you need something with more than one word. 
 
-A more sophisticated one might have color coding for the values, or set the column widths so that the borrower name and city take up more space than the other columns. 
+2. Set the options for sorting, filtering, and searching. 
+
+3. I usually use the "compact" style because I'm trying to fit as much in the table as possible. 
+
+4. Define how numbers will show up by default. You can change this for individual columns. 
 
 It's a lot of typing for something so simple, but I save it as a code snippet in RStudio and use a shortcut to paste it into a code chunk. 
 

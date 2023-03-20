@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Reporting - Visualization as a reporting tool</title>
+<title>Data Reporting - Visualization</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,7 +75,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./vis.html">Visualization as a reporting tool</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./vis.html">Visualization</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -296,7 +296,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./vis.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Visualization as a reporting tool</span></a>
+ <span class="menu-text">Visualization</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -310,14 +310,14 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./vis-demo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Visualization demo</span></span></a>
+  <a href="./vis-tables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Report-making in R</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./vis-tables.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Report-making in R</span></span></a>
+  <a href="./vis-demo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Visualization demo</span></span></a>
   </div>
 </li>
       </ul>
@@ -399,8 +399,8 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#in-this-section" id="toc-in-this-section" class="nav-link active" data-scroll-target="#in-this-section">In this section</a></li>
-  <li><a href="#other-resources" id="toc-other-resources" class="nav-link" data-scroll-target="#other-resources">Other resources</a></li>
-  <li><a href="#other-applications-for-visualization" id="toc-other-applications-for-visualization" class="nav-link" data-scroll-target="#other-applications-for-visualization">Other applications for visualization</a></li>
+  <li><a href="#package-installations" id="toc-package-installations" class="nav-link" data-scroll-target="#package-installations">Package installations</a></li>
+  <li><a href="#visualization-tools" id="toc-visualization-tools" class="nav-link" data-scroll-target="#visualization-tools">Visualization tools</a></li>
   </ul>
 </nav>
 </nav>
@@ -413,7 +413,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Visualization as a reporting tool</h1>
+<h1 class="title">Visualization</h1>
 </div>
 
 
@@ -430,21 +430,21 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="in-this-section" class="level2">
 <h2 class="anchored" data-anchor-id="in-this-section">In this section</h2>
-<p>The following chapters review ways of looking at your data while reporting. We’re leaving publication quality graphic alone – those often depend on using sites like &lt;datawrapper.de&gt; or D3 javascript to get high-performance visualizations, while static graphics often depend on using Adobe products to make typography and palettes acceptable to your publication.</p>
-<p>Much of this is done in R using the package <code>ggplot2</code>, which is part of the tidyverse. If you want to follow along with with interactive aspects, you’ll want to install the <code>plotly</code> package. There may be others noted in individual sections.</p>
+<p>The following chapters review ways of looking at your data while reporting. We’re leaving publication quality graphic alone – those often depend on using sites like <a href="datawrapper.de">Datawrapper</a> or D3 in Javascript to get high-performance visualizations, while static graphics often depend on using Adobe products to make typography and palettes acceptable to your publication.</p>
+<p>This chapter is done in R, mainly using the package <code>ggplot2</code>, which is part of the tidyverse. If you want to follow along with with interactive aspects, you’ll want to install the <code>plotly</code> package. There may be others noted in individual sections.</p>
 </section>
-<section id="other-resources" class="level2">
-<h2 class="anchored" data-anchor-id="other-resources">Other resources</h2>
-<p>This sections just gets to the very basics of making plots in R. Consider the following resources if you want to get into it in more detail:</p>
+<section id="package-installations" class="level2">
+<h2 class="anchored" data-anchor-id="package-installations">Package installations</h2>
+<p>There are some packages we’ll use that are not standard for the rest of the book. They are shown in the relevant chapters, but here is a full list:</p>
 <ul>
-<li>“<a href="https://socviz.co/">Visualization with R</a>”, by Kiernan Healy. an excellent introduction to both the concepts of visualization and how to do it in R using ggplot (mainly).</li>
-<li>“<a href="https://www.journalismcourses.org/course/datavizforstorytelling/">Data Visualization for Storytelling and Discovery”</a>”, a free online course that was given by the Knight Center in 2018. The videos and assignments are still available, from Alberto Cairo. Parts of his book, The Truthful Art, are included for free in the materials for that course.</li>
-<li>“<a href="https://datajournalism.com/read/handbook/one/understanding-data/using-data-visualization-to-find-insights-in-data">Using data visualization to find insights in data</a>”, by Gregor Aisch, former New York Times assistant graphics editor. His examples were created before the Tidyverse became popular, so his R code may not translate well for you.</li>
-<li><a href="https://www.r-graph-gallery.com/">R graph gallery</a> has extensive examples and code help - I usually go there to find inspiration for what I want to do with examples on how to do it. There are a lot of extra packages you can add to R that create very specialized graphs.</li>
+<li><code>reacatable</code> and <code>DT</code> for good-looking interactive reports</li>
+<li><code>gt</code> and <code>gtsummary</code> for static tables</li>
+<li><code>sf</code> and several others for geographic analysis</li>
+<li><code>leaflet</code> and <code>plotly</code> for interactive graphics and maps.</li>
 </ul>
 </section>
-<section id="other-applications-for-visualization" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="other-applications-for-visualization">Other applications for visualization</h2>
+<section id="visualization-tools" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="visualization-tools">Visualization tools</h2>
 <p>You can use a lot of different types of online and free applications to play around with graphics instead of R. They’re less reproducible, and they often come and go as free options, but they’re sometimes easier:</p>
 <ul>
 <li><a href="https://www.datawrapper.de">Datawrapper.de</a> , which is used in a lot of newsrooms. If you want to publish a visualization, it can link directly from R. It’s also easy to use on its own. If you want to eventually publish your visualizations, this is probably the one that is most compatible with newsrooms.</li>

@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./vis-demo.html" rel="next">
+<link href="./vis-tables.html" rel="next">
 <link href="./vis.html" rel="prev">
 <link href="./assets/images/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
@@ -75,7 +75,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./vis.html">Visualization as a reporting tool</a></li><li class="breadcrumb-item"><a href="./vis-reporting.html"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Visualization as a reporting tool</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./vis.html">Visualization</a></li><li class="breadcrumb-item"><a href="./vis-reporting.html"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Visualization as a reporting tool</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -296,7 +296,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./vis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Visualization as a reporting tool</span></a>
+ <span class="menu-text">Visualization</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -310,14 +310,14 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./vis-demo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Visualization demo</span></span></a>
+  <a href="./vis-tables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Report-making in R</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./vis-tables.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Report-making in R</span></span></a>
+  <a href="./vis-demo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Visualization demo</span></span></a>
   </div>
 </li>
       </ul>
@@ -435,7 +435,6 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>NOTE: This chapter is adapted from a handout created for IRE around 2012, and used in the original data journalism handbook.</p>
 <p>This chapter is an introduction to using visualization in a very specific way: To improve your reporting and work with colleagues. It ignores the elements that are important for publication, such as scalability, clarity of labels and font / color combinations.</p>
 <div class="alert alert-secondary">
 <div class="alert-heading font-weight-bolder fs-3">
@@ -519,7 +518,7 @@ ul.task-list li input[type="checkbox"] {
 <p>It’s not unusual for local governments to provide spreadsheets filled with errors, and it’s also easy to misunderstand government jargon in a dataset.</p>
 <p>First, walk back your own work. Have you read the documentation, its caveats and does the problem exist in the original version of the data? If everything on your end seems right, then it’s time to pick up the phone. You’re going to have to get it resolved if you plan to use it, so you might as well get started now.</p>
 <p>That said, not every mistake is important. In campaign finance records, it’s common to have several hundred postal codes that don’t exist in a database of 100,000 records. As long as they’re not all in the same city or within a candidate, the occasional bad data record just doesn’t matter.</p>
-<p>The question to ask yourself is: if I were to use this, would readers have a fundamentally accurate view of what the data says?</p>
+<p><em>Ask yourself: if I were to use this, would readers have a fundamentally accurate view of what the data says?</em></p>
 </section>
 <section id="avoid-obsessiong-over-precision-and-presentation-details" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="avoid-obsessiong-over-precision-and-presentation-details">Avoid obsessiong over precision and presentation details</h3>
@@ -778,15 +777,16 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+
 <nav class="page-navigation column-page-right">
   <div class="nav-page nav-page-previous">
       <a href="./vis.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Visualization as a reporting tool</span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Visualization</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./vis-demo.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Visualization demo</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./vis-tables.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Report-making in R</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

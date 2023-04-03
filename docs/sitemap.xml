@@ -2,162 +2,166 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/index.html</loc>
-    <lastmod>2023-03-26T23:23:48.343Z</lastmod>
+    <lastmod>2023-04-03T17:55:30.778Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/start.html</loc>
-    <lastmod>2023-03-26T23:23:48.348Z</lastmod>
+    <lastmod>2023-04-03T17:55:16.213Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/start-story.html</loc>
-    <lastmod>2023-03-26T23:23:48.353Z</lastmod>
+    <lastmod>2023-04-03T17:55:16.215Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/start-math.html</loc>
-    <lastmod>2023-03-26T23:23:48.358Z</lastmod>
+    <lastmod>2023-04-03T17:55:16.216Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/start-data-def.html</loc>
-    <lastmod>2023-03-26T23:23:48.365Z</lastmod>
+    <lastmod>2023-04-03T17:55:16.217Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/start-data-diary.html</loc>
-    <lastmod>2023-03-26T23:23:48.370Z</lastmod>
+    <lastmod>2023-04-03T17:55:16.219Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/start-hunt.html</loc>
-    <lastmod>2023-03-26T23:23:48.376Z</lastmod>
+    <lastmod>2023-04-03T17:55:16.221Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/start-build-own.html</loc>
-    <lastmod>2023-03-26T23:23:48.380Z</lastmod>
+    <lastmod>2023-04-03T17:55:16.223Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/xl.html</loc>
-    <lastmod>2023-03-26T23:23:48.386Z</lastmod>
+    <lastmod>2023-04-03T17:55:16.228Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/xl-refresher.html</loc>
-    <lastmod>2023-03-26T23:23:48.392Z</lastmod>
+    <lastmod>2023-04-03T17:55:16.230Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/xl-filter-sort.html</loc>
-    <lastmod>2023-03-26T23:23:48.398Z</lastmod>
+    <lastmod>2023-04-03T17:55:16.231Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/xl-pivot.html</loc>
-    <lastmod>2023-03-26T23:23:48.406Z</lastmod>
+    <lastmod>2023-04-03T17:55:16.232Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/xl-formulas.html</loc>
-    <lastmod>2023-03-26T23:23:48.411Z</lastmod>
+    <lastmod>2023-04-03T17:55:16.233Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/xl-practice-noc.html</loc>
-    <lastmod>2023-03-26T23:23:48.416Z</lastmod>
+    <lastmod>2023-04-03T17:55:16.234Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/r.html</loc>
-    <lastmod>2023-03-26T23:23:48.420Z</lastmod>
+    <lastmod>2023-04-03T17:55:16.235Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/r-install.html</loc>
-    <lastmod>2023-03-26T23:23:48.436Z</lastmod>
+    <lastmod>2023-04-03T17:55:16.236Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/r-start.html</loc>
-    <lastmod>2023-03-26T23:23:48.445Z</lastmod>
+    <lastmod>2023-04-03T17:55:16.237Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/r-quarto.html</loc>
-    <lastmod>2023-03-26T23:23:48.452Z</lastmod>
+    <lastmod>2023-04-03T17:55:16.238Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/r-data-import.html</loc>
-    <lastmod>2023-03-26T23:23:48.462Z</lastmod>
+    <lastmod>2023-04-03T17:55:16.241Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/r-verbs.html</loc>
-    <lastmod>2023-03-26T23:23:48.472Z</lastmod>
+    <lastmod>2023-04-03T17:55:16.243Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/r-verb-filter.html</loc>
-    <lastmod>2023-03-26T23:23:48.482Z</lastmod>
+    <lastmod>2023-04-03T17:55:16.244Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/r-verb-mutate.html</loc>
-    <lastmod>2023-03-26T23:23:48.493Z</lastmod>
+    <lastmod>2023-04-03T17:55:16.246Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/r-verb-groupby.html</loc>
-    <lastmod>2023-03-26T23:23:48.508Z</lastmod>
+    <lastmod>2023-04-03T17:55:16.252Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/r-verb-join.html</loc>
-    <lastmod>2023-03-26T23:23:48.515Z</lastmod>
+    <lastmod>2023-04-03T17:55:16.254Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/r-recipes.html</loc>
-    <lastmod>2023-03-26T23:23:48.523Z</lastmod>
+    <lastmod>2023-04-03T17:55:16.256Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/vis.html</loc>
-    <lastmod>2023-03-26T23:23:48.529Z</lastmod>
+    <lastmod>2023-04-03T17:55:32.841Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/vis-reporting.html</loc>
-    <lastmod>2023-03-26T23:23:48.535Z</lastmod>
+    <lastmod>2023-04-03T17:55:16.258Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/vis-tables.html</loc>
-    <lastmod>2023-03-26T23:23:48.543Z</lastmod>
+    <lastmod>2023-04-03T17:55:16.259Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/vis-demo.html</loc>
-    <lastmod>2023-03-26T23:23:48.563Z</lastmod>
+    <lastmod>2023-04-03T17:55:16.262Z</lastmod>
+  </url>
+  <url>
+    <loc>https://cronkitedata.github.io/djtextbook/vis-practice.html</loc>
+    <lastmod>2023-04-03T17:56:48.282Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/vis-maps-begin.html</loc>
-    <lastmod>2023-03-26T23:23:48.568Z</lastmod>
+    <lastmod>2023-04-03T17:55:16.265Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/vis-maps-firstmap.html</loc>
-    <lastmod>2023-03-26T23:23:48.608Z</lastmod>
+    <lastmod>2023-04-03T17:55:16.268Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/advanced.html</loc>
-    <lastmod>2023-03-26T23:23:48.612Z</lastmod>
+    <lastmod>2023-04-03T17:55:16.269Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/advanced-pdf.html</loc>
-    <lastmod>2023-03-26T23:23:48.618Z</lastmod>
+    <lastmod>2023-04-03T17:55:16.271Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/advanced-regex.html</loc>
-    <lastmod>2023-03-26T23:23:48.627Z</lastmod>
+    <lastmod>2023-04-03T17:55:16.272Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/advanced-openrefine.html</loc>
-    <lastmod>2023-03-26T23:23:48.634Z</lastmod>
+    <lastmod>2023-04-03T17:55:16.273Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/advanced-scrape1.html</loc>
-    <lastmod>2023-03-26T23:23:48.640Z</lastmod>
+    <lastmod>2023-04-03T17:55:16.274Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/advanced-scrape2.html</loc>
-    <lastmod>2023-03-26T23:23:48.652Z</lastmod>
+    <lastmod>2023-04-03T17:55:16.276Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/appendix-math.html</loc>
-    <lastmod>2023-03-26T23:23:48.660Z</lastmod>
+    <lastmod>2023-04-03T17:55:16.277Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/appendix-program.html</loc>
-    <lastmod>2023-03-26T23:23:48.667Z</lastmod>
+    <lastmod>2023-04-03T17:55:16.279Z</lastmod>
   </url>
   <url>
     <loc>https://cronkitedata.github.io/djtextbook/appendix-ppp.html</loc>
-    <lastmod>2023-03-26T23:23:48.672Z</lastmod>
+    <lastmod>2023-04-03T17:55:16.280Z</lastmod>
   </url>
 </urlset>

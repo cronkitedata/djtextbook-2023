@@ -76,7 +76,7 @@ book:
          - vis-reporting.qmd
          - vis-tables.qmd
          - vis-demo.qmd
-#         - viz-practice.qmd
+         - vis-practice.qmd
          - vis-maps-begin.qmd
          - vis-maps-firstmap.qmd
 

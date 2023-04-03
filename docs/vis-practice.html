@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.2.335">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
-<title>Data Reporting - R Study Guide</title>
+<title>Data Reporting - 25&nbsp; Visualization exercise</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,8 +17,70 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
-
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
@@ -30,8 +89,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./r-install.html" rel="next">
-<link href="./xl-practice-noc.html" rel="prev">
+<link href="./vis-maps-begin.html" rel="next">
+<link href="./vis-demo.html" rel="prev">
 <link href="./assets/images/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -41,8 +100,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -60,40 +118,31 @@ ul.task-list li input[type="checkbox"] {
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit"
   }
-}</script>
-
-
+}</script><link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 </head>
-
 <body class="nav-sidebar floating">
 
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">R Study Guide</h1>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }"><div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Visualization exercise</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
-      <img src="./assets/images/favicon.ico" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
-      </a>
+      <img src="./assets/images/favicon.ico" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Data Reporting</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/cronkitedata/djtextbook" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
     <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
     <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
-        <li>
+<li>
           <a class="dropdown-item sidebar-tools-main-item" href="./Data-Reporting.pdf">
             <i class="bi bi-bi-file-pdf pe-1"></i>
           Download PDF
@@ -106,7 +155,7 @@ ul.task-list li input[type="checkbox"] {
           </a>
         </li>
     </ul>
-  <a href="" class="quarto-reader-toggle sidebar-tool" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+<a href="" class="quarto-reader-toggle sidebar-tool" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
   </div>
@@ -121,7 +170,7 @@ ul.task-list li input[type="checkbox"] {
       </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
   </div>
@@ -133,8 +182,8 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./start-story.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Learn a new way to read</span></a>
   </div>
@@ -165,7 +214,7 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./xl.html" class="sidebar-item-text sidebar-link">Spreadsheets</a>
@@ -173,8 +222,8 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./xl-refresher.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">An Excel Refresher</span></a>
   </div>
@@ -200,16 +249,16 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./r.html" class="sidebar-item-text sidebar-link active">R Study Guide</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a href="./r.html" class="sidebar-item-text sidebar-link">R Study Guide</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./r-install.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Installing R and RStudio</span></a>
   </div>
@@ -260,16 +309,16 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./vis.html" class="sidebar-item-text sidebar-link">Visualization</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./vis-reporting.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Visualization as a reporting tool</span></a>
   </div>
@@ -286,7 +335,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./vis-practice.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Visualization exercise</span></a>
+  <a href="./vis-practice.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Visualization exercise</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -300,7 +349,7 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./advanced.html" class="sidebar-item-text sidebar-link">Special skills</a>
@@ -308,8 +357,8 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./advanced-pdf.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Working with PDF files</span></a>
   </div>
@@ -335,7 +384,7 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">Appendices</a>
@@ -343,8 +392,8 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./appendix-math.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Newsroom numbers cheat sheet</span></a>
   </div>
@@ -360,31 +409,31 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
       </ul>
-  </li>
+</li>
     </ul>
-    </div>
-    <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+</div>
+    <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#r-intro" id="toc-r-intro" class="nav-link active" data-scroll-target="#r-intro">Introduction</a>
+<li>
+<a href="#the-data" id="toc-the-data" class="nav-link active" data-scroll-target="#the-data"><span class="toc-section-number">25.1</span>  The data</a>
   <ul class="collapse">
-  <li><a href="#r-or-python" id="toc-r-or-python" class="nav-link" data-scroll-target="#r-or-python">R or Python?</a></li>
-  <li><a href="#structure-of-the-chapters" id="toc-structure-of-the-chapters" class="nav-link" data-scroll-target="#structure-of-the-chapters">Structure of the chapters</a></li>
-  <li><a href="#credits" id="toc-credits" class="nav-link" data-scroll-target="#credits">Credits</a></li>
-  </ul></li>
+<li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples"><span class="toc-section-number">25.1.1</span>  Examples</a></li>
   </ul>
-</nav>
-</nav>
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+</li>
+  <li>
+<a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn"><span class="toc-section-number">25.2</span>  Your turn</a>
+  <ul class="collapse">
+<li><a href="#common-geoms" id="toc-common-geoms" class="nav-link" data-scroll-target="#common-geoms"><span class="toc-section-number">25.2.1</span>  Common “geoms”</a></li>
+  </ul>
+</li>
+  <li><a href="#one-quick-plot" id="toc-one-quick-plot" class="nav-link" data-scroll-target="#one-quick-plot"><span class="toc-section-number">25.3</span>  One quick plot</a></li>
+  </ul></nav>
+</nav><!-- margin-sidebar --><div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content column-page-right" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title d-none d-lg-block">R Study Guide</h1>
+<main class="content page-columns page-full column-body" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title"><span id="vis-practice" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Visualization exercise</span></span></h1>
 </div>
 
 
@@ -397,59 +446,60 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
-</header>
-
-<section id="r-intro" class="level1 unnumbered">
-<h1 class="unnumbered">Introduction</h1>
-<p>This is probably your first introduction to coding. Don’t be worried. With effort, much of what reporters do in coding can be learned in a few weeks.</p>
-<p>Like most reporters, I learned the coding that I know (which isn’t a lot) because I wanted to get a story done. In our class, we are not trying to become programmers or social scientists. We’re working on stories.</p>
-<p>You saw during the pivot table lesson that spreadsheets have limits. We couldn’t easily get the city with the most police shootings because we would have had to put both city and state into the pivot table. A median is missing from pivot tables entirely. It’s easy to lose track of where you are and what you did. That’s the reason to learn some coding – there is something we want to know that isn’t very easy to get in other ways.</p>
-<p>All programming languages have one thing in common: You write instructions, called algorithms, and the program executes your statements in order. It means you can do more complicated work in computer programming than in point-and-click parts of Excel. It can also scale – you can repeat your instructions millions of times, tweak it a little, and re-run the program without messing anything else up. The computer won’t mind. Really.</p>
-<p>Writing code can also be self-documenting. You can largely eliminate those painstaking Excel data diaries and replace them with documents that explain your work as you go. You’ll still need to record information about your interviews and decisions, but you’ll no longer have to write down every mouse click.</p>
-<p>If you’re nervous about getting started with programming, take look at the Appendix: <a href="appendix-program.html">A gentle introduction to programming</a> and Jesse Lecy’s “<a href="http://ds4ps.org/dp4ss-textbook/ch-032-learning_r.html">Learning how to Learn</a>”, where he says:</p>
-<blockquote class="blockquote">
-<p>If this is your first programming language, you will get frustrated at times. Take a step back and remember that after a semester of Spanish you can only operate at the level of a three-year old. You only know one verb tense, a few dozen verbs, and several hundred words. You have so many emotions that you can’t express in your new language!</p>
-</blockquote>
-<p>The good news for journalists is that you can accomplish most of what we need with the vocabulary of a three-year-old.</p>
-<p>All I ask is that if you get very frustrated, walk away from the computer for a little while. Get help if, after a break, you don’t know what you might do next to make some progress. <code>#dj-sos</code> on Slack is one option. Use it. If you’re stuck, it’s quite likely others are as well. But don’t let it get to you. As Lecy says, your morale is a limited commodity.</p>
-<section id="r-or-python" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="r-or-python">R or Python?</h3>
-<p>If you ask a data scientist or technologist which language you should learn first, you’ll start a heated debate between advocates of R, Python, Javascript , SQL, Julia and others. Ask the same question of a data journalist and the answer will be: “Choose one that is free and that your colleagues use so you can get help.” For our purposes, it really doesn’t matter – any of the standard languages will do.</p>
-<p>My only rule is that you stick to your first language for a little while before trying a new one. It would be like trying to learn Portuguese and Spanish at the same time, when you know neither one to begin with. They’re related, but very different.</p>
-<p>Employers who hire data reporters usually don’t care which programming language you know because it’s relatively easy to learn another once you’re comfortable with the concepts and good data journalism habits. In a few cases, such as the Associated Press, R is preferred. In others, like the Los Angeles Times, it’s a little easier to work with the team if you work in Python. Visualization teams generally work in Javascript. But most employers will just be happy that you are reasonably self-sufficient in any language.</p>
-<p>I chose R because I find it a little easier to use when trying to puzzle something out step by step, and it is particularly good at working with the weird and varied forms of data thrown at us, but it’s really just a matter of taste and comfort.</p>
-<p>The following chapters lay out the fundamentals of data journalism with R. I’ll be adding chapters as we want them during class. The format of these chapters varies a little from the rest of the book. Each section will begin with the key concepts and skills that are included, which I hope will make them easier to find when you need them.</p>
-</section>
-<section id="structure-of-the-chapters" class="level2">
-<h2 class="anchored" data-anchor-id="structure-of-the-chapters">Structure of the chapters</h2>
-<p>Each chapter includes a summary of what is included, intended to help you navigate the book when you are doing your own coding. At the end is a “recipe” chapter that puts together the specific funcitons and commands that were covered in earlier chapters, and actually goes a little further to help you polish your document.</p>
-<p>Pay attention to these :</p>
-<div class="callout-warning callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+</header><p>You saw an example of building a visualization from start to finish in the last chapter. Here, though, we’re going to start from scratch – envisioning what kind of vis might be interesting and then trying to create it. It combines your ability to wrangle data with your imagination, and then we’ll work together to get it done.</p>
+<div class="alert alert-secondary">
+<div class="alert-heading font-weight-bolder fs-3">
+<p>In this chapter:</p>
 </div>
-<div class="callout-caption-container flex-fill">
-Warning
+<ul>
+<li>Load and wrangle a new version of the Hot 100 data</li>
+<li>Draw on a piece of paper the visualization you might want to create</li>
+<li>Wrangle the data to make it possible</li>
+<li>Try to create the visualizatin, either static or interactive.</li>
+</ul>
 </div>
+<p>There are a lot of extra add-ons to the standard <code>ggplot</code> library that comes with the tidyverse, so you may end up having to load them to do what you want.</p>
+<section id="the-data" class="level2" data-number="25.1"><h2 data-number="25.1" class="anchored" data-anchor-id="the-data">
+<span class="header-section-number">25.1</span> The data</h2>
+<p>We saw the Hot 100 data at the very beginning of your exploration of R. We’re going to use a slightly different version of it to create the visualizations because an older version was matched to the Spotify database to extract certain information from each of the songs.</p>
+<p>This data was used as a <a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2021/2021-09-14/readme.md">TidyTuesday dataset in 2021</a> (scroll down to get the data dictionaries), so it’s a little older than the one we worked on earlier.</p>
+<p>This data has two tables:</p>
+<ol type="1">
+<li>The Hot 100 from mid-1958 to mid-2021: <a href="https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-14/billboard.csv" class="uri">https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-14/billboard.csv</a>
+</li>
+<li>For any songs that are in Spotify, the characteristicso of the song: <a href="https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-14/audio-features.csv" class="uri">https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-14/audio-features.csv</a>
+</li>
+</ol>
+<p>The dada dictionary shows the characteristics from the Spotify songs, but it’s a little easier to understand if you take a look at Juan De Dios Santos’ post, asking: “Is my Spotify music boring? An analysis involving music, data, and machine learning”[https://towardsdatascience.com/is-my-spotify-music-boring-an-analysis-involving-music-data-and-machine-learning-47550ae931de]</p>
+<section id="examples" class="level3" data-number="25.1.1"><h3 data-number="25.1.1" class="anchored" data-anchor-id="examples">
+<span class="header-section-number">25.1.1</span> Examples</h3>
+<p>All of these examples were made with a the version of R and the tidyverse that was used in 2021, so you’ll see a few things in the code that are different, notably the use of <code>%&gt;%</code> instead of <code>|&gt;</code> as the pipe. They are either R scripts (.R extension) or R Markdown (.Rmd extension) , which is the predecessor to Quarto.</p>
+<section id="tidytuesday-videos" class="level4"><h4 class="anchored" data-anchor-id="tidytuesday-videos">TidyTuesday videos</h4>
+<p><a href="https://en.wikipedia.org/wiki/David_G._Robinson_(data_scientist)">David Robinson</a>, a data scientist at Heap, often creates live demos of his exploration of TidyTuesday datasets – data he’s never seen before. They’re long (usually about an hour), but you can watch him decide what to do and how to do it live. <a href="https://www.youtube.com/live/bXrUhGzUhXE?feature=share">He made this video</a> for the Hot 100 data. (The second half gets into machine learning / AI to make predictions – skip that part if you watch the video).</p>
+<p>Here are a few screen shots from that video – they’re closer to our exploratory visualization than the polished ones below;</p>
+</section><section id="visualizing-characteristics" class="level4"><h4 class="anchored" data-anchor-id="visualizing-characteristics">Visualizing characteristics</h4>
+<p>These are really polished, publication-quality vis examples made in R, but you can take inspiration from these to do draft versions for the purpose of exploration.</p>
+<p><a href="https://laurencehorton.github.io/billboard-top-100/">Laurence Horton</a> did a few quick charts to look at the Spotify characteristics.</p>
+<p><a href="https://lauranavarroviz.wordpress.com/tag/tidytuesday-2/">Laura Navarro</a>shows us what [annotation can do for a chart]((https://github.com/lau-cloud/TidyTuesdaycode/blob/master/Billboard/script.R) . I’m super surprised at the relatively low showing of hip hop, but …</p>
+<p><img src="assets/images/vis-practice-navarro-genres.png" class="img-fluid"></p>
+<p><a href="https://blog.djnavarro.net/posts/2021-09-14_tidy-tuesday-billboard/">Danielle Navarro</a> wrote a full tutorial aimed at beginners in R , walking through the data to find and visualize all of Britney Spears’ hits. It has the added feature of explaining how to find her using regular expressions! (Yes, they’re both people named Navarro. I don’t know if they’re the same person.)</p>
+<p>And <a href="https://tamayoleivaj.com/gallery/">Javier Tamayo-Leiva</a> went a little crazy with colors but found an interesting way to visualize the top hits using two dimensions: Number of weeks at No.&nbsp;1 and the “energy” of the song. <a href="https://github.com/TamayoLeivaJ/TidyTuesday/blob/gh-pages/2021/2021_Week_038/2021_Week_038.R">Here is the R code for that chart.</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="assets/images/vis-practice-tamayoLeivaJ.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">hot100</figcaption><p></p>
+</figure>
 </div>
-<div class="callout-body-container callout-body">
-<p>These are warnings that something isn’t quite what it seems and might go wrong.</p>
-</div>
-</div>
-<div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Danger
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>These are cautions – something bad could happen if you ignore this.</p>
-</div>
-</div>
+</section></section></section><section id="your-turn" class="level2" data-number="25.2"><h2 data-number="25.2" class="anchored" data-anchor-id="your-turn">
+<span class="header-section-number">25.2</span> Your turn</h2>
+<p>You’ve been through a lot, so let’s review the steps you have to take to make a visualization:</p>
+<p>Load the data in this case using a <code>read_csv()</code> function. There are two datasets, if you want to use them both.</p>
+<ol type="1">
+<li>Wrangle the data. You will probably need to filter, group, count or otherwise summarize the data. For example, the “Evolution of Genres” probably starts with a dataset by year and genre.</li>
+<li>Decide on the “geom” that you want to use. We haven’t gone through a lot of these yet, so I’m listing some of the common ones below.<br>
+</li>
+<li>You might want to change themes and color palettes, which is is a little harder. Get the basic visualization down before you start polishing!</li>
+</ol>
+<p>You might want to use the <a href="https://r-graph-gallery.com/" class="uri">https://r-graph-gallery.com/</a> site for inspiration, which always has the packages required and the exact commands you need make it.</p>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -460,23 +510,62 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Pro tips!</p>
+<p>You may end up seeing a lot of code in the examples that start with <code>fct_</code> – these are turning words into categories that are sorted on a particular element, such as the number of times that they show up. It turns words into categories that have numbers underneath the words so that they are always the same and every possible category is defined. These are called factors and we haven’t really dealt with them. But they’re useful. They depend on loading a library of the tidyverse called <code>forcats</code></p>
 </div>
 </div>
-<div class="alert alert-success alert-dothis">
-<p>A dark background contains specific instructions you should follow for class or if you want to follow along</p>
+<pre><code>      ggplot (  data = df_name, 
+                aes (
+                  x = column_name,
+                  y = column_name,
+                  fill = column_to_define_the_fill,
+                  color = column_to_define_the_lines_and_borders,
+                  size = column_to_define_the_size
+                  ) 
+                ) +
+                geom_something ( aes (`columns that only refer to this geom`) )
+                facet_wrap ( column ~ column ) +
+                extras ()
+  </code></pre>
+<section id="common-geoms" class="level3" data-number="25.2.1"><h3 data-number="25.2.1" class="anchored" data-anchor-id="common-geoms">
+<span class="header-section-number">25.2.1</span> Common “geoms”</h3>
+<ul>
+<li><p><code>geom_point()</code></p></li>
+<li><p><code>geom_line()</code></p></li>
+<li><p><code>geom_bar()</code></p></li>
+<li><p><code>geom_area()</code></p></li>
+</ul>
+<p>Other tutorials and cheat sheets go into much more detail:</p>
+<ul>
+<li><p>The <a href="http://rafalab.dfci.harvard.edu/dsbook/ggplot2.html">“ggplot” chapter</a> of Rafael A. Irizarry’s Introduction to Data Science</p></li>
+<li><p>The Posit <a href="https://github.com/rstudio/cheatsheets/blob/main/data-visualization.pdf">cheat sheet</a> for ggplot</p></li>
+<li><p>Kiernan Healy’s “<a href="https://socviz.co/index.html#preface">Data visualization: A practical introduction</a> is a whole book on ggplot.</p></li>
+</ul></section></section><section id="one-quick-plot" class="level2 page-columns page-full" data-number="25.3"><h2 data-number="25.3" class="anchored" data-anchor-id="one-quick-plot">
+<span class="header-section-number">25.3</span> One quick plot</h2>
+<p>The very first day we looked at R, I showed you one quick plot based on a Hot 100 dataset that I’d created with just the 21 songs that stayed on the Hot 100 for at least a year list during the 2000s. Now that code may make a little more sense to you</p>
+<div class="cell" data-lael="hot-100-read">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">hot100</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/connections.html">url</a></span> <span class="op">(</span><span class="st">"https://cronkitedata.s3.amazonaws.com/rdata/top_songs.RDS"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="credits" class="level2">
-<h2 class="anchored" data-anchor-id="credits">Credits</h2>
-<p>The first few chapters in this section rely on work done by <a href="https://evalf22.classes.andrewheiss.com/">Andrew Heiss</a> and <a href="https://utdata.github.io/rwdir/">Christian McDonald</a>.</p>
+<div class="cell page-columns page-full">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">hot100</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">ggplot</span> <span class="op">(</span> </span>
+<span>        <span class="fu">aes</span> <span class="op">(</span> x<span class="op">=</span><span class="va">chart_date</span>, y<span class="op">=</span><span class="va">hit</span>, color<span class="op">=</span><span class="va">this_week</span> <span class="op">)</span> </span>
+<span>        <span class="op">)</span> <span class="op">+</span></span>
+<span>       <span class="fu">geom_point</span><span class="op">(</span>  size<span class="op">=</span> <span class="fl">.25</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="co"># label the color variable.</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span> color <span class="op">=</span> <span class="st">"Hot 100 #"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">theme_minimal</span><span class="op">(</span> <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">theme</span><span class="op">(</span>axis.title.x <span class="op">=</span> <span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span>,</span>
+<span>          axis.title.y <span class="op">=</span> <span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span>, </span>
+<span>        legend.position<span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display column-screen-inset-right">
+<p><img src="vis-practice_files/figure-html/hot-100-top-10-list-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 
 
-</section>
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -608,27 +697,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<nav class="page-navigation column-page-right">
-  <div class="nav-page nav-page-previous">
-      <a href="./xl-practice-noc.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Practice exercise</span></span>
+</script><nav class="page-navigation column-body"><div class="nav-page nav-page-previous">
+      <a href="./vis-demo.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Visualization demo</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./r-install.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Installing R and RStudio</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./vis-maps-begin.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Mapping: An introduction</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">Data reporting for investigative journalism, Spring 2023 was written by Sarah Cohen</div>   
     <div class="nav-footer-right">Produced with <a href="https://quarto.org">Quarto</a></div>
   </div>
 </footer>
-
 
 
 </body></html>

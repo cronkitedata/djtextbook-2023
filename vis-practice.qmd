@@ -148,3 +148,15 @@ hot100 |>
           axis.title.y = element_blank(), 
         legend.position= "bottom") 
 ```
+
+### Other sources to learn about ggplot
+
+* [ggplot2: Elegant Graphics for Data Analysis](https://ggplot2-book.org/index.html) 
+
+* [Data Visualization: A practical Guide](https://socviz.co/)
+
+* Cedric Sherer's [list of resources](https://www.cedricscherer.com/top/links/), and his materials for the [2-day workshop at the RStudio Conference 2022](https://rstudio-conf-2022.github.io/ggplot2-graphic-design/)
+
+* 
+
+

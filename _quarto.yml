@@ -52,11 +52,11 @@ book:
 
     - part: xl.qmd
       chapters:
-         - xl-refresher.qmd
-         - xl-filter-sort.qmd
-         - xl-pivot.qmd
-         - xl-formulas.qmd
-         - xl-practice-noc.qmd
+        - xl-refresher.qmd
+        - xl-filter-sort.qmd
+        - xl-pivot.qmd
+        - xl-formulas.qmd
+        - xl-practice-noc.qmd
 
     - part: r.qmd
       chapters:
@@ -84,6 +84,7 @@ book:
       chapters:
          - advanced-pdf.qmd
          - advanced-regex.qmd
+    #     - advanced-regex-r.qmd
          - advanced-openrefine.qmd
          - advanced-scrape1.qmd
          - advanced-scrape2.qmd

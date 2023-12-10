@@ -16,7 +16,7 @@ book:
   subtitle: "Cronkite School MAIJ Program, Spring 2023"
   page-navigation: true
   reader-mode: true
-  downloads: [pdf, epub]
+#  downloads: [pdf, epub]
 #   navbar:
 #     background: secondary
 #     search: true
